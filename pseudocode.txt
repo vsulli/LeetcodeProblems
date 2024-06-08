@@ -1,0 +1,31 @@
+The purpose of this file is to store pseudocode versions
+of the solutions of the problems that I have solved in order
+to review them more quickly. Simply given the question name 
+and description I should be able to come up with the pseudocode 
+from memory which can then be translated into working code. 
+
+==============================================
+1. TWO SUM 
+==============================================
+Pseudocode:
+
+
+
+
+"Tricks" to Remember:
+Concepts: 
+
+==============================================
+523. CONTINUOUS SUBARRAY SUM 
+==============================================
+Pseudocode:
+
+
+
+
+"Tricks" to Remember:
+Concepts: 
+
+==============================================
+
+==============================================

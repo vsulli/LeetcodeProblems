@@ -7,10 +7,13 @@ Rather than focusing on solving as many problems as possible, my goal is to unde
 # Resources
 
 **Websites**
+
 [Leetcode](https://leetcode.com/problemset/)
+
 [Neetcode](https://neetcode.io/roadmap)
 
 **Books**
+
 Cracking the Coding Interview
 
 
