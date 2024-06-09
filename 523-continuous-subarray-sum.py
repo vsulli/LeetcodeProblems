@@ -1,8 +1,8 @@
 '''
 Continuous Subarray Sum
 Leetcode # 523
-# vsulli
-# 8 June 2024
+vsulli
+8 June 2024
 
 Given an integer array nums and an integer k, return true if nums 
 has a good subarray or false otherwise.

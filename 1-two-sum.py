@@ -1,8 +1,8 @@
 '''
 Two Sum
 Leetcode # 1
-# vsulli
-# 8 June 2024
+vsulli
+8 June 2024
 
 Given an array of integers nums, and an integer target
 return the indices of the two numbers such that they add up to 
