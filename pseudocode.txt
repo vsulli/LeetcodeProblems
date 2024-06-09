@@ -29,6 +29,39 @@ loop through nums
 Concepts: array, hash table
 
 ==============================================
+49. Group Anagrams
+==============================================
+Given an array of strings strs, group the 
+anagrams together. You can return the answer 
+in any order.
+An Anagram is a word or phrase formed by 
+rearranging the letters of a different word 
+or phrase, typically using all the original 
+letters exactly once.
+ ---------------------------------------------
+Pseudocode:
+
+initialize answer list
+initialize dictionary for anagrams
+
+loop through all words in argument
+    if sorted current word not in dict
+        add the sorted key and [word]
+    else:
+        append under that sorted key 
+
+loop through all values of dict
+    append to answer
+
+return answer 
+
+
+"Tricks" to Remember: Keys in python cannot be 
+mutable, i.e. lists. Must convert to tuple first
+**retrieving keys/values from dict 
+Concepts: array, hash table, string, sorting
+
+==============================================
 523. CONTINUOUS SUBARRAY SUM 
 ==============================================
 Given an integer array nums and an integer k, 
@@ -84,3 +117,7 @@ Concepts: array, hash table, math, prefix sum
 
 ==============================================
  ---------------------------------------------
+ Pseudocode:
+
+"Tricks" to Remember: 
+Concepts:
