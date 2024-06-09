@@ -16,18 +16,19 @@ class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
         ans = []
 
-        # count letters for each word
-        # sort letters of each word, if they match then store under same key
+        # sort letters of each word, if they match dict key,
+        #  then store under same key
         anagram_dict = {} # sorted_letter: [word]
 
         for word in strs:
-            if sorted(word) in anagram_dict.keys():
-                anagram_dict[sorted(word)].append(word)
+            if tuple(sorted(word)) in anagram_dict.keys():
+                anagram_dict[tuple(sorted(word))].append(word)
             else:
-                anagram_dict[(sorted(word))] = [word]
+                anagram_dict[tuple(sorted(word))] = [word]
         
         for value in anagram_dict.values():
             ans.append(value)
+
         return ans
     
 sol = Solution()
