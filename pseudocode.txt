@@ -7,25 +7,80 @@ from memory which can then be translated into working code.
 ==============================================
 1. TWO SUM 
 ==============================================
+Given an array of integers nums and an integer 
+target, return indices of the two numbers such 
+that they add up to target.You may assume that 
+each input would have exactly one solution, 
+and you may not use the same element twice.
+You can return the answer in any order.
+ ---------------------------------------------
 Pseudocode:
 
 
+initialize dict 
+loop through nums
+    if target - nums[i] in dict
+       return indices
+    else:
+       add to dict
 
 
-"Tricks" to Remember:
-Concepts: 
+"Tricks" to Remember: one pass and lookups are O(1)
+Concepts: array, hash table
 
 ==============================================
 523. CONTINUOUS SUBARRAY SUM 
 ==============================================
+Given an integer array nums and an integer k, 
+return true if nums has a good subarray or 
+false otherwise. A good subarray is a subarray 
+where: its length is at least two, and the sum 
+of the elements of the subarray is a multiple 
+of k.
+Note that:
+A subarray is a contiguous part of the array.
+An integer x is a multiple of k if there exists 
+an integer n such that x = n * k. 0 is always 
+a multiple of k.
+ ---------------------------------------------
 Pseudocode:
 
+initialize dict 
+initialize total
+
+loop through with index and number 
+    increment total 
+    calculate remainder
+    if calculated remainder not already in dict 
+        add remainder to dict [r: index]
+
+    else if index at least 2 (and already in dict)
+        return True
+    
+return False 
 
 
 
-"Tricks" to Remember:
-Concepts: 
+"Tricks" to Remember: initialize hash table with 
+0: -1
+to handle cases where subarray starting from index 
+0 is divisible by
+ k
+WHY does it matter/what does it mean if there is 
+repeat of the same remainder?
+Remainder is what is left after not dividing evenly 
+into a number. 
+So if you get the same remainder after adding 
+more numbers to the subarray, a portion of the 
+subarray has been divided
+evenly into the number (k)
+k = 6
+[23, 2, 4] -> [23, 25, 29] 23 % 6 = 5 and 29 % 6 = 5
+(2+4 = 6 which divides into 6 evenly)
+
+Concepts: array, hash table, math, prefix sum
 
 ==============================================
 
 ==============================================
+ ---------------------------------------------
