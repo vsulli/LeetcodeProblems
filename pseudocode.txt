@@ -71,13 +71,13 @@ return the answer in any order.
  Pseudocode:
 
  initialize dict of count
- initialize list of lists of length nums 
+ initialize array of arrays of length nums 
 
 for num in nums 
     set count dict value 
 
 for num, count in count.items 
-    add num to frequency list 
+    add num to frequency array 
 
 initialize result
 for i in length of frequency, iterate backwards
@@ -144,6 +144,35 @@ k = 6
 (2+4 = 6 which divides into 6 evenly)
 
 Concepts: array, hash table, math, prefix sum
+
+==============================================
+1051. Height Checker
+==============================================
+A school is trying to take an annual photo of 
+all the students. The students are asked to 
+stand in a single file line in non-decreasing 
+order by height. Let this ordering be 
+represented by the integer array expected 
+where expected[i] is the expected height of 
+the ith student in line.
+
+You are given an integer array heights 
+representing the current order that the 
+students are standing in. Each heights[i] 
+is the height of the ith student in line 
+(0-indexed).
+
+Return the number of indices where 
+heights[i] != expected[i].
+ ---------------------------------------------
+ Pseudocode:
+
+ return the sum of heights that don't equal for every height in the
+ original array and sorted array
+
+"Tricks" to Remember: can iterate through variables
+in multiple lists if you zip them together into a tuple
+Concepts:array, sorting, counting sort
 
 ==============================================
 
