@@ -64,8 +64,27 @@ Concepts: array, hash table, string, sorting
 ==============================================
 347. Top K Frequent Elements
 ==============================================
+Given an integer array nums and an integer k, 
+return the k most frequent elements. You may 
+return the answer in any order.
  ---------------------------------------------
  Pseudocode:
+
+ initialize dict of count
+ initialize list of lists of length nums 
+
+for num in nums 
+    set count dict value 
+
+for num, count in count.items 
+    add num to frequency list 
+
+initialize result
+for i in length of frequency, iterate backwards
+    for n in frequency 
+        append to result
+        if result == K
+            return result
 
 "Tricks" to Remember: Bucket sort using count as index
 and arrays with the number as values. Max size of bucket sort
