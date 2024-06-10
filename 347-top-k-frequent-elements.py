@@ -12,21 +12,26 @@ You may return the answer in any order
 
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        num_dict = {} # num: frequency
-        ans = []
+        count = {}
+        frequency = [[] for i in range(len(nums) + 1)]
+
         for n in nums:
-            if n in num_dict:
-                num_dict[n] += 1
-            else:
-                num_dict[n] = 1
+            # get count for numbers, 0 default
+            count[n] = 1 + count.get(n, 0)
+
+        for n, c in count.items():
+        # add number to list at index of its frequency
+            frequency[c].append(n)
         
-        # sort dictionary by value
-        sorted_num_dict = {k: v for k, v in sorted(num_dict.items(), key=lambda item: item[1], reverse=True)}
-        # create list of keys
-        keys_list = [key for key in sorted_num_dict]
-        for i in range(k):
-            ans.append(keys_list[i])
-        return ans
+        res = []
+        # iterate list in descending order
+        for i in range(len(frequency) - 1, 0, -1):
+            # iterate through every number at that index
+            for n in frequency[i]:
+                res.append(n)
+                # return res when it's length of k
+                if len(res) == k:
+                    return res
 
 sol = Solution()
 print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2)) # [1, 2] returns the two numbers that occur most frequently
