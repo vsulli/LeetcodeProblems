@@ -18,13 +18,7 @@ return the number of indices where heights[i] != expected[i]
 
 class Solution:
     def heightChecker(self, heights: list[int])->int:
-        expected_heights = sorted(heights)
-        count = 0
-
-        for i in range(len(heights)):
-            if expected_heights[i] != heights[i]:
-                count += 1
-        return count
+        return sum(h1 != h2 for h1, h2 in zip(heights, sorted(heights)))
 
 sol = Solution()
 
