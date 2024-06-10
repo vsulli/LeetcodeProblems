@@ -22,6 +22,7 @@ class Solution:
         
         # sort dictionary by value
         sorted_num_dict = {k: v for k, v in sorted(num_dict.items(), key=lambda item: item[1], reverse=True)}
+        # create list of keys
         keys_list = [key for key in sorted_num_dict]
         for i in range(k):
             ans.append(keys_list[i])
