@@ -11,7 +11,14 @@ and return false if every element is distinct.
 
 class Solution:
     def containsDuplicate(self, nums: list[int]) -> bool:
-        return len(nums) != len(set(nums))
+        # set loop until you encounter duplicate
+        # O(n) at most
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
 
 sol = Solution()
 print(sol.containsDuplicate(nums = [1,2,3,1])) # true
