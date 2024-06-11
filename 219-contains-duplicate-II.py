@@ -11,6 +11,13 @@ in the array such that nums[i] == nums[j] and abs(i - j) <= k
 
 class Solution:
     def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+        # looking for number appearing twice in array
+        # difference between indices is less than or equal to k
+        # will need to loop through all numbers in nums
+        # will need a dict, check if number already exists in dict
+        # if it does, calculate difference in index
+        # if that difference = k, return True, else add to dict num:[indices]
+
         nearby_duplicate = False
         nums_seen = {}
         for i in range(len(nums)):
@@ -24,13 +31,6 @@ class Solution:
                 nums_seen[nums[i]].append(i)
             else:
                 nums_seen[nums[i]] = [i]
-        # looking for number appearing twice in array
-        # difference between indices is less than or equal to k
-        # will need to loop through all numbers in nums
-        # will need a dict, check if number already exists in dict
-        # if it does, calculate difference in index
-        # if that difference = k, return True, else add to dict num:[indices]
-
         return nearby_duplicate
 
 sol = Solution()
