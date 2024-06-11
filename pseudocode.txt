@@ -29,7 +29,7 @@ loop through nums
 Concepts: array, hash table
 
 ==============================================
-49. Group Anagrams
+49. GROUP ANAGRAMS
 ==============================================
 Given an array of strings strs, group the 
 anagrams together. You can return the answer 
@@ -62,7 +62,7 @@ mutable, i.e. lists. Must convert to tuple first
 Concepts: array, hash table, string, sorting
 
 ==============================================
-217. Contains Duplicate
+217. CONTAINS DUPLICATE
 ==============================================
 Given an integer array nums, return true if 
 any value appears at least twice in the array, 
@@ -95,7 +95,7 @@ already in the hashmap
 Concepts: array, hash table, sorting 
 
 ==============================================
-219. Contains Duplicate II
+219. CONTAINS DUPLICATE II
 ==============================================
 Given an integer array nums and an integer k, 
 return true if there are two distinct indices 
@@ -131,7 +131,7 @@ to compare one previous to current
 Concepts: array, hash table, sliding window
 
 ==============================================
-347. Top K Frequent Elements
+347. TOP K FREQUENT ELEMENTS
 ==============================================
 Given an integer array nums and an integer k, 
 return the k most frequent elements. You may 
@@ -215,7 +215,7 @@ k = 6
 Concepts: array, hash table, math, prefix sum
 
 ==============================================
-1051. Height Checker
+1051. HEIGHT CHECKER
 ==============================================
 A school is trying to take an annual photo of 
 all the students. The students are asked to 
