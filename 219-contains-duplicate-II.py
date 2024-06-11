@@ -18,20 +18,20 @@ class Solution:
         # if it does, calculate difference in index
         # if that difference = k, return True, else add to dict num:[indices]
 
-        nearby_duplicate = False
-        nums_seen = {}
+        hm = {}
+
         for i in range(len(nums)):
-            curr_num = nums_seen.get(nums[i], 0)
-            if curr_num:
-                diff = 0
-                for i2 in curr_num:
-                    if abs(i - i2) <= k:
-                        return True
-                # append new index to list
-                nums_seen[nums[i]].append(i)
+            # if num not already in hashmap add it
+            if nums[i] not in hm:
+                hm[nums[i]] = i
+                continue
             else:
-                nums_seen[nums[i]] = [i]
-        return nearby_duplicate
+                # if difference in indices <= k return True
+                if abs(i - hm[nums[i]])<=k:
+                    return True
+                # otherwise add to hashmap
+                hm[nums[i]]=i
+        return False
 
 sol = Solution()
 print(sol.containsNearbyDuplicate(nums = [1,2,3,1], k = 3)) # true (index 3 - 0 = 3)
