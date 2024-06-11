@@ -18,7 +18,7 @@ class Solution:
             if curr_num:
                 diff = 0
                 for i2 in curr_num:
-                    if abs(i - i2) == k:
+                    if abs(i - i2) <= k:
                         return True
                 # append new index to list
                 nums_seen[nums[i]].append(i)
@@ -41,4 +41,5 @@ print(sol.containsNearbyDuplicate(nums = [1,0,1,1], k = 1)) # true (index 3 - 2 
 
 print(sol.containsNearbyDuplicate(nums = [1,2,3,1,2,3], k = 2)) # false (all indices are 3 apart)
 
-print(sol.containsNearbyDuplicate(nums = [99], k = 2)) # true
+print(sol.containsNearbyDuplicate(nums = [99, 99], k = 2)) # true because difference just needs to be less than
+# or equal to k
