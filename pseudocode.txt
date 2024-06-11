@@ -62,6 +62,75 @@ mutable, i.e. lists. Must convert to tuple first
 Concepts: array, hash table, string, sorting
 
 ==============================================
+217. Contains Duplicate
+==============================================
+Given an integer array nums, return true if 
+any value appears at least twice in the array, 
+and return false if every element is distinct.
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: true
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: false
+ ---------------------------------------------
+ Pseudocode:
+
+ initialize hashmap of seen nums 
+
+ loop through all nums 
+    if num in seen
+        return True
+    else:
+        add number to seen 
+return False
+
+"Tricks" to Remember: can exit with true to 
+duplicate at any point looping through the 
+nums when that number is 
+already in the hashmap 
+Concepts: array, hash table, sorting 
+
+==============================================
+219. Contains Duplicate II
+==============================================
+Given an integer array nums and an integer k, 
+return true if there are two distinct indices 
+i and j in the array such that nums[i] == 
+nums[j] and abs(i - j) <= k.
+Example 2:
+
+Input: nums = [1,0,1,1], k = 1
+Output: true
+Example 3:
+
+Input: nums = [1,2,3,1,2,3], k = 2
+Output: false
+ ---------------------------------------------
+ Pseudocode:
+
+initialize hashmap
+
+loop through all numbers
+    if number not in hashmap 
+        add to hashmap num: index 
+    else:
+        if the abs diff between index and hm index <=K
+            return True
+        add to hashmap num: index
+return False
+
+"Tricks" to Remember: Don't have to store list of 
+indices
+for each number, because the difference will 
+always be >k as you go to the right. Only need
+to compare one previous to current 
+Concepts: array, hash table, sliding window
+
+==============================================
 347. Top K Frequent Elements
 ==============================================
 Given an integer array nums and an integer k, 
