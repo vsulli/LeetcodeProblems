@@ -25,24 +25,28 @@ class ListNode:
          self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        # output can be in reversed order
-        res = ListNode()
-        # don't have a way of knowing which of l1 or l2 is longer
-        # without iterating through all of them
-
-        # pseudocode
-        # while there is a current value on l1
-        # add values and carry
-        # if sum > 9 store new carry
-        # else create node for result listnode
+        dummy = ListNode()
+        cur = dummy
 
         carry = 0
-        while l1:
-            sum = l1.val + l2.val + carry 
-            if sum > 9:
-                carry = sum - 9
-            else:
-                res.val = sum
+        while l1 or l2 or carry:
+            v1 = l1.val if l1 else 0
+            v2 = l2.val if l2 else 0
+
+            # compute new digit
+            val = v1 + v2 + carry 
+
+            # could have new carry
+            carry = val // 10
+            val = val % 10 # gives ones place
+            
+            cur.next = ListNode(val)
+
+            # update pointers
+            cur = cur.next
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        return dummy.next    
 
 
 sol = Solution()
