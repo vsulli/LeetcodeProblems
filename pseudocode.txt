@@ -29,6 +29,57 @@ loop through nums
 Concepts: array, hash table
 
 ==============================================
+2. ADD TWO NUMBERS
+==============================================
+You are given two non-empty linked lists 
+representing two non-negative integers. 
+The digits are stored in reverse order, 
+and each of their nodes contains a single 
+digit. Add the two numbers and return the 
+sum as a linked list.
+
+You may assume the two numbers do not contain 
+any leading zero, except the number 0 itself.
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+Example 2:
+
+Input: l1 = [0], l2 = [0]
+Output: [0]
+Example 3:
+
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+ ---------------------------------------------
+ Pseudocode:
+
+ initialize result listNode
+initialize current pointer
+
+initialize carry
+while l1 or l2 or carry
+    val 1 if there is one, or 0
+    val 2, if there is one, or 0
+
+    calculate sum
+
+    calculate carry
+    calculate val (ones place)
+
+    set next value for result listnode 
+
+    update pointers
+return dummy.next
+
+
+"Tricks" to Remember: have to calculate carry
+and dummy node 
+
+Concepts: linked list, math, recursion
+
+==============================================
 49. GROUP ANAGRAMS
 ==============================================
 Given an array of strings strs, group the 
@@ -129,6 +180,45 @@ for each number, because the difference will
 always be >k as you go to the right. Only need
 to compare one previous to current 
 Concepts: array, hash table, sliding window
+
+==============================================
+242. VALID ANAGRAM
+==============================================
+Given two strings s and t, return true if t 
+is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by 
+rearranging the letters of a different word 
+or phrase, typically using all the original 
+letters exactly once.
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+Example 2:
+
+Input: s = "rat", t = "car"
+Output: false
+ ---------------------------------------------
+ Pseudocode:
+
+can check if lengths of both strings are equal
+
+create dictionaries for counts of letters of each string
+
+loop through strings adding counts
+
+for each key in one dictionary, check that the count is equal in both
+    if not, return False
+
+return True
+
+
+"Tricks" to Remember: in operator is O(1) 
+for dictionaries
+and sets in python
+Concepts:hash table, string, sorting
 
 ==============================================
 347. TOP K FREQUENT ELEMENTS
