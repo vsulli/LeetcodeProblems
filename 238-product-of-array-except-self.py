@@ -19,26 +19,21 @@ and without using the division operation
 class Solution:
     def productExceptSelf(self, nums: list[int])->list[int]:
         # calculate prefix and postfix products
-        prefix = [None] * len(nums)
-        postfix = [None] * len(nums)
+        res = [1] * (len(nums))
 
-        product = 1
+        prefix = 1
         for i in range(len(nums)):
-            product*=nums[i]
-            prefix[i] = product
-        product = 1
-        for i in range(len(nums)-1, -1, -1):
-            product*=nums[i]
-            postfix[i] = product
+            res[i] = prefix
+            prefix *= nums[i]
 
-        # how to get products except that index?
-        product_except_self = []
-        for i in range(len(nums)):
-            # get left side and multiply by right side
+        postfix = 1
+        for i in range(len(nums) -1, -1, -1):
+            res[i] *= postfix
+            postfix *= nums[i]
 
-        print(prefix)
-        print(postfix)
-        pass
+        return res
+
+            
 
 sol = Solution()
 
