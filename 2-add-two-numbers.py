@@ -25,7 +25,25 @@ class ListNode:
          self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        pass
+        # output can be in reversed order
+        res = ListNode()
+        # don't have a way of knowing which of l1 or l2 is longer
+        # without iterating through all of them
+
+        # pseudocode
+        # while there is a current value on l1
+        # add values and carry
+        # if sum > 9 store new carry
+        # else create node for result listnode
+
+        carry = 0
+        while l1:
+            sum = l1.val + l2.val + carry 
+            if sum > 9:
+                carry = sum - 9
+            else:
+                res.val = sum
+
 
 sol = Solution()
 
