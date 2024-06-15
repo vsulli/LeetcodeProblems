@@ -17,6 +17,11 @@ class Solution:
         count = 0
         seen_set = set()
 
+        # can find the "gaps" between unique values as intervals
+        # create an interval array
+        # find duplicates
+        # increment through duplicates using "gaps"
+
         for i in range(len(nums)):
             # if num has already been seen, increment
             count = 0
