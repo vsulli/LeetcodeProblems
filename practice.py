@@ -1,22 +1,25 @@
 # Daily Practice Sheet for use with ANKI
 
-
-from typing import Optional
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev, curr = None, head
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        ans = []
+        groups = {}
+        # use sorted word as key, add to list any words that match
+        for word in strs:
+            if str(sorted(word)) in groups:
+                groups[str(sorted(word))].append(word)
+            else:
+                groups[str(sorted(word))] = [word]
+        
+        for key in groups:
+            ans.append(groups.get(key))
 
-        while curr:
-            temp = curr.next
-            curr.next = prev
-            prev = curr 
-            curr = temp
-        return prev
-    
+        return ans
+
+sol = Solution()
+
+print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
+
+print(sol.groupAnagrams(strs = [""]))
+
+print(sol.groupAnagrams(strs = ["a"]))
