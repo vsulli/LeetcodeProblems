@@ -18,7 +18,7 @@ class Solution:
         seen_set = set()
 
         for i in range(len(nums)):
-            # if num has already been seen, put in repeats
+            # if num has already been seen, increment
             count = 0
             if nums[i] in seen_set:
                 while nums[i] in seen_set:
