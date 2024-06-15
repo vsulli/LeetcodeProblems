@@ -1,25 +1,26 @@
 # Daily Practice Sheet for use with ANKI
 
 class Solution:
-    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        ans = []
-        groups = {}
-        # use sorted word as key, add to list any words that match
-        for word in strs:
-            if str(sorted(word)) in groups:
-                groups[str(sorted(word))].append(word)
-            else:
-                groups[str(sorted(word))] = [word]
+    def checkSubarraySum(self, nums: list[int], k: int) -> bool:
         
-        for key in groups:
-            ans.append(groups.get(key))
+        # two pointers?
+        total = 0
+        # have to check if they are divisible by k
 
-        return ans
+        for i in range(len(nums)):
+            total = nums[i]
+            for j in range(i+1,len(nums)):
+                total += nums[j]
+                if total %  k == 0:
+                    return True
+            total = 0
+                
+        return False
 
 sol = Solution()
 
-print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
+print(sol.checkSubarraySum(nums = [23,2,4,6,7], k = 6)) # true
 
-print(sol.groupAnagrams(strs = [""]))
+print(sol.checkSubarraySum(nums = [23,2,6,4,7], k = 6)) # true
 
-print(sol.groupAnagrams(strs = ["a"]))
+print(sol.checkSubarraySum(nums = [23,2,6,4,7], k = 13)) # false
