@@ -13,26 +13,19 @@ Return the minimum number of moves to make every value in nums unique
 
 class Solution:
     def minIncrementForUnique(self, nums: list[int]) -> int:
+        # solution in one pass
+        
         total = 0
-        count = 0
-        seen_set = set()
-
         # sort array
-        # once you reach a duplicate, increment and add to count
-        # keep going through array
-
-        for i in range(len(nums)):
-            # if num has already been seen, increment
-            count = 0
-            if nums[i] in seen_set:
-                while nums[i] in seen_set:
-                    nums[i] += 1
-                    count += 1
-                seen_set.add(nums[i])
-                total += count
-            # add to seen
-            else:
-                seen_set.add(nums[i])
+        nums.sort()
+        # loop through entire array starting at 2nd element
+        for i in range(1, len(nums)):
+            # current num less than or equal prev means duplicate
+            if nums[i] <= nums[i-1]:
+                newVal = nums[i -1] +1
+                total += newVal - nums[i]
+                # change current element to new value
+                nums[i] = newVal
 
         return total
             
