@@ -25,11 +25,11 @@ class ListNode:
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         # pos - just need to check that none of the next pointers are -1?
-        seen = set() # number: next number
+        seen = set() # listnode
         curr = head
         # while there is a pointer, increment
         while curr:
-            # if you see same number, return True
+            # if you see same node, return True
             if curr.next in seen:
                 return True
             seen.add(curr)
