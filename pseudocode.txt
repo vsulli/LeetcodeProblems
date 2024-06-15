@@ -305,6 +305,28 @@ k = 6
 Concepts: array, hash table, math, prefix sum
 
 ==============================================
+945. MINIMUM INCREMENT TO MAKE ARRAY UNIQUE
+==============================================
+ ---------------------------------------------
+ Pseudocode:
+
+ initialize total
+ sort array
+ 
+ loop through nums, starting at 2nd num 
+ if number less than or equal to previous then 
+    calculate new value
+    calculate new total
+    set new value at index
+
+return total
+
+"Tricks" to Remember: To find the "gap" to fill in, 
+sort, check current against previous and set next to one
+more than previous
+Concepts:array, greedy, sorting, counting 
+
+==============================================
 1051. HEIGHT CHECKER
 ==============================================
 A school is trying to take an annual photo of 
