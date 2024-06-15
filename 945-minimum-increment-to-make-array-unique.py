@@ -19,16 +19,17 @@ class Solution:
             # repeat_hashmap
         # loop through indices that aren't unique, incrementing 
         # the indices until they're all unique
+        total = 0
         count = 0
         seen_set = set()
-        repeat_hashmap = {} # index: num
+        repeat_list= []
         sorted_nums = sorted(nums)
         print(sorted_nums)
 
         for i in range(len(sorted_nums)):
             # if num has already been seen, put in repeats
             if sorted_nums[i] in seen_set:
-                repeat_hashmap[i] = sorted_nums[i]
+                repeat_list.append(sorted_nums[i])
             # add to seen
             else:
                 seen_set.add(sorted_nums[i])
@@ -37,16 +38,17 @@ class Solution:
         # increment them and add to seen_hashmap
 
         # while repeat_hashmap isn't empty
-        while repeat_hashmap:
-            key = list(repeat_hashmap.values())[0]
-            # increment key and check if it is in seen_hashmap
+        while repeat_list:
+            count = 0
+            key = repeat_list[0]
+            # increment key and check if it is in seen set
             while key in seen_set:
                 key += 1
                 count+=1
-            # if it is not, add it, remove from repeat_hashmap
+            # if it is not, add it, remove from repeat list
             seen_set.add(key)
-            
-            # increment count
+            del repeat_list[0]
+            total += count
         return count
             
         
