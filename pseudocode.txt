@@ -113,6 +113,51 @@ mutable, i.e. lists. Must convert to tuple first
 Concepts: array, hash table, string, sorting
 
 ==============================================
+141. Linked List Cycle
+==============================================
+Given head, the head of a linked list, 
+determine if the linked list has a cycle in it.
+
+There is a cycle in a linked list if there is 
+some node in the list that can be reached again 
+by continuously following the next pointer. 
+Internally, pos is used to denote the index 
+of the node that tail's next pointer is 
+connected to. Note that pos is not passed 
+as a parameter.
+
+Return true if there is a cycle in the 
+linked list. Otherwise, return false.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the 
+linked list, where the tail connects 
+to the 1st node (0-indexed).
+ ---------------------------------------------
+ Pseudocode:
+
+ Solution 2: 
+intialize seen set
+set the current pointer
+while current
+    if next is in seen
+        return True
+    add to seen
+    increment pointer
+return False
+
+"Tricks" to Remember: 
+Solution 1: slow pointer and fast pointer will
+always meet if they reach a cycle. Fast pointer will
+catch up to slow pointer. Time Complexity O(n) -
+length of the input
+Solution 2: Have to store the entire node
+in a set because it will have the same memory location
+and you can detect if you go to the same one. 
+Concepts:hash table, linked list, two pointers
+
+==============================================
 217. CONTAINS DUPLICATE
 ==============================================
 Given an integer array nums, return true if 

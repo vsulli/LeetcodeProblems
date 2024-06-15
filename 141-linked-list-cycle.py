@@ -24,17 +24,17 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        # pos - just need to check that none of the next pointers are -1?
-        seen = set() # listnode
-        curr = head
-        # while there is a pointer, increment
-        while curr:
-            # if you see same node, return True
-            if curr.next in seen:
+        # Floyd's Cycle Finding Algorithm / Hare-Tortoise Algorithm
+        # initialize two pointers
+        slow, fast = head, head
+        
+        # fast would reach null pointer before slow
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
                 return True
-            seen.add(curr)
-            curr = curr.next
-
+        # when fast reaches null pointer
         return False
 
 
