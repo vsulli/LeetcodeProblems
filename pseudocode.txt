@@ -137,6 +137,15 @@ to the 1st node (0-indexed).
  ---------------------------------------------
  Pseudocode:
 
+ Solution 1:
+ initialize fast and slow pointers
+ while fast and fast.next
+    increment slow pointer
+    increment fast pointer
+    if they equal
+        return True
+return False
+
  Solution 2: 
 intialize seen set
 set the current pointer
