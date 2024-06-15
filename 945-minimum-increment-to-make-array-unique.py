@@ -13,42 +13,23 @@ Return the minimum number of moves to make every value in nums unique
 
 class Solution:
     def minIncrementForUnique(self, nums: list[int]) -> int:
-        # sort array
-        # get indices of nums that aren't unique
-            # create a seen_hashmap
-            # repeat_hashmap
-        # loop through indices that aren't unique, incrementing 
-        # the indices until they're all unique
         total = 0
         count = 0
         seen_set = set()
-        repeat_list= []
-        sorted_nums = sorted(nums)
-        print(sorted_nums)
 
-        for i in range(len(sorted_nums)):
+        for i in range(len(nums)):
             # if num has already been seen, put in repeats
-            if sorted_nums[i] in seen_set:
-                repeat_list.append(sorted_nums[i])
+            count = 0
+            if nums[i] in seen_set:
+                while nums[i] in seen_set:
+                    nums[i] += 1
+                    count += 1
+                seen_set.add(nums[i])
+                total += count
             # add to seen
             else:
-                seen_set.add(sorted_nums[i])
-        
-        # need to loop through repeat_hashmap keys
-        # increment them and add to seen_hashmap
+                seen_set.add(nums[i])
 
-        # while repeat_hashmap isn't empty
-        while repeat_list:
-            count = 0
-            key = repeat_list[0]
-            # increment key and check if it is in seen set
-            while key in seen_set:
-                key += 1
-                count+=1
-            # if it is not, add it, remove from repeat list
-            seen_set.add(key)
-            del repeat_list[0]
-            total += count
         return total
             
         
