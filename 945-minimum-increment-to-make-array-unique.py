@@ -49,18 +49,22 @@ class Solution:
             seen_set.add(key)
             del repeat_list[0]
             total += count
-        return count
+        return total
             
         
 
 
 sol = Solution()
 
+
 print(sol.minIncrementForUnique(nums = [1, 2, 2])) # 1 
 # increment 2 at index 2 to 3
 
-'''
+
 print(sol.minIncrementForUnique(nums = [3, 2, 1, 2, 1, 7])) # 6
 # [3, 4, 1, 2, 5, 7]
 # sorted [1, 1, 2, 2, 3, 7]
-'''
+# unique set [1, 2, 3, 7]    # repeats [1, 2]
+# 1-> 4 = 3
+# 2-> 5 = 3
+# 6 total
