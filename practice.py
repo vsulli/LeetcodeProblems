@@ -2,19 +2,17 @@
 
 class Solution:
     def checkSubarraySum(self, nums: list[int], k: int) -> bool:
-        
-        # two pointers?
-        total = 0
-        # have to check if they are divisible by k
+        remainder_map = {0: -1}
+        cumulative_sum = 0
 
-        for i in range(len(nums)):
-            total = nums[i]
-            for j in range(i+1,len(nums)):
-                total += nums[j]
-                if total %  k == 0:
+        for i, num in enumerate(nums):
+            cumulative_sum += num
+            remainder = cumulative_sum % k
+            if remainder in remainder_map:
+                if i - remainder_map[remainder] > 1:
                     return True
-            total = 0
-                
+                else: 
+                    remainder_map[remainder] = i
         return False
 
 sol = Solution()
