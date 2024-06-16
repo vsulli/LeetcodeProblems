@@ -12,16 +12,19 @@ if there is no common prefix, return an empty string
 class Solution:
     def longestCommonPrefix(self, strs: list[str]) -> str:
         prefix = ""
-        for i in range(len(min(strs))):
+        for i in range(len(max(strs))):
             # check slicing from beginning of word to i
-            p =([word[:i] for word in strs])
-            prefix = p[0]
+            p =([word[:i+1] for word in strs])
             if len(set(p)) != 1:
                 return prefix
-            
+            prefix = p[0]
+        return prefix
 
 sol = Solution()
+
 
 print(sol.longestCommonPrefix(strs = ["flower","flow","flight"])) # fl
 
 print(sol.longestCommonPrefix(strs = ["dog","racecar","car"])) # ""
+
+print(sol.longestCommonPrefix(strs = ["a"])) # "a"
