@@ -1,4 +1,4 @@
-# TODO figure out algorithm that uses less memory
+
 '''
 Palindrome Linked List
 Leetcode # 234
