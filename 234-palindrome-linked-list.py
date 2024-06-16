@@ -18,38 +18,35 @@ class ListNode:
          self.val = val
          self.next = next
 class Solution:
+
+    def reverse(self, head: ListNode) -> ListNode:
+        prev = None
+        curr = head
+        while curr:
+            next_temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_temp
+        return prev
+    
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        # loop through once to get length of linked list
-        # go through until halfway and then reverse linked list
-        # from there and check with two pointers if they're the same
-        seen_list = []
-        isPalindrome = True
-        length = 0
-
-        curr = head
-        curr2 = ListNode(head.val)
-        while curr:
-            length +=1
-            curr = curr.next
-        if length == 1:
-            return True
-        curr = head
-        for i in range(length // 2):
-            seen_list.append(curr.val)
-            print(curr.val)
-            # get to half way point
-            curr = curr.next
-        i = len(seen_list) - 1
-        if length % 2 != 0:
-            curr = curr.next
-        while curr:
-            if seen_list[i] != curr.val:
-        
+        # only need second half of list to be reversed
+        # two pointers, fast and slow
+        # when fast pointer meets end, slow will be at middle
+        # reverse list from that point and check if each node 
+        # is equal
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        rev = self.reverse(slow)
+        while rev:
+            if head.val != rev.val:
                 return False
-            i -= 1
-            curr = curr.next
-
-        return isPalindrome
+            head = head.next
+            rev = rev.next
+        return True
 
 
 
