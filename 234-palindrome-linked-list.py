@@ -19,31 +19,10 @@ class ListNode:
          self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        # from center, back, both are same
-        # make a copy that is the reversed list?
-        left = []
-        right = []
-        count_l = 0
-        count_r = 0
-        curr = head
-        seen = set()
-        while curr:
-            if curr.val in left:
-                while curr.next:
-                    right.append(curr.val)
-                    count_r += 1
-            else:
-                left.append(curr.val)
-                count_l +=1
-            curr = curr.next
-        if count_l != count_r:
-            return False
-
-        # check all keys in reverse of left are equal to right
-        for i in range(len(left),-1, -1 ):
-            if left[i] != right[i]:
-                return False
-        return True
+        # loop through once to get length of linked list
+        # go through until halfway and then reverse linked list
+        # from there and check with two pointers if they're the same
+        
 
 
 
