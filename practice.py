@@ -1,24 +1,24 @@
 # Daily Practice Sheet for use with ANKI
 
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+from typing import Optional
+
+
 class Solution:
-    def checkSubarraySum(self, nums: list[int], k: int) -> bool:
-        remainder_map = {0: -1}
-        cumulative_sum = 0
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        # Floyd's Cycle Finding Algorithm / Hare-Tortoise Algorithm
+        # initialize two pointers
+        slow, fast = head, head
 
-        for i, num in enumerate(nums):
-            cumulative_sum += num
-            remainder = cumulative_sum % k
-            if remainder in remainder_map:
-                if i - remainder_map[remainder] > 1:
-                    return True
-                else: 
-                    remainder_map[remainder] = i
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                return True
+            
         return False
-
-sol = Solution()
-
-print(sol.checkSubarraySum(nums = [23,2,4,6,7], k = 6)) # true
-
-print(sol.checkSubarraySum(nums = [23,2,6,4,7], k = 6)) # true
-
-print(sol.checkSubarraySum(nums = [23,2,6,4,7], k = 13)) # false
