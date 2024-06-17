@@ -37,9 +37,10 @@ class Solution:
             # first val is val to delete
             if curr.val == val:
                 temp = curr.next
-                head = temp
+                curr = temp
             if curr.next and curr.next.val == val:
                 curr.next = curr.next.next
+            
             curr = curr.next
         return head
 
@@ -69,12 +70,12 @@ l10.next = l11
 
 sol = Solution()
 
-
+'''
 printList(l1)
 l1 = sol.removeElements(l1, 6)
 printList(l1)
 print(sol.removeElements(head = [], val = 1))
-
+'''
 printList(l8)
 l8 = sol.removeElements(l8, 7)
 printList(l8)
