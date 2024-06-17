@@ -28,12 +28,25 @@ def printList(head: Optional[ListNode]):
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        count = 0
         slow, fast = head, head.next
 
         # create two pointers, slow and fast
         # go through list
         # when fast reaches end, slow will be at middle
         # what happens when it's an even list?
+            # need to return s.next if even number
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            count += 2
+            
+        # even number list
+        if count % 2 == 0:
+            return slow.next
+        else:
+            return slow
+
 
 
 sol = Solution()
@@ -50,9 +63,9 @@ l2.next = l3
 l3.next = l4
 l4.next = l5
 
-print(sol.middleNode(l1))
-printList(l1)
+mid = sol.middleNode(l1)
+printList(mid)
 l5.next = l6
 
-print(sol.middleNode(l1))
-printList(l1)
+mid = sol.middleNode(l1)
+printList(mid)
