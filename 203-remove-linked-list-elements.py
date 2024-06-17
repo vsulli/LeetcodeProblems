@@ -28,17 +28,16 @@ def printList(head: Optional[ListNode]):
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
         if not head:
-             return []
-        # initialize pointer as first node
+             return head
+        
+        # pointer
         curr = head
-
-        # first val is val to delete
-        if curr.val == val:
+       
+        while curr:
+            # first val is val to delete
+            if curr.val == val:
                 temp = curr.next
                 head = temp
-
-        #curr = head
-        while curr:
             if curr.next and curr.next.val == val:
                 curr.next = curr.next.next
             curr = curr.next
@@ -55,6 +54,7 @@ l7 = ListNode(6)
 l8 = ListNode(7)
 l9 = ListNode(7)
 l10 = ListNode(7)
+l11 = ListNode(7)
 
 l1.next = l2
 l2.next = l3
@@ -65,15 +65,16 @@ l6.next = l7
 
 l8.next = l9
 l9.next = l10
+l10.next = l11
 
 sol = Solution()
 
-'''
+
 printList(l1)
 l1 = sol.removeElements(l1, 6)
 printList(l1)
 print(sol.removeElements(head = [], val = 1))
-'''
+
 printList(l8)
 l8 = sol.removeElements(l8, 7)
 printList(l8)
