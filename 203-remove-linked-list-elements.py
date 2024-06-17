@@ -38,11 +38,13 @@ class Solution:
             while curr and curr.val == val:
                 curr = curr.next
                 head = curr 
-            if curr and curr.next.val == val:
+            if curr and curr.next and curr.next.val == val:
                 curr.next = curr.next.next
             if curr:
                 curr = curr.next
         return head
+    
+l0 = ListNode(1)
 
 l1 = ListNode(1)
 l2 = ListNode(2)
@@ -70,7 +72,7 @@ l10.next = l11
 
 sol = Solution()
 
-
+'''
 printList(l1)
 l1 = sol.removeElements(l1, 6)
 printList(l1)
@@ -79,3 +81,5 @@ print(sol.removeElements(head = [], val = 1))
 printList(l8)
 l8 = sol.removeElements(l8, 7)
 printList(l8)
+'''
+print(sol.removeElements(head = l0, val = 2))
