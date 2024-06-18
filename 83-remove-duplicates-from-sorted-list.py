@@ -27,9 +27,23 @@ def printList(head: ListNode):
 
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        seen = set() 
+        if head:
+            seen.add(head.val)
         curr = head
 
-        return curr
+
+        while curr:
+
+            # if next value is duplicate
+            if curr.next and curr.next.val in seen:
+                curr.next = curr.next.next
+            else:
+                if curr.next:
+                    seen.add(curr.next.val)
+            curr = curr.next
+
+        return head
 
 sol = Solution()
 
