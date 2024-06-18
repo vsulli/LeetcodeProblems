@@ -28,7 +28,6 @@ def printList(head: Optional[ListNode]):
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        count = 0
         slow, fast = head, head.next
 
         # create two pointers, slow and fast
@@ -39,13 +38,13 @@ class Solution:
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-            count += 2
-            
-        # even number list
-        if count % 2 == 0:
+
+        # if fast pointer not null, return s.next
+        if fast:
             return slow.next
-        else:
-            return slow
+
+        # if fast pointer null, return s
+        return slow
 
 
 
