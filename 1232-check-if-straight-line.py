@@ -12,27 +12,18 @@ Check if the points make a straight line in the XY plane
 
 class Solution:
     def checkStraightLine(self, coordinates: list[list[int]]) -> bool:
-        # per constraints, will always have at least 2 points
-        # loop through every index
-
-        # undefined line - division by 0, check if all 0's and return true?
-        # formula for slope = rise / run 
-        old_denom = (coordinates[1][0] - coordinates[0][0]) # diff x values
-        
-        if old_denom > 0:
-            old_slope = ((coordinates[1][1] - coordinates[0][1]) / old_denom) 
-            
-        for i in range(1, len(coordinates)):
-            denom = (coordinates[i][0] - coordinates[i-1][0]) # diff x values
-            if denom > 0:
-                slope = ((coordinates[i][1] - coordinates[i-1][1]) / denom) 
-                  
-            if denom > 0 and slope != old_slope:
-
-                return False
-            
-            
-        # if slope is different than previously calculated, return false
+        try:
+            slope = (coordinates[1][1] - coordinates[0][1]) / (coordinates[1][0] - coordinates[0][0]) 
+        except ZeroDivisionError:
+            slope = 0
+        last_point = coordinates[1]
+        for i in range(2,len(coordinates)):
+            try:
+                if (coordinates[i][1] - last_point[1]) / (coordinates[i][0] - last_point[0]) != slope:
+                    return False
+            except ZeroDivisionError:
+                if 0 != slope:
+                    return False
         return True
        
 
