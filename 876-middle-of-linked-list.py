@@ -33,8 +33,6 @@ class Solution:
         # create two pointers, slow and fast
         # go through list
         # when fast reaches end, slow will be at middle
-        # what happens when it's an even list?
-            # need to return s.next if even number
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
