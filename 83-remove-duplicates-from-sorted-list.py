@@ -34,11 +34,9 @@ class Solution:
 
 
         while curr:
-            
             # if next value is duplicate
-            if curr.next and curr.next.val in seen:
-                while curr.next and curr.next.val in seen:
-                    curr.next = curr.next.next
+            while curr.next and curr.next.val in seen:
+                curr.next = curr.next.next
             else:
                 if curr.next:
                     seen.add(curr.next.val)
@@ -49,8 +47,9 @@ class Solution:
 sol = Solution()
 
 l1 = ListNode(1)
-l2 = ListNode(2)
+l2 = ListNode(1)
 l3 = ListNode(2)
+l44 = ListNode(2)
 
 l4 = ListNode(1)
 l5 = ListNode(1)
@@ -60,6 +59,7 @@ l8 = ListNode(3)
 
 l1.next = l2
 l2.next = l3
+l3.next = l44
 
 l4.next = l5
 l5.next = l6
@@ -67,6 +67,7 @@ l6.next = l7
 l7.next = l8
 
 
+printList(l1)
 new_list = sol.deleteDuplicates(l1)
 printList(new_list)
 
