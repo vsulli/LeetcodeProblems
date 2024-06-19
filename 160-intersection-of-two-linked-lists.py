@@ -25,14 +25,8 @@ class Solution:
         currA = headA
         currB = headB
         while currA != currB:
-            if not currA:
-                currA = headB
-            else:
-                currA = currA.next
-            if not currB:
-                currB = headA
-            else:
-                currB = currB.next
+            currA = currA.next if currA else headB
+            currB = currB.next if currB else headA
         return currA
         
 
