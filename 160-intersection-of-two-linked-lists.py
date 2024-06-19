@@ -13,7 +13,6 @@ If the two linked lists have no intersection, return null
 # Definition for singly-linked list.
 from typing import Optional
 
-
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -21,29 +20,21 @@ class ListNode:
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        # given the head of list a and b
-        # need two pointers to the heads of each list
-        # loop through, comparing the value of that pointer of each list
-        # if they match then return that node
-        seen_setA = set()
-        seen_setB = set()
-        no_intersect = None
+        # to improve efficiency
 
         currA = headA
         currB = headB
-        while currA or currB:
-            seen_setA.add(currA)
-            seen_setB.add(currB)
-            if currA in seen_setB:
-                return currA
-            if currB in seen_setA:
-                return currB
-            if currA:
+        while currA != currB:
+            if not currA:
+                currA = headB
+            else:
                 currA = currA.next
-            if currB:
+            if not currB:
+                currB = headA
+            else:
                 currB = currB.next
-            
-        return no_intersect
+        return currA
+        
 
 sol = Solution()
 
