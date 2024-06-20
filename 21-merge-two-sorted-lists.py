@@ -37,18 +37,12 @@ class Solution:
         currA = list1
         currB = list2
 
-        if currA.val < currB.val:
-                head.next = currA
-                currA = currA.next
-        elif currB.val < currA.val:
-            head.next = currB
-            currB = currB.next
-        elif  currA.val == currB.val:
-             head.next = currA
-             currA = currA.next
-
         while currA or currB:
-             
+             # same value - apply a first
+             if currA.val == currB.val:
+                 temp = currA.next
+                 currA.next = currB
+                 
             
 
 
