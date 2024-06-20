@@ -32,7 +32,27 @@ class Solution:
             # increment that list
         # keep going until both are None
 
-        
+        head = ListNode() # make dummy node for head of list
+
+        currA = list1
+        currB = list2
+
+        if currA.val < currB.val:
+                head.next = currA
+                currA = currA.next
+        elif currB.val < currA.val:
+            head.next = currB
+            currB = currB.next
+        elif  currA.val == currB.val:
+             head.next = currA
+             currA = currA.next
+
+        while currA or currB:
+             
+            
+
+
+        # return head.next as beginning of list
         
 
 
