@@ -39,10 +39,15 @@ class Solution:
 
         while currA or currB:
              # same value - apply a first
-             if currA.val == currB.val:
-                 temp = currA.next
-                 currA.next = currB
-                 
+            if currA.val == currB.val or currA.val < currB.val:
+                tempA = currA.next
+                currA.next = currB
+                tempB = currB.next
+                currA.next.next = tempA
+                currB = tempB
+            elif currB.val < currA.val:
+                tempA = currA.next
+
             
 
 
