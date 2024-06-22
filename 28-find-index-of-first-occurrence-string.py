@@ -21,13 +21,16 @@ class Solution:
         # else keep looking for word in rest of str
         index = 0
         j = 0
-        for c in haystack:
-            if c == needle[j]:
+        for i in range(len(haystack)):
+            # check if index matches on both
+            if haystack[i] == needle[j]:
                 j+=1
-                if j == len(needle) -1:
+                if haystack[index:i+1] == needle:
                     return index
+            # if they don't match, then reset index to be current i
+            # reset j to be beginning of needle
             else:
-                index += j
+                index = i
                 j = 0
 
         return -1
