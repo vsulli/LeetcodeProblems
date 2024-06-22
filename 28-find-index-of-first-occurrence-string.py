@@ -1,4 +1,3 @@
-# TODO - need different way to loop through string
 '''
 Find the Index of the First Occurrence in a String
 Leetcode # 28
