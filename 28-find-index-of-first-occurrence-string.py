@@ -46,4 +46,4 @@ print(sol.strStr(haystack="goodcar", needle="car")) # 4
 print(sol.strStr(haystack="cargood", needle="car")) # 0
 
 
-print(sol.strStr(haystack="", needle=""))
+print(sol.strStr(haystack="a", needle=""))
