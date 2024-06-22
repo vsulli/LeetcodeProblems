@@ -19,21 +19,7 @@ class Solution:
         # if you loop through entire part of string and all letters there
         # return index
         # else keep looking for word in rest of str
-        index = 0
-        j = 0
-        for i in range(len(haystack)):
-            print(haystack[i])
-            if haystack[i] == needle[j]:
-                j+=1
-                if haystack[index:i+1] == needle:
-                    return index
-            # if they don't match, then reset index to be current i
-            # reset j to be beginning of needle
-            else:
-                index = i+1
-                j = 0
-
-        return -1
+        return haystack.find(needle)
 
 sol = Solution()
 
