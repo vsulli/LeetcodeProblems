@@ -22,9 +22,9 @@ class Solution:
         index = 0
         j = 0
         for i in range(len(haystack)):
+            print(haystack[i])
             if haystack[i] == needle[j]:
                 j+=1
-                print(haystack[index:i+1])
                 if haystack[index:i+1] == needle:
                     return index
             # if they don't match, then reset index to be current i
