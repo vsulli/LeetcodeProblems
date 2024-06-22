@@ -19,15 +19,22 @@ import string
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         # get rid of punctuation and spaces
+        s = s.translate(str.maketrans('', '', string.punctuation + " "))
+        # convert string to lowercase
+        s = s.lower()
         # check beginning and end with two pointers
-        s = s.translate(str.maketrans('', '', string.punctuation))
-        print(s)
-        
+        j = len(s) - 1
+        for i in range((len(s) // 2)):
+            if s[i] != s[j]:
+                return False
+            j-=1
+        return True
+
 sol = Solution()
 
 print(sol.isPalindrome(s = "A man, a plan, a canal: Panama")) # true
 
-print(sol.isPalindrome(s = "race a car"))
+print(sol.isPalindrome(s = "race a car")) # false
 
 print(sol.isPalindrome(s = " ")) # true
 
