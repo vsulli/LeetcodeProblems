@@ -22,7 +22,6 @@ class Solution:
         index = 0
         j = 0
         for i in range(len(haystack)):
-            # check if index matches on both
             if haystack[i] == needle[j]:
                 j+=1
                 if haystack[index:i+1] == needle:
@@ -30,14 +29,21 @@ class Solution:
             # if they don't match, then reset index to be current i
             # reset j to be beginning of needle
             else:
-                index = i
+                index = i+1
                 j = 0
 
         return -1
 
 sol = Solution()
 
+
 print(sol.strStr(haystack= "sadbutsad", needle = "sad")) # index 0
 
 print(sol.strStr(haystack="leetcode", needle="leeto")) # -1
 
+print(sol.strStr(haystack="goodcar", needle="car")) # 4
+
+print(sol.strStr(haystack="cargood", needle="car")) # 0
+
+
+print(sol.strStr(haystack="", needle=""))
