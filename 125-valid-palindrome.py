@@ -14,10 +14,15 @@ Given a string s, return true if it is a palindrome,
 or false otherwise.
 '''
 
+import string
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        pass
-
+        # get rid of punctuation and spaces
+        # check beginning and end with two pointers
+        s = s.translate(str.maketrans('', '', string.punctuation))
+        print(s)
+        
 sol = Solution()
 
 print(sol.isPalindrome(s = "A man, a plan, a canal: Panama")) # true
