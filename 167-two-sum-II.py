@@ -21,22 +21,21 @@ class Solution:
         # nested for loop?
         j = 1
         for i in range(len(numbers)):
-            print(numbers[i] + numbers[j])
-            while numbers[i] + numbers[j] < target:
-                print(numbers[i] + numbers[j])
+            while j < len(numbers) and numbers[i] + numbers[j] < target:
                 j+=1
             if j < len(numbers) and numbers[i] + numbers[j] == target:
                 return [i+1, j+1]
-            j +=1
+            j = i + 2
+
 sol = Solution()
 
-'''
+
 print(sol.twoSum(numbers = [2,7,11,15], target = 9)) # [1, 2]
 
 
 print(sol.twoSum(numbers = [2,3,4], target = 6)) # [1, 3]
 
 print(sol.twoSum(numbers = [-1,0], target = -1)) # [1,2]
-'''
+
 
 print(sol.twoSum(numbers = [5,25,75], target = 100)) # [2, 3]
