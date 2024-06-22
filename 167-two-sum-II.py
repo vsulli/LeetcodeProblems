@@ -11,27 +11,32 @@ Return the indices of the two numbers, index1 and index2, added by one as an int
 The tests are generated such that there is exactly one solution. You may not use the same element twice.
 
 Your solution must use only constant extra space.
+There is exactly one solution
 '''
 
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
-        pass
         # no extra storing of nums and sum
         # sorted, so if sum is too low, need to increment right pointer?
         # nested for loop?
         j = 1
         for i in range(len(numbers)):
+            print(numbers[i] + numbers[j])
             while numbers[i] + numbers[j] < target:
+                print(numbers[i] + numbers[j])
                 j+=1
             if j < len(numbers) and numbers[i] + numbers[j] == target:
                 return [i+1, j+1]
-            j += 1
-
+            j +=1
 sol = Solution()
 
+'''
 print(sol.twoSum(numbers = [2,7,11,15], target = 9)) # [1, 2]
 
 
 print(sol.twoSum(numbers = [2,3,4], target = 6)) # [1, 3]
 
 print(sol.twoSum(numbers = [-1,0], target = -1)) # [1,2]
+'''
+
+print(sol.twoSum(numbers = [5,25,75], target = 100)) # [2, 3]
