@@ -1,3 +1,4 @@
+# TODO - need different way to loop through string
 '''
 Find the Index of the First Occurrence in a String
 Leetcode # 28
@@ -18,16 +19,17 @@ class Solution:
         # if you loop through entire part of string and all letters there
         # return index
         # else keep looking for word in rest of str
-        index = -1
+        index = 0
         j = 0
-        for i in range(len(haystack)):
-            index = i
-            while haystack[i] == needle[j]:
-                print(haystack)[i]
-                i+=1
+        for c in haystack:
+            if c == needle[j]:
                 j+=1
-            if j == len(needle) -1:
-                return index
+                if j == len(needle) -1:
+                    return index
+            else:
+                index += j
+                j = 0
+
         return -1
 
 sol = Solution()
