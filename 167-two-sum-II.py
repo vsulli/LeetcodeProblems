@@ -16,16 +16,20 @@ There is exactly one solution
 
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
-        # no extra storing of nums and sum
-        # sorted, so if sum is too low, need to increment right pointer?
-        # nested for loop?
-        j = 1
+        # take target - numbers[i]
+        # search for other number in right side of array?
+        # get that index?
+
         for i in range(len(numbers)):
-            while j < len(numbers) and numbers[i] + numbers[j] < target:
-                j+=1
-            if j < len(numbers) and numbers[i] + numbers[j] == target:
-                return [i+1, j+1]
-            j = i + 2
+            # number you need to find
+            num = target - numbers[i]
+            try: 
+                numbers.index(num, i+1)
+                return [i+1, numbers.index(num, i+1) + 1]
+            # if number does not exist in the list
+            except ValueError:
+                pass
+
 
 sol = Solution()
 
