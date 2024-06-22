@@ -24,6 +24,7 @@ class Solution:
         for i in range(len(haystack)):
             if haystack[i] == needle[j]:
                 j+=1
+                print(haystack[index:i+1])
                 if haystack[index:i+1] == needle:
                     return index
             # if they don't match, then reset index to be current i
@@ -36,7 +37,7 @@ class Solution:
 
 sol = Solution()
 
-
+'''
 print(sol.strStr(haystack= "sadbutsad", needle = "sad")) # index 0
 
 print(sol.strStr(haystack="leetcode", needle="leeto")) # -1
@@ -44,6 +45,5 @@ print(sol.strStr(haystack="leetcode", needle="leeto")) # -1
 print(sol.strStr(haystack="goodcar", needle="car")) # 4
 
 print(sol.strStr(haystack="cargood", needle="car")) # 0
-
-
-print(sol.strStr(haystack="a", needle=""))
+'''
+print(sol.strStr(haystack="mississippi", needle="issip")) #4
