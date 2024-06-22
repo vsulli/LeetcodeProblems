@@ -18,17 +18,12 @@ import string
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        # get rid of punctuation and spaces
-        s = s.translate(str.maketrans('', '', string.punctuation + " "))
-        # convert string to lowercase
-        s = s.lower()
-        # check beginning and end with two pointers
-        j = len(s) - 1
-        for i in range((len(s) // 2)):
-            if s[i] != s[j]:
-                return False
-            j-=1
-        return True
+        newStr = ""
+        for c in s:
+            if c.isalnum():
+                newStr += c.lower()
+        
+        return newStr == newStr[::-1]
 
 sol = Solution()
 
