@@ -13,9 +13,6 @@ no duplicates
 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        # need three pointers?
-        # need set to store triplets
-        # will have to try all combinations
         triplets = []
         j = 1
         k = len(nums) - 1
@@ -27,6 +24,13 @@ class Solution:
                 s_triplet =  sorted([nums[i], nums[j], nums[k]]) 
                 if s_triplet not in triplets:
                     triplets.append(s_triplet)
+            while j <= len(nums)-1 and j!= k:
+                j+=1
+                k-=1
+                if j <= len(nums) - 1 and nums[i] + nums[j] + nums[k] == 0:
+                    s_triplet =  sorted([nums[i], nums[j], nums[k]]) 
+                    if s_triplet not in triplets:
+                        triplets.append(s_triplet)
             j = i + 2
             k -= 1
         return triplets
