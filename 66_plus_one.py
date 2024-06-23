@@ -26,18 +26,24 @@ class Solution:
                 if sum > 9:
                     digits[i] = sum % 10 # ones place
                     carry = (sum - sum % 10) // 10
+                else:
+                    digits[i] = sum
+                    carry = (sum - sum % 10) // 10
             else:
                 sum = digits[i] + carry
                 if sum > 9:
                     digits[i] = sum % 10 # next place
                     carry = (sum - sum % 10) // 10
+                else:
+                    digits[i] = sum
+                    carry = (sum - sum % 10) // 10
+
         if carry: 
             digits.insert(0, digits[i] + carry)
             carry = 0
-        
+
         return digits
             
-
 
 sol = Solution()
 
@@ -48,3 +54,5 @@ print(sol.plusOne(digits = [4,3,2,1])) # [4,3,2,2]
 print(sol.plusOne(digits = [9])) # [1,0]
 
 print(sol.plusOne(digits = [0])) # [1]
+
+print(sol.plusOne(digits = [8, 9, 9, 9])) # [9, 0, 0, 0]
