@@ -14,17 +14,22 @@ no duplicates
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         # need three pointers?
-        # left, right, mid?
-        # sort array first?
-        l, l2, r = 0, 1, len(nums) - 1
+        # need set to store triplets
+        # will have to try all combinations
+        triplets = []
+        j = 1
+        k = len(nums) - 1
 
-        while l < l2 < r:
-            if nums[l] + nums[l2] + nums[r] == 0:
-                return [nums[l], nums[l2], nums[r]]
-            elif nums[l] + nums[l2] + nums[r] < 0:
-                l +=1
-            elif nums[l] + nums[l2] + nums[r] > 0:
-                r -= 1
+        for i in range(len(nums)):
+            # add sorted triplet to set
+            # check if sorted triplet is already in list before adding
+            if j <= len(nums) - 1 and nums[i] + nums[j] + nums[k] == 0:
+                s_triplet =  sorted([nums[i], nums[j], nums[k]]) 
+                if s_triplet not in triplets:
+                    triplets.append(s_triplet)
+            j = i + 2
+            k -= 1
+        return triplets
         
 
 
