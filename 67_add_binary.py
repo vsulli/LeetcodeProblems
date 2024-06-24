@@ -16,7 +16,7 @@ class Solution:
         # loop through all numbers backwards
         # while there are digits on either one?
         # list
-        res = []
+        res = ""
         ia = len(a) - 1
         ib = len(b) - 1
         valA = 0
@@ -33,19 +33,22 @@ class Solution:
                 ib -= 1
             sum = valA + valB + carry
             if sum <= 1:
-                res.insert(0, sum)
+                res = str(sum) + res
+                # res.insert(0, sum)
                 carry = 0
             else: 
-                res.insert(0, 0)
+                res = "0" + res
+                # res.insert(0, 0)
                 carry = 1
 
         if carry:
-            res.insert(0, carry)
+            res =  str(carry) + res
+            # res.insert(0, carry)
             carry = 0
 
         # sum = 0,1 - just add to stack
         # sum = 2 - add 0 to stack, 1 to carry
-        return str(res)
+        return res
     
 
 sol = Solution()
