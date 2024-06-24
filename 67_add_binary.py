@@ -25,10 +25,10 @@ class Solution:
         sum = 0
 
         while ia > -1 or ib > -1:
-            if a[ia]:
+            if not ia < 0:
                 valA = int(a[ia])
                 ia -= 1
-            if b[ib]:
+            if not ib < 0:
                 valB = int(b[ib])
                 ib -= 1
             sum = valA + valB + carry
@@ -54,7 +54,10 @@ class Solution:
 sol = Solution()
 
 print(sol.addBinary(a = "11", b = "1")) # 100
+print(sol.addBinary(a = "1", b = "11")) # 100
 
 print(sol.addBinary(a = "1010", b = "1011")) # 10101
 
 print(sol.addBinary(a = "0", b = "0")) # 0
+
+print(sol.addBinary(a = "10101010", b = "111")) # 010110001
