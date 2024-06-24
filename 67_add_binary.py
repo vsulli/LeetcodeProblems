@@ -15,6 +15,7 @@ class Solution:
         # 0 + 1 = 1
         # loop through all numbers backwards
         # while there are digits on either one?
+        # list
         res = []
         ia = len(a) - 1
         ib = len(b) - 1
@@ -23,24 +24,28 @@ class Solution:
         carry = 0
         sum = 0
 
-        while ia or ib > -1:
-            valA = 0
-            valB = 0
+        while ia > -1 or ib > -1:
             if a[ia]:
-                valA = a[ia]
+                valA = int(a[ia])
+                ia -= 1
             if b[ib]:
-                valB = b[ia]
+                valB = int(b[ib])
+                ib -= 1
             sum = valA + valB + carry
-            if 
+            if sum <= 1:
                 res.insert(0, sum)
-            # get a val
-            # get b val
-            # add carry if it exists
+                carry = 0
+            else: 
+                res.insert(0, 0)
+                carry = 1
 
-            # decrement a index
-            # decrement b index
+        if carry:
+            res.insert(0, carry)
+            carry = 0
 
-        return sum
+        # sum = 0,1 - just add to stack
+        # sum = 2 - add 0 to stack, 1 to carry
+        return str(res)
     
 
 sol = Solution()
@@ -48,3 +53,5 @@ sol = Solution()
 print(sol.addBinary(a = "11", b = "1")) # 100
 
 print(sol.addBinary(a = "1010", b = "1011")) # 10101
+
+print(sol.addBinary(a = "0", b = "0")) # 0
