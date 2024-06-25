@@ -18,7 +18,7 @@ return the maximum amount of water a container can store
 
 class Solution:
     def maxArea(self, height: list[int]) -> int:
-        pass
+        
         # index i is the x distance
         # need to loop through height
         # need to find max height and index
@@ -28,7 +28,14 @@ class Solution:
         # check for another high one that is at its same level
             # if not, then find 2nd highest that is farthest away
             # calculate area using min of the two and x distance between them
+        max_area = 0
+        # brute force approach, nested loop calculating area for all indices
+        for i in range(len(height)):
+            for j in range(len(height)):
+                max_area = max((min(height[i], height[j]) * abs(i - j), max_area))
 
+        return max_area
+    
 sol = Solution()
 
 print(sol.maxArea(height = [1,8,6,2,5,4,8,3,7])) # 49
