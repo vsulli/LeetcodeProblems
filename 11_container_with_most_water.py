@@ -19,23 +19,22 @@ return the maximum amount of water a container can store
 class Solution:
     def maxArea(self, height: list[int]) -> int:
         
-        # index i is the x distance
-        # need to loop through height
-        # need to find max height and index
-        # need to find 2nd highest
-
-        # find max
-        # check for another high one that is at its same level
-            # if not, then find 2nd highest that is farthest away
-            # calculate area using min of the two and x distance between them
+        # two pointers?
+        # way to store areas and add them upwards?
+        # start left and right pointers on outside
+        # check from left side scanning right to find what it runs into
+        # has to be equal or greater than its height to count
+        l, r = 0, len(height) - 1
         max_area = 0
-        # brute force approach, nested loop calculating area for all indices
-        for i in range(len(height)):
-            for j in range(len(height)):
-                max_area = max((min(height[i], height[j]) * abs(i - j), max_area))
+        while l < r:
+            max_area = max(max_area, (min(height[l], height[r])) * (r - l))
+            if height[l] < height[r]:
+                l +=1
+            else:
+                r -=1
 
         return max_area
-    
+
 sol = Solution()
 
 print(sol.maxArea(height = [1,8,6,2,5,4,8,3,7])) # 49
