@@ -25,6 +25,8 @@ class Solution:
         sum = 0
 
         while ia > -1 or ib > -1:
+            valA = 0
+            valB = 0
             if not ia < 0:
                 valA = int(a[ia])
                 ia -= 1
@@ -60,4 +62,4 @@ print(sol.addBinary(a = "1010", b = "1011")) # 10101
 
 print(sol.addBinary(a = "0", b = "0")) # 0
 
-print(sol.addBinary(a = "10101010", b = "111")) # 010110001
+print(sol.addBinary(a = "10101010", b = "111")) # 10110001
