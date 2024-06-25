@@ -18,16 +18,13 @@ return the maximum amount of water a container can store
 
 class Solution:
     def maxArea(self, height: list[int]) -> int:
-        
-        # two pointers?
-        # way to store areas and add them upwards?
-        # start left and right pointers on outside
-        # check from left side scanning right to find what it runs into
-        # has to be equal or greater than its height to count
+        # left and right pointers
         l, r = 0, len(height) - 1
         max_area = 0
+
         while l < r:
             max_area = max(max_area, (min(height[l], height[r])) * (r - l))
+            # update side that has lower height, else right
             if height[l] < height[r]:
                 l +=1
             else:
