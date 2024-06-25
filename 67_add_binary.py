@@ -10,47 +10,25 @@ return their sum as a binary string
 
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        # when adding binary
-        # 1+1 = 10
-        # 0 + 1 = 1
-        # loop through all numbers backwards
-        # while there are digits on either one?
-        # list
-        res = ""
-        ia = len(a) - 1
-        ib = len(b) - 1
-        valA = 0
-        valB = 0
+        # sum string
+        # carry value
+        # pointers for string a and b
+        res = []
         carry = 0
-        sum = 0
+        i = len(a) - 1
+        j = len(b) -1
 
-        while ia > -1 or ib > -1:
-            valA = 0
-            valB = 0
-            if not ia < 0:
-                valA = int(a[ia])
-                ia -= 1
-            if not ib < 0:
-                valB = int(b[ib])
-                ib -= 1
-            sum = valA + valB + carry
-            if sum <= 1:
-                res = str(sum) + res
-                # res.insert(0, sum)
-                carry = 0
-            else: 
-                res = "0" + res
-                # res.insert(0, 0)
-                carry = 1
-
-        if carry:
-            res =  str(carry) + res
-            # res.insert(0, carry)
-            carry = 0
-
-        # sum = 0,1 - just add to stack
-        # sum = 2 - add 0 to stack, 1 to carry
-        return res
+        # my algo missing carry here
+        while i >= 0 or j >= 0 or carry:
+            if i >= 0:
+                carry += int(a[i])
+                i -= 1
+            if j >= 0:
+                carry += int(b[j])
+                j -= 1
+            res.append(str(carry % 2)) # mod will either return 0 or 2
+            carry //= 2 # stores leftover
+        return ''.join(reversed(res))
     
 
 sol = Solution()
