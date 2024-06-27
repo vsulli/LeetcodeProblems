@@ -28,23 +28,19 @@ with O(1) extra memory.
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
 
-        # each number can appear at most 2x
-        # need a variable for count
-        # need a variable for 2nd index
-
-        i2 = 0
-        count = 1
-        i = 1
-        
-        while i < len(nums) - 1:
-            # loop through getting count
-            # same number
-                # if count is two
-                # else
-            # not same as last number
-                # just increment i
+        l, r = 0, 0
+        while r < len(nums):
+            count = 1
+            while r + 1 < len(nums) and nums[r] == nums[r+1]:
+                r += 1
+                count +=1
+            for i in range(min(2, count)):
+                nums[l] = nums[r]
+                # take value at right index and put it in left position
+                l += 1
+            r +=1
                     
-        return nums
+        return l
             
 
 
