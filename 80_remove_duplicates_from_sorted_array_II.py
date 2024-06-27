@@ -37,19 +37,12 @@ class Solution:
         i = 1
         
         while i < len(nums) - 1:
-            if i-1 > 0:
-                if nums[i] == nums[i-1]:
-                    count += 1
-                    i+=1
-                    if count == 2:
-                        i2 = i
-                        count = 1
-                        while nums[i] == nums[i-1]:
-                            nums += 1
-                        nums[i2] = nums[i]
-                        i += 1
-                else:
-                    i += 1
+            # loop through getting count
+            # same number
+                # if count is two
+                # else
+            # not same as last number
+                # just increment i
                     
         return nums
             
