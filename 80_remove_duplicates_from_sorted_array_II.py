@@ -31,14 +31,24 @@ class Solution:
         # each number can appear at most 2x
         # need a variable for count
         # need a variable for 2nd index
+
         i2 = 1
         count = 1
-        for i in range(len(nums)):
-            if nums[i-1] == nums[i] and count == 2:
+        i = 1
+        
+        while i < len(nums) - 1:
+            if count == 2:
                 i2 = i
+                while nums[i] == nums[i-1]:
+                    i+=1
+                nums[i2] = nums[i]
+                i2 += 1
+                count = 1
             if nums[i-1] == nums[i]:
                 count += 1
-
+            i+=1
+        print(len(nums[:i]))
+        return nums
             
 
 
