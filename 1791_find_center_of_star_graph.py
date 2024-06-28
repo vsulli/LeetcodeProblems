@@ -20,7 +20,16 @@ class Solution:
         # node that is the center will appear in all the subarrays
         # create set of seen
         # when you see another number that is in seen, return that number?
-        pass
+        seen = set()
+        for node in edges:
+            if node[0] in seen:
+                return node[0]
+            elif node[1] in seen:
+                return node[1]
+            else:
+                seen.add(node[0])
+                seen.add(node[1])
+        
 
 
 sol = Solution()
