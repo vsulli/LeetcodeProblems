@@ -27,12 +27,7 @@ class NumArray:
         self.nums = nums
 
     def sumRange(self, left: int, right: int) -> int:
-        prefix_sum = [0] * len(self.nums)
-        total = 0
-        for i in range(len(self.nums)):
-            total += self.nums[i]
-            prefix_sum[i] = total
-        print(prefix_sum)
+        return sum(self.nums[left:right+1])
 
 
 # Your NumArray object will be instantiated and called as such:
