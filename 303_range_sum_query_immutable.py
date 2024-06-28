@@ -24,10 +24,14 @@ right inclusive (i.e. nums[left] + nums[left + 1]
 class NumArray:
 
     def __init__(self, nums: list[int]):
-        self.nums = nums
+        # get prefix sum
+        self.prefix_sum = [0] * len(nums) + 1
+        for i in range(len(nums)):
+            self.prefix_sum[i + 1] = self.prefix_sum[i] + nums[i]
 
     def sumRange(self, left: int, right: int) -> int:
-        return sum(self.nums[left:right+1])
+        # why right + 1?
+        return self.prefix_sum[right+1] - self.prefix_sum_left
 
 
 # Your NumArray object will be instantiated and called as such:
@@ -38,3 +42,4 @@ obj = NumArray([-2, 0, 3, -5, 2, -1])
 print(obj.sumRange(0, 2)) # 1
 print(obj.sumRange(2, 5)) # -1
 print(obj.sumRange(0, 5)) # -3
+print(obj.sumRange(0, 0)) # -2
