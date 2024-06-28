@@ -42,18 +42,18 @@ class Solution:
                 if l_sum == r_sum:
                     return i
             else:
-                l_sum = sum(nums[0:i-1])
+                l_sum = sum(nums[0:i])
                 r_sum = sum(nums[i+1:])
                 if l_sum == r_sum:
                     return i
+        return -1
             
 sol = Solution()
 print(sol.pivotIndex(nums = [1,7,3,6,5,6])) # 3
 
-'''
+
 
 print(sol.pivotIndex(nums = [1,2,3])) # -1
 
 print(sol.pivotIndex(nums = [2,1,-1])) # 0
 
-'''
