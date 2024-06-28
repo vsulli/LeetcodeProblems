@@ -1,5 +1,7 @@
-coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]
+nums = [1,7,3,6,5,6]
+i = 1
+l_sum = sum(nums[0:i-1])
+r_sum = sum(nums[i+1:])
 
-print(coordinates[1][0])
-
-(coordinates[0][0] + 1)
+print(l_sum)
+print(r_sum)
