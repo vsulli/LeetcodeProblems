@@ -17,19 +17,10 @@ given star graph.
 
 class Solution:
     def findCenter(self, edges: list[list[int]]) -> int:
-        # node that is the center will appear in all the subarrays
-        # create set of seen
-        # when you see another number that is in seen, return that number?
-        seen = set()
-        for node in edges:
-            if node[0] in seen:
-                return node[0]
-            elif node[1] in seen:
-                return node[1]
-            else:
-                seen.add(node[0])
-                seen.add(node[1])
-        
+        # looking at first two edges, central node will appear in both
+        # if 1st element of first edge is in second edge then return that one
+        # else return 2nd element
+        return edges[0][0] if edges [0][0] in edges[1] else edges[0][1]
 
 
 sol = Solution()
