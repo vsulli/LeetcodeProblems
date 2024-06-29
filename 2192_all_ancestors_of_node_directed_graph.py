@@ -41,11 +41,12 @@ class Solution:
         for i in range(len(nodes)):
             try:
             # get all keys from a value
-                keys = list(filter(lambda x: nodes[x] == i, nodes))[0]
+                keys = [k for k,v in nodes.iteritems() if v == i]
                 print(keys)
                 answer.append(keys)
             except:
                 print("No ancestors")
+                answer.append([])
         # print(nodes)
         return answer
 
