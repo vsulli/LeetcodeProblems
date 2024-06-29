@@ -28,8 +28,26 @@ class Solution:
         answer = []
         # create hashmap?
         # lowest number key will store top nodes?
-        top_nodes = {}
-        # 0, 1, 2 as main keys
+        nodes = {}
+        # 0, 1, 2 as top nodes
+        for i in range(len(edges)):
+            if edges[i][0] in nodes:
+                nodes[edges[i][0]].append(edges[i][1])
+            else:
+                nodes[edges[i][0]] = [edges[i][1]]
+
+        # loop through keys of hashmap
+        # while can still find value in hashmap, append that key to its list
+        for i in range(len(nodes)):
+            try:
+            # get all keys from a value
+                keys = list(filter(lambda x: nodes[x] == i, nodes))[0]
+                print(keys)
+                answer.append(keys)
+            except:
+                print("No ancestors")
+        # print(nodes)
+        return answer
 
         # 0 -> 3, 4
         # 1 -> 3
@@ -46,4 +64,4 @@ class Solution:
 
 sol = Solution()
 
-print(sol.getAncestors(n = 8, edgeList = [[0,3],[0,4],[1,3],[2,4],[2,7],[3,5],[3,6],[3,7],[4,6]]))
+print(sol.getAncestors(n = 8, edges = [[0,3],[0,4],[1,3],[2,4],[2,7],[3,5],[3,6],[3,7],[4,6]]))
