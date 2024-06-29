@@ -24,34 +24,21 @@ such index exists, return -1.
 
 class Solution:
     def pivotIndex(self, nums: list[int]) -> int:
-
         l_sum = 0
-        r_sum = 0
-        for i in range(len(nums)):
-            if i == 0:
-                if sum(nums[i+1:]) == 0:
-                    return 0
-            elif i == len(nums) - 1:
-                if sum(nums[0:i]) == 0:
-                    return 0
-            else:
-                nums[i-1] = l_sum + nums[i-1]
-                if nums[i-1] == sum(nums[i+1:]):
-                    return i
-                print(nums[i-1])
+        r_sum = sum(nums)
+
+        for i, n in enumerate(nums):
+            r_sum -= n
+            if l_sum == r_sum:
+                return i
+            l_sum += n
         return -1
-
-
-        # get prefix sum?
 
             
 sol = Solution()
 print(sol.pivotIndex(nums = [1,7,3,6,5,6])) # 3
 
-'''
-
 print(sol.pivotIndex(nums = [1,2,3])) # -1
 
 print(sol.pivotIndex(nums = [2,1,-1])) # 0
 
-'''
