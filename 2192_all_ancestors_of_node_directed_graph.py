@@ -42,7 +42,7 @@ class Solution:
             print(i)
             try:
             # get all keys from a value
-                keys = [k for k,v in nodes.items() if v == i]
+                keys = [k for k,v in nodes.items() if i in v]
                 print(keys)
                 answer.append(keys)
             except:
