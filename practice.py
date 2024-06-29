@@ -1,7 +1,3 @@
-nums = [1,7,3,6,5,6]
-i = 2
-l_sum = sum(nums[0:i])
-r_sum = sum(nums[i+1:])
+nodes = {0: [3, 4], 1: [3], 2: [4, 7], 3: [5, 6, 7], 4: [6]}
 
-print(l_sum)
-print(r_sum)
+keys = [k for k,v in nodes.items() if i == v]

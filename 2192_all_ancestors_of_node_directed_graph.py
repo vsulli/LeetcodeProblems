@@ -39,9 +39,10 @@ class Solution:
         # loop through keys of hashmap
         # while can still find value in hashmap, append that key to its list
         for i in range(len(nodes)):
+            print(i)
             try:
             # get all keys from a value
-                keys = [k for k,v in nodes.iteritems() if v == i]
+                keys = [k for k,v in nodes.items() if v == i]
                 print(keys)
                 answer.append(keys)
             except:
