@@ -24,14 +24,14 @@ such index exists, return -1.
 
 class Solution:
     def pivotIndex(self, nums: list[int]) -> int:
-        l_sum = 0
-        r_sum = sum(nums)
+        total = sum(nums)
 
-        for i, n in enumerate(nums):
-            r_sum -= n
+        l_sum = 0
+        for i in range(len(nums)):
+            r_sum = total - nums[i] -l_sum
             if l_sum == r_sum:
                 return i
-            l_sum += n
+            l_sum += nums[i]
         return -1
 
             
