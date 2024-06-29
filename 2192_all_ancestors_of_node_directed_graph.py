@@ -44,7 +44,8 @@ class Solution:
             try:
             # get all keys from a value
                 keys = [k for k,v in nodes.items() if i in v]
-                print(keys)
+                # see if possible to get keys for those values
+                new_keys = [k for k,v in nodes.items() if keys in v]
                 answer.append(keys)
                 #add a while loop here?
             except:
