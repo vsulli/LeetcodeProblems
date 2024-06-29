@@ -38,13 +38,15 @@ class Solution:
 
         # loop through keys of hashmap
         # while can still find value in hashmap, append that key to its list
-        for i in range(len(nodes)):
+        # do in reverse order and then return answer in reverse order?
+        for i in range(n): # change this to n
             print(i)
             try:
             # get all keys from a value
                 keys = [k for k,v in nodes.items() if i in v]
                 print(keys)
                 answer.append(keys)
+                #add a while loop here?
             except:
                 print("No ancestors")
                 answer.append([])
