@@ -24,48 +24,25 @@ if u can reach v via a set of edges.
 
 class Solution:
     def getAncestors(self, n: int, edges: list[list[int]]) -> list[list[int]]:
-        pass
-        answer = []
-        # create hashmap?
-        # lowest number key will store top nodes?
-        nodes = {}
-        # 0, 1, 2 as top nodes
-        for i in range(len(edges)):
-            if edges[i][0] in nodes:
-                nodes[edges[i][0]].append(edges[i][1])
-            else:
-                nodes[edges[i][0]] = [edges[i][1]]
+        ans = [[] for _ in range(n)]
+        directChild = [[] for _ in range(n)]
+        for e in edges:
+            directChild[e[0]].append(e[1])
+        for i in range(n):
+            self.dfs(i, i, ans, directChild)
+        return ans
 
-        # loop through keys of hashmap
-        # while can still find value in hashmap, append that key to its list
-        # do in reverse order and then return answer in reverse order?
-        for i in range(n): # change this to n
-            print(i)
-            try:
-            # get all keys from a value
-                keys = [k for k,v in nodes.items() if i in v]
-                # see if possible to get keys for those values
-                new_keys = [k for k,v in nodes.items() if keys in v]
-                answer.append(keys)
-                #add a while loop here?
-            except:
-                print("No ancestors")
-                answer.append([])
-        # print(nodes)
-        return answer
+    def dfs(self, x: int, curr: int, ans: list[list[int]], directChild: list[list[int]]) -> None:
+        for ch in directChild[curr]:
+            if not ans[ch] or ans[ch][-1] != x:
+                ans[ch].append(x)
+                self.dfs(x, ch, ans, directChild)
 
         # 0 -> 3, 4
         # 1 -> 3
         # 2 -> 4, 7
         # 3 -> 5, 6, 7
         # 4 -> 6
-
-        # loop through hashmap getting key
-        # if key doesn't occur anywhere else then it doesn't have ancestors
-        # if it does occur elsewhere, then sort those keys in ascending order
-        # must recursively look for those ancestors
-
-        
 
 sol = Solution()
 
