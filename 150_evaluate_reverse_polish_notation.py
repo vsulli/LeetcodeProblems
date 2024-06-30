@@ -22,6 +22,7 @@ The answer and all the intermediate calculations can be represented in a 32-bit 
 
 RPN: operators follow operands
 '''
+import math
 
 class Solution:
     def evalRPN(self, tokens: list[str]) -> int:
@@ -37,14 +38,20 @@ class Solution:
                 num2 = int(operands.pop())
                 if tokens[i] == "*": 
                     ans = num2 * num1
+                # truncates toward zero
+                # means that if xor is negative, need to take ceiling
                 elif tokens[i] == "/":
-                    ans = num2 // num1
+                    if num2 < 0 or num1 < 0 and not (num2 <0 and num1 < 0):
+                        ans = math.ceil(num2 / num1)
+                    else:
+                        ans = num2 // num1
                 elif tokens[i] == "+":
                     ans = num2 + num1
                 elif tokens[i] == "-":
                     ans = num2 - num1
                 # push ans onto stack
                 operands.append(ans)
+
         return ans
                     
 
@@ -52,6 +59,7 @@ class Solution:
         
 
 sol = Solution()
+
 print(sol.evalRPN(tokens = ["2","1","+","3","*"])) # ((2+1)* 3) = 9
 
 print(sol.evalRPN(tokens = ["4","13","5","/","+"])) # (4 + (13 / 5)) = 6
