@@ -11,19 +11,20 @@ substring
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        seen = set()
+        seen = [] 
         max_len = 0
         for i in range(len(s)):
+
             if s[i] not in seen:
-                seen.add(s[i])
+                seen.append(s[i])
                 max_len = max(max_len, len(seen))
-            if i+1 < len(s) -1 and s[i+1] in seen:
-                # reset set
-                seen = set()
-                seen.add(s[i])
+            elif i+1 < len(s) -1 and s[i+1] in seen:
+                # reset set from index of same onwards
+                seen = seen[seen.index(s[i+1]):]
+                seen.append(s[i])
                 max_len = max(max_len, len(seen))
             else:
-                seen.add(s[i])
+                seen.append(s[i])
                 max_len = max(max_len, len(seen))
         return max_len
       # loop through all characters
