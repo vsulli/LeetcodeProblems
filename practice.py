@@ -1,2 +1,5 @@
-import math
-print(math.ceil(6 /-132))
+s = "III"
+
+print(s[0])
+s.replace(s[0],"")
+print(s)
