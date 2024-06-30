@@ -21,33 +21,23 @@ class MinStack:
 
     def __init__(self):
         self.stack = []
-        self.min = None
+        self.minStack = []
 
     def push(self, val: int) -> None:
-        if not self.min or val < self.min:
-            self.min = val
-        self.stack.insert(0, val)
+        self.stack.append(val)
+
+        val = min(val, self.minStack[-1] if self.minStack else val)
+        self.minStack.append(val)
+        
 
     def pop(self) -> None:
-        # check if popped value is min
-        if self.stack[0] == self.min:
-            # if it is then set to next lowest
-            del self.stack[0]
-            if self.stack:
-                self.min = min(self.stack)
-            else:
-                self.min = None
-        else:
-            del self.stack[0]
+        self.stack.pop()
+        self.minStack.pop()
 
     def top(self) -> int:
-        return self.stack[0]
-
+        return self.stack[-1]
     def getMin(self) -> int:
-        # how to get min in linear time? 
-        # stack is lifo, doesn't guarantee smallest at any index
-        # keep track of index when inserting?
-        return self.min
+        return self.minStack[-1]
 
 
 # Your MinStack object will be instantiated and called as such:
