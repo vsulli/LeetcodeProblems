@@ -41,38 +41,41 @@ class Solution:
     def romanToInt(self, s: str) -> int:
         symbol_dict = {"I": 1, "V": 5, "X": 10, "L":50, "C": 100, "D": 500, "M": 1000}
         ans = 0
+        i = 0
         # create a dictionary?
-        while s != "":
+        while i != len(s) and s:
             # 4 and 9
             if "IV" in s:
                 ans += 4
-                s.replace("IV", "")
-            elif "IX" in s:
+                s = s.replace("IV", "")
+            if "IX" in s:
                 ans += 9
-                s.replace("IX", "")
+                s = s.replace("IX", "")
             # 40 and 90
-            elif "XL" in s:
+            if "XL" in s:
                 ans += 40
-                s.replace("XL","")
-            elif "XC" in s:
+                s = s.replace("XL","")
+            if "XC" in s:
                 ans += 90
-                s.replace("XC", "")
-
+                s = s.replace("XC", "")
             # 400 and 900
-            elif "CD" in s:
+            if "CD" in s:
                 ans += 400
-                s.replace("CD", "")
-            elif "CM" in s:
+                s = s.replace("CD", "")
+            if "CM" in s:
                 ans += 900
-                s.replace("CM", "")
+                s = s.replace("CM", "")
             else:
-                ans += symbol_dict[s[0]]
-                s.pop(0)
-                print(s)
+                if s:
+                    ans += symbol_dict[s[i]]
+                    i+=1
+
         return ans
 
 
 sol = Solution()
+
+print(sol.romanToInt(s = "IV")) # 4
 
 print(sol.romanToInt(s = "III")) # 3
 
