@@ -26,35 +26,22 @@ import math
 
 class Solution:
     def evalRPN(self, tokens: list[str]) -> int:
-        ans = 0
-        operators = {"+", "-", "*", "/"}
-        operands = [] # stack 
-        # will need floor division
-        for i in range(len(tokens)):
-            if tokens[i] not in operators:
-                operands.append(tokens[i])
+        
+        res = [] # stack 
+        for c in tokens:
+            if c == "+":
+               res.append(res.pop() + res.pop())
+            elif c == "-":
+                a, b = res.pop(), res.pop()
+                res.append(b - a)
+            elif c == "*":
+                res.append(res.pop() * res.pop())
+            elif c == "/":
+                a, b = res.pop(), res.pop()
+                res.append(int(b / a)) # will round toward 0 in python
             else:
-                num1 = int(operands.pop())
-                num2 = int(operands.pop())
-                if tokens[i] == "*": 
-                    ans = num2 * num1
-                # truncates toward zero
-                # means that if xor is negative, need to take ceiling
-                elif tokens[i] == "/":
-                    if num2 < 0 or num1 < 0 and not (num2 <0 and num1 < 0):
-                        ans = math.ceil(num2 / num1)
-                    else:
-                        ans = num2 // num1
-                elif tokens[i] == "+":
-                    ans = num2 + num1
-                elif tokens[i] == "-":
-                    ans = num2 - num1
-                # push ans onto stack
-                operands.append(ans)
-        if len(tokens) == 1:
-            return int(tokens[0])
-        return ans
-                    
+                res.append(int(c))
+        return res [0] 
 
         
         
