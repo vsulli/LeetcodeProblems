@@ -42,33 +42,12 @@ class Solution:
         symbol_dict = {"I": 1, "V": 5, "X": 10, "L":50, "C": 100, "D": 500, "M": 1000}
         ans = 0
         i = 0
-        # create a dictionary?
-        while i != len(s) and s:
-            # 4 and 9
-            if "IV" in s:
-                ans += 4
-                s = s.replace("IV", "")
-            if "IX" in s:
-                ans += 9
-                s = s.replace("IX", "")
-            # 40 and 90
-            if "XL" in s:
-                ans += 40
-                s = s.replace("XL","")
-            if "XC" in s:
-                ans += 90
-                s = s.replace("XC", "")
-            # 400 and 900
-            if "CD" in s:
-                ans += 400
-                s = s.replace("CD", "")
-            if "CM" in s:
-                ans += 900
-                s = s.replace("CM", "")
+        for i in range(len(s)):
+            # if current index symbol less than next, subtract that value from ans
+            if i < len(s) - 1 and symbol_dict[s[i]] < symbol_dict[s[i+1]]:
+                ans -= symbol_dict[s[i]]
             else:
-                if s:
-                    ans += symbol_dict[s[i]]
-                    i+=1
+                ans += symbol_dict[s[i]]
 
         return ans
 
