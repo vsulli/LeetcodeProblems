@@ -51,7 +51,8 @@ class Solution:
                     ans = num2 - num1
                 # push ans onto stack
                 operands.append(ans)
-
+        if len(tokens) == 1:
+            return int(tokens[0])
         return ans
                     
 
@@ -59,6 +60,8 @@ class Solution:
         
 
 sol = Solution()
+
+print(sol.evalRPN(tokens = ["18"])) # 18
 
 print(sol.evalRPN(tokens = ["2","1","+","3","*"])) # ((2+1)* 3) = 9
 
