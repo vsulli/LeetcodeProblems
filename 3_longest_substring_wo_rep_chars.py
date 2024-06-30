@@ -13,14 +13,17 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = set()
         max_len = 0
-        for c in s:
-            if c in seen:
+        for i in range(len(s)):
+            if s[i] not in seen:
+                seen.add(s[i])
+                max_len = max(max_len, len(seen))
+            if i+1 < len(s) -1 and s[i+1] in seen:
                 # reset set
                 seen = set()
-                seen.add(c)
+                seen.add(s[i])
                 max_len = max(max_len, len(seen))
             else:
-                seen.add(c)
+                seen.add(s[i])
                 max_len = max(max_len, len(seen))
         return max_len
       # loop through all characters
@@ -36,8 +39,12 @@ sol = Solution()
 
 print(sol.lengthOfLongestSubstring(s = "abcabcbb")) # 3
 
+print(sol.lengthOfLongestSubstring(s ="cdd")) # 2
+
 print(sol.lengthOfLongestSubstring(s = "bbbbb")) # 1
 
 print(sol.lengthOfLongestSubstring(s = "pwwkew")) # 3
 
 print(sol.lengthOfLongestSubstring("dvdf")) # 3
+
+print(sol.lengthOfLongestSubstring("")) # 0
