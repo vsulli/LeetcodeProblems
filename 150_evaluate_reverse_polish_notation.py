@@ -36,13 +36,15 @@ class Solution:
                 num1 = int(operands.pop())
                 num2 = int(operands.pop())
                 if tokens[i] == "*": 
-                    ans += num2 * num1
+                    ans = num2 * num1
                 elif tokens[i] == "/":
-                    ans += num2 / num1
+                    ans = num2 // num1
                 elif tokens[i] == "+":
-                    ans += num2 + num1
+                    ans = num2 + num1
                 elif tokens[i] == "-":
-                    ans += num2 - 1
+                    ans = num2 - num1
+                # push ans onto stack
+                operands.append(ans)
         return ans
                     
 
