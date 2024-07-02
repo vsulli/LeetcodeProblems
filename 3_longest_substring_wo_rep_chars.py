@@ -12,21 +12,19 @@ substring
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        seen = [] 
+        seen = set()
         max_len = 0
         for i in range(len(s)):
-
             if s[i] not in seen:
-                seen.append(s[i])
+                seen.add(s[i])
                 max_len = max(max_len, len(seen))
-            elif i+1 < len(s) -1 and s[i+1] in seen:
-                # reset set from index of same onwards
-                seen = seen[seen.index(s[i+1]):]
-                seen.append(s[i])
-                max_len = max(max_len, len(seen))
-            else:
-                seen.append(s[i])
-                max_len = max(max_len, len(seen))
+            for j in range(1, len(s)):
+                if s[j] not in seen:
+                    seen.add(s[j])
+                    max_len = max(max_len, len(seen))
+                else:
+                    break
+
         return max_len
       # loop through all characters
       # keep track of substring with set? 
