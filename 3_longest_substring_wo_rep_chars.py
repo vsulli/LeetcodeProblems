@@ -1,9 +1,9 @@
-# TODO WIP
+
 '''
 Longest Substring without Repeating Characters
 Leetcode # 3
 vsulli
-30 June 2024
+2 July 2024
 
 Given a string s, find the length of the longest 
 substring
@@ -12,26 +12,23 @@ substring
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        seen = set()
+        # sliding window
+        # set
+        n = len(s)
         max_len = 0
-        for i in range(len(s)):
-            if s[i] not in seen:
-                seen.add(s[i])
-                max_len = max(max_len, len(seen))
-            for j in range(1, len(s)):
-                if s[j] not in seen:
-                    seen.add(s[j])
-                    max_len = max(max_len, len(seen))
-                else:
-                    break
+        seen = set()
+        left = 0
 
+        for right in range(n):
+            if s[right] not in seen:
+                seen.add(s[right])
+                max_len = max(max_len, right - left + 1)
+            else:
+                while s[right] in seen:
+                    seen.remove(s[left])
+                    left += 1
+                seen.add(s[right])
         return max_len
-      # loop through all characters
-      # keep track of substring with set? 
-      # keep track of max_len
-      # if next letter encountered is already in set, reset
-      # after adding to set, check length, if greater than current, update?
-    
 
          
 
@@ -43,7 +40,7 @@ print(sol.lengthOfLongestSubstring(s ="cdd")) # 2
 
 print(sol.lengthOfLongestSubstring(s = "bbbbb")) # 1
 
-print(sol.lengthOfLongestSubstring(s = "pwwkew")) # 3
+print(sol.lengthOfLongestSubstring(s = "pwwkew")) # 3 wke
 
 print(sol.lengthOfLongestSubstring("dvdf")) # 3
 
