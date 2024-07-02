@@ -24,16 +24,20 @@ class Solution:
         # if in one, but not other, skip
         # only matters length of shortest array
         ans = []
-        for i in range(len(min(nums1, nums2))):
-            pass
+        for n in min(nums1, nums2, key = len):
+            if n in nums1 and n in nums2:
+                ans.append(n)
+
+
         
-        print(nums1)
-        print(nums2)
+
         return ans
 
 sol = Solution()
+
 
 print(sol.intersect(nums1 = [1,2,2,1], nums2 = [2,2])) # [2,2]
 
 print(sol.intersect(nums1 = [4,9,5], nums2 = [9,4,9,8,4])) # [4,9]
 
+print(sol.intersect(nums1 = [4,4,4], nums2 = [9,4,9,8,4])) # [4,9]
