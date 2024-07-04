@@ -11,6 +11,8 @@ return the list of integers that are present in
 each array of nums sorted in ascending order.
 '''
 
+import itertools
+
 class Solution:
     def intersection(self, nums: list[list[int]]) -> list[int]:
         res = []
@@ -20,11 +22,12 @@ class Solution:
         # arrays don't have to be the same length
         shortest = min(nums, key = len)
         
-        for i in range(len(shortest)):
-            print(shortest[i])
-            for j in range(len(nums)):
-                if shortest[i] in group:
-                    res.append(shortest[i])
+        for i, n in enumerate(shortest):
+            for group in nums:
+                if group[i] != n:
+                    break
+                elif n not in res:
+                    res.append(n)
 
         return res
             
