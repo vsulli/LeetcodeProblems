@@ -1,5 +1,4 @@
 '''
-# TODO WIP
 Intersection of Multiple Arrays
 Leetcode # 2248
 vsulli
@@ -10,14 +9,21 @@ non-empty array of distinct positive integers,
 return the list of integers that are present in 
 each array of nums sorted in ascending order.
 '''
-
+import bisect
 class Solution:
     def intersection(self, nums: list[list[int]]) -> list[int]:
-        res = set(nums[0]) # initialize result as first list
-        for i in range(1, len(nums)): # loop through rest of lists in nums
-            res &= set(nums[i]) # &= gets the intersection of current res and next list as a set
-        res = list(res) # change into list
-        res.sort() # sort into ascending order
+        res = []
+        seen = {} # hashmap to store count for each number
+        # if count of number in seen matches len numbers, return sorted
+        for i in range(len(nums)):
+            for j in range(len(min(nums, key = len))):
+                if nums[i][j] in seen:
+                    seen[nums[i][j]] += 1
+                else:
+                    seen[nums[i][j]] = 1
+        for k in seen:
+            if seen[k] == len(nums):
+                bisect.insort(res, k)
         return res
             
 
