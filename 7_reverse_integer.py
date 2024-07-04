@@ -1,4 +1,5 @@
 '''
+# TODO WIP
 Reverse Integer
 Leetcode # 7
 vsulli
@@ -37,3 +38,5 @@ print(sol.reverse(x = 123))
 print(sol.reverse(x = -123))
 
 print(sol.reverse(x = 120))
+
+print(sol.reverse(x = 1))
