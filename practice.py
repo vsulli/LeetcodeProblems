@@ -1,14 +1,6 @@
+import math
+x = -123
 
-num = 3749
+print(x / 10) 
+print(math.trunc(x / 10))
 
-# get the ones place
-print(3749 % 10)
-
-# get the tens place
-print((3749 // 10) % 10)
-
-# get the hundreds place
-print((3749 // 100) % 10)
-
-# get the thousands place
-print(3749 // 1000)

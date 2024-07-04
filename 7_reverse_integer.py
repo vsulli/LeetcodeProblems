@@ -28,15 +28,21 @@ class Solution:
             if reverse > MAX_INT / 10 or reverse < MIN_INT / 10:
                 return 0
             
+            # get the ones place pos or neg
             digit = x % 10 if x > 0 else x % -10
+
+            # every time you add a new digit muliplying reverse x 10 moves previous result 
+            # to next space left
             reverse = reverse * 10 + digit
+
+            # x / 10 turns into a decimal with right-most number in the 10ths place
+            # truncate will return integer portion
             x = math.trunc(x / 10)
 
         return reverse
 
 
 sol = Solution()
-
 
 print(sol.reverse(x = 123)) 
 
