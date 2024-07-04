@@ -24,7 +24,7 @@ class Solution:
         
         for i, n in enumerate(shortest):
             for group in nums:
-                if group[i] != n:
+                if sorted(group)[i] != n:
                     break
                 elif n not in res:
                     res.append(n)
