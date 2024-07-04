@@ -1,4 +1,5 @@
 '''
+# TODO WIP
 Intersection of Multiple Arrays
 Leetcode # 2248
 vsulli
@@ -14,14 +15,22 @@ class Solution:
     def intersection(self, nums: list[list[int]]) -> list[int]:
         res = []
         # sort lists
-        # loop through all lists in order
-        # if n in both then add to array
+        # loop through shortest list in nums
+        # if n in all then add to array
         # arrays don't have to be the same length
-        for i,n in enumerate(min(nums)):
+        shortest = min(nums, key = len)
+        
+        for i in range(len(shortest)):
+            print(shortest[i])
+            for j in range(len(nums)):
+                if shortest[i] in group:
+                    res.append(shortest[i])
+
+        return res
             
 
 sol = Solution()
 
 print(sol.intersection(nums = [[3,1,2,4,5],[1,2,3,4],[3,4,5,6]])) # [3,4]
 
-print(sol.intersection(nums = [[1,2,3],[4,5,6]])) # []
+print(sol.intersection(nums = [[1,2,3],[4,5,6],[10]])) # []
