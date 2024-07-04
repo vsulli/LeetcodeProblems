@@ -15,18 +15,18 @@ assume the environment doesn't allow you to store
 
 class Solution:
     def reverse(self, x: int) -> int:
+        num = abs(x)
         res = 0
 
+        hundreds = (num % 10) * 100
 
-        hundreds = (x % 10) * 100
+        tens = ((num // 10) % 10) * 10
 
-        tens = ((x // 10) % 10) * 10
-
-        ones = ((x // 100) % 10) 
+        ones = ((num // 100) % 10) 
 
         res = hundreds + tens + ones
 
-        return res
+        return -res if x < 0 else res
 
 
 sol = Solution()
