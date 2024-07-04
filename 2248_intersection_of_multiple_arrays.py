@@ -15,20 +15,11 @@ import itertools
 
 class Solution:
     def intersection(self, nums: list[list[int]]) -> list[int]:
-        res = []
-        # sort lists
-        # loop through shortest list in nums
-        # if n in all then add to array
-        # arrays don't have to be the same length
-        shortest = min(nums, key = len)
-        
-        for i, n in enumerate(shortest):
-            for group in nums:
-                if sorted(group)[i] != n:
-                    break
-                elif n not in res:
-                    res.append(n)
-
+        res = set(nums[0]) # initialize result as first list
+        for i in range(1, len(nums)): # loop through rest of lists in nums
+            res &= set(nums[i]) # &= gets the intersection of current res and next list as a set
+        res = list(res) # change into list
+        res.sort() # sort into ascending order
         return res
             
 
