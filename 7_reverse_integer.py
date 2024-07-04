@@ -16,7 +16,11 @@ assume the environment doesn't allow you to store
 
 class Solution:
     def reverse(self, x: int) -> int:
+
         num = abs(x)
+        if num < 9: 
+            return x
+        
         res = 0
 
         hundreds = (num % 10) * 100
@@ -31,12 +35,15 @@ class Solution:
 
 
 sol = Solution()
+'''
 
 print(sol.reverse(x = 123)) 
-
 
 print(sol.reverse(x = -123))
 
 print(sol.reverse(x = 120))
 
 print(sol.reverse(x = 1))
+'''
+
+print(sol.reverse(x = 10))
