@@ -1,5 +1,4 @@
 '''
-# TODO WIP
 Reverse Integer
 Leetcode # 7
 vsulli

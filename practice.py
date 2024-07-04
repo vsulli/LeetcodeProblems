@@ -1,6 +1,5 @@
 import math
-x = -123
+x = 1
 
-print(x / 10) 
-print(math.trunc(x / 10))
+print(x % 10)
 
