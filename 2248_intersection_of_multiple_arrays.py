@@ -11,8 +11,6 @@ return the list of integers that are present in
 each array of nums sorted in ascending order.
 '''
 
-import itertools
-
 class Solution:
     def intersection(self, nums: list[list[int]]) -> list[int]:
         res = set(nums[0]) # initialize result as first list
