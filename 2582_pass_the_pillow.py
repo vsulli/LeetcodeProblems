@@ -35,13 +35,27 @@ class LinkedList:
 
 class Solution:
     def passThePillow(self, n: int, time: int) -> int:
-        # every time number incremented, then time subtracted
-        # make a doubly linked list
-        # once reach end, if not out of time, loop back
-        # mathematical solution?
-        # 5 - 4 = 1  (2)
-        # 2 - 3 = -1 (3)
-
+        length = n - 1
+        index = 0
+        direction = "r"
+        # while loop
+        # while time not up, increment i
+        n = 1
+        while time != 0:
+            if index == length:
+                direction = 'l'
+            if index == 0:
+                direction = 'r'
+            # if not at end of array increment right
+            if direction == 'r':
+                index += 1
+                n += 1
+            # else increment left
+            else:
+                index -=1
+                n -= 1
+            time -= 1
+        return n
 
 sol = Solution()
 
