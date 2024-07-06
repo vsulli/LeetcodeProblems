@@ -23,39 +23,11 @@ time, return the index of the person
 holding the pillow after time seconds.
 
 '''
-class Node:
-    def __init__(self, val: int, prev = None, next = None):
-        self.val = val
-        self.prev = prev
-        self.next = next
 
-
-class LinkedList:
-    pass
 
 class Solution:
     def passThePillow(self, n: int, time: int) -> int:
-        length = n - 1
-        index = 0
-        direction = "r"
-        # while loop
-        # while time not up, increment i
-        n = 1
-        while time != 0:
-            if index == length:
-                direction = 'l'
-            if index == 0:
-                direction = 'r'
-            # if not at end of array increment right
-            if direction == 'r':
-                index += 1
-                n += 1
-            # else increment left
-            else:
-                index -=1
-                n -= 1
-            time -= 1
-        return n
+        return 1+x if (x:=time% (N:=2*n-2)) < n else N+1-x
 
 sol = Solution()
 
