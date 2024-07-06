@@ -24,16 +24,23 @@ holding the pillow after time seconds.
 
 '''
 class Node:
-    def __init__(self, val: int, next = None):
+    def __init__(self, val: int, prev = None, next = None):
         self.val = val
+        self.prev = prev
         self.next = next
 
+
 class LinkedList:
-    
+    pass
+
 class Solution:
     def passThePillow(self, n: int, time: int) -> int:
         # every time number incremented, then time subtracted
-        # make a cyclical linked list?  
+        # make a doubly linked list
+        # once reach end, if not out of time, loop back
+        # mathematical solution?
+        # 5 - 4 = 1  (2)
+        # 2 - 3 = -1 (3)
 
 
 sol = Solution()
