@@ -12,30 +12,29 @@ well-formed parentheses.
 
 class Solution:
     def generateParenthesis(self, n: int) -> list[str]:
-        # left
-        # right
-        ans = []
-        # lined up
-        ans.append("()" * n)
-        # inside
-        string = "("
-        for i in range(n -1):
-            string += "()"
-        string += ")"
-        if string not in ans:
-            ans.append(string)
+        # backtracking solution
+        # only add open if open < n
+        # only add closing parenthesis if closed < open
+        # return solution open == closed == n
 
-        
+        # recursive
+        stack = []
+        res = []
+        def backtrack(openN, closedN):
+            if openN == closedN == n:
+                res.append("".join(stack))
+                return 
+            if openN < n:
+                stack.append("(")
+                backtrack(openN + 1, closedN)
+                stack.pop()
+            if closedN < openN:
+                stack.append(")")
+                backtrack(openN, closedN + 1)
+                stack.pop()
+        backtrack(0, 0)
+        return res
 
-        return ans
-    # need to generate all combinations of well-formed parentheses
-    # 5 combinations with 3
-    # n will be 8 at most
-
-    # 1 -- ()
-    # 2 -- ()(), (())
-    # 3 -- ()()(), (()()), ((())), (())(), ()(())
-    # 4 -- ()()()(), (()()()), (((()))), ((()))(), ()((())), (())(())
 
 sol = Solution()
 
