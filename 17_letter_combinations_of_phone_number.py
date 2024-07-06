@@ -16,19 +16,24 @@ below. Note that 1 does not map to any letters.
 '''
 class Solution:
     def letterCombinations(self, digits: str) -> list[str]:
-        letters = []
         res = []
-        combo_len = 0
-        for n in digits:
-            combo_len += len(digit_letters[n])  
         # 1 isn't included
-        digit_letters = {"2": ["a", "b", "c"], "3": ["d", "e", "f"], 
-                        "4": ["g", "h", "i"], "5": ["j", "k", "l"], 
-                         "6": ["m", "n", "o"], "7": ["p", "q", "r", "s"], 
-                         "8": ["t", "u", "v"], "9": ["w", "x", "y", "z"]}
+        digit_letters = {"2": "abc", "3":"def", 
+                        "4": "ghi", "5": "jkl", 
+                         "6": "mno", "7": "pqrs", 
+                         "8": "tuv", "9": "wxyz"}
 
-        def backtrack():
-            # exit condition would be length of res as long as all combinations?
+        def backtrack(i, curStr):
+            if len(curStr) == len(digits):
+                res.append(curStr)
+                return
+            for c in digit_letters[digits[i]]:
+                backtrack(i+1, curStr + c)
+        
+        if digits:
+            backtrack(0, "")
+
+        return res
 
 
 sol = Solution()
