@@ -21,17 +21,19 @@ number of water bottles you can drink.
 
 class Solution:
     def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
-        empty_bottles = 0
-        max_drinks = numBottles
+        max_drinks = 0
+        empty = 0
 
-        # while you can evenly divide or there is a remainder
-        while empty_bottles // numExchange > 0:
-            empty_bottles += numBottles - ((numBottles // numExchange) * numExchange)
-            numBottles = (numBottles // numExchange)
+        while True:
             max_drinks += numBottles
-        
+            empty += numBottles
+            numBottles = 0
 
-        print("Bottles: " + str(numBottles))
+            numBottles = empty // numExchange
+            empty = empty % numExchange
+
+            if numBottles == 0:
+                break
         return max_drinks 
 
 sol = Solution()
