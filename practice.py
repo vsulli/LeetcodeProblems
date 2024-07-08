@@ -1,16 +1,11 @@
-max_drinks = 0
-num_bottles = 9
+nums = [1,5,0,3,5]
 
-max_drinks = num_bottles
+print(sum(nums[:]))
+x = min(n for n in nums if n != 0)
+print(x)
 
+for i in range(len(nums)):
+    if nums[i] > 0:
+        nums[i] = nums[i] - x
 
-num_bottles = (num_bottles // 3)
-max_drinks += num_bottles
-
-num_bottles = (num_bottles // 3)
-max_drinks += num_bottles
-
-
-print(max_drinks)
-
-print(num_bottles // 3)
+print(nums)
