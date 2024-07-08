@@ -17,22 +17,30 @@ Return the minimum number of operations
 to make every element in nums equal to 0.
 
 '''
+import heapq
 
 class Solution:
     def minimumOperations(self, nums: list[int]) -> int:
+        # only care about unique positive numbers in the array
+        # total number of operations is # unique pos numbers
+        # since each operation can reduce the array by one of these numbers
+        # min heap
+        # O(n^2 log n) time
+        # O(1) space
+        heapq.heapify(nums)
         operations = 0
-        # choose a pos value x <= smallest num in nums
-        # subtract that value from every pos element in nums
-        # every element needs to equal 0
-        while sum(nums[:]) != 0:
-            # set min, but not 0
-            x = min(n for n in nums if n != 0)
-            operations +=1
-            for i in range(len(nums)):
-                if nums[i] > 0:
-                    nums[i] = nums[i] - x
-            
+
+        while nums:
+            x = heapq.heappop(nums)
+            if x == 0:
+                continue
+            else:
+                for i in range(len(nums)):
+                    nums[i] -= x
+                operations += 1
+
         return operations
+        
 
 sol = Solution()
 
