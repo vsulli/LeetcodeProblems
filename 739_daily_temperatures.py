@@ -16,7 +16,17 @@ possible, keep answer[i] == 0 instead.
 
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
-       pass
+        answer = [0] * len(temperatures)
+        # answer[i] tells you how many days to wait until you get a warmer temperature
+        # will be 0 if there is no warmer day
+        # last index will always be 0
+        for i in range(len(temperatures)-1):
+            for j in range(i+1, len(temperatures)-1):
+                if temperatures[j] > temperatures[i]:
+                    answer[i] = j - i
+                    break
+
+        return answer
 
 sol = Solution()
 
