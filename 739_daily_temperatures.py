@@ -21,7 +21,7 @@ class Solution:
         # will be 0 if there is no warmer day
         # last index will always be 0
         for i in range(len(temperatures)-1):
-            for j in range(i+1, len(temperatures)-1):
+            for j in range(i+1, len(temperatures)):
                 if temperatures[j] > temperatures[i]:
                     answer[i] = j - i
                     break
@@ -30,11 +30,13 @@ class Solution:
 
 sol = Solution()
 
+
 print(sol.dailyTemperatures(temperatures = [73,74,75,71,69,72,76,73]))
 # [1,1,4,2,1,1,0,0]
 
 print(sol.dailyTemperatures(temperatures = [30,40,50,60]))
 # [1,1,1,0]
+
 
 print(sol.dailyTemperatures(temperatures = [30,60,90]))
 # [1,1,0]
