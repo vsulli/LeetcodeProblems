@@ -17,15 +17,25 @@ possible, keep answer[i] == 0 instead.
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
         answer = [0] * len(temperatures)
-        # answer[i] tells you how many days to wait until you get a warmer temperature
-        # will be 0 if there is no warmer day
-        # last index will always be 0
-        for i in range(len(temperatures)-1):
-            for j in range(i+1, len(temperatures)):
-                if temperatures[j] > temperatures[i]:
-                    answer[i] = j - i
-                    break
+        
+        # using a stack, for each number, put the index of the greatest
+        # number up to that point?
 
+
+        temp_diff = []
+
+        # using a stack
+        # keep track of how much greater next index is from last index?
+        i1 = 0
+        i2 = 1
+        max = 0
+        while i2 < len(temperatures) - 1:
+            if temperatures[i2] > temperatures[i1]:
+                answer[i1] = i2 - i1
+                i2 += 1
+            else:
+                temp_diff.append(temperatures[i2] - temperatures[i1])
+                i1 += 1
         return answer
 
 sol = Solution()
