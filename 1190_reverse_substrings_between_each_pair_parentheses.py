@@ -16,24 +16,27 @@ brackets.
  
 '''
 
+from collections import deque
+
+
 class Solution:
     def reverseParentheses(self, s: str) -> str:
-        stack = []
-        ans = []
+        open_parentheses_indices = deque()
+        result = []
 
-        for i in s:
-            if i == ')':
-                x = stack.pop()
-                while x != '(':
-                    ans.append(x)
-                    x = stack.pop()
-                for j in ans:
-                    stack.append(j)
-                ans = []
+        for current_char in s:
+            if current_char == "(":
+                # store current len as start index
+                open_parentheses_indices.append(len(result))
+            elif current_char == ")":
+                start = open_parentheses_indices.pop()
+                # reverse substring between matching parentheses
+                result[start:] = result[start:][::-1]
             else:
-                stack.append(i)
-        return ''.join(stack)
-            
+                # append non-parenthesis characters
+                result.append(current_char)
+        return "".join(result)
+                       
 
 
 sol = Solution()
