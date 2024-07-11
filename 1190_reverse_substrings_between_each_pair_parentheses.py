@@ -18,29 +18,27 @@ brackets.
 
 class Solution:
     def reverseParentheses(self, s: str) -> str:
-        # need a way to match parentheses
-        # how to know when at innermost parenthesis?
-        # stack - store indices of left parenthesis
-        # loop until get to first closing parenthesis
-        # can reverse string in place
-        parentheses = []
-        for i in range(len(s)):
-            if s[i] == "(":
-                parentheses.append(i)
-            if s[i] == ")":
-                left = parentheses.pop()
-                # need to reverse between ( + 1 and current i-1
-                # start: index before where you want to stop 
-                s =  s[0:left] + s[i-1:left:-1] + s[i+1:]
-            
+        stack = []
+        ans = []
 
-        return s
+        for i in s:
+            if i == ')':
+                x = stack.pop()
+                while x != '(':
+                    ans.append(x)
+                    x = stack.pop()
+                for j in ans:
+                    stack.append(j)
+                ans = []
+            else:
+                stack.append(i)
+        return ''.join(stack)
+            
 
 
 sol = Solution()
 
 print(sol.reverseParentheses(s = "(abcd)")) # "dcba"
-'''
 
 print(sol.reverseParentheses(s = "(u(love)i)")) # "iloveu"
 
@@ -48,4 +46,3 @@ print(sol.reverseParentheses(s = "(ed(et(oc))el)")) # "leetcode"
 # co
 # octe
 # ed octe el -> leetcode
-'''
