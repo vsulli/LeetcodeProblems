@@ -30,16 +30,17 @@ class Solution:
             if s[i] == ")":
                 left = parentheses.pop()
                 # need to reverse between ( + 1 and current i-1
-                s[left+1:i] = s[left+1:i:-1]
-                # delete indices of the parentheses
-                del s[left]
-                del s[i]
+                # start: index before where you want to stop 
+                s =  s[0:left] + s[i+1:left:-1] + s[i+1:]
+            
+
         return s
 
 
 sol = Solution()
 
 print(sol.reverseParentheses(s = "(abcd)")) # "dcba"
+'''
 
 print(sol.reverseParentheses(s = "(u(love)i)")) # "iloveu"
 
@@ -47,3 +48,4 @@ print(sol.reverseParentheses(s = "(ed(et(oc))el)")) # "leetcode"
 # co
 # octe
 # ed octe el -> leetcode
+'''
