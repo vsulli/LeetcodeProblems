@@ -21,20 +21,33 @@ from collections import deque
 
 class Solution:
     def reverseParentheses(self, s: str) -> str:
-        open_parentheses_indices = deque()
-        result = []
+        # wormhole solution
+        n = len(s)
 
-        for current_char in s:
-            if current_char == "(":
-                # store current len as start index
-                open_parentheses_indices.append(len(result))
-            elif current_char == ")":
-                start = open_parentheses_indices.pop()
-                # reverse substring between matching parentheses
-                result[start:] = result[start:][::-1]
+        open_parentheses_indices = []
+        pair = [0] * n
+
+        # first pass - pair parentheses
+        for i in range(n):
+            if s[i] == "(":
+                open_parentheses_indices.append(i)
+            if s[i] == ")":
+                j = open_parentheses_indices.pop()
+                pair[i] = j
+                pair[j] = i
+        
+        # second pass - build result string
+        result = []
+        curr_index = 0
+        direction = 1
+
+        while curr_index < n:
+            if s[curr_index] == "(" or s[curr_index] == ")":
+                curr_index = pair[curr_index]
+                direction = -direction
             else:
-                # append non-parenthesis characters
-                result.append(current_char)
+                result.append(s[curr_index])
+            curr_index += direction
         return "".join(result)
                        
 
