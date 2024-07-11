@@ -31,7 +31,7 @@ class Solution:
                 left = parentheses.pop()
                 # need to reverse between ( + 1 and current i-1
                 # start: index before where you want to stop 
-                s =  s[0:left] + s[i+1:left:-1] + s[i+1:]
+                s =  s[0:left] + s[i-1:left:-1] + s[i+1:]
             
 
         return s
