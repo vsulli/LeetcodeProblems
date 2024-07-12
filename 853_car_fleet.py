@@ -35,24 +35,19 @@ will arrive at the destination.
 
 class Solution:
     def carFleet(self, target: int, position: list[int], speed: list[int]) -> int:
-        pass
-        # cars will be equal when their intial position + speed*i = target
-        # i will tell you if there is an index in range where they reach target
-        fleet_count = 0
-        fleets = {} # num: speeds (ordered low -> high)
-        while len(set(position)) != 1:
-            for i in range(len(position)):
-                # if that index is part of a fleet, then increment it by min speed
-                if position[i] in fleets:
-                    position[i] = position[i] + speed
-                # if that num has caught up to a fleet, add it
+        # create an array of pairs
+        # iterate through array from right to left 
+        # if cars are going to collide, left car will have lower time than
+        # right car to reach target
 
-                # set fleets equal to max of current fleets or current fleet count
-                fleet_count = max(fleet_count, len(set(position)))
-
-                # if that num is already target, do nothing
-
-        return fleet_count
+        stack = []
+        pair = [[p, s] for p, s in zip(position, speed)]
+        # reverse sorted order
+        for p, s in sorted(pair)[::-1]:
+            stack.append((target - p) / s)
+            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+                stack.pop()
+        return len(stack)
 
 
 
