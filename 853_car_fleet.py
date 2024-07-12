@@ -38,13 +38,21 @@ class Solution:
         pass
         # cars will be equal when their intial position + speed*i = target
         # i will tell you if there is an index in range where they reach target
-        fleets = 0
+        fleet_count = 0
+        fleets = {} # num: speeds (ordered low -> high)
         while len(set(position)) != 1:
-            # infinite loop
-            position = [x+speed[position.index(x)] for x in position]
-            print(position)
+            for i in range(len(position)):
+                # if that index is part of a fleet, then increment it by min speed
+                if position[i] in fleets:
+                    position[i] = position[i] + speed
+                # if that num has caught up to a fleet, add it
 
-        return fleets
+                # set fleets equal to max of current fleets or current fleet count
+                fleet_count = max(fleet_count, len(set(position)))
+
+                # if that num is already target, do nothing
+
+        return fleet_count
 
 
 
