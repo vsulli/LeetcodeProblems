@@ -58,3 +58,17 @@ Cracking the Coding Interview
 11. Quickselect
 12. Binary Manipulation
 13. Finding Middle of List with Fast & Slow Pointers
+
+## Two Pointers
+
+given a sorted array you can reduce it down to O(n) instead of O(n^2)
+ex) Two Sum
+left and right pointers
+if sum is too low, increment left pointer
+if sum is too high, increment right pointer
+if pointers meet then there is no solution
+
+When to use:
+* finding which numbers add up to a target
+* finding items that sum to 0 in a given array
+* finding max water between two walls
