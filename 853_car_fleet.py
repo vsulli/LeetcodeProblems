@@ -39,11 +39,19 @@ class Solution:
         # cars will be equal when their intial position + speed*i = target
         # i will tell you if there is an index in range where they reach target
         fleets = 0
-        
+        while len(set(position)) != 1:
+            # infinite loop
+            position = [x+speed[position.index(x)] for x in position]
+            print(position)
+
+        return fleets
+
+
 
 sol = Solution()
 
 print(sol.carFleet(target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]))
 # 3
-
+'''
 print(sol.carFleet(target = 10, position = [3], speed = [3])) # 1
+'''
