@@ -23,11 +23,12 @@ class Solution:
         # start as 2 sum
         # then iterate through remaining?
         sorted_nums = sorted(nums)
-        closest_sum = None
+        closest_sum = sum(nums[0:4])
         l = 0
         r = len(nums) - 1
-        m = int(len(nums) - 1 / 2) 
-        while l != r:
+        m = int(len(nums) / 2) 
+        while l <  r:
+            print("mid: " + str(m))
             current_sum = nums[l] + nums[r] + nums[m]
             if abs(target - current_sum) < abs(target - closest_sum):
                 closest_sum = current_sum
