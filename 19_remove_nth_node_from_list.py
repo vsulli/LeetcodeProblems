@@ -50,7 +50,6 @@ class Solution:
                 curr.next = curr.next.next
             curr = curr.next
 
-        printList(head)
         return head
         
 
