@@ -43,13 +43,13 @@ class Solution:
             return ListNode()
         
         count = 1
-        curr = head.next
+        curr = head
         while curr:
             count += 1
             if count == (size - (n -1)):
                 curr.next = curr.next.next
             curr = curr.next
-            
+
         printList(head)
         return head
         
