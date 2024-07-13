@@ -202,8 +202,29 @@ def halfDiamondStar(n: int):
     for j in range(n - 1, 0, -1):
         print("*" * j)
 
-
+'''
 halfDiamondStar(3)
 halfDiamondStar(6)
+'''
 
+# Pattern - 11: Binary Number Triangle Pattern
+'''
+1
+01
+101
+'''
+
+def binaryTriangle(n: int):
+    binary = "1"
+    for i in range(n):
+        print(binary)
+        if binary[0] == "1":
+            binary = "0" + binary
+        else:
+            binary = "1" + binary
+    
+
+
+binaryTriangle(3)
+binaryTriangle(6)
 
