@@ -39,5 +39,21 @@ def numberPyramid(n: int):
         print('')
         num = 1
 
+'''
 numberPyramid(3)
 numberPyramid(6)
+'''
+
+# Pattern-4: Right-Angled Number Pyramid - II
+
+def numberPyramidII(n: int):
+    num = 1 
+    for i in range(n):
+        for j in range(i+1):
+            print(num, end = " ")
+        num += 1
+        print("")
+               
+
+numberPyramidII(3)
+numberPyramidII(6)
