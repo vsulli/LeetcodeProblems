@@ -82,7 +82,6 @@ invertedPyramid(6)
 1
 '''
 def invertedNumberPyramidSame(n: int):
-
     for num in range(n, 0, -1):
         for j in range(num):
             print(num, end = " ")
@@ -91,11 +90,38 @@ def invertedNumberPyramidSame(n: int):
 invertedNumberPyramidSame(3)
 invertedNumberPyramidSame(6)
 '''
+
+# Pattern-6: Inverted Numbered Right Pyramid
+'''
+1 2 3
+1 2
+1
+'''
 def invertedNumberPyramid(n: int):
     for i in range(n, 0, -1):
         for j in range(i):
             print(j+1, end = " ")
         print(" ")
-
+'''
 invertedNumberPyramid(3)
 invertedNumberPyramid(6)
+'''
+
+# Pattern-7: Star Pyramid
+'''
+  *  
+ *** 
+*****  
+'''
+
+def starPyramid(n: int):
+    # 1, 3, 5 
+    # add 2 to every row
+    stars = 1
+    for i in range(n):
+        print("*" * stars)
+        stars += 2
+
+
+starPyramid(3)
+starPyramid(6)
