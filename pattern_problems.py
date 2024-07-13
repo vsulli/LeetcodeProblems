@@ -70,5 +70,32 @@ def invertedPyramid(n: int):
     for num in range(n, 0, -1):
         print("*" * num)
 
+'''
 invertedPyramid(3)
 invertedPyramid(6)
+'''
+
+# Inverted Number Pyramid Same Number
+'''
+3 3 3  
+2 2
+1
+'''
+def invertedNumberPyramidSame(n: int):
+
+    for num in range(n, 0, -1):
+        for j in range(num):
+            print(num, end = " ")
+        print(" ")
+'''
+invertedNumberPyramidSame(3)
+invertedNumberPyramidSame(6)
+'''
+def invertedNumberPyramid(n: int):
+    for i in range(n, 0, -1):
+        for j in range(i):
+            print(j+1, end = " ")
+        print(" ")
+
+invertedNumberPyramid(3)
+invertedNumberPyramid(6)
