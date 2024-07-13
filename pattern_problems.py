@@ -180,6 +180,30 @@ def diamondStar(n: int):
         spaces += 1
 
 
-
+'''
 diamondStar(3)
 diamondStar(6)
+'''
+
+# Pattern - 10: Half Diamond Star Pattern
+'''
+ *  
+  **
+  ***  
+  **
+  * 
+'''
+
+def halfDiamondStar(n: int):
+    star = 1
+    for i in range(n-1):
+        print("*" * star)
+        star += 1
+    for j in range(n - 1, -1, -1):
+        print("*" * star)
+        star -= 1
+
+halfDiamondStar(3)
+halfDiamondStar(6)
+
+
