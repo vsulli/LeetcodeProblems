@@ -69,7 +69,7 @@ n2.next = n3
 n3.next = n4
 n4.next = n5
 
-print(sol.removeNthFromEnd(n1, n = 2))
+print(sol.removeNthFromEnd(n1, n = 1))
 b1 = ListNode(1)
 
 print(sol.removeNthFromEnd(b1, n = 1))
