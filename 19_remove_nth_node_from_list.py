@@ -1,4 +1,5 @@
 '''
+# TODO adjust to have dummy node in first position
 Remove Nth Node From End of List
 Leetcode # 19
 vsulli
