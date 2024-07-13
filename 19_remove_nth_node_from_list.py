@@ -15,12 +15,46 @@ from typing import Optional
 
 # Definition for singly-linked list.
 class ListNode:
-     def __init__(self, val=0, next=None):
+    def __init__(self, val=0, next=None):
          self.val = val
          self.next = next
+
+def printList(head: ListNode):
+    curr = head
+    while curr:
+            print(curr.val)
+            curr = curr.next
+
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        pass
+        # will have to loop through at least once to get the full size
+        # size - (n-1)(node to remove)
+        # if size == 1
+        # return empty node?
+
+        curr = head.next
+        size = 1
+
+        while curr:
+            size += 1
+            curr = curr.next
+        
+        if size == 1:
+            return ListNode()
+        
+        count = 1
+        curr = head.next
+        while curr:
+            count += 1
+            if count == (size - (n -1)):
+                curr.next = curr.next.next
+            curr = curr.next
+            
+        printList(head)
+        return head
+        
+
+            
 
 sol = Solution()
 
