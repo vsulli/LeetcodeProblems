@@ -224,7 +224,33 @@ def binaryTriangle(n: int):
         print("")
     
 
-
+'''
 binaryTriangle(3)
 binaryTriangle(6)
+'''
 
+#TODO Pattern - 12: Number Crown Pattern
+'''
+1    1
+12  21
+123321
+'''
+
+def numberCrown(n: int):
+    spaces = 2*(n-1)
+    for i in range(n):
+        for j in range(1,i):
+            print(str(j) +  " " + str(j))
+        
+    
+'''
+numberCrown(3)
+numberCrown(6)
+'''
+import math
+# logarithmic operation Log10(n) + 1
+def countDigits(n: int):
+    count = int(math.log10(n) + 1)
+    return count
+
+print(countDigits(12345))
