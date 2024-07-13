@@ -1,6 +1,14 @@
-heights = [2,1,2]
+# Striver's A2Z DSA Course
+
+# Printing Patterns
+
+# Pattern-1: Rectangular Star Pattern
+
+def starPattern(n: int):
+    for i in range(n):
+        print("*" * n)
 
 
-min_width = min(heights) * len(heights)
-print(min_width)
-max_area = max(heights, min_width)
+starPattern(3)
+
+starPattern(6)

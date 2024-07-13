@@ -59,6 +59,13 @@ Cracking the Coding Interview
 12. Binary Manipulation
 13. Finding Middle of List with Fast & Slow Pointers
 
+
+## Big O Notation
+3 Rules for Calculating It
+- always calculate the worst-case scenario
+- avoid including constant terms
+- avoid lower values
+
 ## Two Pointers
 
 given a sorted array you can reduce it down to O(n) instead of O(n^2)
