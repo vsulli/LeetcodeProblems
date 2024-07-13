@@ -215,13 +215,13 @@ halfDiamondStar(6)
 '''
 
 def binaryTriangle(n: int):
-    binary = "1"
-    for i in range(n):
-        print(binary)
-        if binary[0] == "1":
-            binary = "0" + binary
-        else:
-            binary = "1" + binary
+    for row in range(0, n):
+        for col in range(0, row + 1):
+            if (((row + col) % 2) == 0):
+                print("1", end = "")
+            else:
+                print("0", end = "")
+        print("")
     
 
 
