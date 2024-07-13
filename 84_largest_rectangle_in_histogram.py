@@ -13,18 +13,33 @@ rectangle in the histogram.
 
 class Solution:
     def largestRectangleArea(self, heights: list[int]) -> int:
-        # given heights, each width is 1
-        # need to loop through 
-        # indices that are adjacent will take the lowest of adjacent
-        # to calculate area
-        max_area = max(heights)
+        # O(n) time
+        # O(n) memory
 
-        for i in range(len(heights)-1):
-            j = i+1
-            area = min(heights[i], heights[j]) * 2
-            max_area = max(area, max_area)
-        return max_area
+        # keep track of max area
+        # keep track of which indices' heights go across
 
+        maxArea = 0
+        stack = [] # index: height
+
+        for i, h in enumerate(heights):
+            start = i
+            # pop when stack has height greater than array
+            while stack and stack[-1][1] > h:
+                index, height = stack.pop()
+                maxArea = max(maxArea, height * (i - index))
+                # extend start index backwards
+                start = index
+            # add new height to stack, starting at previous index
+            stack.append((start, h))
+
+
+        # if there are rectangles still in stack
+        # know they extend full length of array
+        for i, h in stack:
+            maxArea = max(maxArea, h * (len(heights) - i))
+
+        return maxArea
 
 
 
@@ -35,3 +50,5 @@ print(sol.largestRectangleArea(heights = [2,1,5,6,2,3])) # 10
 print(sol.largestRectangleArea(heights = [2,4])) # 4
 
 print(sol.largestRectangleArea(heights = [0,9])) # 9
+
+print(sol.largestRectangleArea(heights = [2,1,2])) # 3

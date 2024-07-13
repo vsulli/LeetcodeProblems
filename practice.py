@@ -1,7 +1,6 @@
-parentheses = []
+heights = [2,1,2]
 
-s = "(abcd)"
-# "dcba"
-# start(end): index before (to left) where you want to stop 
-s = s[0:2] + s[5:1:-1]
-print(s)
+
+min_width = min(heights) * len(heights)
+print(min_width)
+max_area = max(heights, min_width)
