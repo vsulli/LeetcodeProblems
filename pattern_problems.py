@@ -117,9 +117,12 @@ invertedNumberPyramid(6)
 def starPyramid(n: int):
     # 1, 3, 5 
     # add 2 to every row
+    # spaces will decrease from n-1 to 0?
     stars = 1
+    spaces = n - 1
     for i in range(n):
-        print("*" * stars)
+        print(" " * spaces + "*" * stars)
+        spaces -= 1
         stars += 2
 
 
