@@ -1,4 +1,5 @@
 # Striver's A2Z DSA Course
+# https://takeuforward.org/strivers-a2z-dsa-course/must-do-pattern-problems-before-starting-dsa/
 
 # Printing Patterns
 
@@ -125,6 +126,22 @@ def starPyramid(n: int):
         spaces -= 1
         stars += 2
 
-
+'''
 starPyramid(3)
 starPyramid(6)
+'''
+
+# Pattern - 8: Inverted Star Pyramid
+def invertedStarPyramid(n: int):
+    # 1, 3, 5 
+    # add 2 to every row
+    # spaces will decrease from n-1 to 0?
+    stars = 1+2*(n-1)
+    spaces = 0
+    for i in range(n):
+        print(" " * spaces + "*" * stars)
+        spaces += 1
+        stars -= 2
+
+invertedStarPyramid(3)
+invertedStarPyramid(6)
