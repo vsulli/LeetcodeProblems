@@ -132,6 +132,11 @@ starPyramid(6)
 '''
 
 # Pattern - 8: Inverted Star Pyramid
+'''
+*****  
+ ***
+  *
+'''
 def invertedStarPyramid(n: int):
     # 1, 3, 5 
     # add 2 to every row
@@ -143,5 +148,38 @@ def invertedStarPyramid(n: int):
         spaces += 1
         stars -= 2
 
+'''
 invertedStarPyramid(3)
 invertedStarPyramid(6)
+'''
+
+# Pattern - 9:Diamond Star Pattern 
+'''
+  *  
+ ***
+***** 
+*****  
+ ***
+  *   
+'''
+
+def diamondStar(n: int):
+    spaces = n - 1
+    stars = 1
+    for num in range(n):
+        print(" " * spaces + "*" * stars)
+        stars += 2
+        spaces -= 1
+
+    spaces = 0
+    stars = 1 + 2*(n - 1)
+
+    for num in range(n, -1, -1):
+        print(" " * spaces + "*" * stars)
+        stars -= 2
+        spaces += 1
+
+
+
+diamondStar(3)
+diamondStar(6)
