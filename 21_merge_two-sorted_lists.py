@@ -1,9 +1,9 @@
-# TODO Incomplete. Draw out all scenarios. Need solution without extra memory
+
 '''
 Merge Two Sorted Lists
 Leetcode # 21
 vsulli
-19 June 2024
+14 July 2024
 
 You are given the heads of two sorted linked lists
 list1 and list2
@@ -35,24 +35,37 @@ class Solution:
 
         head = ListNode() # make dummy node for head of list
 
-        currA = list1
-        currB = list2
+        # first node of each list
+        tempA = list1
+        tempB = list2
 
-        while currA or currB:
-             # same value - apply a first
-            if currA.val == currB.val or currA.val < currB.val:
-                tempA = currA.next
-                currA.next = currB
-                tempB = currB.next
-                currA.next.next = tempA
-                currB = tempB
-            elif currB.val < currA.val:
-                tempA = currA.next
+        # 1st list less than 2nd
+        if tempA.val < tempB.val:
+            curr =tempA
 
-            
+        elif tempB.val < tempA.val:
+            curr = tempB
+
+        else:
+            curr = tempB
+            head.next = curr
+            while curr:
+                if curr.val == tempB.val:
+                    temp = curr.next
+                    curr.next = tempB 
+                    while curr.next.val < temp.next.val:
+                        curr = curr.next
+                temp2 = curr.next
+                curr.next = temp
+
+        '''
+        while tempA:
+            print(tempA.val)
+            tempA = tempA.next
+        '''
 
 
-        # return head.next as beginning of list
+        return head.next 
         
 
 
@@ -72,4 +85,4 @@ a2.next = a3
 b1.next = b2
 b2.next = b3
 
-sol.mergeTwoLists()
+sol.mergeTwoLists(a1, b1)
