@@ -35,34 +35,33 @@ class Solution:
 
         head = ListNode() # make dummy node for head of list
 
-        # first node of each list
-        tempA = list1
-        tempB = list2
+        # loop through both of the other lists with two pointers
+        # if list 1 is less than list  2 then insert that node, else list 2
 
-        # 1st list less than 2nd
-        if tempA.val < tempB.val:
-            curr =tempA
+        currA = list1
+        currB = list2
 
-        elif tempB.val < tempA.val:
-            curr = tempB
+        while currA or currB:
+            if currA and currB and currA.val < currB.val:
+                inserted = ListNode(currA.val)
+                currA = currA.next
+            elif currA and currB and  currB.val < currA.val:
+                inserted = ListNode(currB.val)
+                currB = currB.next
+            elif currA and currB and currB.val == currA.val:
+                inserted = ListNode(currB.val)
+                currB = currB.next
+            
+            # insert new node into new list
+            while head.next:
+                head = head.next
+            head.next = inserted
 
-        else:
-            curr = tempB
-            head.next = curr
-            while curr:
-                if curr.val == tempB.val:
-                    temp = curr.next
-                    curr.next = tempB 
-                    while curr.next.val < temp.next.val:
-                        curr = curr.next
-                temp2 = curr.next
-                curr.next = temp
 
-        '''
-        while tempA:
-            print(tempA.val)
-            tempA = tempA.next
-        '''
+        while head:
+            print(head.val)
+            head = head.next
+
 
 
         return head.next 
