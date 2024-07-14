@@ -26,45 +26,21 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        # set pointers to beginning of both lists
-        # compare those nodes
-        # if same, take list1 first, then add list2, increment
-        # else take lower
-            # increment that list
-        # keep going until both are None
 
-        head = ListNode() # make dummy node for head of list
+        dummy = node = ListNode()
 
-        # loop through both of the other lists with two pointers
-        # if list 1 is less than list  2 then insert that node, else list 2
+        while list1 and list2:
+            if list1.val < list2.val:
+                node.next = list1
+                list1 = list1.next
+            else:
+                node.next = list2
+                list2 = list2.next
+            node = node.next
 
-        currA = list1
-        currB = list2
+        node.next = list1 or list2
 
-        while currA or currB:
-            if currA and currB and currA.val < currB.val:
-                inserted = ListNode(currA.val)
-                currA = currA.next
-            elif currA and currB and  currB.val < currA.val:
-                inserted = ListNode(currB.val)
-                currB = currB.next
-            elif currA and currB and currB.val == currA.val:
-                inserted = ListNode(currB.val)
-                currB = currB.next
-            
-            # insert new node into new list
-            while head.next:
-                head = head.next
-            head.next = inserted
-
-
-        while head:
-            print(head.val)
-            head = head.next
-
-
-
-        return head.next 
+        return dummy.next
         
 
 
