@@ -20,10 +20,7 @@ def fib(n):
 class Solution:
     
     def climbStairs(self, n: int) -> int:
-        # need a recursive answer becuase once you check one combo 
-        # you need to check all others
         return fib(n + 1)
-        # ways to climb(n) = ways(n - 1) + ways( n - 2)
         
 
 
