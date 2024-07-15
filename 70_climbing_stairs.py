@@ -12,15 +12,17 @@ Each time you can either climb
 ways can you climb to the top?
 '''
 
-def fib(n):
-        if n <= 1:
-            return n
-        return fib(n-1) + fib(n-2)
 
 class Solution:
     
     def climbStairs(self, n: int) -> int:
-        return fib(n + 1)
+        # ways(n) = ways(n-1) + ways(n-2)
+        # always the sum of the two previous
+
+        # have to store 2 and 3 always?
+        ways = 0
+        for i in range(n+1):
+            pass
         
 
 
@@ -29,3 +31,5 @@ sol = Solution()
 print(sol.climbStairs(n = 2)) # 2 ways (1 + 1) or just (2)
 
 print(sol.climbStairs(n = 3)) #3 (1 + 1 + 1), ( 1 + 2), (2 + 1)
+
+# 2 = 2, 3 = 3, 4 = 5, 5 = 8?
