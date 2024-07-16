@@ -30,13 +30,16 @@ class Solution:
         
 
         # have to store 2 and 3 always?
-        n2 = 2
-        n3 = 3
+
+        last_two = [2,3]
+        n2 = [2]
+        n3 = [3]
 
         ways = n2 + n3
         # add from 4 to n?
         for i in range(n+1):
-            pass
+            ways = last_two[0] + last_two[1]
+            
         
 
 
