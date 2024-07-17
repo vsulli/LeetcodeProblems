@@ -26,25 +26,12 @@ or phrase using all the original letters
 exactly once. For example, "dacb" is an 
 anagram of "abdc".
 '''
+from itertools import groupby
+
+
 class Solution:
     def removeAnagrams(self, words: list[str]) -> list[str]:
-        # initialize first pointer left
-        # check right pointer against all ones to right until you reach a different pattern
-        # change value of left pointer to this index
-        # change value of right pointer to this index + 1
-            # increment this right pointer
-        # not best runtime
-        i1 = 0
-        i2 = 1
-
-        while i2 <= len(words) - 1 and i1 != i2:
-
-            while i2 <= len(words) - 1 and sorted(words[i1]) == sorted(words[i2]):
-                del words[i2]
-            i1 = i2
-            i2 = i1 + 1
-            
-        return words
+        return [next(g) for _, g in groupby(words, sorted)]
 
 sol = Solution()
 
