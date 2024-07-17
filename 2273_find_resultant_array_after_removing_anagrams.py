@@ -36,12 +36,14 @@ class Solution:
         i1 = 0
         i2 = 1
 
-        while i1 != i2:
-            if sorted(words[i1]) == sorted(words[i2]):
+        while i2 <= len(words) - 1 and i1 != i2:
+
+            while i2 <= len(words) - 1 and sorted(words[i1]) == sorted(words[i2]):
                 del words[i2]
-            else:
                 i2 += 1
-                i1 = i2 - 1
+            i1 = i2
+            i2 = i1 + 1
+            
         return words
 
 sol = Solution()
