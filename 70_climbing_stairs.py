@@ -17,10 +17,9 @@ ways can you climb to the top?
 class Solution:
     
     def climbStairs(self, n: int) -> int:
-        # ways(n) = ways(n-1) + ways(n-2)
-        # always the sum of the two previous
-
+        #  initialize array of 0s
         dp = [0]*(n+2)
+        
         dp[0] = 0
         dp[1] = 1
         dp[2] = 2
