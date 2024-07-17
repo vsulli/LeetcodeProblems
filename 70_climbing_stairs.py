@@ -12,6 +12,13 @@ Each time you can either climb
 ways can you climb to the top?
 '''
 
+from functools import lru_cache
+
+@lru_cache(maxsize = 2)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
 
 class Solution:
     
@@ -19,27 +26,9 @@ class Solution:
         # ways(n) = ways(n-1) + ways(n-2)
         # always the sum of the two previous
 
-        if n == 1:
-            return 1
-        
-        elif n == 2:
-            return 2
-        
-        elif n == 3:
-            return 3
-        
+        return fib(n+1)
+       
 
-        # have to store 2 and 3 always?
-
-        last_two = [2,3]
-        n2 = [2]
-        n3 = [3]
-
-        ways = n2 + n3
-        # add from 4 to n?
-        for i in range(n+1):
-            ways = last_two[0] + last_two[1]
-            
         
 
 
