@@ -40,7 +40,6 @@ class Solution:
 
             while i2 <= len(words) - 1 and sorted(words[i1]) == sorted(words[i2]):
                 del words[i2]
-                i2 += 1
             i1 = i2
             i2 = i1 + 1
             
