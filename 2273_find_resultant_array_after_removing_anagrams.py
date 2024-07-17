@@ -33,6 +33,7 @@ class Solution:
         # change value of left pointer to this index
         # change value of right pointer to this index + 1
             # increment this right pointer
+        # not best runtime
         i1 = 0
         i2 = 1
 
