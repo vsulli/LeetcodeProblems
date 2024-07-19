@@ -15,26 +15,28 @@ F(n) = F(n - 1) + F(n - 2), for n > 1.
 Given n, calculate F(n).
 '''
 
-from functools import lru_cache
-
-
 class Solution:
-    @lru_cache(maxsize = 2)
+
     def fib(self, n: int) -> int:
-        # each number is the sum of the two before it
-        f0 = 0
-        f1 = 1
+        my_array = [0] * (n+2) # need to initialize array size + two extras
+
         if n == 0:
             return 0
+        
         if n == 1:
             return 1
         
-        last_two = [0,1]
+        if n == 2:
+            return 1
 
-        for i in range(2, n+1):
-            res = sum(last_two)
-            last_two.append(res)
-        return res
+        my_array[0] = 0
+        my_array[1] = 1
+        my_array[2] = 1
+
+
+        for i in range(3, n+1):
+            my_array[i] = my_array[i-1] + my_array[i-2]
+        return my_array[n]
     
 
 
