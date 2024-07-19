@@ -1,4 +1,4 @@
-'''
+''' # TODO WIP
 Frequency of the Most Frequent Element
 Leetcode # 1838
 vsulli
@@ -34,6 +34,12 @@ class Solution:
                 num_hashmap[nums[i]] += 1
             else:
                 num_hashmap[nums[i]] = 1
+
+        # don't necessarily need hashmap?
+        # start at index 0
+        # say that is the number to reach, max_count = 1
+        # move to next index, is there anything you can add to make it nums[0] ?
+        
 
         # should calculate max here if there is one?
         # how do you calculate which number you need to make?
