@@ -26,7 +26,31 @@ class Solution:
         # nums already sorted, need to calculate how far away numbers are to see which one can be incremented
         # return max frequency
 
+        max = 1
+        num_hashmap = {}
+
+        for i in range(len(nums)):
+            if nums[i] in num_hashmap:
+                num_hashmap[nums[i]] += 1
+            else:
+                num_hashmap[nums[i]] = 1
+
+        # should calculate max here if there is one?
+        # how do you calculate which number you need to make?
+        inc = 0
+        i = 0
+        while inc < k:
+            added = nums[i]
+            while added not in nums[i+1:] and not inc > k:
+                inc += 1
+                added = nums[i] + inc
+            
+                # once you've found which number to reach, 
+            i += 1
         
+        print(num_hashmap)
+        return max
+
 
 
 sol = Solution()
