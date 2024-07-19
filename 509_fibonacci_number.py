@@ -18,25 +18,9 @@ Given n, calculate F(n).
 class Solution:
 
     def fib(self, n: int) -> int:
-        my_array = [0] * (n+2) # need to initialize array size + two extras
-
-        if n == 0:
-            return 0
-        
-        if n == 1:
-            return 1
-        
-        if n == 2:
-            return 1
-
-        my_array[0] = 0
-        my_array[1] = 1
-        my_array[2] = 1
-
-
-        for i in range(3, n+1):
-            my_array[i] = my_array[i-1] + my_array[i-2]
-        return my_array[n]
+        if n <= 1:
+            return n
+        return self.fib(n - 1) + self.fib(n - 2)
     
 
 
