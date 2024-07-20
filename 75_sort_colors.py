@@ -18,9 +18,33 @@ You must solve this problem without using
 
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
-        pass
+        i1 = 0
+        i2 = 1
+        # find minimum and set up as first spot
+        min_num_index = nums.index(min(nums))
+        temp = nums[i1]
+        nums[i1] = nums[min_num_index]
+        nums[min_num_index] = temp
+
+        # print(min_num_index)
+        # print(nums)
+        i1 = i1+1
+        i2 = i1 + 1
+
+        while i1 < i2 and i2 <- len(nums) - 1:
+            if nums[i2] < nums[i1]:
+                temp = nums[i1]
+                nums[i1] = nums[i2]
+                nums[i2] = temp
+                i2 += 1
+            else:
+                i1+=1
+                i2 = i1 + 1
+        print(nums)
+        
 
 sol = Solution()
 
 sol.sortColors(nums = [2,0,2,1,1,0]) # [0,0,1,1,2,2]
 sol.sortColors(nums = [2,0,1]) # [0,1,2]
+sol.sortColors(nums = [2,2,1,0,1,0,2]) # [0,0,1,1,2,2,2]
