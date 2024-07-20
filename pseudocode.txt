@@ -117,9 +117,21 @@ Concepts: array, hash table, string, sorting
 ==============================================
  ---------------------------------------------
  Pseudocode:
+initialize variables for zeroes, ones, and length of array
+
+get the count for zeroes and ones by looping through array
+
+assign the values in each range to 0, 1, and 2 using for lookups
+(remember that python starts at 0)
+
 
 "Tricks" to Remember: 
-Concepts:
+You know beforehand how big the array is,
+and you know the order they have to be in.
+You just have to get the count to know which indices
+need to be which values
+
+Concepts: Array, Two Pointers, Sorting
 
 ==============================================
 141. Linked List Cycle
