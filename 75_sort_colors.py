@@ -34,15 +34,14 @@ class Solution:
         i2 = i1 + 1
 
         while i1 < i2 and i2 <= (len(nums) - 1):
-            if nums[i2] < nums[i1]:
-                while i2 <= len(nums) - 1 and nums[i2] < nums[i1]:
+
+            for j in range(i2, len(nums)):
+                if nums[j] < nums[i1]:
                     temp = nums[i1]
-                    nums[i1] = nums[i2]
-                    nums[i2] = temp
-                    i2 += 1
-            else:
-                i1+=1
-                i2 = i1 + 1
+                    nums[i1] = nums[j]
+                    nums[j] = temp
+            i1+=1
+            i2 = i1 + 1
         print(nums)
         
 
