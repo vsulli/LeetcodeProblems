@@ -28,13 +28,10 @@ class Solution:
         nums[i1] = nums[min_num_index]
         nums[min_num_index] = temp
 
-        # print(min_num_index)
-        # print(nums)
         i1 = 1
         i2 = i1 + 1
 
         while i1 < i2 and i2 <= (len(nums) - 1):
-
             for j in range(i2, len(nums)):
                 if nums[j] < nums[i1]:
                     temp = nums[i1]
@@ -42,7 +39,6 @@ class Solution:
                     nums[j] = temp
             i1+=1
             i2 = i1 + 1
-        print(nums)
         
 
 sol = Solution()
