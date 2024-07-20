@@ -25,36 +25,35 @@ class Solution:
         # first need to initalize hashmap with frequencies
         # nums already sorted, need to calculate how far away numbers are to see which one can be incremented
         # return max frequency
+        nums = sorted(nums)
 
         max = 1
-        num_hashmap = {}
-
-        for i in range(len(nums)):
-            if nums[i] in num_hashmap:
-                num_hashmap[nums[i]] += 1
-            else:
-                num_hashmap[nums[i]] = 1
-
+        count = 0
+        seen = set()
         # don't necessarily need hashmap?
         # start at index 0
         # say that is the number to reach, max_count = 1
         # move to next index, is there anything you can add to make it nums[0] ?
-        
+        i1 = 0
+        i2 = 1
+        while len(seen) != len(nums):
+            seen.add(nums[i1])
+            target = nums[i1]
+            temp_array = nums.copy()
+            i2 = i1 + 1
+            while count < k:
+                # if difference pos and still have enough moves
+                if target - nums[i2] >= 0 and k - count >= target - nums[i2]:
+                    count += target - nums[i2]
+                    i2+=1
+                else:
+                    i1+=1
+                    i2 = i1 + 1
 
-        # should calculate max here if there is one?
-        # how do you calculate which number you need to make?
-        inc = 0
-        i = 0
-        while inc < k:
-            added = nums[i]
-            while added not in nums[i+1:] and not inc > k:
-                inc += 1
-                added = nums[i] + inc
-            
-                # once you've found which number to reach, 
-            i += 1
+
+
         
-        print(num_hashmap)
+        
         return max
 
 
