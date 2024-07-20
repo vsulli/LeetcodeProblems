@@ -18,27 +18,24 @@ You must solve this problem without using
 
 class Solution:
     def sortColors(self, nums: list[int]) -> None:
-        if len(nums) == 1:
-            return 
-        i1 = 0
-        i2 = 1
-        # find minimum and set up as first spot
-        min_num_index = nums.index(min(nums))
-        temp = nums[i1]
-        nums[i1] = nums[min_num_index]
-        nums[min_num_index] = temp
+        # count the number of occurrences for each number
+        # set indices for count length to each number
+        zeroes, ones, n = 0, 0, len(nums)
 
-        i1 = 1
-        i2 = i1 + 1
+        for num in nums:
+            if num == 0:
+                zeroes += 1
+            elif num == 1:
+                ones += 1
+            # don't have to keep track of 2's
 
-        while i1 < i2 and i2 <= (len(nums) - 1):
-            for j in range(i2, len(nums)):
-                if nums[j] < nums[i1]:
-                    temp = nums[i1]
-                    nums[i1] = nums[j]
-                    nums[j] = temp
-            i1+=1
-            i2 = i1 + 1
+        for i in range(0, zeroes):
+            nums[i] = 0
+        for i in range(zeroes, zeroes + ones):
+            nums[i] = 1
+
+        for i in range(zeroes + ones, n):
+            nums[i] = 2
         
 
 sol = Solution()

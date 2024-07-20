@@ -113,6 +113,15 @@ mutable, i.e. lists. Must convert to tuple first
 Concepts: array, hash table, string, sorting
 
 ==============================================
+75. Sort Colors
+==============================================
+ ---------------------------------------------
+ Pseudocode:
+
+"Tricks" to Remember: 
+Concepts:
+
+==============================================
 141. Linked List Cycle
 ==============================================
 Given head, the head of a linked list, 
