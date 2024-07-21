@@ -19,7 +19,7 @@ linked list are 0-indexed.
 
 
 class Node:
-    def __init__(self, val, next):
+    def __init__(self, val, next=None):
         self.val = val
         self.next = None
 
@@ -64,7 +64,21 @@ class MyLinkedList:
 
 
     def addAtIndex(self, index: int, val: int) -> None:
-        pass
+        if (index == 0):
+            self.addAtHead(val)
+
+        i = 0
+        curr = self.head
+        # go to node before insertion
+        while curr != None and i + 1 != index:
+            i += 1
+            curr = curr.next
+        
+        if curr != None:
+            inserted_node = Node(val)
+            inserted_node.next = curr.next
+            curr.next = inserted_node
+
 
     def deleteAtIndex(self, index: int) -> None:
         i = 0
