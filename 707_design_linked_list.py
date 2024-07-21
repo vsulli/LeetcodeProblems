@@ -16,87 +16,87 @@ node in the linked list. Assume all nodes in the
 linked list are 0-indexed.
 '''
 
-
-
-class Node:
-    def __init__(self, val, next=None):
+class ListNode:
+    def __init__(self, val):
         self.val = val
         self.next = None
 
-class MyLinkedList:
 
+class MyLinkedList(object):
     def __init__(self):
-        # Dummy Node
-        self.head = Node(-1)
-        self.tail = self.head
+        """
+        Initialize your data structure here.
+        """
+        self.head = None
+        self.size = 0
 
     def get(self, index: int) -> int:
-        curr = self.head.next
+        """
+        Get the value of the index-th node in the linked list. If the index is invalid, return -1.
+        """
+        if index < 0 or index >= self.size:
+            return -1
 
-        i = 0
-        while curr:
-            if i == index:
-                return curr.val
-            i += 1
-            curr = curr.next
-        # if index does not exist
-        return -1
+        current = self.head
+
+        for _ in range(0, index):
+            current = current.next
+
+        return current.val
 
     def addAtHead(self, val: int) -> None:
-        # create new node
-        inserted_node = Node(val)
-
-        # its next will be current list excluding dummy
-        inserted_node.next = self.head.next
-
-        # set dummy pointer to new node
-        self.head.next = inserted_node
-
-        # if list empty before inserting
-        if not inserted_node.next:
-            self.tail = inserted_node
+        """
+        Add a node of value val before the first element of the linked list. After the insertion, the new node will be
+        the first node of the linked list.
+        """
+        self.addAtIndex(0, val)
 
     def addAtTail(self, val: int) -> None:
-        # list empty, tail points to dummy node
-        # also works for real node
-        self.tail = Node(val)
-        self.tail = self.tail.next
-
+        """
+        Append a node of value val to the last element of the linked list.
+        """
+        self.addAtIndex(self.size, val)
 
     def addAtIndex(self, index: int, val: int) -> None:
-        if (index == 0):
-            self.addAtHead(val)
+        """
+        Add a node of value val before the index-th node in the linked list. If index equals to the length of linked
+        list, the node will be appended to the end of linked list. If index is greater than the length, the node will not
+        be inserted.
+        """
+        if index > self.size:
+            return
 
-        i = 0
-        curr = self.head
-        # go to node before insertion
-        while curr != None and i + 1 != index:
-            i += 1
-            curr = curr.next
-        
-        if curr != None:
-            inserted_node = Node(val)
-            inserted_node.next = curr.next
-            curr.next = inserted_node
+        current = self.head
+        new_node = ListNode(val)
 
+        if index <= 0:
+            new_node.next = current
+            self.head = new_node
+        else:
+            for _ in range(index - 1):
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
+
+        self.size += 1
 
     def deleteAtIndex(self, index: int) -> None:
-        i = 0
-        curr = self.head
+        """
+        Delete the index-th node in the linked list, if the index is valid.
+        """
+        if index < 0 or index >= self.size:
+            return
 
-        while curr:
-            # get to node before removal
-            while i < index and curr:
-                i += 1
-                curr = curr.next
+        current = self.head
 
-        # node before and target node exist
-        if curr and curr.next:
-            # if you must delete last node, need to update tail pointer
-            if curr.next == self.tail:
-                self.tail = curr
-            curr.next = curr.next.next
+        if index == 0:
+            self.head = self.head.next
+        else:
+            for _ in range(0, index - 1):
+                current = current.next
+            current.next = current.next.next
 
+        self.size -= 1
         
 
 
