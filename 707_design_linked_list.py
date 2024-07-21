@@ -67,7 +67,24 @@ class MyLinkedList:
         pass
 
     def deleteAtIndex(self, index: int) -> None:
-        pass
+        i = 0
+        curr = self.head
+
+        while curr:
+            # get to node before removal
+            while i < index and curr:
+                i += 1
+                curr = curr.next
+
+        # node before and target node exist
+        if curr and curr.next:
+            # if you must delete last node, need to update tail pointer
+            if curr.next == self.tail:
+                self.tail = curr
+            curr.next = curr.next.next
+
+        
+
 
 
 # Your MyLinkedList object will be instantiated and called as such:
