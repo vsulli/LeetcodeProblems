@@ -16,25 +16,58 @@ node in the linked list. Assume all nodes in the
 linked list are 0-indexed.
 '''
 
+
+
+class Node:
+    def __init__(self, val, next):
+        self.val = val
+        self.next = None
+
 class MyLinkedList:
 
     def __init__(self):
-        
+        # Dummy Node
+        self.head = Node(-1)
+        self.tail = self.head
 
     def get(self, index: int) -> int:
-        
+        curr = self.head.next
+
+        i = 0
+        while curr:
+            if i == index:
+                return curr.val
+            i += 1
+            curr = curr.next
+        # if index does not exist
+        return -1
 
     def addAtHead(self, val: int) -> None:
-        
+        # create new node
+        inserted_node = Node(val)
+
+        # its next will be current list excluding dummy
+        inserted_node.next = self.head.next
+
+        # set dummy pointer to new node
+        self.head.next = inserted_node
+
+        # if list empty before inserting
+        if not inserted_node.next:
+            self.tail = inserted_node
 
     def addAtTail(self, val: int) -> None:
-        
+        # list empty, tail points to dummy node
+        # also works for real node
+        self.tail = Node(val)
+        self.tail = self.tail.next
+
 
     def addAtIndex(self, index: int, val: int) -> None:
-        
+        pass
 
     def deleteAtIndex(self, index: int) -> None:
-        
+        pass
 
 
 # Your MyLinkedList object will be instantiated and called as such:
