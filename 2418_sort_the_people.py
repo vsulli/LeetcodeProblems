@@ -9,11 +9,17 @@ vsulli
 
 class Solution:
     def sortPeople(self, names: list[str], heights: list[int]) -> list[str]:
-        res = list(zip(heights, names))
-        res.sort(key=lambda x: x[0], reverse=True)
-        # can unzip using zip and * operator
-        res = list(zip(*res))
-        return res[1]
+        n: int = len(names)
+        mapping: dict[int, str] = {}  # height -> name (heights are distinct)
+        for ind in range(n):
+            mapping[heights[ind]] = names[ind]
+
+        heights.sort(reverse=True)
+        for ind in range(n):
+            h: int = heights[ind]
+            names[ind] = mapping[h]
+
+        return names
 
 
 
