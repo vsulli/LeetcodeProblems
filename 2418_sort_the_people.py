@@ -9,15 +9,11 @@ vsulli
 
 class Solution:
     def sortPeople(self, names: list[str], heights: list[int]) -> list[str]:
-        res = [None] * len(heights)
-        for i, n in enumerate(names):
-            res[i] = [heights[i], n]
-
+        res = list(zip(heights, names))
         res.sort(key=lambda x: x[0], reverse=True)
-        for i in range(len(res)):
-            temp = res[i][1]
-            res[i] = temp
-        return res
+        # can unzip using zip and * operator
+        res = list(zip(*res))
+        return res[1]
 
 
 
