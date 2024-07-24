@@ -55,4 +55,8 @@ n2.next = n3
 
 sol = Solution()
 
+
+
 print(sol.getDecimalValue(n1))
+
+print(sol.getDecimalValue(n1)) # getting wrong answer for input [1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]
