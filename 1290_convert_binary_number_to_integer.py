@@ -36,7 +36,7 @@ class Solution:
         while curr:
             num = str(curr.val) + num
             curr = curr.next
-        
+
         # loop through string backwards
         for i in range(len(num)-1, -1, -1):
             sum += (2 ** exp) * int(num[i])
@@ -46,17 +46,42 @@ class Solution:
         return sum
 
 
-n1 = ListNode(1)
+n1 = ListNode(0)
 n2 = ListNode(0)
-n3 = ListNode(1)
+n3 = ListNode(0)
+n4 = ListNode(0)
+n5 = ListNode(0)
+n6 = ListNode(0)
+n7 = ListNode(1)
+n8 = ListNode(1)
+n9 = ListNode(1)
+n10 = ListNode(0)
+n11 = ListNode(0)
+n12 = ListNode(1)
+n13 = ListNode(0)
+n14 = ListNode(0)
+n15 = ListNode(1)
+
 
 n1.next = n2
 n2.next = n3
+n3.next = n4
+n4.next = n5
+n5.next = n6
+n6.next = n7
+n7.next = n8
+n8.next = n9
+n9.next = n10
+n10.next = n11
+n11.next = n12
+n12.next = n13
+n13.next = n14
+n14.next = n15
 
 sol = Solution()
 
 
 
-print(sol.getDecimalValue(n1))
+
 
 print(sol.getDecimalValue(n1)) # getting wrong answer for input [1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]
