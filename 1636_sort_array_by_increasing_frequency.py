@@ -30,9 +30,15 @@ class Solution:
         # print(num_map)
 
         # how to handle multiple values with same frequency?
+        # way to check if next number also same frequency? - while loop
+        same_frequency = []
+        freq = 0
         for pair in num_map:
+            freq = num_map[pair]
+            same_frequency.append(pair)
             for i in range(num_map[pair]):
                 res.append(pair)
+
         return res
 
 
