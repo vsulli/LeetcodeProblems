@@ -15,31 +15,23 @@ Return the sorted array.
 
 class Solution:
     def frequencySort(self, nums: list[int]) -> list[int]:
-        res = []
 
         num_map = {} # num: frequency
 
+        # get count for each num in nums
+        # could be replaced by count = Counter(nums)
         for i in range(len(nums)):
             if nums[i] in num_map:
                 num_map[nums[i]] += 1
             else:
                 num_map[nums[i]] = 1
 
-        # sort dictionary
-        num_map = {k: v for k, v in sorted(num_map.items(), key=lambda item: item[1])}
-        # print(num_map)
+        def custom_sort(n):
+            return (num_map[n], -n)
 
-        # how to handle multiple values with same frequency?
-        # way to check if next number also same frequency? - while loop
-        same_frequency = []
-        freq = 0
-        for pair in num_map:
-            freq = num_map[pair]
-            same_frequency.append(pair)
-            for i in range(num_map[pair]):
-                res.append(pair)
+        nums.sort(key = custom_sort)
 
-        return res
+        return nums
 
 
 sol = Solution()
