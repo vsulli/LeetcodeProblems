@@ -27,8 +27,12 @@ class Solution:
 
         # sort dictionary
         num_map = {k: v for k, v in sorted(num_map.items(), key=lambda item: item[1])}
-        print(num_map)
+        # print(num_map)
 
+        # how to handle multiple values with same frequency?
+        for pair in num_map:
+            for i in range(num_map[pair]):
+                res.append(pair)
         return res
 
 
