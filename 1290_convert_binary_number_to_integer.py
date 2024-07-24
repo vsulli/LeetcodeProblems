@@ -21,10 +21,30 @@ class ListNode:
      def __init__(self, val=0, next=None):
          self.val = val
          self.next = next
-         
+
 class Solution:
     def getDecimalValue(self, head: ListNode) -> int:
-        pass
+        # loop all the way through to create an integer?
+        # start from right-most digit
+        # take 2 ^ exp * digit
+        # add to sum
+        num = ""
+        sum = 0
+        exp = 0
+
+        curr = head
+        while curr:
+            num = str(curr.val) + num
+            curr = curr.next
+        
+        # loop through string backwards
+        for i in range(len(num)-1, -1, -1):
+            sum += (2 ** exp) * int(num[i])
+            exp += 1
+            
+        
+        return sum
+
 
 n1 = ListNode(1)
 n2 = ListNode(0)
