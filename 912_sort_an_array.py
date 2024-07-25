@@ -14,13 +14,37 @@ functions in O(nlog(n)) time
 complexity and with the smallest 
 space complexity possible.
 '''
+def heapify(array, size, i):
+       largest = i
+       l = 2 * i + 1
+       r = 2 * i + 2
+
+       # check if left child of root is greater than root
+       if l < size and array[largest] < array[l]:
+        largest = l
+
+        # see if right child exists and is greater than root
+        if r < size and array[largest] < array[r]:
+          largest = r
+
+        if largest != i:
+          array[i], array[largest]  = array[largest], array[i]
+
+          heapify(array, size, largest)
 
 class Solution:
     def sortArray(self, nums: list[int]) -> list[int]:
-      # can't use built-in functions
-      # has to be O(nlog(n)) 
-      # use some kind of binary search?
-      pass
+        size = len(nums)
+
+        # build maxheap
+        for i in range(size // 2 - 1, -1, -1):
+            heapify(nums, size, i)
+
+        for i in range(size -1, 0, -1):
+           nums[i], nums[0] = nums[0], nums[i]
+           heapify(nums, i, 0)
+
+        return nums
 
 sol = Solution()
 
