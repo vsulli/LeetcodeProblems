@@ -67,11 +67,18 @@ n5 = ListNode(5)
 
 n6 = ListNode(5)
 
+n7 = ListNode(3)
+n8 = ListNode(5)
+
 n1.next = n2
 n2.next = n3
 n3.next = n4
 n4.next = n5
 
+n7.next = n8
+
 print(sol.reverseBetween(head = n1, left = 2, right = 4)) # [1,4,3,2,5]
 
 print(sol.reverseBetween(head = n6, left = 1, right = 1)) # [5]
+
+print(sol.reverseBetween(head = n7, left = 1, right = 2)) # [5, 3]
