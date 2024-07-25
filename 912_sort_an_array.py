@@ -14,6 +14,8 @@ functions in O(nlog(n)) time
 complexity and with the smallest 
 space complexity possible.
 '''
+
+# heap sort
 def heapify(array, size, i):
        largest = i
        l = 2 * i + 1
