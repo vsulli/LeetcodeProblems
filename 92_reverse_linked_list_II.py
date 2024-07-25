@@ -23,6 +23,7 @@ class ListNode:
          
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        n = 1
         if left == right:
             return head
         
@@ -35,12 +36,14 @@ class Solution:
         while curr:
 
             # beginning of reverse section
-            if curr.val == left:
-                while curr.val != right:
+            if n == left:
+                while n != right:
                     reverse_section.append(curr.val)
+                    n += 1
                     curr = curr.next
                 reverse_section.append(curr.val)
                 curr = curr.next
+                n += 1
                  # end of reverse section
                 print(reverse_section)
                 for i in range(len(reverse_section)-1, -1, -1):
@@ -52,6 +55,7 @@ class Solution:
                 res.next = ListNode(curr.val)
                 res = res.next
                 curr = curr.next
+                n += 1
 
         return rev_res.next
 
