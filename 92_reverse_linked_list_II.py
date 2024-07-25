@@ -44,8 +44,8 @@ class Solution:
                 reverse_section.append(curr.val)
                 curr = curr.next
                 n += 1
+                
                  # end of reverse section
-                print(reverse_section)
                 for i in range(len(reverse_section)-1, -1, -1):
                     res.next = ListNode(reverse_section[i])
                     res = res.next
