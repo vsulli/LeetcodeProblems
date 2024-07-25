@@ -36,16 +36,13 @@ class Solution:
 
             # beginning of reverse section
             if curr.val == left:
+                while curr.val != right:
+                    reverse_section.append(curr.val)
+                    curr = curr.next
                 reverse_section.append(curr.val)
                 curr = curr.next
-
-            # end of reverse section
-            elif curr.val == right:
-                reverse_section.append(curr.val)
-                curr = curr.next
-
-                # iterate through the list in backwards order
-                # add to res
+                 # end of reverse section
+                print(reverse_section)
                 for i in range(len(reverse_section)-1, -1, -1):
                     res.next = ListNode(reverse_section[i])
                     res = res.next
