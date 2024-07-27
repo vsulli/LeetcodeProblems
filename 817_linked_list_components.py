@@ -36,7 +36,7 @@ class Solution:
                 # case that value is last index
                 if curr.val == nums[len(nums) -1]:
                     res.append([curr.val])
-                    return res
+                    return len(res)
                 # else
                 elif curr.next and curr.next.val in nums:
                     res.append([curr.val, curr.next.val])
@@ -44,7 +44,7 @@ class Solution:
             else:
                 curr = curr.next
 
-        return res
+        return len(res)
 
 
 
