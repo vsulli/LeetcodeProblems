@@ -3,29 +3,46 @@
 from typing import Optional
 
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
         
 class Solution:
+    def printList(self, head: ListNode):
+
+        curr = head
+        while curr:
+            print(curr.val) 
+            curr = curr.next
+
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # need to have flag turned on/off once 0 reached
         # need to store current sum of inner section
         # need to create new linked list for res
 
-        flag = False
+        flag = True
         sum = 0
-        dummy = ListNode()
+        dummy = ListNode(-1)
         res = dummy
 
-        curr = head
+        curr = head.next
 
         while curr:
             # second 0, add new node to result 
             if curr.val == 0 and flag:
                 res.next = ListNode(sum)
-                
+                res = res.next
+                sum = 0
+                curr = curr.next
+
+            else:
+                sum += curr.val
+                curr = curr.next
+
+        return dummy.next
+
 
 
 
@@ -49,4 +66,5 @@ n5.next = n6
 n6.next = n7
 n7.next = n8
 
-print(sol.mergeNodes(n1))
+n8 = sol.mergeNodes(n1)
+sol.printList(n8)
