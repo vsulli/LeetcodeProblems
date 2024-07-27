@@ -10,31 +10,23 @@ class ListNode:
         self.next = next
         
 class Solution:
-    def numComponents(self, head: Optional[ListNode], nums: list[int]) -> int:
-        num_set = set(nums)
+    def linkedListValues(self, head: Optional[ListNode]) -> list[int]:
+        res = []
+        curr = head
 
-        res = 0
-        flag = False
-        while head:
-            if head.val not in num_set and flag:
-                res += 1
-                flag = False
-            elif head.val in num_set:
-                flag = True
-            head = head.next
+        while curr:
+            res.append(curr.val)
+            curr = curr.next
 
-        if flag:
-            res += 1
-
-        return res 
+        return res
 
 
 
 
-n1 = ListNode(0)
-n2 = ListNode(1)
-n3 = ListNode(2)
-n4 = ListNode(3)
+n1 = ListNode("a")
+n2 = ListNode("b")
+n3 = ListNode("c")
+n4 = ListNode("d")
 
 n1.next = n2
 n2.next = n3
@@ -42,15 +34,4 @@ n3.next = n4
 
 sol = Solution()
 
-print(sol.numComponents(head = n1, nums = [0,1,3]))# 2
-# [0, 1] and [3]
-
-n5 = ListNode(4)
-n4.next = n5
-print(sol.numComponents(head = n1, nums = [0, 3, 1, 4])) # 2
-# [0, 1] and [3,4]
-
-n3.next = None
-
-print(sol.numComponents(head = n1, nums = [0, 2])) # 2 according to output
-# how? orphan component - counts as connected to itself
+print(sol.linkedListValues(n1))
