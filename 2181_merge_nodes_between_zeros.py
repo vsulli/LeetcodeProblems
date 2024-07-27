@@ -18,30 +18,25 @@ class Solution:
             curr = curr.next
 
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # need to have flag turned on/off once 0 reached
-        # need to store current sum of inner section
-        # need to create new linked list for res
-
-        flag = True
+        # BASE CASE -> if we have a single zero, simply return null
+        if not head.next:
+            return None
+        
+        # fetch sum from current 0 to next 0
+        ptr = head.next
         sum = 0
-        dummy = ListNode(-1)
-        res = dummy
-
-        curr = head.next
-
-        while curr:
-            # second 0, add new node to result 
-            if curr.val == 0 and flag:
-                res.next = ListNode(sum)
-                res = res.next
-                sum = 0
-                curr = curr.next
-
-            else:
-                sum += curr.val
-                curr = curr.next
-
-        return dummy.next
+        while ptr.val != 0:
+            sum += ptr.val
+            ptr = ptr.next
+        
+        # assign sum on the first node between nodes having value 0
+        head.next.val = sum
+        
+        # call and get the answer and connect the answer to next of head->next
+        head.next.next = self.mergeNodes(ptr)
+        
+        # return head->next..=> new head
+        return head.next
 
 
 
