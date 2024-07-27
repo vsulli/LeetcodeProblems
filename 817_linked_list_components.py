@@ -26,28 +26,22 @@ class ListNode:
          
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: list[int]) -> int:
-        res = []
-        # are the nodes in the linked list always in order?
-        # last num in nums doesn't have to connect to anything?
+        num_set = set(nums)
 
-        curr = head
-        while curr:
-            if curr.val in nums:
-                # case that value is last index
-                if curr.val == nums[len(nums) -1]:
-                    res.append([curr.val])
-                    return len(res)
-                # else
-                elif curr.next and curr.next.val in nums:
-                    res.append([curr.val, curr.next.val])
-                    curr = curr.next.next
-                # case where one number in nums, but next is not
-                else:
-                    curr = curr.next
-            else:
-                curr = curr.next
+        res = 0
+        flag = False
+        while head:
+            if head.val not in num_set and flag:
+                res += 1
+                flag = False
+            elif head.val in num_set:
+                flag = True
+            head = head.next
 
-        return len(res)
+        if flag:
+            res += 1
+
+        return res 
 
 
 
