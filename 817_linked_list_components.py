@@ -26,6 +26,7 @@ class ListNode:
          
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: list[int]) -> int:
+        # in Python, x in s operation is O(n) for list and on average O(1) in set
         num_set = set(nums)
         curr = head
         res = 0
