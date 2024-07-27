@@ -67,4 +67,4 @@ print(sol.numComponents(head = n1, nums = [0, 3, 1, 4])) # 2
 n3.next = None
 
 print(sol.numComponents(head = n1, nums = [0, 2])) # 2 according to output
-# how?
+# how? orphan component - counts as connected to itself
