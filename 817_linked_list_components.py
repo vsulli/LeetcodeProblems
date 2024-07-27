@@ -41,6 +41,9 @@ class Solution:
                 elif curr.next and curr.next.val in nums:
                     res.append([curr.val, curr.next.val])
                     curr = curr.next.next
+                # case where one number in nums, but next is not
+                else:
+                    curr = curr.next
             else:
                 curr = curr.next
 
@@ -66,3 +69,7 @@ n5 = ListNode(4)
 n4.next = n5
 print(sol.numComponents(head = n1, nums = [0, 3, 1, 4])) # 2
 # [0, 1] and [3,4]
+
+n3.next = None
+
+print(sol.numComponents(head = n1, nums = [0, 2])) # 1? 
