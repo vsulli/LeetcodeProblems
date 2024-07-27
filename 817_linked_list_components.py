@@ -38,7 +38,7 @@ class Solution:
                     res.append([curr.val])
                     return res
                 # else
-                elif curr.next in nums:
+                elif curr.next and curr.next.val in nums:
                     res.append([curr.val, curr.next.val])
                     curr = curr.next.next
             else:
@@ -52,6 +52,10 @@ n1 = ListNode(0)
 n2 = ListNode(1)
 n3 = ListNode(2)
 n4 = ListNode(3)
+
+n1.next = n2
+n2.next = n3
+n3.next = n4
 
 sol = Solution()
 
