@@ -27,6 +27,22 @@ class ListNode:
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: list[int]) -> int:
         res = []
+        # are the nodes in the linked list always in order?
+        # last num in nums doesn't have to connect to anything?
+
+        curr = head
+        while curr:
+            if curr.val in nums:
+                # case that value is last index
+                if curr.val == nums[len(nums) -1]:
+                    res.append([curr.val])
+                    return res
+                # else
+                elif curr.next in nums:
+                    res.append([curr.val, curr.next.val])
+                    curr = curr.next.next
+            else:
+                curr = curr.next
 
         return res
 
