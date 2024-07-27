@@ -41,8 +41,6 @@ class Solution:
                 curr = curr.next
             else:
                 curr = curr.next
-            
-
 
         return res
 
