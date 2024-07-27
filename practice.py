@@ -11,22 +11,22 @@ class ListNode:
         
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: list[int]) -> int:
-        curr = head
+        num_set = set(nums)
+
         res = 0
         flag = False
-
-        while curr:
-            if curr.val in nums:
+        while head:
+            if head.val not in num_set and flag:
+                res += 1
+                flag = False
+            elif head.val in num_set:
                 flag = True
-                res +=1 
-                while flag and curr.next:
-                    curr = curr.next
-                    flag = curr.val in nums
-                curr = curr.next
-            else:
-                curr = curr.next
+            head = head.next
 
-        return res
+        if flag:
+            res += 1
+
+        return res 
 
 
 

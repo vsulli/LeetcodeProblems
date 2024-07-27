@@ -27,21 +27,24 @@ class ListNode:
 class Solution:
     def numComponents(self, head: Optional[ListNode], nums: list[int]) -> int:
         num_set = set(nums)
-
+        curr = head
         res = 0
         flag = False
-        while head:
-            if head.val not in num_set and flag:
-                res += 1
-                flag = False
-            elif head.val in num_set:
+
+        while curr:
+            if curr.val in num_set:
                 flag = True
-            head = head.next
+                res +=1 
+                while flag and curr.next:
+                    curr = curr.next
+                    flag = curr.val in num_set
+                curr = curr.next
+            else:
+                curr = curr.next
+            
 
-        if flag:
-            res += 1
 
-        return res 
+        return res
 
 
 
