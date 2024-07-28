@@ -30,13 +30,15 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-
+        # find middle node
         slow, fast = head, head.next
 
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
 
+
+        # reverse second half
         second = slow.next
         prev = slow.next = None
 
