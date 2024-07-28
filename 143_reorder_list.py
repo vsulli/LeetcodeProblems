@@ -57,14 +57,6 @@ class Solution:
 
             first, second = tmp1, tmp2
 
-
-
-                    
-            
-
-
-
-        return head
         
 sol = Solution()
 
