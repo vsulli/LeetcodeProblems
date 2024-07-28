@@ -31,25 +31,34 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
 
-        # take one from front, take one from back
-        size = 0
-        curr = head
-        temp = curr
+        slow, fast = head, head.next
 
-        while curr:
-            size += 1
-            curr = curr.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-        count = 0
-        front = 2
-        back = size
-        left = False
-        
-        while count != size:
-            if left:
+        second = slow.next
+        prev = slow.next = None
 
-            else:
-                while :
+        while second: 
+            tmp = second.next
+            second.next = prev
+            prev = second
+            second = tmp
+
+
+        # merge two halves
+        first, second = head, prev
+        # second half could be shorter than first half
+        while second:
+            tmp1, tmp2 = first.next, second.next
+            first.next = second
+            second.next = tmp1
+
+            first, second = tmp1, tmp2
+
+
+
                     
             
 
