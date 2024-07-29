@@ -35,7 +35,24 @@ class ListNode:
         
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
-        pass
+        # list is even
+        # a twin of a node is (n - 1 -i)
+        # need to split the list in half
+        # loop through second half backwards
+        # store the sums going through first and second half
+
+        max_twin_sum = 0
+
+        # find second half
+        slow, fast = head, head.next
+        while fast and fast.next:
+            fast = fast.next.next # increment 2
+            slow = slow.next # increment 1
+        
+        second = slow.next
+
+        return max_twin_sum
+
 
 sol = Solution()
 
