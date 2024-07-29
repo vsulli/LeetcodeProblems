@@ -51,6 +51,24 @@ class Solution:
         
         second = slow.next
 
+        # reverse second half
+        prev = slow.next = None
+
+        while second:
+            tmp = second.next
+            second.next = prev
+            prev = second
+            second = tmp
+        
+        # get sum from both first and second half
+        first, second = head, prev
+
+        while second:
+            max_twin_sum = max(max_twin_sum, first.val + second.val)
+            first = first.next
+            second = second.next
+
+
         return max_twin_sum
 
 
