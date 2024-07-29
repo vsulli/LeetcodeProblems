@@ -20,8 +20,6 @@ node and its twin.
 Given the head of a linked list with even 
 length, return the maximum twin sum of the 
 linked list.
-
-
 '''
 
 # Definition for singly-linked list.
@@ -35,41 +33,31 @@ class ListNode:
         
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
-        # list is even
-        # a twin of a node is (n - 1 -i)
-        # need to split the list in half
-        # loop through second half backwards
-        # compare the max sum going through first and second half
-
-        max_twin_sum = 0
-
-        # find second half
-        slow, fast = head, head.next
+        # reverse first half of array
+        # stop when you get to midpoint
+        # iterate from middle outwards
+        # use slow and fast pointers
+        # O(n) time, constant memory
+        slow, fast = head, head
+        prev = None
         while fast and fast.next:
-            fast = fast.next.next # increment 2
-            slow = slow.next # increment 1
+            fast = fast.next.next
+            tmp = slow.next # store actual next node
+            slow.next = prev
+            prev = slow
+            slow = tmp # actual next node
+
+        res = 0
+        # prev points to beginning of first half
+        # slow points to beginning of second half
+        while slow:
+            res = max(res, prev.val + slow.val)
+            prev = prev.next
+            slow = slow.next
         
-        second = slow.next
+        return res
 
-        # reverse second half
-        prev = slow.next = None
-
-        while second:
-            tmp = second.next
-            second.next = prev
-            prev = second
-            second = tmp
         
-        # get sum from both first and second half
-        first, second = head, prev
-
-        while second:
-            max_twin_sum = max(max_twin_sum, first.val + second.val)
-            first = first.next
-            second = second.next
-
-
-        return max_twin_sum
 
 
 sol = Solution()
