@@ -30,6 +30,9 @@ class Solution:
         # initialize dummy node as first
         # return dummy.next
 
+        # should be able to do in one pass if initialize dummy
+        # check if next value is next is n
+
 
         dummy = ListNode(-1)
         dummy.next = head
