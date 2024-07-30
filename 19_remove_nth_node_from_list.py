@@ -1,9 +1,8 @@
 '''
-# TODO adjust to have dummy node in first position
 Remove Nth Node From End of List
 Leetcode # 19
 vsulli
-12 July 2024
+30 July 2024
 
 Given the head of a linked list, remove the 
 nth node from the end of the list and return its head.
@@ -26,30 +25,37 @@ def printList(head: ListNode):
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        # will have to loop through at least once to get the full size
-        # size - (n-1)(node to remove)
-        # if size == 1
-        # return empty node?
+        # will have to loop through at least once to get size
+        # go to n-1 from end to set its next pointer to next next
+        # initialize dummy node as first
+        # return dummy.next
 
-        curr = head.next
-        size = 1
+
+        dummy = ListNode(-1)
+        dummy.next = head
+
+
+        curr = dummy.next
+        size = 0
 
         while curr:
             size += 1
             curr = curr.next
         
         if size == 1:
-            return ListNode()
+            return head.next
         
-        count = 1
-        curr = head
+
+        
+        count = 0
+        curr = dummy
         while curr:
-            count += 1
-            if count == (size - (n -1)):
+            if count == (size - (n)):
                 curr.next = curr.next.next
             curr = curr.next
+            count += 1
 
-        return head
+        return dummy.next
         
 
             
@@ -67,7 +73,15 @@ n2.next = n3
 n3.next = n4
 n4.next = n5
 
-print(sol.removeNthFromEnd(n1, n = 1))
-b1 = ListNode(1)
+sol.removeNthFromEnd(n1, n = 2) # 1, 2, 3, 5
+printList(n1)
 
-print(sol.removeNthFromEnd(b1, n = 1))
+b1 = ListNode(1)
+sol.removeNthFromEnd(b1, n = 1) # [] none
+
+c1 = ListNode(1)
+c2 = ListNode(2)
+c1.next = c2
+
+sol.removeNthFromEnd(c1, n = 2) # 2
+printList(c1)
