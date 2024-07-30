@@ -49,8 +49,9 @@ class Solution:
         
         count = 0
         curr = dummy
+        dummy.next = head
         while curr:
-            if count == (size - (n)):
+            if count == (size - n):
                 curr.next = curr.next.next
             curr = curr.next
             count += 1
@@ -73,15 +74,18 @@ n2.next = n3
 n3.next = n4
 n4.next = n5
 
-sol.removeNthFromEnd(n1, n = 2) # 1, 2, 3, 5
-printList(n1)
+new = sol.removeNthFromEnd(n1, n = 2) # 1, 2, 3, 5
+printList(new)
+print("---")
 
 b1 = ListNode(1)
-sol.removeNthFromEnd(b1, n = 1) # [] none
+new = sol.removeNthFromEnd(b1, n = 1) # [] none
+printList(new)
+print("---")
 
 c1 = ListNode(1)
 c2 = ListNode(2)
 c1.next = c2
 
-sol.removeNthFromEnd(c1, n = 2) # 2
-printList(c1)
+new = sol.removeNthFromEnd(c1, n = 2) # 2
+printList(new)
