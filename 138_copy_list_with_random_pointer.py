@@ -39,37 +39,24 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        random_index = [] # store the reference to node
-        dummy = Node(-1)
-        head2 = dummy
-
+        if not head:
+            return None
+        old_to_new = {}
+        
         curr = head
         while curr:
-            # add node values to new linked list
-            head2.next = Node(curr.val)
-            random_index.append([curr.random, head2.next]) # append random(to get index) and append new linked list pointer
-            head2 = head2.next
-            # increment original list
+            # creates a new node with same value
+            old_to_new[curr] = Node(curr.val)
             curr = curr.next
-
-
-        # iterate through new list
-        # update their random value to pointer from list
-        # to insert correct pointer reference, for each index, search list
-        curr = dummy.next
-        i = 0
+        
+        curr = head
         while curr:
-            
-            index = random_index[i][0]
-            if index == None:
-                curr.random = None
-            else:
-                curr.random = random_index[index][1]
-            
-            i += 1
+            # retrieve from mapping
+            old_to_new[curr].next = old_to_new.get(curr.next)
+            old_to_new[curr].random = old_to_new.get(curr.random)
             curr = curr.next
-
-        return dummy.next
+            
+        return old_to_new[head]
 
 sol = Solution()
 
@@ -86,14 +73,14 @@ n1.next = n2
 n1.random = None
 
 n2.next = n3
-n2.random = 0
+n2.random = n1
 
 n3.next = n4
-n3.random = 4
+n3.random = n5
 
 n4.next = n5
-n4.random = 2
+n4.random = n3
 
-n5.random = 0
+n5.random = n1
 
 print(sol.copyRandomList(n1))
