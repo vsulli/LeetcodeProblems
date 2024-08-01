@@ -24,7 +24,7 @@ class Solution:
         # if that slice > 60 increase count
 
         for i in details:
-            if int(i[-4:-2]) > 60:
+            if int(i[11:13]) > 60:
                 count += 1
 
         return count
