@@ -39,13 +39,33 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        random_index = [] # store the reference to node
+        dummy = Node(-1)
+        head2 = dummy
+
         curr = head
         while curr:
-            print(curr.val)
-            print(curr.random.val)
-            print("---")
+            # add node values to new linked list
+            head2.next = Node(curr.val)
+            random_index.append(curr.random.val)
+            head2 = head2.next
+            # increment original list
             curr = curr.next
-        return head
+
+
+        # iterate through new list
+        # update their random value to pointer from list
+        curr = dummy.next
+        i = 0
+        while curr:
+            curr.random = random_index[i]
+            print(curr.val)
+            print(curr.random)
+            print("---")
+            i += 1
+            curr = curr.next
+
+        return dummy.next
 
 sol = Solution()
 
