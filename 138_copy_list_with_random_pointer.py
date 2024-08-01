@@ -65,10 +65,6 @@ class Solution:
                 curr.random = None
             else:
                 curr.random = random_index[index][1]
-
-                print(curr.val)
-                print(curr.random.val)
-                print("---")
             
             i += 1
             curr = curr.next
