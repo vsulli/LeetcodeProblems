@@ -47,7 +47,7 @@ class Solution:
         while curr:
             # add node values to new linked list
             head2.next = Node(curr.val)
-            random_index.append(curr.random)
+            random_index.append([curr.random, head2.next]) # append random(to get index) and append new linked list pointer
             head2 = head2.next
             # increment original list
             curr = curr.next
@@ -55,15 +55,21 @@ class Solution:
 
         # iterate through new list
         # update their random value to pointer from list
+        # to insert correct pointer reference, for each index, search list
         curr = dummy.next
         i = 0
         while curr:
-            curr.random = random_index[i]
-            '''
-            print(curr.val)
-            print(curr.random)
-            print("---")
-            '''
+            
+            index = random_index[i][0]
+            if index == None:
+                curr.random = None
+            else:
+                curr.random = random_index[index][1]
+
+                print(curr.val)
+                print(curr.random.val)
+                print("---")
+            
             i += 1
             curr = curr.next
 
@@ -93,6 +99,5 @@ n4.next = n5
 n4.random = 2
 
 n5.random = 0
-
 
 print(sol.copyRandomList(n1))
