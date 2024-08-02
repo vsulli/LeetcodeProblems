@@ -20,7 +20,12 @@ only constant extra space.
 
 class Solution:
     def findDuplicate(self, nums: list[int]) -> int:
-        return [x for x in nums if nums.count(x) > 1][0]
+        for i in range(len(nums)):
+            ind = abs(nums[i])
+            if nums[ind] < 0:
+                return ind
+            nums[ind] = -nums[ind]
+        return -1
 
         
 
