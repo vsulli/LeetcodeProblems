@@ -20,10 +20,9 @@ only constant extra space.
 
 class Solution:
     def findDuplicate(self, nums: list[int]) -> int:
-        # need to check if multiple of some number exists in nums
-        for i in range(1, len(nums)+1):
-            if nums.count(i) > 1:
-                return i
+        return [x for x in nums if nums.count(x) > 1][0]
+
+        
 
 sol = Solution()
 
