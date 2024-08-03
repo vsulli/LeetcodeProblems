@@ -20,6 +20,8 @@ only constant extra space.
 
 class Solution:
     def findDuplicate(self, nums: list[int]) -> int:
+        # Floyd's Algorithm for cycle detection
+        
         slow, fast = 0, 0
         while True:
             slow = nums[slow]
@@ -32,6 +34,7 @@ class Solution:
             slow = nums[slow]
             slow2 = nums[slow2]
             if slow == slow2:
+                # could return either slow or slow2 since they are equal
                 return slow
 
         
