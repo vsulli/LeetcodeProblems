@@ -28,28 +28,32 @@ class ListNode:
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head: return
+
         # first use Floyd's Algorithm to detect a cycle with fast and slow pointers
-        slow = head
-        fast = head.next
-        while fast and slow != fast:
+        # they will land on same node, but won't be intersection
+        slow, fast = head, head
+        while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
+            if fast == slow:
+                break
+
+
 
          # if no cycle detected, return None
-        if fast == None:
+        if not fast.next or not fast.next.next:
             return None
-        
+         
         # then create a second slow pointer starting at the beginning and
         # where both slow pointers meet is the intersection
         slow2 = head
-        while True:
-            print("slow: " + str(slow.val))
-            print("slow2: " + str(slow2.val))
-            print("------")
+        while slow.next:
+            if slow == slow2:
+                return slow
             slow = slow.next
             slow2 = slow2.next
-            if slow.val == slow2.val:
-                return slow.val
+
 
 
 
@@ -68,7 +72,6 @@ n4.next = n2
 
 print(sol.detectCycle(n1))
 
-'''
+
 n5 = ListNode(-1)
 print(sol.detectCycle(n5))
-'''
