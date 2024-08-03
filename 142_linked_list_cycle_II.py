@@ -39,8 +39,6 @@ class Solution:
             if fast == slow:
                 break
 
-
-
          # if no cycle detected, return None
         if not fast.next or not fast.next.next:
             return None
@@ -53,10 +51,6 @@ class Solution:
                 return slow
             slow = slow.next
             slow2 = slow2.next
-
-
-
-
 
 sol = Solution()
 
@@ -71,7 +65,6 @@ n3.next = n4
 n4.next = n2
 
 print(sol.detectCycle(n1))
-
 
 n5 = ListNode(-1)
 print(sol.detectCycle(n5))
