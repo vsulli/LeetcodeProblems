@@ -20,18 +20,19 @@ only constant extra space.
 
 class Solution:
     def findDuplicate(self, nums: list[int]) -> int:
-        slow = nums[0]
-        fast = nums[0]
+        slow, fast = 0, 0
         while True:
             slow = nums[slow]
             fast = nums[nums[fast]]
             if slow == fast:
                 break
-        fast = nums[0]
-        while slow != fast:
+
+        slow2 = 0
+        while True:
             slow = nums[slow]
-            fast = nums[fast]
-        return fast
+            slow2 = nums[slow2]
+            if slow == slow2:
+                return slow
 
         
 
@@ -39,6 +40,8 @@ sol = Solution()
 
 print(sol.findDuplicate(nums = [1,3,4,2,2])) # 2
 
+'''
 print(sol.findDuplicate(nums = [3,1,3,4,2])) # 3
 
 print(sol.findDuplicate(nums = [3,3,3,3,3])) # 3
+'''
