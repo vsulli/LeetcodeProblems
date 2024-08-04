@@ -10,6 +10,7 @@ return the list after sorting
 it in ascending order.
 '''
 
+from math import inf
 from typing import Optional
 
 # Definition for singly-linked list.
@@ -27,7 +28,7 @@ class Solution:
         dummy = head
         curr = head
         while curr:
-            if curr.val == None or node.val <= curr.next.val:
+            if  curr.next == None or node.val <= curr.next.val:
                 temp = curr.next
                 curr.next = node
                 curr = curr.next
@@ -41,7 +42,10 @@ class Solution:
         # how to reorder?
         # need a temp variable
         # need to search for absolute smallest first?
-        new_list = ListNode(None)
+        dummy = ListNode(-inf) 
+        dummy_p = dummy
+        new_list = dummy
+
         curr = head
         while curr:
             new_list = self.insertNode(curr, new_list)
