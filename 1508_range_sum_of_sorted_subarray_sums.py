@@ -25,10 +25,14 @@ class Solution:
         for i in range(n):
             cur_sum = 0
             for j in range(i, n):
-                cur_sum = (cur_sum + nums[j] % MOD)
+                cur_sum = (cur_sum + nums[j]) % MOD
                 subarray_sums.append(cur_sum)
 
-        print(sorted(subarray_sums))
+        subarray_sums.sort()
+        res = 0
+        for i in range(left - 1, right):
+            res = (res + subarray_sums[i]) % MOD
+        return res
 
 sol = Solution()
 
