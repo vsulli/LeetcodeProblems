@@ -13,6 +13,7 @@ linked-list and return it.
 '''
 
 # Definition for singly-linked list.
+import heapq
 from typing import Optional
 
 
@@ -24,38 +25,31 @@ class ListNode:
 class Solution:
 
     def mergeKLists(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
-        # O(nlogk) 
-
-        if not lists or len(lists) == 0:
-            return None
-        
-        # take pairs of linked lists and merge them
-        # until only one output
-        while len(lists) > 1:
-            mergedLists = []
-            for i in range(0, len(lists), 2):
-                l1 = lists[i]
-                l2 = lists[i + 1] if (i + 1) < len(lists) else None
-                mergedLists.append(self.mergeList(l1, l2))
-            lists = mergedLists
-        return lists[0]
-    
-    def mergeList(self, l1, l2):
         dummy = ListNode()
-        tail = dummy
-        while l1 and l2:
-            if l1.val < l2.val:
-                tail.next = l1
-                l1 = l1.next
+        curr = dummy
+        heap = [] # min heap
+        k = len(lists)
 
-            else:
-                tail.next = l2
-                l2 = l2.next
-            tail = tail.next
-        if l1:
-            tail.next = l1
-        if l2: 
-            tail.next = l2
+        for i in range(k):
+            if lists[i]: # if a valid node
+                heapq.heappush(
+                    heap,
+                    (lists[i].val, i, lists[i]) # smallest list val, index, head of that list
+                )
+
+        # go through all nodes in all lists in ascending order
+        while heap:
+            _, i, node = heapq.heappop(heap) # get index and node from heap
+            curr.next  = node
+            curr = curr.next
+            node = node.next
+            # if there is still a node, still value to push onto heap
+            if node:
+                heapq.heappush(
+                    heap,
+                    (node.val, i, node)
+                )
+
         return dummy.next
 
 sol = Solution()
