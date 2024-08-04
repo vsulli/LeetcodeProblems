@@ -20,40 +20,46 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def insertNode(self, node:ListNode, head:ListNode)-> ListNode:
-        # take value of node to insert
-        # search through list until you get to spot it needs to be inserted in
-        # return head to list
-
-        dummy = head
-        curr = head
-        while curr:
-            if  curr.next == None or node.val <= curr.next.val:
-                temp = curr.next
-                curr.next = node
-                curr = curr.next
-                curr.next = temp
-            else:
-                curr = curr.next
-
-        return dummy.next
-
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # how to reorder?
-        # need a temp variable
-        # need to search for absolute smallest first?
-        dummy = ListNode(-inf) 
-        dummy_p = dummy
-        new_list = dummy
+        # merge sort Time: O(nlogn) Memory: O(logn) - recursive solution
 
-        curr = head
-        while curr:
-            new_list = self.insertNode(curr, new_list)
-            curr = curr.next
+        # base case - no head node
+        if not head or not head.next:
+            return head
+        
+        # split list into two halves
+        left = head
+        right = self.getMid(head)
+        temp = right.next
+        right.next = None
+        right = temp
 
-        return new_list
+        left = self.sortList(left)
+        right = self.sortList(right)
+        return self.merge(left, right)
 
+    def getMid(self, head):
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
 
+    def merge(self, list1, list2):
+        tail = dummy = ListNode()
+        while list1 and list2:
+            if list1.val < list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
+        if list1:
+            tail.next = list1
+        if list2:
+            tail.next = list2
+        return dummy.next
 
 sol = Solution()
 
