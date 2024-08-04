@@ -23,6 +23,7 @@ class Solution:
         subarray_sums = []
         for i in range(0, len(nums)):
             subarray_sums.append(nums[i])
+            # need to change indices here to get all to right
             for j in range(i, len(nums)-1):
                 subarray_sums.append(nums[j]+nums[j+1])
 
