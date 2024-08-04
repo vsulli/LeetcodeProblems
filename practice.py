@@ -10,12 +10,10 @@ class Solution:
             res[n] = count
 		
         # need to return indices for k most frequent
-        print(res)
         for i in range(k):
             index = res.index(max(res))
             ans.append(index)
             res[index] = 0
-            
         return ans
 	
 
@@ -23,6 +21,6 @@ class Solution:
 
     
 sol = Solution()
-sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2) # [1, 2]
+print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2)) # [1, 2]
 
-sol.topKFrequent(nums = [1], k = 1) # [1]
+print(sol.topKFrequent(nums = [1], k = 1)) # [1]
