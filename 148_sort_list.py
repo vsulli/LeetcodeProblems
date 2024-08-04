@@ -19,8 +19,37 @@ class ListNode:
         self.next = next
 
 class Solution:
+    def insertNode(self, node:ListNode, head:ListNode)-> ListNode:
+        # take value of node to insert
+        # search through list until you get to spot it needs to be inserted in
+        # return head to list
+
+        dummy = head
+        curr = head
+        while curr:
+            if curr.val == None or node.val <= curr.next.val:
+                temp = curr.next
+                curr.next = node
+                curr = curr.next
+                curr.next = temp
+            else:
+                curr = curr.next
+
+        return dummy.next
+
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pass
+        # how to reorder?
+        # need a temp variable
+        # need to search for absolute smallest first?
+        new_list = ListNode(None)
+        curr = head
+        while curr:
+            new_list = self.insertNode(curr, new_list)
+            curr = curr.next
+
+        return new_list
+
+
 
 sol = Solution()
 
