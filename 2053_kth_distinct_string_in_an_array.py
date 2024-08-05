@@ -20,15 +20,24 @@ the array.
 from collections import OrderedDict
 class Solution:
     def kthDistinct(self, arr: list[str], k: int) -> str:
-        distinct_count = []
-        repeat_set = {}
-        for l in arr:
-            if l not in distinct_count and l not in repeat_set:
-                distinct_count.append(l)
-                repeat_set[l] = 1
-                
+        arr_set = set(arr)
+
+        arr_count = {}
+        for l in arr_set:
+            if l not in arr_count:
+                arr_count[l] = 1
             else:
-                dict_count[l] += 1
+                arr_count[l] += 1
+        print(arr_count)
+
+        i = 1
+        for k in arr_count:
+            if arr_count.get(k) == 1 and i == k:
+                return k
+            elif arr_count.get(k) == 1:
+                i += 1
+        return ""
+
         
         
 
