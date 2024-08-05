@@ -17,18 +17,17 @@ Note that the strings are considered
 in the order in which they appear in 
 the array.
 '''
-from collections import OrderedDict
+from collections import Counter, OrderedDict
 
 class Solution:
     def kthDistinct(self, arr: list[str], k: int) -> str:
-        count = 0
-        for str in arr:
-            if arr.count(str) == 1:
-                count += 1
-            if arr.count(str) == 1 and count == k:
-                return str
-
-        return ""
+        counter = Counter(arr)
+        for v in arr:
+            if counter[v] == 1:
+                k -= 1
+                if k == 0:
+                    return v
+        return ''
     
 
 sol = Solution()
