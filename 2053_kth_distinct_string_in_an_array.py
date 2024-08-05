@@ -18,20 +18,21 @@ in the order in which they appear in
 the array.
 '''
 from collections import OrderedDict
+
 class Solution:
     def kthDistinct(self, arr: list[str], k: int) -> str:
-        arr_set = set(arr)
+        arr_set = list(dict.fromkeys(arr))
 
         arr_count = {}
         for l in arr_set:
             # only storing strings that appear once
             if arr.count(l) == 1:
                 arr_count[l] = arr.count(l)
-        
+     
         if len(arr_count) < k:
             return ""
 
-        
+
 
        
 
