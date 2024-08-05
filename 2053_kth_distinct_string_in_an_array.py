@@ -21,9 +21,11 @@ from collections import OrderedDict
 
 class Solution:
     def kthDistinct(self, arr: list[str], k: int) -> str:
+        # ordered set
         arr_set = list(dict.fromkeys(arr))
 
         arr_count = {}
+
         for l in arr_set:
             # only storing strings that appear once
             if arr.count(l) == 1:
@@ -31,6 +33,13 @@ class Solution:
      
         if len(arr_count) < k:
             return ""
+
+        k_count = 1
+        for key in arr_count:
+            if k_count == k:
+                return key
+            else:
+                k_count += 1
 
 
 
