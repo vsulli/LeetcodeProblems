@@ -24,19 +24,17 @@ class Solution:
 
         arr_count = {}
         for l in arr_set:
-            if l not in arr_count:
-                arr_count[l] = 1
-            else:
-                arr_count[l] += 1
-        print(arr_count)
+            # only storing strings that appear once
+            if arr.count(l) == 1:
+                arr_count[l] = arr.count(l)
+        
+        if len(arr_count) < k:
+            return ""
 
-        i = 1
-        for k in arr_count:
-            if arr_count.get(k) == 1 and i == k:
-                return k
-            elif arr_count.get(k) == 1:
-                i += 1
-        return ""
+        
+
+       
+
 
         
         
