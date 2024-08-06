@@ -30,19 +30,28 @@ An example mapping of letters to keys on a
 telephone keypad is given below. Note
  that 1, *, #, and 0 do not map to any letters.
 '''
+from collections import Counter
 
 class Solution:
     def minimumPushes(self, word: str) -> int:
         pushes = 0
+        # Counter creates a dictionary with letters as keys and frequency as values
+        freq_dict = Counter(word)
 
         # get frequency for each character at put in dict
         # sort by frequency in descending order
         # keep a count of distinct as you loop through each key
         #   after count reaches 8, increase cost to 2, 3, etc.
+        distinct_chars = 1
+        cost = 1
+        for v in freq_dict.values():
+            if distinct_chars % 8 == 0:
+                cost += 1
+            pushes += v * cost
 
-        distinct_chars = len(set(word))
 
-        print(distinct_chars)
+        print(freq_dict)
+        return pushes
 
 sol = Solution()
 
