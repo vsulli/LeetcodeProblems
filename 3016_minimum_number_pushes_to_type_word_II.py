@@ -33,14 +33,26 @@ telephone keypad is given below. Note
 
 class Solution:
     def minimumPushes(self, word: str) -> int:
-        pass
+        pushes = 0
+
+        # get frequency for each character at put in dict
+        # sort by frequency in descending order
+        # keep a count of distinct as you loop through each key
+        #   after count reaches 8, increase cost to 2, 3, etc.
+
+        distinct_chars = len(set(word))
+
+        print(distinct_chars)
 
 sol = Solution()
 
 print(sol.minimumPushes(word = "abcde")) # 5
+# distinct chars: abcde - 5 - less than 8, so all one push 1x5 = 5
 # a = 1 push on key 2
 # b = 1 push on key 3...
 print(sol.minimumPushes(word = "xyzxyzxyzxyz")) # 12
+# distinct chars: xyz = 3 - less than 8, so all one push 1x12 = 12
 
 print(sol.minimumPushes(word = "aabbccddeeffgghhiiiiii")) # 24
+# distinct chars: 9 - will want to assign most frequently used chars to first 8 slots
 
