@@ -24,13 +24,11 @@ class Solution:
         
         # get total number of digits to know if starting with Billions, Millions, etc?
         digits_len = len(str(num))
-        print(digits_len)
 
         # need function to get all digits from the number and return an array?
         digits = []
         for digit in str(num):
             digits.append(digit)
-        print(digits)
 
         match digits_len:
             # One Digit - return result from dictionary
@@ -66,7 +64,7 @@ class Solution:
     
 sol = Solution()
 
-print(sol.numberToWords(21))
+print(sol.numberToWords(37))
 
 '''
 print(sol.numberToWords(num = 123)) 
