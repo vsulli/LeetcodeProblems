@@ -9,6 +9,7 @@ num to its English words representation.
 '''
 
 class Solution:
+
     def numberToWords(self, num: int) -> str:
         # max number 2147483648
         # dictionary with terms for Billion, Million, Thousand, Hundred
@@ -23,6 +24,8 @@ class Solution:
         # get total number of digits to know if starting with Billions, Millions, etc?
         digits_len = len(str(num))
         print(digits_len)
+
+        # need function to get all digits from the number and return an array?
 
         match digits_len:
             # One Digit - return result from dictionary
@@ -50,8 +53,6 @@ class Solution:
                 pass
 
     
-
-
 sol = Solution()
 
 print(sol.numberToWords(0))
