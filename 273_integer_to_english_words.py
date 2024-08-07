@@ -11,6 +11,7 @@ num to its English words representation.
 class Solution:
 
     def numberToWords(self, num: int) -> str:
+        res = ""
         # max number 2147483648
         # dictionary with terms for Billion, Million, Thousand, Hundred
         # ninety, eighty, seventy...
@@ -26,18 +27,28 @@ class Solution:
         print(digits_len)
 
         # need function to get all digits from the number and return an array?
+        digits = []
+        for digit in str(num):
+            digits.append(digit)
+        print(digits)
 
         match digits_len:
             # One Digit - return result from dictionary
             case 1:
                 return num_word_dict[num]
-            # Hundred 2
+            
+            # 10 -99 2
             case 2:
+                if 10 <= num <= 20:
+                    return num_word_dict[num]
                 # need to get left-most number for hundred (1-9) + Hundred
-                # get 10s (10-90)
-                # get 1s if zero? -(1 -9)
-                pass
-            # Thousands 3
+                # get 10s (21-99)
+                tens = int(str(digits[0]) + "0")
+                res += num_word_dict[tens]
+                res += " " + num_word_dict[int(digits[1])]
+
+                return res
+            # Hundreds 3
             case 3:
                 pass
             case 4: 
@@ -55,7 +66,7 @@ class Solution:
     
 sol = Solution()
 
-print(sol.numberToWords(0))
+print(sol.numberToWords(21))
 
 '''
 print(sol.numberToWords(num = 123)) 
