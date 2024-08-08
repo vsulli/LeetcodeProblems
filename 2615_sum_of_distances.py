@@ -17,8 +17,22 @@ Return the array arr.
 '''
 class Solution:
     def distance(self, nums: list[int]) -> list[int]:
-        pass
+        # answer array to return
+        arr = []
 
+        indices = []
+
+        for i in range(0, len(nums)):
+            # arr at index will equal the sum of differences
+            # in locations of that index value
+            sum = 0
+            for j in range(0, len(nums)):
+                if nums[j] == nums[i]:
+                    indices.append(j)
+            for k in indices:
+                sum += abs(i - k)
+            arr.append(sum)
+        return arr
 
 sol = Solution()
 
