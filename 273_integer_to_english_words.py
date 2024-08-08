@@ -51,8 +51,25 @@ class Solution:
         }
 
         # converts digits into a string
+        # extract three parts
+        # 120, 102, 012
         def get_string(n):
-            return
+            res = []
+            hundreds = n // 100
+            if hundreds: 
+                res.append(ones_map[hundreds] + " Hundred")
+
+            last_2 = n % 100
+            if last_2 >= 20:
+                tens, ones = last_2 // 10, last_2 % 10
+                res.append(tens_map[tens * 10])
+                if ones:
+                    res.append(ones_map[ones])
+            elif last_2:
+                res.append(ones_map[last_2])
+
+
+            return " ".join(res)
         
         postfix = ["", " Thousand", " Million", " Billion"] # include space
         i = 0 # tells you what your postfix will be 
@@ -61,12 +78,14 @@ class Solution:
         while num:
             # get last 3 digits
             digits = num % 1000
-            s = get_string(digits) + postfix[i]
+            s = get_string(digits)
             if s:
-               res = [s] + res 
+               res.append(s + postfix[i])
             # remove the digits from num by dividing
             num //= 1000
+            i += 1
 
+        res.reverse()
         return " ".join(res)
 
 
@@ -76,7 +95,7 @@ sol = Solution()
 
 print(sol.numberToWords(37))
 
-'''
+
 print(sol.numberToWords(num = 123)) 
 # "One Hundred Twenty Three"
 # 3 digits
@@ -88,4 +107,3 @@ print(sol.numberToWords(12345))
 print(sol.numberToWords(1234567)) 
 # "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
 # 7 digits
-'''
