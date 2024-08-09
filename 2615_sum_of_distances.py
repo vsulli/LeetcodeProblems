@@ -15,34 +15,37 @@ set arr[i] to be 0.
 Return the array arr.
  
 '''
+from collections import defaultdict
+
+
 class Solution:
     def distance(self, nums: list[int]) -> list[int]:
-        # answer array to return
-        arr = [0] * len(nums)
-        distinct = set(nums)
-        distinct_indices = {} # num: indices
+        # prefix sum
+        # get sum from left and right
+        res = [0] * len(nums)
+        
+        #hashmap to track sum
+        sum_left = defaultdict(int)
+        cnt_left = defaultdict(int)
 
-        # if all distinct then return array of 0s
-        if len(distinct) == len(nums):
-            return [0] * len(nums)
+        for i, x in enumerate(nums):
+            res[i] +=  cnt_left[x] * i 
+            res[i] -= sum_left[x] 
 
-        # add all nums to dictionary with all of their indices
-        for i in range(0, len(nums)):
-            if nums[i] in distinct_indices:
-                distinct_indices[nums[i]].append(i)
-            else:
-                distinct_indices[nums[i]] = [i]
+            cnt_left[x] += 1
+            sum_left[x] += i
+        
+        sum_right = defaultdict(int)
+        cnt_right = defaultdict(int)
 
-        # calculate all the values for each index with lookups in dict?
-        for i in range(0, len(nums)):
-            # get the value at nums[i]
-            # look that value up in dict
-            # take the sum of all the abs diffs of the indices in that list
-            values = distinct_indices.get(nums[i])
-            for val in values:
-                arr[i] += abs(i - val)
+        for i, x in reversed(list(enumerate(nums))):
+            res[i] += sum_right[x]
+            res[i] -= cnt_right[x] * i
 
-        return arr
+            cnt_right[x] += 1
+            sum_right[x] += i
+
+        return res
 
 sol = Solution()
 
