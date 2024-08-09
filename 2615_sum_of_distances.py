@@ -18,15 +18,35 @@ Return the array arr.
 class Solution:
     def distance(self, nums: list[int]) -> list[int]:
         # answer array to return
-        arr = []
+        arr = [0] * len(nums)
+        distinct = set(nums)
+        # print(distinct)
+        distinct_indices = {} # num: indices
+
+        # if all distinct then return array of 0s
+        if len(distinct) == len(nums):
+            return [0] * len(nums)
+
+        # add all nums to dictionary with all of their indices
         for i in range(0, len(nums)):
-            # arr at index will equal the sum of differences
-            # in locations of that index value
-            sum = 0
-            for j in range(0, len(nums)):
-                if nums[j] == nums[i]:
-                    sum += abs(i - j)
-            arr.append(sum)
+            if nums[i] in distinct_indices:
+                distinct_indices[nums[i]].append(i)
+            else:
+                distinct_indices[nums[i]] = [i]
+        
+        # print(distinct_indices)
+
+        # calculate all the values for each index with lookups in dict?
+        for i in range(0, len(nums)):
+            # get the value at nums[i]
+            # look that value up in dict
+            # take the sum of all the abs diffs of the indices in that list
+            values = distinct_indices.get(nums[i])
+            for val in values:
+                arr[i] += abs(i - val)
+
+            # arr[i] += abs(i - value)
+
         return arr
 
 sol = Solution()
