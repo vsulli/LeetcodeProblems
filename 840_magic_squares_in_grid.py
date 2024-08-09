@@ -22,7 +22,11 @@ grid may contain numbers up to 15.
 
 class Solution:
     def numMagicSquaresInside(self, grid: list[list[int]]) -> int:
-        pass
+        # row
+        for x in range(0, len(grid[0])):
+            # column
+            for y in range(0, len(grid[1])):
+                print(grid[x][y])
 
 sol = Solution()
 
