@@ -20,7 +20,6 @@ class Solution:
         # answer array to return
         arr = [0] * len(nums)
         distinct = set(nums)
-        # print(distinct)
         distinct_indices = {} # num: indices
 
         # if all distinct then return array of 0s
@@ -33,8 +32,6 @@ class Solution:
                 distinct_indices[nums[i]].append(i)
             else:
                 distinct_indices[nums[i]] = [i]
-        
-        # print(distinct_indices)
 
         # calculate all the values for each index with lookups in dict?
         for i in range(0, len(nums)):
@@ -44,8 +41,6 @@ class Solution:
             values = distinct_indices.get(nums[i])
             for val in values:
                 arr[i] += abs(i - val)
-
-            # arr[i] += abs(i - value)
 
         return arr
 
