@@ -20,32 +20,24 @@ from collections import defaultdict
 
 class Solution:
     def distance(self, nums: list[int]) -> list[int]:
-        # prefix sum
-        # get sum from left and right
-        res = [0] * len(nums)
-        
-        #hashmap to track sum
-        sum_left = defaultdict(int)
-        cnt_left = defaultdict(int)
-
-        for i, x in enumerate(nums):
-            res[i] +=  cnt_left[x] * i 
-            res[i] -= sum_left[x] 
-
-            cnt_left[x] += 1
-            sum_left[x] += i
-        
-        sum_right = defaultdict(int)
-        cnt_right = defaultdict(int)
-
-        for i, x in reversed(list(enumerate(nums))):
-            res[i] += sum_right[x]
-            res[i] -= cnt_right[x] * i
-
-            cnt_right[x] += 1
-            sum_right[x] += i
-
-        return res
+        d={}
+        for i,num in enumerate(nums):
+            if num not in d:
+                d[num]=[]
+            d[num].append(i)
+        answ=[0]*len(nums)
+        for num,val in d.items():
+            suffixSum=sum(val)
+            preffixSum=0
+            s=len(val)
+            p=0
+            for i in val:
+                preffixSum+=i
+                p+=1
+                suffixSum-=i
+                s-=1
+                answ[i]=-preffixSum + p*i - s*i + suffixSum
+        return answ     
 
 sol = Solution()
 
