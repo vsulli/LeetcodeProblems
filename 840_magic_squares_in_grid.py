@@ -1,4 +1,5 @@
 ''' 
+# TODO WIP
 Magic Squares in Grid
 Leetcode # 840
 vsulli
