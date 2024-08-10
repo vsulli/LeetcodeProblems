@@ -27,7 +27,35 @@ class ListNode:
         
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        pass
+        # need to have a dummy node to start result
+        # set up a curr.next
+        # loop through linked list reversing all nodes until count == k
+        # set curr.next equal to the last node in this reversed section
+        # set this reversed section as the new curr
+        dummy = ListNode(-1)
+        dummy_p = dummy
+
+        curr = head
+        count = 1
+        prev = None
+        while curr:
+            # if the count == k then assign res next to this curr node
+            if count == k:
+                pass
+
+            # else reverse current node and increase count
+            else:
+                count += 1
+                next_node = curr.next # holds next values
+                curr.next = prev
+                prev = curr
+                curr = next_node
+
+            print(curr.val)
+            curr = curr.next
+
+        return dummy.next
+            
 
 sol = Solution()
 
