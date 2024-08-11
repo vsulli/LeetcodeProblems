@@ -2,7 +2,7 @@
 Longest Repeating Character Replacement
 Leetcode # 424
 vsulli
-10 August 2024
+11 August 2024
 
 You are given a string s and 
 an integer k. You can choose 
@@ -24,11 +24,12 @@ class Solution:
         res = 0
 
         l = 0
+        maxf = 0
         for r in range(len(s)):
             count[s[r]] = 1 + count.get(s[r], 0) # set value in hashmap, 0 default value
-
+            maxf = max(maxf, count[s[r]])
             # make sure current window is valid
-            while (r - l + 1) - max(count.values()) > k: # more replacements than allowed
+            while (r - l + 1) - maxf > k: # more replacements than allowed
                 count[s[l]] -= 1
                 l += 1 
             res = max(res, r - l + 1) # r - l + 1 is size of window
