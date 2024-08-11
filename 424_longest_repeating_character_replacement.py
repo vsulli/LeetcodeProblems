@@ -20,24 +20,21 @@ above operations.
 # TODO - WIP
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        # start with left pointer and right pointer
-        # get counts of all letters?
-        # for new string that can be built - go to character that occurs most often?
-        new_str = ""
-
         lp = 0
         rp = 1
         count = 0
         n_count = 0
         change = 0
 
-        while lp != rp:
-            while rp < len(s) and s[lp] == s[rp]:
-                n_count += 1
-                rp += 1
+        while rp < len(s):
+            while rp < len(s) and s[lp] == s[rp] or change < k:
                 if s[rp] != s[lp] and change < k:
-                    s[rp] = s[lp]
+                    # s[rp] = s[lp]
                     change += 1
+                    n_count +=1
+                    rp += 1
+                else:
+                    n_count += 1
                     rp += 1
 
             count = max(count, n_count)
