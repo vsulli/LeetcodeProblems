@@ -20,28 +20,19 @@ above operations.
 # TODO - WIP
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        lp = 0
-        rp = 1
-        count = 0
-        n_count = 1
-        change = 0
+        count = {}
+        res = 0
 
-        while rp < len(s):
-            while rp < len(s) and s[lp] == s[rp] or change < k:
-                if s[rp] != s[lp] and change < k:
-                    # s[rp] = s[lp]
-                    change += 1
-                    n_count +=1
-                    rp += 1
-                else:
-                    n_count += 1
-                    rp += 1
+        l = 0
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r], 0) # set value in hashmap, 0 default value
 
-            count = max(count, n_count)
-            lp = rp
-            rp += 1
-
-        return count
+            # make sure current window is valid
+            while (r - l + 1) - max(count.values()) > k: # more replacements than allowed
+                count[s[l]] -= 1
+                l += 1 
+            res = max(res, r - l + 1) # r - l + 1 is size of window
+        return res
             
 
 sol = Solution()
