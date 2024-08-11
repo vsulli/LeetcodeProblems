@@ -17,7 +17,7 @@ substring containing the same letter
 you can get after performing the 
 above operations.
 '''
-# TODO - WIP
+# sliding window
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         count = {}
