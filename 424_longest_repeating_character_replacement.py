@@ -23,17 +23,29 @@ class Solution:
         # start with left pointer and right pointer
         # get counts of all letters?
         # for new string that can be built - go to character that occurs most often?
-        freq_dic = {}
+        new_str = ""
 
-        pointer = 1
-        new_string = ""
-        for c in s:
-            if c in freq_dic:
-                freq_dic[c] += 1
-            else:
-                freq_dic[c] = 1
-        
-        print(freq_dic)
+        lp = 0
+        rp = 1
+        count = 0
+        n_count = 0
+        change = 0
+
+        while lp != rp:
+            while rp < len(s) and s[lp] == s[rp]:
+                n_count += 1
+                rp += 1
+                if s[rp] != s[lp] and change < k:
+                    s[rp] = s[lp]
+                    change += 1
+                    rp += 1
+
+            count = max(count, n_count)
+            lp = rp
+            rp += 1
+
+        return count
+            
 
 sol = Solution()
 
