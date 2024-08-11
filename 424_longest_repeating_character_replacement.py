@@ -20,12 +20,25 @@ above operations.
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        pass
+        # start with left pointer and right pointer
+        # get counts of all letters?
+        # for new string that can be built - go to character that occurs most often?
+        freq_dic = {}
+
+        pointer = 1
+        new_string = ""
+        for c in s:
+            if c in freq_dic:
+                freq_dic[c] += 1
+            else:
+                freq_dic[c] = 1
+        
+        print(freq_dic)
 
 sol = Solution()
 
 print(sol.characterReplacement(s = "ABAB", k = 2))
-# 4
+# 4 - replace either 2 A's or 2 B's
 
 print(sol.characterReplacement(s = "AABABBA", k = 1))
-# 4
+# 4 - replace one A in the middle to B
