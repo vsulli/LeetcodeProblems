@@ -23,7 +23,7 @@ class Solution:
         lp = 0
         rp = 1
         count = 0
-        n_count = 0
+        n_count = 1
         change = 0
 
         while rp < len(s):
