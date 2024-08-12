@@ -1,4 +1,13 @@
-num = 111222
+# 12 August 2024
 
-num //= 1000
-print(num)
+# Review - 1929 - Concatenation of Array
+
+from typing import List
+
+
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        pass
+
+sol = Solution()
+
