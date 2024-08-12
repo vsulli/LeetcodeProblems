@@ -7,7 +7,9 @@ from typing import List
 
 class Solution:
     def getConcatenation(self, nums: List[int]) -> List[int]:
-        pass
+        return nums * 2
 
 sol = Solution()
 
+print(sol.getConcatenation(nums = [1, 2, 1]))
+print(sol.getConcatenation(nums = [1, 3, 2, 1]))
