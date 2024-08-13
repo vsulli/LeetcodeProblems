@@ -10,9 +10,8 @@ class Solution:
         visited = {}
         for i in range(len(nums)):
             if target - nums[i] in visited:
-                return [i, visited[target - nums[i]]] # difficult line
-            else:
-                visited[nums[i]] = i # difficult line
+                return [visited[target - nums[i]], i]
+            visited[nums[i]] = i
     
 
 
