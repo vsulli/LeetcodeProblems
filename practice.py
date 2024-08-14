@@ -1,9 +1,22 @@
 # 14 August 2024
 
+# Leetcode # 146 - LRU Cache
+# uses a hashmap and nodes
+
+class Node:
+    def __init__(self, key, val):
+        self.key, self.val = key, val
+        self.prev = self.next = None
+
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.capacity = capacity
+        self.cap = capacity
+        self.cache = {}
+
+        # left = LRU, right = MRU
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        self.left.next, self.right.prev = self.right, self.left
         
 
     def get(self, key: int) -> int:
