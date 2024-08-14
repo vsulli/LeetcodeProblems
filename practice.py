@@ -1,23 +1,29 @@
-# 12 August 2024
+# 14 August 2024
 
-# Review - 1 - two sum
+class LRUCache:
 
-from typing import List
+    def __init__(self, capacity: int):
+        pass
 
+    def get(self, key: int) -> int:
+        pass
 
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        visited = {}
-        for i in range(len(nums)):
-            if target - nums[i] in visited:
-                return [visited[target - nums[i]], i]
-            visited[nums[i]] = i
-    
+    def put(self, key: int, value: int) -> None:
+        pass
 
 
-sol = Solution()
-print(sol.twoSum(nums = [2,7,11,15], target = 9))
 
-print(sol.twoSum(nums = [3,2,4], target = 6))
 
-print(sol.twoSum(nums = [3,3], target = 6))
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+my_cache =  LRUCache(2) # initializes cache with 2 
+
+my_cache.put(1, 10)  # cache: {1=10}
+my_cache.get(1)      # return 10
+my_cache.put(2, 20)  # cache: {1=10, 2=20}
+my_cache.put(3, 30)  # cache: {2=20, 3=30}, key=1 was evicted
+my_cache.get(2)      # returns 20 
+my_cache.get(1)      # return -1 (not found)
