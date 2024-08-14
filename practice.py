@@ -3,7 +3,8 @@
 class LRUCache:
 
     def __init__(self, capacity: int):
-        pass
+        self.capacity = capacity
+        
 
     def get(self, key: int) -> int:
         pass
