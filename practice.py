@@ -17,14 +17,32 @@ class LRUCache:
         # left = LRU, right = MRU
         self.left, self.right = Node(0, 0), Node(0, 0)
         self.left.next, self.right.prev = self.right, self.left
-        
+    
+    # remove node from list
+    def remove(self, node):
+    
+    # insert at right
+    def insert(self, node):
 
     def get(self, key: int) -> int:
-        pass
+        if key in self.cache:
+            self.remove(self.cache[key])
+            self.insert(self.cache[key])
+            return self.cache[key].val
+        return -1
+    
 
     def put(self, key: int, value: int) -> None:
-        pass
+        if key in self.cache:
+            self.remove(self.cache[key])
+        self.cache[key] = Node(key, value)
+        self.insert(self.cache[key])
 
+        if len(self.cache) > self.cap:
+            # remove from list and delete from hashmap
+            lru = self.left.next 
+            self.remove(lru)
+            del self.cache[lru.key]
 
 
 
