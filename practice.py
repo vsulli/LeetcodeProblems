@@ -1,4 +1,4 @@
-# 14 August 2024
+# 15 August 2024
 
 # Leetcode # 146 - LRU Cache
 # uses a hashmap and nodes
@@ -60,8 +60,8 @@ class LRUCache:
 my_cache =  LRUCache(2) # initializes cache with 2 
 
 my_cache.put(1, 10)  # cache: {1=10}
-my_cache.get(1)      # return 10
+print(my_cache.get(1))      # return 10
 my_cache.put(2, 20)  # cache: {1=10, 2=20}
 my_cache.put(3, 30)  # cache: {2=20, 3=30}, key=1 was evicted
-my_cache.get(2)      # returns 20 
-my_cache.get(1)      # return -1 (not found)
+print(my_cache.get(2))     # returns 20 
+print(my_cache.get(1))      # return -1 (not found)
