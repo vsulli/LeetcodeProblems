@@ -35,16 +35,13 @@ class Solution:
         money = 0
 
         for bill in bills:
-
             change_due = bill - 5
             if money - change_due < 0:
                 return False
-            money = money +  (bill - 5) 
-
-
-
-
-            
+            else:
+                money -= change_due
+                money += (bill - change_due)
+            print(money)
 
         return correct_change
 
@@ -52,7 +49,6 @@ sol = Solution()
 
 print(sol.lemonadeChange(bills = [5,5,5,10,20])) # true
 
-'''
+
 
 print(sol.lemonadeChange(bills = [5,5,10,10,20])) # false
-'''
