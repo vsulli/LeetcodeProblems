@@ -27,10 +27,37 @@ from typing import List
 
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
-        pass
+        #customers come to you in the order given - queue
+        # provide correct change so that the net transaction the customer pays $5
+        # don't have change in hand at first
+        # return true if you can provide every customer with correct change, false otherwise
+        correct_change = True
+        change = 0
+
+        for bill in bills:
+            print("bill " + str(bill))
+            print("change: " + str(change))
+            change_due = bill - 5
+            print("change due: " + str(change_due))
+            print("--------")
+            if change_due <= 0:
+                change += bill
+                
+            elif change - change_due < 0:
+                return False
+            
+            elif change_due > 0:
+                change -= (bill - 5)
+
+            
+
+        return correct_change
 
 sol = Solution()
 
-print(sol.lemonadeChange(bills = [5,5,5,10,20]))
+print(sol.lemonadeChange(bills = [5,5,5,10,20])) # true
 
-print(sol.lemonadeChange(bills = [5,5,10,10,20]))
+'''
+
+print(sol.lemonadeChange(bills = [5,5,10,10,20])) # false
+'''
