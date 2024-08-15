@@ -39,7 +39,7 @@ class Solution:
             if money - change_due < 0:
                 return False
             else:
-                money -= change_due
+                money -= (change_due)
                 money += (bill - change_due)
             print(money)
 
