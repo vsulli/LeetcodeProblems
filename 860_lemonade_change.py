@@ -32,22 +32,17 @@ class Solution:
         # don't have change in hand at first
         # return true if you can provide every customer with correct change, false otherwise
         correct_change = True
-        change = 0
+        money = 0
 
         for bill in bills:
-            print("bill " + str(bill))
-            print("change: " + str(change))
+
             change_due = bill - 5
-            print("change due: " + str(change_due))
-            print("--------")
-            if change_due <= 0:
-                change += bill
-                
-            elif change - change_due < 0:
+            if money - change_due < 0:
                 return False
-            
-            elif change_due > 0:
-                change -= (bill - 5)
+            money = money +  (bill - 5) 
+
+
+
 
             
 
