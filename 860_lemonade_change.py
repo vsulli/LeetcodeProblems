@@ -23,7 +23,7 @@ if you can provide every customer with the
 correct change, or false otherwise.
 '''
 from typing import List
-
+import heapq
 
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
@@ -32,15 +32,18 @@ class Solution:
         # don't have change in hand at first
         # return true if you can provide every customer with correct change, false otherwise
         correct_change = True
-        money = 0
+        money = []
 
         for bill in bills:
             change_due = bill - 5
-            if money - change_due < 0:
+            if sum(money) - change_due < 0:
                 return False
             else:
-                money -= (change_due)
-                money += (bill - change_due)
+                change = 0
+                while change < change_due:
+                    money = heapq._heapify_max(money)
+                    change += heapq.heappop(money)
+
             print(money)
 
         return correct_change
