@@ -27,26 +27,41 @@ import heapq
 
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
-        #customers come to you in the order given - queue
-        # provide correct change so that the net transaction the customer pays $5
-        # don't have change in hand at first
-        # return true if you can provide every customer with correct change, false otherwise
-        correct_change = True
-        money = []
+        # multiple ways to give change for 20s
+        #prioritize giving larger bills as change
+        # greedy solution
+        # O(n) time O(1) space
 
-        for bill in bills:
-            change_due = bill - 5
-            if sum(money) - change_due < 0:
-                return False
-            else:
-                change = 0
-                while change < change_due:
-                    money = heapq._heapify_max(money)
-                    change += heapq.heappop(money)
+        five = 0
+        ten = 0
 
-            print(money)
+        for b in bills:
+            if b == 5:
+                five += 1
+            if b == 10:
+                ten += 1
 
-        return correct_change
+            change = b - 5
+            if change == 5:
+                if five > 0:
+                    five -= 1
+                else:
+                    return False
+                
+            elif change == 15:
+
+                # 5 and 10
+                if five > 0 and ten > 0:
+                    five, ten = five - 1, ten - 1
+
+                # 3 5's
+                elif five >= 3:
+                    five -= 3
+                else: 
+                    return False
+        return True
+
+
 
 sol = Solution()
 
