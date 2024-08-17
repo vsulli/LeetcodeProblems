@@ -5,21 +5,17 @@
 
 class Node:
     def __init__(self, key, val):
-        self.val = val
-        self.key = key
+        self.key, self.val = key, val
         self.prev = self.next = None
 
 class LRUCache:
-    def __init__(self, capacity):
+    def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {}
 
-        self.left = self.right = Node(0,0), Node(0,0)
-        # self.left.prev will be none
-        # self.right.next will be none
-        # sets up cache with two spots that are pointing to each other
-        self.left.next, self.right.prev = self.right, self.left
-
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        self.left.next = self.right
+        self.right.prev = self.left
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
