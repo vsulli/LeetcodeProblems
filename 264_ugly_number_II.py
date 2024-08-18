@@ -14,14 +14,21 @@ class Solution:
     def nthUglyNumber(self, n: int) -> int:
         ugly_num = 1
         count = 1
-
-        while count != n:
+        
+        while count < n:
+            print("num: " + str(ugly_num))
+            print("count: " + str(count))
+            print("-----")
             # has 2, 3, or 5 as a factor
             if ugly_num % 2 == 0 or ugly_num % 3 == 0 or ugly_num % 5 == 0:
                 count += 1
                 ugly_num += 1
+            elif ugly_num == 1:
+                count += 1
+                ugly_num += 1
             else: 
                 ugly_num += 1
+            
             
         return ugly_num
 
@@ -29,4 +36,7 @@ sol = Solution()
 
 print(sol.nthUglyNumber(n = 10)) # 12 - generate first 10 ugly numbers 
 
+'''
+
 print(sol.nthUglyNumber(n = 1)) # 1
+'''
