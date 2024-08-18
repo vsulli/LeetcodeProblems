@@ -17,8 +17,8 @@ class Solution:
             return n
         
         # start with 7 
-        ugly_num = 7
-        count = 7
+        ugly_num = 6
+        count = 6
         
         while True:
             print("num: " + str(ugly_num))
@@ -27,11 +27,10 @@ class Solution:
             # has 2, 3, or 5 as a factor
             if count == n:
                 return ugly_num
-            if ugly_num % 2 == 0 or ugly_num % 3 == 0 or ugly_num % 5 == 0:
+            elif (ugly_num + 1) % 2 == 0 or (ugly_num + 1) % 3 == 0 or (ugly_num + 1)  % 5 == 0:
                 count += 1
-                ugly_num += 1
-            if not (ugly_num % 2 == 0 or ugly_num % 3 == 0 or ugly_num % 5 == 0):
-                ugly_num += 1
+            
+            ugly_num += 1
             
         
 
@@ -44,3 +43,7 @@ print(sol.nthUglyNumber(n = 2)) # 2
 print(sol.nthUglyNumber(n = 1)) # 1
 
 print(sol.nthUglyNumber(n = 7)) # 8
+
+print(sol.nthUglyNumber(n = 11)) # 15 
+# currently giving 14 because my program currently doesn't get rid of other prime factors 
+# 14's prime factors - 1,2, 7, and 14 - can't have 7 as another prime factor
