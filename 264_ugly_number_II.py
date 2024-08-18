@@ -9,8 +9,13 @@ whose prime factors are limited to 2, 3, and 5.
 
 Given an integer n, return the nth ugly number.
 '''
+from functools import reduce
 
 class Solution:
+    def factors(n):    
+        return set(reduce(list.__add__, 
+                    ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+
     def nthUglyNumber(self, n: int) -> int:
         # 1 - 6 will always be that number
         if 1 <= n <= 6:
@@ -25,9 +30,10 @@ class Solution:
             print("count: " + str(count))
             print("-----")
             # has 2, 3, or 5 as a factor
+            current_factors = self.factors(ugly_num)
             if count == n:
                 return ugly_num
-            elif (ugly_num + 1) % 2 == 0 or (ugly_num + 1) % 3 == 0 or (ugly_num + 1)  % 5 == 0:
+            elif 2 in current_factors or 3 in current_factors or 5 in current_factors and len(current_factors == 3):
                 count += 1
             
             ugly_num += 1
