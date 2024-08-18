@@ -42,3 +42,5 @@ print(sol.nthUglyNumber(n = 10)) # 12 - generate first 10 ugly numbers
 print(sol.nthUglyNumber(n = 2)) # 2
 
 print(sol.nthUglyNumber(n = 1)) # 1
+
+print(sol.nthUglyNumber(n = 7)) # 8
