@@ -18,21 +18,22 @@ class Solution:
         
         # start with 7 
         ugly_num = 7
-        count = 6
+        count = 7
         
-        while count < n:
+        while True:
             print("num: " + str(ugly_num))
             print("count: " + str(count))
             print("-----")
             # has 2, 3, or 5 as a factor
+            if count == n:
+                return ugly_num
             if ugly_num % 2 == 0 or ugly_num % 3 == 0 or ugly_num % 5 == 0:
                 count += 1
- 
-            ugly_num += 1
+                ugly_num += 1
+            if not (ugly_num % 2 == 0 or ugly_num % 3 == 0 or ugly_num % 5 == 0):
+                ugly_num += 1
             
-            
-            
-        return ugly_num
+        
 
 sol = Solution()
 
@@ -40,7 +41,4 @@ print(sol.nthUglyNumber(n = 10)) # 12 - generate first 10 ugly numbers
 
 print(sol.nthUglyNumber(n = 2)) # 2
 
-'''
-
 print(sol.nthUglyNumber(n = 1)) # 1
-'''
