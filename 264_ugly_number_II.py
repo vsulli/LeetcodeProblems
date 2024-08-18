@@ -12,8 +12,13 @@ Given an integer n, return the nth ugly number.
 
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        ugly_num = 1
-        count = 1
+        # 1 - 6 will always be that number
+        if 1 <= n <= 6:
+            return n
+        
+        # start with 7 
+        ugly_num = 7
+        count = 6
         
         while count < n:
             print("num: " + str(ugly_num))
@@ -22,12 +27,9 @@ class Solution:
             # has 2, 3, or 5 as a factor
             if ugly_num % 2 == 0 or ugly_num % 3 == 0 or ugly_num % 5 == 0:
                 count += 1
-                ugly_num += 1
-            elif ugly_num == 1:
-                count += 1
-                ugly_num += 1
-            else: 
-                ugly_num += 1
+ 
+            ugly_num += 1
+            
             
             
         return ugly_num
@@ -35,6 +37,8 @@ class Solution:
 sol = Solution()
 
 print(sol.nthUglyNumber(n = 10)) # 12 - generate first 10 ugly numbers 
+
+print(sol.nthUglyNumber(n = 2)) # 2
 
 '''
 
