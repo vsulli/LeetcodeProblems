@@ -9,35 +9,27 @@ whose prime factors are limited to 2, 3, and 5.
 
 Given an integer n, return the nth ugly number.
 '''
-from functools import reduce
+
+
+import heapq
+
 
 class Solution:
-    def factors(n):    
-        return set(reduce(list.__add__, 
-                    ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
     def nthUglyNumber(self, n: int) -> int:
-        # 1 - 6 will always be that number
-        if 1 <= n <= 6:
-            return n
-        
-        # start with 7 
-        ugly_num = 6
-        count = 6
-        
-        while True:
-            print("num: " + str(ugly_num))
-            print("count: " + str(count))
-            print("-----")
-            # has 2, 3, or 5 as a factor
-            current_factors = self.factors(ugly_num)
-            if count == n:
-                return ugly_num
-            elif 2 in current_factors or 3 in current_factors or 5 in current_factors and len(current_factors == 3):
-                count += 1
-            
-            ugly_num += 1
-            
+        minHeap = [1]
+        visit = set()
+
+        factors = [2, 3, 5]
+        for i in range(n):
+            num = heapq.heappop(minHeap)
+            if i == n - 1:
+                return num
+            for f in factors:
+                if num * f not in visit:
+                    visit.add(num * f)
+                    heapq.heappush(minHeap, num * f)
+                
         
 
 sol = Solution()
