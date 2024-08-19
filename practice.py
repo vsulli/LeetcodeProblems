@@ -1,7 +1,22 @@
-from functools import reduce
-def factors(n):    
-        return set(reduce(list.__add__, 
-                    ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+# 146  - LRU Cache
 
+class Node:
+    def __init__(self, key, value):
+        self.key, self.val = key, value
+        self.prev, self.next = None
 
-print(factors(9))
+class LRUCache:
+    def __init__(self, capacity):
+        self.cap = capacity
+        self.cache = {}
+        
+    def get(key: int)->int:
+        pass
+    def put(key: int, value: int):
+        pass
+    
+    def insert(node):
+        pass
+    def remove(node):
+        pass
+    
