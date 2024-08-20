@@ -23,13 +23,14 @@ class Solution:
         # need two pointers
         # j - sell , i - buy
         max_profit = 0
-        buy = 0
-        for i in range(len(prices)):
-        
-            for j in range(i+1, len(prices)):
-                if prices[j] > prices[i]:
-                    max_profit = max(prices[j] - prices[i], max_profit)
-            
+        bp = 0
+        sp = 1
+        # want left pointer to be at lowest
+        # want right pointer to be at highest to the right of left pointer
+
+        for i in range(len(prices)-1):
+            max_profit = max(max(prices[i+1:]) - prices[i], max_profit)
+
         return max_profit
 
 sol = Solution()
