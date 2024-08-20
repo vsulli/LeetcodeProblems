@@ -21,15 +21,16 @@ class Solution:
     def maxProfit(self, prices: list[int]) -> int:
         # want max price 
         # need two pointers
-        # j - sell , i - buy
         max_profit = 0
         bp = 0
         sp = 1
-        # want left pointer to be at lowest
-        # want right pointer to be at highest to the right of left pointer
-
-        for i in range(len(prices)-1):
-            max_profit = max(max(prices[i+1:]) - prices[i], max_profit)
+        while sp < len(prices):
+            if prices[bp] < prices[sp]:
+                profit = prices[sp] - prices[bp]
+                max_profit = max(max_profit, profit)
+            else:
+                bp = sp
+            sp += 1
 
         return max_profit
 
