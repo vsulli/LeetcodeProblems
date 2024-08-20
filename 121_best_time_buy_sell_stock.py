@@ -26,7 +26,7 @@ class Solution:
         buy = 0
         for i in range(len(prices)):
         
-            for j in range(i+1, len(prices)-1):
+            for j in range(i+1, len(prices)):
                 if prices[j] > prices[i]:
                     max_profit = max(prices[j] - prices[i], max_profit)
             
@@ -36,3 +36,5 @@ sol = Solution()
 print(sol.maxProfit(prices = [7,1,5,3,6,4])) # output: 5
 
 print(sol.maxProfit(prices = [7,6,4,3,1])) # output: 0
+
+print(sol.maxProfit(prices = [1, 2])) # output: 1
