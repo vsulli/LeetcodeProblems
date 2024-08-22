@@ -19,7 +19,7 @@ class Solution:
         right = k
         count = 0
 
-        while right != len(arr):
+        while right != len(arr)+1:
             average = statistics.mean(arr[left:right])
             if average >= threshold:
                 count +=1
