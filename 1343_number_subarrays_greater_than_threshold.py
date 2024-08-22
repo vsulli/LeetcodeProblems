@@ -15,27 +15,16 @@ import statistics
 
 class Solution:
     def numOfSubarrays(self, arr: list[int], k: int, threshold: int) -> int:
-        # should be a way to re-calculate average as you slide and add a new
-        # number to right
-        left = 0
-        right = k
         count = 0
-        sum1 = 0
-
-        sum1 = sum(arr[left: right])
-        while right != len(arr):
-
-            average = sum1 / k
-            if average >= threshold:
+        curSum = sum(arr[:k - 1])
+        # just one pointer up to length - k index
+        for L in range(len(arr)- k + 1):
+            curSum += arr[L + k - 1]
+            if (curSum / k ) >= threshold:
                 count += 1
-            left += 1
-            right += 1
-            sum1-=arr[left-1]
-            if right < len(arr):
-                sum1+=arr[right]
+            curSum -= arr[L]
 
-        
-
+    
         return count
 
 
