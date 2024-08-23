@@ -24,7 +24,6 @@ class Solution:
                 count += 1
             curSum -= arr[L]
 
-    
         return count
 
 
