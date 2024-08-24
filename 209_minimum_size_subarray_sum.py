@@ -26,7 +26,9 @@ class Solution:
         indices = [0, len(nums)-1]
         while sumNums >= target:
             # subtract from right
-            while sumNums - nums[indices[1]]:
+            if sumNums - nums[indices[1]] >= target:
+                indices[1] -= 1
+            
 
 
 
