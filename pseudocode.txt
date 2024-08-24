@@ -188,6 +188,37 @@ and you can detect if you go to the same one.
 Concepts:hash table, linked list, two pointers
 
 ==============================================
+209. MINIMUM SIZE SUBARRAY SUM
+==============================================
+Given an array of positive integers nums and a 
+positive integer target, return the minimal 
+length of a 
+subarray
+ whose sum is greater than or equal to target. 
+ If there is no such subarray, return 0 instead.
+ ---------------------------------------------
+ Pseudocode:
+initialize left pointer and total
+intitialize res
+
+loop through array with right pointer
+    add index to total
+    while total is >= target 
+        res = min(r - l + 1, res)
+        subtract left pointer from total
+        increase left pointer
+
+return 0 if res still original value, else res
+
+
+
+"Tricks" to Remember: 
+Need to initialize res to an arbitrarily large number so when 
+you compare you keep the min 
+
+Concepts:
+
+==============================================
 217. CONTAINS DUPLICATE
 ==============================================
 Given an integer array nums, return true if 
