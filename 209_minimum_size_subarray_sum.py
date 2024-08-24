@@ -23,19 +23,33 @@ class Solution:
         sumNums = sum(nums)
         if sumNums < target:
             return 0
-        indices = [0, len(nums)-1]
-        while sumNums >= target:
-            # subtract from right
-            if sumNums - nums[indices[1]] >= target:
-                indices[1] -= 1
+        if len(nums) == 1 and sumNums == target:
+            return 1
+        
+        indices = [0, 1]
+        sumNums = sum(nums[:1])
+        while sumNums < target:
+            # add to right
+            while sumNums < target:
+                indices[1] += 1
+                sumNums = sum(nums[indices[0]:indices[1]])
+        
+        return indices[1] - indices[0]
             
 
 
 
 
 sol = Solution()
+
+print(sol.minSubArrayLen(target = 8, nums = [7]))
+
+print(sol.minSubArrayLen(target = 8, nums = [8]))
+
+
 print(sol.minSubArrayLen(target = 7, nums = [2,3,1,2,4,3]))
 
 print(sol.minSubArrayLen(target = 4, nums = [1,4,4]))
 
 print(sol.minSubArrayLen(target = 11, nums = [1,1,1,1,1,1,1,1]))
+
