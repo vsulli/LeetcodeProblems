@@ -216,7 +216,7 @@ return 0 if res still original value, else res
 Need to initialize res to an arbitrarily large number so when 
 you compare you keep the min 
 
-Concepts:
+Concepts:array, binary search, sliding window, prefix sum
 
 ==============================================
 217. CONTAINS DUPLICATE
@@ -460,6 +460,15 @@ heights[i] != expected[i].
 "Tricks" to Remember: can iterate through variables
 in multiple lists if you zip them together into a tuple
 Concepts:array, sorting, counting sort
+
+==============================================
+
+==============================================
+ ---------------------------------------------
+ Pseudocode:
+
+"Tricks" to Remember: 
+Concepts:
 
 ==============================================
 
