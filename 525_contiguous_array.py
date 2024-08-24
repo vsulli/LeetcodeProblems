@@ -24,7 +24,7 @@ class Solution:
                 if count[0] == count[1]:
                     res = max(res, r - l + 1)
                     # if too many of either need to increase left pointer until back in balance
-                    l += 1
+                    # l += 1
 
         return res
 
@@ -38,3 +38,5 @@ print(sol.findMaxLength(nums = [0,1,1,1,1,0])) # 2
 
 print(sol.findMaxLength(nums = [0, 1, 0, 1])) # 4
 
+print(sol.findMaxLength(nums = [0,0,1,0,0,0,1,1])) # 6
+# 1,0,0,0,1,1
