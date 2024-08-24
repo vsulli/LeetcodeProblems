@@ -42,14 +42,13 @@ class Solution:
 
 sol = Solution()
 
-print(sol.minSubArrayLen(target = 8, nums = [7]))
+print(sol.minSubArrayLen(target = 8, nums = [7])) # 0
 
-print(sol.minSubArrayLen(target = 8, nums = [8]))
+print(sol.minSubArrayLen(target = 8, nums = [8])) # 1
 
 
-print(sol.minSubArrayLen(target = 7, nums = [2,3,1,2,4,3]))
+print(sol.minSubArrayLen(target = 7, nums = [2,3,1,2,4,3])) # 2
 
-print(sol.minSubArrayLen(target = 4, nums = [1,4,4]))
+print(sol.minSubArrayLen(target = 4, nums = [1,4,4])) # 1
 
-print(sol.minSubArrayLen(target = 11, nums = [1,1,1,1,1,1,1,1]))
-
+print(sol.minSubArrayLen(target = 11, nums = [1,1,1,1,1,1,1,1])) # 0
