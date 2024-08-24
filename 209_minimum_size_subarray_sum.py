@@ -15,14 +15,18 @@ subarray
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
-        sum = 0
-        l = 0
-        r = 0
-        length = 0
+        # try sum of entire array
+        # if isn't greater or equal return 0
+        # if it is greater shrink from right while still greater than equal
+        # shrink from left otherwise?
 
-        while r != len(nums) - 1:
-            if nums[l] == target:
-                return length
+        sumNums = sum(nums)
+        if sumNums < target:
+            return 0
+        indices = [0, len(nums)-1]
+        while sumNums >= target:
+            # subtract from right
+            while sumNums - nums[indices[1]]:
 
 
 

@@ -1,4 +1,5 @@
-prices = [7, 1, 5, 3, 6, 4]
+nums = [1,4,4]
+indices = [0, len(nums) - 1]
+sumNums = sum(nums)
 
-new_max = max(prices[1:])
-print(new_max)
+print(sumNums - nums[indices[1]]) # 5
