@@ -468,10 +468,20 @@ THRESHOLD
 ==============================================
  ---------------------------------------------
  Pseudocode:
+initialize count
+calculate current sum of size k 
+loop through array length of array less size of k 
+    calculate new current su
+    if cursum divided by k >= threshold 
+        increase count 
+    subtract leftmost index from current sum
+return count
 
 "Tricks" to Remember: 
-Concepts:
+will slide over subtracting leftmost index value
 
+Concepts:
+array, sliding window
 ==============================================
 
 ==============================================
