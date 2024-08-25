@@ -462,7 +462,9 @@ in multiple lists if you zip them together into a tuple
 Concepts:array, sorting, counting sort
 
 ==============================================
-
+1343. NUMBER OF SUB-ARRAYS OF SIZE K 
+AND AVERAGE GREATER THAN OR EQUAL TO 
+THRESHOLD
 ==============================================
  ---------------------------------------------
  Pseudocode:

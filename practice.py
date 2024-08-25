@@ -1,25 +1,25 @@
-# 209 - practice review
+# 1343 - practice review
 
 from typing import List
 
 
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        l, total = 0, 0
-        res = float("inf")
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        count = 0
+        curSum = sum(arr[:k-1])
 
-        for r in range(len(nums)):
-            total += nums[r]
-            while total >= target:
-                res = min(r - l + 1, res)
-                total -= nums[l]
-                l+= 1
+        for L in range(len(arr) - k + 1):
+            curSum += arr[L + k - 1]
+            if (curSum / k ) >= threshold:
+                count += 1
+            curSum -= arr[L]
 
-        return 0 if res == float("inf") else res
+    
+        return count
+
 
 sol = Solution()
-print(sol.minSubArrayLen(target = 7, nums = [2,3,1,2,4,3])) # 2
 
-print(sol.minSubArrayLen(target = 4, nums = [1,4,4])) # 1
+print(sol.numOfSubarrays(arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4)) # 3
 
-print(sol.minSubArrayLen(target = 11, nums = [1,1,1,1,1,1,1,1])) # 0
+print(sol.numOfSubarrays(arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5)) #6
