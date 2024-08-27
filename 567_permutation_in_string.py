@@ -14,18 +14,28 @@ In other words, return true if
  the substring of s2.
 '''
 
-from itertools import permutations
 
+def findPermutations(s1):
+        if len(s1) == 1:
+            return [s1]
+        else:
+            perms = []
+            for i, c in enumerate(s1):
+                for perm in findPermutations(s1[:i] + s1[i+1]):
+                    perms.append(c + perm)
+            
+            return perms
+        
 class Solution:
+
+        
     def checkInclusion(self, s1: str, s2: str) -> bool:
         # how to create all permutations?
         # recursive?
         # check as permutations created if they're in s2
         isSubstring = False
 
-        for p in permutations(s1):
-            if ''.join(p) in s2:
-                return True
+        perms = findPermutations(s1)
 
 
         return isSubstring
