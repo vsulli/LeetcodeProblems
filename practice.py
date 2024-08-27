@@ -5,17 +5,16 @@ from typing import List
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        total, l = 0, 0
-        res = float("inf")
+        currSum, l = 0, 0
+        minLen = float("inf")
 
         for r in range(len(nums)):
-            total += nums[r]
-            while total >= target:
-                res = min(r - l + 1, res)
-                total -= nums[l]
+            currSum += nums[r]
+            while currSum >= target:
+                minLen = min(r - l + 1, minLen)
+                currSum -= nums[l]
                 l += 1
-
-        return 0 if res == float("inf") else res
+        return 0 if minLen == float("inf") else minLen
 
 sol = Solution()
 
