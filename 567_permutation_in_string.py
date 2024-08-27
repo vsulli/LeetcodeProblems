@@ -14,29 +14,26 @@ In other words, return true if
  the substring of s2.
 '''
 
+from collections import Counter
 
-def findPermutations(s1):
-        if len(s1) == 1:
-            return [s1]
-        else:
-            perms = []
-            for i, c in enumerate(s1):
-                for perm in findPermutations(s1[:i] + s1[i+1]):
-                    perms.append(c + perm)
-            
-            return perms
         
 class Solution:
-
-        
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        # how to create all permutations?
-        # recursive?
-        # check as permutations created if they're in s2
+        # slide through s2 O(n) going by length of s1
+        # check if count of each character matches count of s1
         isSubstring = False
+        l = 0
+        count = {}
+        for c in s1:
+            if c in count:
+                count[c] += 1
+            else:
+                count[c] = 1
 
-        perms = findPermutations(s1)
-
+        counter = Counter(s2)
+        for r in range(len(s1)-1, len(s2), len(s1)):
+            for char in count:
+                if counter[char] == count[char]
 
         return isSubstring
 
