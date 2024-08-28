@@ -11,7 +11,6 @@ of sub-arrays of size k and average greater
 than or equal to threshold.
 '''
 
-import statistics
 
 class Solution:
     def numOfSubarrays(self, arr: list[int], k: int, threshold: int) -> int:

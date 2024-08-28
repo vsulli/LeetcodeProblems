@@ -1,27 +1,27 @@
-# 209 - Minimum Size Subarray Sum Practice
+# 1343 Number of sub-arrays of size k and average greater than or equal to threshold
 
 from typing import List
 
 
 class Solution:
-    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        currSum, l = 0, 0
-        minLen = float("inf")
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        count = 0
+        currSum = sum(arr[:k-1])
 
-        for r in range(len(nums)):
-            currSum += nums[r]
-            while currSum >= target:
-                minLen = min(r - l + 1, minLen)
-                currSum -= nums[l]
-                l += 1
-        return 0 if minLen == float("inf") else minLen
+        for L in range(len(arr) - k + 1):
+            currSum += arr[L + k - 1]
+            if (currSum / k ) >= threshold:
+                count += 1
+            currSum -= arr[L]
+
+        return count
+
+
 
 sol = Solution()
 
-print(sol.minSubArrayLen(target = 7, nums = [2,3,1,2,4,3])) # 2
+print(sol.numOfSubarrays(arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4)) # output: 3
 
+print(sol.numOfSubarrays(arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5)) # output: 6
 
-print(sol.minSubArrayLen(target = 4, nums = [1,4,4])) # 1
-
-
-print(sol.minSubArrayLen(target = 11, nums = [1,1,1,1,1,1,1,1])) # 0
+print(sol.numOfSubarrays(arr = [3], k = 1, threshold = 3)) # 1
