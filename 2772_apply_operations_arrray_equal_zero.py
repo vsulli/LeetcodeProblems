@@ -34,7 +34,6 @@ class Solution:
         makeZero = True
         p = 0 # pointer for start of subarray
         while sum(nums) != 0:
-            print(nums)
             for n in range(k):
                 nums[p+n] -=1 
                 if nums[p+n] < 0:
@@ -42,8 +41,7 @@ class Solution:
                 # set p to beginning of next highest index?
             p = max(nums)
             p = nums.index(p)
-            print(nums)
-            print("----------")
+        
         
         # need to figure out how to adjust pointer
         # cases where you wouldn't be able to make array 0
@@ -56,3 +54,7 @@ print(sol.checkArray(nums = [2,2,3,1,1,0], k = 3)) # true
 
 print(sol.checkArray(nums = [1,3,1,1], k = 2)) # false 
 # not possible because jump between subarrays is greater than 1 and one of array elements is 1
+
+print(sol.checkArray(nums = [0,0,51,67,80,98,88,75, 
+                             89,83,100,70,77,82,57,100,80,69,19,17], k = 3)) # true
+
