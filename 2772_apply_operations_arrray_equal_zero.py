@@ -34,8 +34,17 @@ class Solution:
         makeZero = True
         p = 0 # pointer for start of subarray
         while sum(nums) != 0:
+            print(nums)
             for n in range(k):
                 nums[p+n] -=1 
+                if nums[p+n] < 0:
+                    return False
+                # set p to beginning of next highest index?
+            p = max(nums)
+            p = nums.index(p)
+            print(nums)
+            print("----------")
+        
         # need to figure out how to adjust pointer
         # cases where you wouldn't be able to make array 0
             # size of array not divisible by k
