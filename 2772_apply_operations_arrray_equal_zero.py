@@ -30,9 +30,20 @@ class Solution:
         # select next subarray of size 3 
             # how to determine start of subarray?
             # want subarray to end on rightmost section?
+        
+        makeZero = True
+        p = 0 # pointer for start of subarray
+        while sum(nums) != 0:
+            for n in range(k):
+                nums[p+n] -=1 
+        # need to figure out how to adjust pointer
+        # cases where you wouldn't be able to make array 0
+            # size of array not divisible by k
 
+        return makeZero
 
 sol = Solution()
 print(sol.checkArray(nums = [2,2,3,1,1,0], k = 3)) # true
 
-print(sol.checkArray(nums = [1,3,1,1], k = 2))
+print(sol.checkArray(nums = [1,3,1,1], k = 2)) # false 
+# not possible because jump between subarrays is greater than 1 and one of array elements is 1
