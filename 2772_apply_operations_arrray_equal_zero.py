@@ -25,9 +25,14 @@ from typing import List
 
 class Solution:
     def checkArray(self, nums: List[int], k: int) -> bool:
-        pass
+        # have to select a contiguous subarray of size k
+        # want them to be of value 1 minimum so that when you decrease it's not negative
+        # select next subarray of size 3 
+            # how to determine start of subarray?
+            # want subarray to end on rightmost section?
+
 
 sol = Solution()
-print(sol.checkArray(nums = [2,2,3,1,1,0], k = 3))
+print(sol.checkArray(nums = [2,2,3,1,1,0], k = 3)) # true
 
 print(sol.checkArray(nums = [1,3,1,1], k = 2))
