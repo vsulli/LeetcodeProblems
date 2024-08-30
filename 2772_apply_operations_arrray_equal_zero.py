@@ -25,29 +25,25 @@ from typing import List
 
 class Solution:
     def checkArray(self, nums: List[int], k: int) -> bool:
-        # have to select a contiguous subarray of size k
-        # want them to be of value 1 minimum so that when you decrease it's not negative
-        # select next subarray of size 3 
-            # how to determine start of subarray?
-            # want subarray to end on rightmost section?
-        
-        makeZero = True
-        p = 0 # pointer for start of subarray
-        while sum(nums) != 0:
-            for n in range(k):
-                nums[p+n] -=1 
-                if nums[p+n] < 0:
-                    return False
-                # set p to beginning of next highest index?
-            p = max(nums)
-            p = nums.index(p)
-        
-        
-        # need to figure out how to adjust pointer
-        # cases where you wouldn't be able to make array 0
-            # size of array not divisible by k
+        N = len(nums)
 
-        return makeZero
+        current = 0
+        delta = [0] * (N + 1)
+
+        for i in range(N):
+            current += delta[i]
+            if nums[i] == current:
+                continue
+            if nums[i] > current:
+                change = nums[i] - current
+                current += change
+                if i + k <= N:
+                    delta[i + k] -= change
+                else:
+                    return False
+            else:
+                return False
+        return True
 
 sol = Solution()
 print(sol.checkArray(nums = [2,2,3,1,1,0], k = 3)) # true
