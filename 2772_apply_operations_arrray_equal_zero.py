@@ -25,23 +25,16 @@ from typing import List
 
 class Solution:
     def checkArray(self, nums: List[int], k: int) -> bool:
-        N = len(nums)
-
-        current = 0
-        delta = [0] * (N + 1)
-
-        for i in range(N):
-            current += delta[i]
-            if nums[i] == current:
-                continue
-            if nums[i] > current:
-                change = nums[i] - current
-                current += change
-                if i + k <= N:
-                    delta[i + k] -= change
-                else:
+        arr = [0]*(len(nums)+1)
+        h = 0
+        for i, n in enumerate(nums):
+            h -= arr[i]
+            if n > h:
+                if i+k > len(nums):
                     return False
-            else:
+                arr[i+k] = n-h
+                h = n
+            elif n < h:
                 return False
         return True
 
