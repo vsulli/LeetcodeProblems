@@ -25,9 +25,10 @@ from typing import List
 
 class Solution:
     def checkArray(self, nums: List[int], k: int) -> bool:
+        # initialize an empty array 1 larger than nums
         arr = [0]*(len(nums)+1)
-        h = 0
-        for i, n in enumerate(nums):
+        h = 0 # least number we need so far
+        for i, n in enumerate(nums): # getting index and number
             h -= arr[i]
             if n > h:
                 if i+k > len(nums):
