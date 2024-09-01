@@ -1,11 +1,18 @@
-nums = [2,2,3,1,1,0]
-p = 0
-k = 3
-for n in range(k):
-    nums[p+n] -= 1
-print(nums)
+# leetcode 1343 practice
 
-p = 2
-for n in range(k):
-    nums[p+n] -= 1
-print(nums)
+from typing import List
+
+
+class Solution:
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        count = 0
+        currSum = sum(arr[: k - 1])
+        for l in range(len(arr) - k + 1):
+
+
+sol = Solution()
+
+print(sol.numOfSubarrays(arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4)) # 3
+
+print(sol.numOfSubarrays(arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5)) # 6
+
