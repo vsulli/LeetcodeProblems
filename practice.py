@@ -9,10 +9,11 @@ class Solution:
         currSum = sum(arr[: k - 1])
         
         for l in range(len(arr) - k + 1):
-            currSum += arr[l + k - 1] # what does this line do?
+            currSum += arr[l + k - 1] # adds next index to right
+            # l as starting point, add in length of subarray, subtract 1 because indices are 0-indexed in python
             if (currSum / k) >= threshold:
                 count += 1
-            currSum -= arr[l]
+            currSum -= arr[l] # subtracts off leftmost index
         return count
 
 

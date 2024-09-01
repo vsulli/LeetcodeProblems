@@ -471,7 +471,7 @@ THRESHOLD
 initialize count
 calculate current sum of size k 
 loop through array length of array less size of k 
-    calculate new current su
+    calculate new current sum by adding new number to right 
     if cursum divided by k >= threshold 
         increase count 
     subtract leftmost index from current sum
@@ -479,6 +479,9 @@ return count
 
 "Tricks" to Remember: 
 will slide over subtracting leftmost index value
+currSum += arr[l + k - 1] # adds next index to right
+# l as starting point, add in length of subarray, 
+subtract 1 because indices are 0-indexed in python
 
 Concepts:
 array, sliding window
