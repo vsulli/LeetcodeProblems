@@ -7,14 +7,12 @@ class Solution:
     def maxofSubarray(self, arr: List[int], k: int) -> int:
         # given an array of nums
         # calculate the maximum of a subarray given size of window k 
-        currSum = sum(arr[:k - 1])
+        currSum = sum(arr[:k])
         currMax = currSum
 
-        for L in range(len(arr) - k + 1):
-            currSum += arr[L + k - 1]
-            if currSum > currMax:
-                currMax = currSum
-            currSum -= arr[L]
+        for r in range(k, len(arr)):
+            currSum += arr[r] - arr[r - k]
+            currMax = max(currMax, currSum)
 
         return currMax
 
