@@ -4,22 +4,23 @@ from typing import List
 
 
 class Solution:
-    def maxofSubarray(self, arr: List[int], k: int) -> int:
-        # given an array of nums
-        # calculate the maximum of a subarray given size of window k 
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        count = 0
         currSum = sum(arr[:k])
-        currMax = currSum
+        if (currSum / k) >= threshold:
+                count += 1
 
         for r in range(k, len(arr)):
             currSum += arr[r] - arr[r - k]
-            currMax = max(currMax, currSum)
-
-        return currMax
+            if (currSum / k) >= threshold:
+                count += 1
+        return count
 
 
 sol = Solution()
 
-print(sol.maxofSubarray(arr = [8, 3, -2, 4, 5, -1, 0, 5, 3, 9, -6], k = 5)) # 18, 
+print(sol.numOfSubarrays(arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4)) # output: 3
 
-print(sol.maxofSubarray(arr = [11,13,17,23,29,31,7,5,2,3], k = 5)) 
+print(sol.numOfSubarrays(arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5)) # output: 6
 
+print(sol.numOfSubarrays(arr = [3], k = 1, threshold = 3)) # 1
