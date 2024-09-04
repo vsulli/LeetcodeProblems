@@ -22,16 +22,23 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         # left pointer, need to keep track of count of letters?
         t_dict = Counter(t).most_common() # [('A', 1), ('B', 1), ('C', 1)]
-
+        count = 0
         l = 0
         res = ""
+        res_dict = {}
         for r in range(len(s)):
+            # add character to result string
             res += s[r]
-            # loop through every character in t_dict
-            # check if its count equals the count in res?
-            for char in t_dict:
-                if char[1] != res.count(char[0]):
-                    break
+
+            # if that character that was just added is part of the t string, add to dict
+            if s[r] in t:
+                if s[r] in res_dict:
+                    res_dict[s[r]] += 1
+                else:
+                    res_dict[s[r]] = 1
+            # check if res_dict matches t_dict
+            if res_dict == t_dict:
+                # set count equal to length of dict
         
         # take off letters from result while still matches t count
         while True:
