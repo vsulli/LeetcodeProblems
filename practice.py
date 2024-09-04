@@ -1,26 +1,25 @@
 # sliding window technique video lesson
 # https://www.youtube.com/watch?v=dOonV4byDEg&ab_channel=ProfoundAcademy
+
+
+
 from typing import List
 
-
+# find longest subarray that has a sum less than "s"
 class Solution:
-    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
-        count = 0
-        currSum = sum(arr[:k])
-        if (currSum / k) >= threshold:
-                count += 1
-
-        for r in range(k, len(arr)):
-            currSum += arr[r] - arr[r - k]
-            if (currSum / k) >= threshold:
-                count += 1
-        return count
+    def longestSubarraySum(self, arr: List[int], s: int) -> int:
+        # initialize left pointer, current sum, and max length
+        l, currSum, maxLen = -1, 0, 0
+        for r in range(len(arr)):
+            currSum += arr[r]
+            while currSum >= s: # adjust subarray while sum greater than s
+                l += 1
+                currSum -= arr[l]
+            # update max length
+            maxLen = max(maxLen, r - l) # take right index minus left index
+        return maxLen
 
 
 sol = Solution()
 
-print(sol.numOfSubarrays(arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4)) # output: 3
-
-print(sol.numOfSubarrays(arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5)) # output: 6
-
-print(sol.numOfSubarrays(arr = [3], k = 1, threshold = 3)) # 1
+print(sol.longestSubarraySum(arr = [4, 5, 2, 0, 1, 8, 12, 3, 6, 9], s = 15)) # 5

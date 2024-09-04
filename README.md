@@ -79,3 +79,43 @@ When to use:
 * finding which numbers add up to a target
 * finding items that sum to 0 in a given array
 * finding max water between two walls
+
+
+# Sliding Window
+*  sliding window technique video lesson
+*  https://www.youtube.com/watch?v=dOonV4byDEg&ab_channel=ProfoundAcademy
+
+Fixed Window Example)
+arr = [8, 3, -2, 4, 5, -1, 0, 5, 3, 9, -6], k = 5 # output: 18
+Maximum Sum Subarray of Size K 
+
+currSum = maxSum = sum(arr[:k]) # calculates intitial sum of size k
+for r in range(k, len(arr)) # loops through starting at next index
+    currSum += arr[r] - arr[r - k] # adds on rightmost index, subtracts off leftmost
+    maxSum = max(maxSum, currSum)
+return maxSum
+
+
+Dynamic Window Example)
+Longest Subarray with Sum < S 
+s = 15
+arr = [4, 5, 2, 0, 1, 8, 12, 3, 6, 9]
+
+# two pointers, one before the start and the other at the start of the current window (0)
+# at each step, adjust the right by one, move the left to make sure sum of current window doesn't exceed threshold
+
+from typing import List
+
+# find longest subarray that has a sum less than "s"
+class Solution:
+    def longestSubarraySum(self, arr: List[int], s: int) -> int:
+        # initialize left pointer, current sum, and max length
+        l, currSum, maxLen = -1, 0, 0
+        for r in range(len(arr)):
+            currSum += arr[r]
+            while currSum >= s: # adjust subarray while sum greater than s
+                l += 1
+                currSum -= arr[l]
+            # update max length
+            maxLen = max(maxLen, r - l) # take right index minus left index
+        return maxLen
