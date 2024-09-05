@@ -26,9 +26,12 @@ class Solution:
         currMax = max(nums[0:k])
         output.append(currMax)
         for r in range(k, len(nums)):
-            newMax = max(nums[l:r+1])
-            output.append(max(currMax, newMax))
-            currMax = newMax
+            # need to see if nums[r] is greater than currMax, if so then that gets appended
+            # and becomes new currMax
+            # also matters position of max in the subarray
+            if nums[r] > currMax:
+                currMax = nums[r]
+            output.append(currMax)
             l+= 1
 
         return output
