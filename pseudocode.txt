@@ -134,6 +134,49 @@ need to be which values
 Concepts: Array, Two Pointers, Sorting
 
 ==============================================
+76. MINIMUM WINDOW SUBSTRING
+==============================================
+ ---------------------------------------------
+ Pseudocode:
+
+ if target string is empty
+    return empty string
+
+initialize hashmaps of character counts for window and t 
+set counts for t hashmap
+initialize variables for count totals that you have in the window
+and what you need len(countT)
+initialize result and result length so you can minimize length
+loop through all indices of string
+    assign current character to value
+    update window hashmap character count
+    if it's a character that matters and count matches countT exactly
+        update have
+
+    while have equals need 
+        if current length less than saved result length
+            res is now new l, r pointers
+            reslen is now r - l + 1
+        window hashmap of leftmost character subtracted
+        if letter you just popped was part of countT, decrease from total you have
+        increase left pointer
+assign indices of result array to l, r 
+return the string of those indices if result length is not infinity otherwise return an empty string
+
+
+
+    
+
+
+"Tricks" to Remember: 
+you can update and set values in a hashmap using
+countT[c] = 1 + countT.get(c, 0) <-- default value of 0
+
+result will be the indices of left and right pointers
+
+Concepts:
+
+==============================================
 141. Linked List Cycle
 ==============================================
 Given head, the head of a linked list, 
