@@ -49,7 +49,7 @@ class Solution:
                     have -= 1
                 l += 1
         l, r = res   
-        return s[l:r+1]
+        return s[l:r+1] if resLen != float("inf") else ""
 
 sol = Solution()
 
