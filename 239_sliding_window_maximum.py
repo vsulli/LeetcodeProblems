@@ -20,10 +20,21 @@ from typing import List
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        pass
+        output = []
+        l = 1
+        currMax = max(nums[0:k])
+        output.append(currMax)
+        for r in range(k, len(nums)):
+            output.append(max(nums[l:r+1]))
+            l+= 1
+
+        return output
 
 sol = Solution()
 
-print(sol.maxSlidingWindow(nums = [1,3,-1,-3,5,3,6,7], k = 3))
 
-print(sol.maxSlidingWindow(nums = [1], k = 1))
+print(sol.maxSlidingWindow(nums = [1,3,-1,-3,5,3,6,7], k = 3)) # [3,3,5,5,6,7]
+
+print(sol.maxSlidingWindow(nums = [1], k = 1)) # [1]
+
+print(sol.maxSlidingWindow(nums = [1,3,1,2,0,5], k = 3)) # [3, 3, 2, 5]
