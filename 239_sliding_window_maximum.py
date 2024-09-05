@@ -15,26 +15,36 @@ window moves right by one position.
 Return the max sliding window.
 '''
 
+import collections
 from typing import List
 
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        # need a different way to calculate new max? compare to last?
+        # use deque for O(n) solution
+        # always decreasing in deque
+        # monotonically decreasing queue
         output = []
-        l = 1
-        currMax = max(nums[0:k])
-        output.append(currMax)
-        for r in range(k, len(nums)):
-            # need to see if nums[r] is greater than currMax, if so then that gets appended
-            # and becomes new currMax
-            # also matters position of max in the subarray
-            if nums[r] > currMax:
-                currMax = nums[r]
-            output.append(currMax)
-            l+= 1
+        l = r = 0
+        q = collections.deque() # indices
+
+        while r < len(nums):
+            while q and nums[q[-1]] < nums[r]:
+                q.pop()
+            q.append(r)
+
+            # remove left val from window if out of  bounds
+            if l > q[0]:
+                q.popleft()
+
+            if (r + 1) >= k:
+                output.append(nums[q[0]])
+                l += 1
+
+            r += 1
 
         return output
+        
 
 sol = Solution()
 
