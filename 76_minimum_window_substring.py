@@ -20,32 +20,36 @@ from collections import Counter
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        # left pointer, need to keep track of count of letters?
-        t_dict = Counter(t).most_common() # [('A', 1), ('B', 1), ('C', 1)]
-        count = 0
-        l = 0
-        res = ""
-        res_dict = {}
-        for r in range(len(s)):
-            # add character to result string
-            res += s[r]
+        if t == "":
+            return ""
+        
+        countT , window = {}, {}
 
-            # if that character that was just added is part of the t string, add to dict
-            if s[r] in t:
-                if s[r] in res_dict:
-                    res_dict[s[r]] += 1
-                else:
-                    res_dict[s[r]] = 1
-            # check if res_dict matches t_dict
-            if res_dict == t_dict:
-                # set count equal to length of dict
-        
-        # take off letters from result while still matches t count
-        while True:
-            
-            res -= res[l]
-        return res
-        
+        for c in t:
+            countT[c] = 1 + countT.get(c, 0) # default value of 0 if it doesn't exist
+
+        have, need = 0, len(countT)
+        res, resLen = [-1, -1], float("inf")
+        l = 0
+        for r in range(len(s)):
+            c = s[r]
+            window[c] = 1 + window.get(c, 0)
+
+            if c in countT and window[c] == countT[c]:
+                have += 1
+
+            while have == need:
+                # update result
+                if (r - l + 1) < resLen:
+                    res = [l, r]
+                    resLen = (r - l + 1)
+                # pop from left of window
+                window[s[l]] -= 1
+                if s[l] in countT and window[s[l]] < countT[s[l]]:
+                    have -= 1
+                l += 1
+        l, r = res   
+        return s[l:r+1]
 
 sol = Solution()
 
