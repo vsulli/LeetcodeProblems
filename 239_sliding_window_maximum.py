@@ -20,6 +20,7 @@ from typing import List
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        # need a different way to calculate new max? compare to last?
         output = []
         l = 1
         currMax = max(nums[0:k])
