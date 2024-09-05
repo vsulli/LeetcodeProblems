@@ -26,7 +26,9 @@ class Solution:
         currMax = max(nums[0:k])
         output.append(currMax)
         for r in range(k, len(nums)):
-            output.append(max(nums[l:r+1]))
+            newMax = max(nums[l:r+1])
+            output.append(max(currMax, newMax))
+            currMax = newMax
             l+= 1
 
         return output
