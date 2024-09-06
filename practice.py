@@ -1,25 +1,35 @@
-# sliding window technique video lesson
-# https://www.youtube.com/watch?v=dOonV4byDEg&ab_channel=ProfoundAcademy
+# leetcode 239 
+# sliding window maximum
 
+import collections
 
-
-from typing import List
-
-# find longest subarray that has a sum less than "s"
 class Solution:
-    def longestSubarraySum(self, arr: List[int], s: int) -> int:
-        # initialize left pointer, current sum, and max length
-        l, currSum, maxLen = -1, 0, 0
-        for r in range(len(arr)):
-            currSum += arr[r]
-            while currSum >= s: # adjust subarray while sum greater than s
+    def maxSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        output = []
+        q = collections.deque() # stores indices
+        l = r = 0
+
+
+        while r < len(nums):
+            while q and nums[q[-1]] < nums[r]:
+                q.pop()
+            q.append(r)
+
+            if l > q[0]:
+                q.popleft()
+
+            if (r + 1) >= k:
+                output.append(nums[q[0]])
                 l += 1
-                currSum -= arr[l]
-            # update max length
-            maxLen = max(maxLen, r - l) # take right index minus left index
-        return maxLen
+            r += 1
+        return output
 
 
 sol = Solution()
 
-print(sol.longestSubarraySum(arr = [4, 5, 2, 0, 1, 8, 12, 3, 6, 9], s = 15)) # 5
+
+print(sol.maxSlidingWindow(nums = [1,3,-1,-3,5,3,6,7], k = 3)) # [3,3,5,5,6,7]
+
+print(sol.maxSlidingWindow(nums = [1], k = 1)) # [1]
+
+print(sol.maxSlidingWindow(nums = [1,3,1,2,0,5], k = 3)) # [3, 3, 2, 5]
