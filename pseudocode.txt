@@ -329,7 +329,44 @@ for each number, because the difference will
 always be >k as you go to the right. Only need
 to compare one previous to current 
 Concepts: array, hash table, sliding window
+==============================================
+239. SLIDING WINDOW MAXIMUM
+==============================================
 
+You are given an array of integers nums, 
+there is a sliding window of size k which 
+is moving from the very left of the array 
+to the very right. You can only see the k 
+numbers in the window. Each time the sliding 
+window moves right by one position.
+
+Return the max sliding window.
+ ---------------------------------------------
+ Pseudocode:
+initialize output array
+initialize a double-sided queue
+initialize left and right pointers
+
+while right pointer doesn't go past end of array:
+    while the queue exists and rightmost value in queue is less than current number r:
+        remove them from the queue
+    add new value r to queue
+
+    if left value is greater than first value of queue:
+        remove leftmost from queue
+
+    # make sure window is at least size K
+    if right plus one is at least size k:
+        append to output the maximum number of queue (leftmost)
+        increment left pointer
+    
+    increment right pointer
+return output
+
+"Tricks" to Remember: 
+can use deque to access both beginning and end of queue 
+Concepts: array, queue, sliding window, heap (priority queue),
+monotonic queue
 ==============================================
 242. VALID ANAGRAM
 ==============================================
