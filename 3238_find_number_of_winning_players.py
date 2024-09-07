@@ -49,18 +49,22 @@ class Solution:
                 pick_counts[p[0]] = [0] * 10
                 pick_counts[p[0]][p[1]] = 1
         
-        print(pick_counts)
+        # print(pick_counts)
 
         # now need to loop through players in dictionary
+        for player in pick_counts:
+            max = sorted(pick_counts.get(player), reverse=True)
+            if max[0] > player:
+                winners += 1
+            # print(max[0])
         return winners
 
 
 sol = Solution()
 
+
 print(sol.winningPlayerCount(n = 4, pick = [[0,0],[1,0],[1,0],[2,1],[2,1],[2,0]])) # players 0 & 1 win, 2 & 3 do not
 
-'''
 print(sol.winningPlayerCount(n = 5, pick = [[1,1],[1,2],[1,3],[1,4]])) # no one wins game
 
 print(sol.winningPlayerCount(n = 5, pick = [[1,1],[2,4],[2,4],[2,4]])) # player 2 wins game by picking 3 balls with color 4
-'''
