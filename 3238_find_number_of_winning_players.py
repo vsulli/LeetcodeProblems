@@ -46,7 +46,7 @@ class Solution:
                 pick_counts[p[0]][p[1]] += 1
             else:
                 # add player to dict and initialize picks array to size 10
-                pick_counts[p[0]] = [0] * 10
+                pick_counts[p[0]] = [0] * 11
                 pick_counts[p[0]][p[1]] = 1
         
         # print(pick_counts)
@@ -68,3 +68,5 @@ print(sol.winningPlayerCount(n = 4, pick = [[0,0],[1,0],[1,0],[2,1],[2,1],[2,0]]
 print(sol.winningPlayerCount(n = 5, pick = [[1,1],[1,2],[1,3],[1,4]])) # no one wins game
 
 print(sol.winningPlayerCount(n = 5, pick = [[1,1],[2,4],[2,4],[2,4]])) # player 2 wins game by picking 3 balls with color 4
+
+print(sol.winningPlayerCount(n = 3, pick = [[1, 3], [2, 10]])) # 0
