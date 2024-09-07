@@ -28,36 +28,22 @@ from typing import List
 
 class Solution:
     def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
-        # n is number of players
-        # array has picks player: color 
-        # a player wins if they pick one more number of balls of same color than their number
 
-        # need to loop through list of picks
-        # keep dictionary of player number to picks and their count for each number
-        # player # 0: [] list of picks initialized as size 10?
-
-        # are picks always going to be in order?
-
-        winners = 0
-        pick_counts = {} 
-        for p in pick:
-            if p[0] in pick_counts:
-                # update count of color at that index
-                pick_counts[p[0]][p[1]] += 1
-            else:
-                # add player to dict and initialize picks array to size 10
-                pick_counts[p[0]] = [0] * 11
-                pick_counts[p[0]][p[1]] = 1
-        
-        # print(pick_counts)
-
-        # now need to loop through players in dictionary
-        for player in pick_counts:
-            max = sorted(pick_counts.get(player), reverse=True)
-            if max[0] > player:
-                winners += 1
-            # print(max[0])
-        return winners
+        library = {}
+        for key, val in pick:
+            if key not in library:
+                library[key] = {}
+            if val not in library[key]:
+                library[key][val] = 0
+            library[key][val] += 1
+        winning_players = 0
+        for player in range(n):
+            if player in library:
+                for count in library[player].values():
+                    if count > player:
+                        winning_players += 1
+                        break
+        return winning_players
 
 
 sol = Solution()
