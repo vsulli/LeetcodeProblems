@@ -47,7 +47,9 @@ class Solution:
             curr = head
             for i in range(count):
                 res[i] = curr
-                curr = curr.next
+                temp = curr.next
+                curr.next = None
+                curr = temp
 
         return res
         
@@ -65,21 +67,26 @@ n2.next = n3
 print(sol.splitListToParts(head = n1, k = 5))
 # Output: [[1],[2],[3],[],[]]
 
-n4 = ListNode(4)
-n5 = ListNode(5)
-n6 = ListNode(6)
-n7 = ListNode(7)
-n8 = ListNode(8)
-n9 = ListNode(9)
-n10 = ListNode(10)
+n4 = ListNode(1)
+n5 = ListNode(2)
+n6 = ListNode(3)
+n7 = ListNode(4)
+n8 = ListNode(5)
+n9 = ListNode(6)
+n10 = ListNode(7)
+n11 = ListNode(8)
+n12 = ListNode(9)
+n13 = ListNode(10)
 
-n3.next = n4
 n4.next = n5
 n5.next = n6
 n6.next = n7
 n7.next = n8
 n8.next = n9
 n9.next = n10
+n10.next = n11
+n11.next = n12
+n12.next = n13
 
-print(sol.splitListToParts(head = n1, k = 3))
+print(sol.splitListToParts(head = n4, k = 3))
 # Output: [[1,2,3,4],[5,6,7],[8,9,10]]
