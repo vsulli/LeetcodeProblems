@@ -42,7 +42,14 @@ class Solution:
             count += 1
             curr = curr.next
         print(count)
-
+        if count < k:
+            res = [[]] * k
+            curr = head
+            for i in range(count):
+                res[i] = [curr.val]
+                curr = curr.next
+        print(res)
+        
 
 
 sol = Solution()
