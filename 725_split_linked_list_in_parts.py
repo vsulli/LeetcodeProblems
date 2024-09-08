@@ -22,6 +22,7 @@ to parts occurring later.
 Return an array of the k parts.
 '''
 from typing import List, Optional
+import math
 
 # Definition for singly-linked list.
 class ListNode:
@@ -42,6 +43,7 @@ class Solution:
             count += 1
             curr = curr.next
         print(count)
+        # case that count is less than k
         if count < k:
             res = [[]] * k
             curr = head
@@ -50,6 +52,21 @@ class Solution:
                 temp = curr.next
                 curr.next = None
                 curr = temp
+        # case where more nodes than count or equal number nodes and count
+        else:
+            curr = head
+            # first section
+            sec = math.ceil(count / k)
+            i = 0
+            res.append(curr)
+            while curr and i < sec - 1:
+                curr = curr.next
+            temp = curr.next.next 
+            curr.next.next = None
+
+                
+
+
 
         return res
         
