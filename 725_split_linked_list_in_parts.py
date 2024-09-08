@@ -1,3 +1,4 @@
+
 '''
 Split Linked List in Parts
 Leetcode # 725
@@ -20,19 +21,28 @@ to parts occurring later.
 
 Return an array of the k parts.
 '''
+from typing import List, Optional
 
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-        
-from typing import List, Optional
 
 
 class Solution:
     def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        pass
+        # need to get entire length of list
+        # divided that length by k 
+        # if length of list is less than k though, need to initialize k sections anyway
+        res = []
+        count = 0
+        curr = head
+        while curr:
+            count += 1
+            curr = curr.next
+        print(count)
+
 
 
 sol = Solution()
