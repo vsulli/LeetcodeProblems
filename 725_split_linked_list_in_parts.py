@@ -33,43 +33,30 @@ class ListNode:
 
 class Solution:
     def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
-        # need to get entire length of list
-        # divided that length by k 
-        # if length of list is less than k though, need to initialize k sections anyway
-        res = []
-        count = 0
-        curr = head
+        # neetcode solution
+        length, curr = 0, head
+
         while curr:
-            count += 1
             curr = curr.next
-        print(count)
-        # case that count is less than k
-        if count < k:
-            res = [[]] * k
-            curr = head
-            for i in range(count):
-                res[i] = curr
-                temp = curr.next
-                curr.next = None
-                curr = temp
-        # case where more nodes than count or equal number nodes and count
-        else:
-            curr = head
-            # first section
-            sec = math.ceil(count / k)
-            i = 0
-            res.append(curr)
-            while curr and i < sec - 1:
+            length += 1
+
+        base_len, remainder = length // k, length % k
+        curr = head
+        res = []
+        for i in range(k): # don't want to just iterate while curr, because we want null as well
+            res.append(curr) # add first node to result list
+
+            # n = 6, k = 2 
+            # 1 -> 2-> 3->     4-> 5-> 6-> 
+            for j in range(base_len - 1 + (1 if remainder else 0)): # want to iterate to node before last node (-1)
+                if not curr: break # null pointer
                 curr = curr.next
-            temp = curr.next.next 
-            curr.next.next = None
-
-                
-
-
+            remainder -= (1 if remainder else 0)
+            # end of current part - set equal to None
+            if curr:
+                curr.next, curr = None, curr.next # instead of temporary variable
 
         return res
-        
 
 
 sol = Solution()
