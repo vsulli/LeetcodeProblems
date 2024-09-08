@@ -46,10 +46,9 @@ class Solution:
             res = [[]] * k
             curr = head
             for i in range(count):
-                res[i] = [curr]
+                res[i] = curr
                 curr = curr.next
 
-        
         return res
         
 
