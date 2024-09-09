@@ -44,9 +44,10 @@ class Solution:
             if state == 'column_down':
                 for j in range(column):
                     print(matrix[j][column - offset_column])
-
+                    # res.append()
                 state = 'row_left'
             if state == 'row_left':
+
                 state = 'column_up'
             if state == 'column_up':
                 state = 'row_right'
