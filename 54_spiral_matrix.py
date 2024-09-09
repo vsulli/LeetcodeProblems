@@ -23,9 +23,15 @@ class Solution:
 
 
         res = []
+        for n in matrix[0]:
+            res.append(n)
+        '''
         for row in range(len(matrix[0])):
             for column in range(len(matrix[1])):
                 print(matrix[row][column])
+                '''
+        
+        return res
 
 sol = Solution()
 
