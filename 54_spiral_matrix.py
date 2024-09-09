@@ -21,10 +21,15 @@ class Solution:
         # order will be entire first row, last column, last row
         # then first column up to 2nd row to 2nd to last column
 
-
+        # first row minus last column
         res = []
-        for n in matrix[0]:
-            res.append(n)
+        for n in range(len(matrix[0]) - 1):
+            res.append(matrix[0][n])
+
+        while True:
+            
+        
+        
         '''
         for row in range(len(matrix[0])):
             for column in range(len(matrix[1])):
@@ -36,7 +41,6 @@ class Solution:
 sol = Solution()
 
 print(sol.spiralOrder(matrix = [[1,2,3],[4,5,6],[7,8,9]]))
-'''
+
 
 print(sol.spiralOrder(matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]))
-'''
