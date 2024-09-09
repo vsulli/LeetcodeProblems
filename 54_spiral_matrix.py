@@ -21,22 +21,34 @@ class Solution:
         # order will be entire first row, last column, last row
         # then first column up to 2nd row to 2nd to last column
 
-        # first row minus last column
-        res = []
-        for n in range(len(matrix[0]) - 1):
-            res.append(matrix[0][n])
+        # assign first row to result
+        res = matrix[0]
+        
+        # total number of elements
+        total_len = (len(matrix) * len(matrix[0]))
 
-        while True:
-            
-        
-        
+        count = len(res)
+
+        state = 'column_down'
+
         '''
-        for row in range(len(matrix[0])):
-            for column in range(len(matrix[1])):
-                print(matrix[row][column])
-                '''
-        
+        while count < total_len:
+            # switch based on state?
+            if state == 'row_right':
+                state = 'column_down'
+            if state == 'column_down':
+                state = 'row_left'
+            if state == 'row_left':
+                state = 'column_up'
+            if state == 'column_up':
+                state = 'row_right'
+            '''
+
         return res
+
+
+
+
 
 sol = Solution()
 
