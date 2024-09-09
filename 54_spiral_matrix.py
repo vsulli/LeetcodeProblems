@@ -14,44 +14,39 @@ from typing import List
 
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        # return the elements fo the matrix in spiral order
-        # values from -100 to 100
-        # rows/columns from 1 to 10 max
-        
-        # order will be entire first row, last column, last row
-        # then first column up to 2nd row to 2nd to last column
+        # use four pointers
+        # always start at top left position
+        # O(m * n) time complexity, O(1) memory
 
-        # assign first row to result
-        res = matrix[0]
-        
-        # total number of elements
-        total_len = (len(matrix) * len(matrix[0]))
+        res = []
+        left, right = 0, len(matrix[0])
+        top, bottom = 0, len(matrix)
 
-        count = len(res)
+        while left < right and top < bottom:
+            # get every value in top row
+            for i in range(left, right):
+                res.append(matrix[top][i])
+            top += 1
 
-        state = 'column_down'
-        offset_row = 1
-        offset_column = 0
-        row = 1
-        column = len(matrix)
 
-        
-        for i in range(len(matrix)):
-            # switch based on state?
-            if state == 'row_right':
-                state = 'column_down'
+            # get every i in right col
+            for i in range(top, bottom):
+                res.append(matrix[i][right - 1])
+            right -= 1
 
-            if state == 'column_down':
-                for j in range(column):
-                    print(matrix[j][column - offset_column])
-                    # res.append()
-                state = 'row_left'
-            if state == 'row_left':
+            if not (left < right and top < bottom):
+                break
 
-                state = 'column_up'
-            if state == 'column_up':
-                state = 'row_right'
+            # get every i in bottom row
+            for i in range(right - 1, left - 1, -1):
+                res.append(matrix[bottom - 1][i])
+            bottom -= 1
 
+
+            # get every i in left col
+            for i in range(bottom - 1, top - 1, -1):
+                res.append(matrix[i][left])
+            left += 1
 
         return res
 
@@ -59,11 +54,12 @@ class Solution:
 
 
 
+
+
 sol = Solution()
 
-'''
+
 print(sol.spiralOrder(matrix = [[1,2,3],[4,5,6],[7,8,9]]))
 
-'''
 
 print(sol.spiralOrder(matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]))
