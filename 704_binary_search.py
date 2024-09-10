@@ -1,4 +1,4 @@
-
+# TODO read up on recursion and binary search
 '''
 Binary Search
 Leetcode # 704
