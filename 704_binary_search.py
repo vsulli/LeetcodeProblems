@@ -17,16 +17,46 @@ runtime complexity.
 
 from typing import List
 
+def splitArray(nums: List[int], start, end)-> List[int]:
+    nums = nums[start: end]
+    return nums
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         # since list is sorted, choose middle of list
         # check if matches target
         # if lower check left, if higher check right
-              pass
+        # if reach number that is less than target, return -1
+
+        # initialize index to middle
+        guess = len(nums) // 2
+
+        start = 0
+        end = len(nums)
+
+        while nums[guess] != target and nums:
+            # search right
+            if nums[guess] < target:
+                nums = splitArray(nums, guess, end)
+                guess = (len(nums) - guess) // 2
+
+            # search left
+            if nums[guess] > target:
+                nums = splitArray(nums, start, guess)
+                guess = (len(nums) - guess) // 2
+        
+        if not nums:
+            return -1
+        
+        return guess
+
 
 sol = Solution()
 
-print(sol.search(nums = [-1,0,3,5,9,12], target = 9))
+print(sol.search(nums = [-1,0,3,5,9,12], target = 9)) # 4
+'''
 
-print(sol.search(nums = [-1,0,3,5,9,12], target = 2))
+print(sol.search(nums = [-1,0,3,5,9,12], target = 2)) # -1
+
+print(sol.search(nums = [1, 2, 3, 4, 5], target = 2)) #  1
+'''
