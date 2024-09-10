@@ -16,48 +16,19 @@ runtime complexity.
 '''
 
 from typing import List
-
-def searchArray(nums: List[int], guess, target):
-    if len(nums) == 1 and nums[guess] != target:
-        return -1
-    
-    elif nums[guess] == target:
-        return guess
-    
-    elif nums[guess] < target:
-        searchArray(nums, guess, target)
-
-    elif nums[guess] > target:
-
-
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        # since list is sorted, choose middle of list
-        # check if matches target
-        # if lower check left, if higher check right
-        # if reach number that is less than target, return -1
+        l, r = 0, len(nums) - 1
 
-        # initialize index to middle
-        guess = len(nums) // 2
-
-        start = 0
-        end = len(nums)
-
-        while nums[guess] != target and nums:
-            # search right
-            if nums[guess] < target:
-                nums = splitArray(nums, guess, end)
-                guess = (len(nums) - guess) // 2
-
-            # search left
-            if nums[guess] > target:
-                nums = splitArray(nums, start, guess)
-                guess = (len(nums) - guess) // 2
-        
-        if not nums:
-            return -1
-        
-        return guess
+        while l <= r:
+            m = (l + r) // 2
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
+            else:
+                return m
+        return -1
 
 
 sol = Solution()
