@@ -18,6 +18,7 @@ runtime complexity.
 from typing import List
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
+        # don't need to actually update nums, just pointers
         l, r = 0, len(nums) - 1
 
         while l <= r:
