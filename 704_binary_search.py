@@ -17,9 +17,18 @@ runtime complexity.
 
 from typing import List
 
-def splitArray(nums: List[int], start, end)-> List[int]:
-    nums = nums[start: end]
-    return nums
+def searchArray(nums: List[int], guess, target):
+    if len(nums) == 1 and nums[guess] != target:
+        return -1
+    
+    elif nums[guess] == target:
+        return guess
+    
+    elif nums[guess] < target:
+        searchArray(nums, guess, target)
+
+    elif nums[guess] > target:
+
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
