@@ -489,6 +489,39 @@ k = 6
 (2+4 = 6 which divides into 6 evenly)
 
 Concepts: array, hash table, math, prefix sum
+==============================================
+704. BINARY SEARCH
+==============================================
+Given an array of integers nums which is sorted 
+in ascending order, and an integer target, write 
+a function to search target in nums. If target 
+exists, then return its index. Otherwise, 
+return -1.
+
+You must write an algorithm with O(log n) runtime 
+complexity.
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+ ---------------------------------------------
+ Pseudocode:
+
+initialize left and right pointers
+while left doesn't equal right pointer
+    calculate new midpoint
+    if midpoint > target
+        set new right pointer
+    if midpoint < target 
+        set new left pointer
+    else
+        return midpoint
+return -1 # default 
+
+
+"Tricks" to Remember: 
+If m does not equal target, when resetting new left and right pointers
+you don't set equal to m exactly
+
+Concepts: array, binary search
 
 ==============================================
 945. MINIMUM INCREMENT TO MAKE ARRAY UNIQUE
@@ -565,6 +598,9 @@ subtract 1 because indices are 0-indexed in python
 
 Concepts:
 array, sliding window
+
+
+
 ==============================================
 
 ==============================================
