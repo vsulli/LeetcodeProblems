@@ -34,23 +34,28 @@ class Solution:
         mid_row = (ml + mr) // 2
         while l <= r:
             mid_row = (ml + mr) // 2
-            # if target is in that row
+            # if in range of that row search by regular binary search
             if  matrix[mid_row][l] <= target <= matrix[mid_row][r]:
-                print("in row")
-                return
+                # binary search
+                # if found in range, set contains_target to True and break
+                while l <= r:
+                    
+                    m = (l + r) // 2
+                    if matrix[mid_row][m] > target:
+                        r = m - 1
+                    elif matrix[mid_row][m] < target:
+                        l = m + 1
+                    # found it
+                    else:
+                        return True
+                return False
+            # if smaller, assign to smaller matrix
             elif target < matrix[mid_row][l]:
                 mr = mid_row - 1
+            # if larger, assign to larger matrix
             elif target > matrix[mid_row][r]:
                 ml = mid_row + 1
-                
-        
 
-
-        # if in range of that row search by regular binary search
-
-        # if smaller, assign to smaller matrix
-
-        # if larger, assign to larger matrix
         return contains_target
 
 
