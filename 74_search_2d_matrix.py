@@ -21,42 +21,42 @@ from typing import List
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        # need to select middle of middle array?
-        # need to maintain 2 pointers to beginning and end of that row of matrix?
-        # if m isn't in that range then set to lower or higher row?
-        # it is possible for no answer to be found
+        ROWS, COLS = len(matrix), len(matrix[0])
 
-        contains_target = False
-        # assign to middle matrix
-        l, r = 0,len(matrix[0]) - 1
+        top, bot = 0, ROWS -1
 
-        ml, mr = 0, len(matrix) - 1
-        mid_row = (ml + mr) // 2
+        while top <= bot:
+            row = (top + bot) // 2
+            # greater than largest value in row
+            if target > matrix[row][-1]:
+                top = row + 1
+            # less than lowest value in row
+            elif target < matrix[row][0]:
+                bot = row - 1
+
+            # target value in that row
+            else:
+                break
+        
+        # none of rows contain target
+        if not (top <= bot):
+            return False
+        
+        row = (top + bot) // 2
+        l, r = 0, COLS - 1
         while l <= r:
-            mid_row = (ml + mr) // 2
-            # if in range of that row search by regular binary search
-            if  matrix[mid_row][l] <= target <= matrix[mid_row][r]:
-                # binary search
-                # if found in range, set contains_target to True and break
-                while l <= r:
-                    
-                    m = (l + r) // 2
-                    if matrix[mid_row][m] > target:
-                        r = m - 1
-                    elif matrix[mid_row][m] < target:
-                        l = m + 1
-                    # found it
-                    else:
-                        return True
-                return False
-            # if smaller, assign to smaller matrix
-            elif target < matrix[mid_row][l]:
-                mr = mid_row - 1
-            # if larger, assign to larger matrix
-            elif target > matrix[mid_row][r]:
-                ml = mid_row + 1
+            m = (l + r) // 2
+            if target > matrix[row][m]:
+                # search right
+                l = m + 1
+            elif target < matrix[row][m]:
+                r = m - 1
 
-        return contains_target
+            else:
+                return True
+        return False
+
+
 
 
 sol = Solution()
