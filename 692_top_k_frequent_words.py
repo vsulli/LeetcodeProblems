@@ -24,6 +24,9 @@ class Solution:
         # if a word hasn't been seen, add to hashmap
         # if it already has, increment its value
         # then sort the hashmap and return highest ones for k
+        
+        words = sorted(words) # to put in alphabetical order
+
         res = []
         freq = {}
         for w in words:
@@ -33,15 +36,16 @@ class Solution:
                 freq[w] = 1
         
         sorted_freq = dict(sorted(freq.items(), key=lambda item: item[1], reverse=True))
-        # sorted_keys = sorted_freq.keys()
-        res = list(sorted_freq.keys())[:k]
+        return list(sorted_freq.keys())[:k]
 
-        return res
+       
 
 sol = Solution()
 
-print(sol.topKFrequent(words = ['i'], k = 1))
+print(sol.topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3)) # Output: ["i","love","coding"]
 
-print(sol.topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))
+print(sol.topKFrequent(words = ['i'], k = 1)) # Output: ['i']
 
-print(sol.topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))
+print(sol.topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2)) # Output: ["i","love"]
+
+print(sol.topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4)) # Output: ["the","is","sunny","day"]
