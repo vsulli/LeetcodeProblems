@@ -15,28 +15,35 @@ Sort the words with the same frequency
 by their lexicographical order.
 '''
 
-from typing import List
+from heapq import *
+from typing import Counter, List
 
 
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        # loop through words
-        # if a word hasn't been seen, add to hashmap
-        # if it already has, increment its value
-        # then sort the hashmap and return highest ones for k
+        # Make a dictionary of counts
+        freq_dict = Counter(words)
         
-        words = sorted(words) # to put in alphabetical order
+        # Find max frequency
+        max_freq = max(freq_dict.values())
+        
+        # Make Max frequency + 1 buckets
+        buckets = [[] for _ in range(max_freq + 1)]
 
-        res = []
-        freq = {}
-        for w in words:
-            if w in freq:
-                freq[w] += 1
-            else:
-                freq[w] = 1
+        # Heap push word/key in bucket corresponding to freq
+        for key, val in freq_dict.items():
+            heappush(buckets[val], key)
         
-        sorted_freq = dict(sorted(freq.items(), key=lambda item: item[1], reverse=True))
-        return list(sorted_freq.keys())[:k]
+        ans = []
+        bucket_index = max_freq
+        while k > 0 :
+            if len(buckets[bucket_index]) > 0:
+                ans.append(heappop(buckets[bucket_index]))
+                k -= 1
+            else:
+                bucket_index -= 1
+            
+        return ans
 
        
 
