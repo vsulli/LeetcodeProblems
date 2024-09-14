@@ -1,3 +1,5 @@
+# TODO learn about top/bottom indexing in relation to 2d matrices
+# navigating 2d matrices
 
 '''
 Search a 2D Matrix
