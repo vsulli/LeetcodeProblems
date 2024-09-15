@@ -36,7 +36,10 @@ class Solution:
     def resultGrid(self, image: List[List[int]], threshold: int) -> List[List[int]]:
         # how to determine if a pixel is adjacent?
         # region is 3x3 
-
+        pixel_intensities = {} 
+        region = [] # store the row and column of pixels that fit in this region?
+        result = []
+        
         for row in range(len(image)):
             for column in range(len(image[0])):
                 print(image[row][column])
