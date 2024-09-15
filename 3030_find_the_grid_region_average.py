@@ -1,3 +1,4 @@
+# TODO notate solution
 '''
 Find the Grid of Region Average
 Leetcode # 3030
@@ -34,16 +35,46 @@ from typing import List
 
 class Solution:
     def resultGrid(self, image: List[List[int]], threshold: int) -> List[List[int]]:
-        # how to determine if a pixel is adjacent?
-        # region is 3x3 
-        pixel_intensities = {} 
-        region = [] # store the row and column of pixels that fit in this region?
-        result = []
+        # image[a][b] and image[c][d] two pixels are adjacent if |a - c| + | b - d| == 1
+        m, n = len(image), len(image[0])
+        res = [[0 for _ in range(n)] for _ in range(m)]
+        cnt = [[0 for _ in range(n)] for _ in range(m)]
+        def isValid(x, y):
+            for dx in [-1, 1]:
+                for dy in [-1, 1]:
+                    if not (abs(image[x][y] - image[x+dx][y]) <= threshold and abs(image[x][y] - image[x][y+dy]) <= threshold):
+                        return False
+            if not (abs(image[x-1][y-1] - image[x-1][y]) <= threshold and abs(image[x-1][y-1] - image[x][y-1]) <= threshold):
+                return False
+            if not (abs(image[x-1][y+1] - image[x-1][y]) <= threshold and abs(image[x-1][y+1] - image[x][y+1]) <= threshold):
+                return False
+            if not (abs(image[x+1][y-1] - image[x+1][y]) <= threshold and abs(image[x+1][y-1] - image[x][y-1]) <= threshold):
+                return False
+            if not (abs(image[x+1][y+1] - image[x+1][y]) <= threshold and abs(image[x+1][y+1] - image[x][y+1]) <= threshold):
+                return False
+            return True
+            
+        for i in range(1, m-1):
+            for j in range(1, n-1):
+                if isValid(i, j):
+                    val = 0
+                    for dx in [-1, 0, 1]:
+                        for dy in [-1, 0, 1]:
+                            cnt[i+dx][j+dy] += 1
+                            val += image[i+dx][j+dy]
+                    for dx in [-1, 0, 1]:
+                        for dy in [-1, 0, 1]:
+                            res[i+dx][j+dy] += val // 9
+                
+                
+        for i in range(m):
+            for j in range(n):
+                if cnt[i][j] == 0:
+                    res[i][j] = image[i][j]
+                else:
+                    res[i][j] //= cnt[i][j]
         
-        for row in range(len(image)):
-            for column in range(len(image[0])):
-                print(image[row][column])
-
+        return res
 
 
 sol = Solution()
