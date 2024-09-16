@@ -19,7 +19,17 @@ from typing import List
 
 class Solution:
     def waysToSplitArray(self, nums: List[int]) -> int:
-        pass
+        # sum of indices up until i are >= all indices to its right?
+        count = 0
+        prefixSum = 0
+        numsSum = sum(nums)
+        for i in range(len(nums)):
+            prefixSum += nums[i]
+            numsSum -= prefixSum
+            if prefixSum >= numsSum:
+                count +=1
+
+        return count
 
 sol = Solution()
 
