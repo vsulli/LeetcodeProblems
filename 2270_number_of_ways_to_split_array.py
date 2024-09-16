@@ -26,19 +26,13 @@ class Solution:
         for i in range(len(nums) - 1):
             prefixSum += nums[i]
             numsSum -= nums[i]
-            print("Prefix: " + str(prefixSum))
-            print("Sum: " + str(numsSum))
             if prefixSum >= numsSum:
                 count +=1
-            print("Count: " + str(count))
-            print("---------------")
-
+            
         return count
 
 sol = Solution()
 
 print(sol.waysToSplitArray(nums = [10,4,-8,7])) # 2
-
-
 
 print(sol.waysToSplitArray(nums = [2,3,1,0])) # 2
