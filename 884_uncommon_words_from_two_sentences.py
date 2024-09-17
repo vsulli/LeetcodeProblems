@@ -28,6 +28,7 @@ class Solution:
         res = []
         s1 = s1.split()
         s2 = s2.split()
+        # join two lists, check if isn't in other list and only appears once
         res = [i for i in s1+s2 if i not in s1 and s2.count(i) == 1 or i not in s2 and s1.count(i) == 1]
         return res
 
