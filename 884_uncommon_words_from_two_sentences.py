@@ -17,20 +17,24 @@ list of all the uncommon words. You may
 return the answer in any order.
 '''
 
+from collections import defaultdict
 from typing import List
 
 
 class Solution:
     def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
-        # can't just combine and check if count is 2
-        #uncommon if it appears only once
+        count = defaultdict(int)
+        for w in s1.split(" ") + s2.split(" "):
+            count[w] += 1
 
         res = []
-        s1 = s1.split()
-        s2 = s2.split()
-        # join two lists, check if isn't in other list and only appears once
-        res = [i for i in s1+s2 if i not in s1 and s2.count(i) == 1 or i not in s2 and s1.count(i) == 1]
+        for w, cnt in count.items():
+            if cnt == 1:
+                res.append(w)
+
         return res
+
+        
 
 sol = Solution()
 
