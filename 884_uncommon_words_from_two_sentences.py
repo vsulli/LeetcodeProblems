@@ -23,21 +23,16 @@ from typing import List
 class Solution:
     def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
         # can't just combine and check if count is 2
-        # sort both of them?
+        #uncommon if it appears only once
+
         res = []
 
-        s1 = sorted(s1)
-        s2 = sorted(s2)
+        s1 = s1.split()
+        s2 = s2.split()
 
-        # case where s2 longer
-        if len(s2) > len(s1):
-            for i in range(len(s2)):
-                if s2[i] not in s1:
-                    res.append(s2[i])
-        # case where s1 longer or equal
-        else:
-            for i in range(len(s1)):
-                if 
+        res = [i for i in s1+s2 if i not in s1 or i not in s2]
+        
+        return res
 
 sol = Solution()
 
