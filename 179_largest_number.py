@@ -14,38 +14,38 @@ of an integer.
 
 '''
 
+from functools import cmp_to_key
 from typing import List
 
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
-        # out of all single length ones compared to first digit - in order
+        # greedy algorithm
+        # sorting - nlogn
+        for i, n in enumerate(nums):
+            nums[i] = str(n)
 
-        # does it still matter to sort it?
-        nums.sort(reverse=True)
-        res = str(nums[0]) # initialize result to first number
-        print(nums)
-        # build string and then as you go through in O(n) time insert next number? - try leftmost to make biggest?
-        
-        # loop through remainder of list
-        for i in range(1, len(nums)):
-            # new number before > new number after
-            # compare it to the first digit?
-            # how to keep track of numbers that are more than one digit but already placed in string?
-            if int(str(nums[i])+res) > int(res+str(nums[i])):
-                res = str(nums[i]) + res
+
+        # our custom comparison function
+        # compares two numbers and used as key to sort
+        def compare(n1, n2):
+            # n1 goes first
+            if n1 + n2 > n2 + n1:
+                return -1
             else:
-                res = res + str(nums[i])
-            print(res)
-        return res
+                return 1
+
+        nums = sorted(nums, key=cmp_to_key(compare))
+
+        return str(int("".join(nums))) # adds list of strings together
+        # converting to int gets rid of "000" problem
+
 
 
 
 sol = Solution()
-'''
-print(sol.largestNumber(nums = [10,2]))
 
-'''
+print(sol.largestNumber(nums = [10,2]))
 
 print(sol.largestNumber(nums = [3,30,34,5,9]))
 
