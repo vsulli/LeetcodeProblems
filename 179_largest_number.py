@@ -30,6 +30,8 @@ class Solution:
         # loop through remainder of list
         for i in range(1, len(nums)):
             # new number before > new number after
+            # compare it to the first digit?
+            # how to keep track of numbers that are more than one digit but already placed in string?
             if int(str(nums[i])+res) > int(res+str(nums[i])):
                 res = str(nums[i]) + res
             else:
