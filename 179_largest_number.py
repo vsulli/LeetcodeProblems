@@ -1,3 +1,5 @@
+# TODO read up on greedy algorithm
+# read up on cmp_to_key
 '''
 Largest Number
 Leetcode # 179
