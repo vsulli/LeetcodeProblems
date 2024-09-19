@@ -13,12 +13,15 @@ class Solution:
         # two pointers
         # start one pointer at end of string
         res = ''
+        m = len(s) // 2
         p = len(s) - 1
 
         for i in range(len(s)):
-            res += s[i]
+            # slice string in neg direction
+            if s[m:i:-1] == s[m:p+1]:
+                print(s[i:m+1:-1])
             # check if it's a palindrome by getting from middle index to end(reverse order) and beg to middle index
-            
+
         
 
 sol = Solution()

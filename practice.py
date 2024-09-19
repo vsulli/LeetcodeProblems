@@ -1,26 +1,4 @@
-# leetcode 704 - binary search
-# Binary Search
+s = "babad"
 
-from typing import List
-
-
-class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        l, r = 0, len(nums) - 1 # need right pointer to point to end of array, python 0-indexed
-
-        while l <= r:
-            m = (l + r) // 2
-            if nums[m] > target:
-                r = m - 1
-            elif nums[m] < target:
-                l = m + 1
-            else:
-                return m
-
-        return -1
-
-sol = Solution()
-
-print(sol.search(nums = [-1,0,3,5,9,12], target = 9)) # 4
-
-print(sol.search(nums = [-1,0,3,5,9,12], target = 2)) # -1
+print(s[2::-1]) # m: s   neg step
+print(s[2:4+1]) # m:p + 1
