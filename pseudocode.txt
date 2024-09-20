@@ -80,6 +80,55 @@ and dummy node
 Concepts: linked list, math, recursion
 
 ==============================================
+5. LONGEST PALINDROMIC SUBSTRING
+==============================================
+Given a string s, return the longest 
+palindromic
+ 
+substring
+ in s.
+
+Input: s = "babad"
+Output: "bab" or "aba"
+
+Input: s = "cbbd"
+Output: "bb"
+
+ ---------------------------------------------
+ Pseudocode:
+initialize result string
+
+initialize result length
+
+loop through string
+    # odd length string
+    set left and right pointers equal to current index
+    while l >= 0 and r < len(s) and string indices equal
+        if length of subsection greater than current length 
+            set new result for those indices
+            set new longest length
+        decrement left pointer
+        increment right pointer
+
+    # even length string 
+    set left and right pointers to current index and next index
+    while l >= 0 and r < len(s) and string indices equal
+        if length of subsection greater than current length 
+            set new result for those indices
+            set new longest length
+        decrement left pointer
+        increment right pointer
+
+return result 
+
+"Tricks" to Remember: 
+As you loop through the list, consider each index
+the center. Separate cases for even and odd number 
+string lengths
+
+Concepts: two pointers, string, dynamic programming
+
+==============================================
 49. GROUP ANAGRAMS
 ==============================================
 Given an array of strings strs, group the 
