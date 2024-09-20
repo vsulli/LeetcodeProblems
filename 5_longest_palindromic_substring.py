@@ -15,14 +15,22 @@ class Solution:
         res = ''
         m = len(s) // 2
         p = len(s) - 1
+        if s[m::-1] == s[m:p+1]:
+            res = s[m:p+1]
+        p-=1
 
         for i in range(len(s)):
+            # print(s[m:i:-1])
+            # print(s[m:p+1])
             # slice string in neg direction
             if s[m:i:-1] == s[m:p+1]:
-                print(s[i:m+1:-1])
+                new_res = s[m-1:p+1]
+                if len(new_res) > len(res):
+                    res = new_res
+                
             # check if it's a palindrome by getting from middle index to end(reverse order) and beg to middle index
-
-        
+            p-=1
+        return res
 
 sol = Solution()
 
