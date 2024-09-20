@@ -24,7 +24,11 @@ output will never exceed 105.
 
 class Solution:
     def decodeString(self, s: str) -> str:
-        pass
+        # loop through string
+        # if you reach a digit, store that as multiplier
+        # when you reach left bracket put that in multiplied string
+
+        # need to use a stack?
 
 sol = Solution()
 print(sol.decodeString(s = "3[a]2[bc]"))
