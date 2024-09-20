@@ -24,7 +24,10 @@ class Solution:
             # print(s[m:p+1])
             # slice string in neg direction
             if s[m:i:-1] == s[m:p+1]:
-                new_res = s[m-1:p+1]
+                if len(s) // 2 == 0:
+                    new_res = s[m:p+1] # if even length string
+                elif len(s) // 2 != 0:
+                    new_res = s[m-1:p+1] # if odd length string
                 if len(new_res) > len(res):
                     res = new_res
                 
