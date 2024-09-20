@@ -24,6 +24,9 @@ class Solution:
             # print(s[m:p+1])
             # slice string in neg direction
             if s[m:i:-1] == s[m:p+1]:
+                print(s[m:i:-1])
+                print(s[m:p+1])
+                print("---------")
                 if len(s) // 2 == 0:
                     new_res = s[m:p+1] # if even length string
                 elif len(s) // 2 != 0:
@@ -37,6 +40,9 @@ class Solution:
 
 sol = Solution()
 
+'''
+
 print(sol.longestPalindrome(s = "babad")) # bab or aba
+'''
 
 print(sol.longestPalindrome(s = "cbbd")) # bb
