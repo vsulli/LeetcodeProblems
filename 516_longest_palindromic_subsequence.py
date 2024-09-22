@@ -1,3 +1,5 @@
+# TODO solve longest common subsequence before this problem
+# Leetcode # 1143
 '''
 Longest Palindromic Subsequence
 Leetcode # 516
@@ -60,3 +62,5 @@ sol = Solution()
 print(sol.longestPalindromeSubseq(s = "bbbab"))
 
 print(sol.longestPalindromeSubseq(s = "cbbd"))
+
+print(sol.longestPalindromeSubseq(s = "abcabcabcabc")) # output: 7
