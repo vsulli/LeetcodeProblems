@@ -26,17 +26,26 @@ class Solution:
 
         for i in range(len(s)):
 
+            copy_s = s # copy of s so that you can delete characters
+
+
             # odd number s
             l, r = i, i
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if r - l + 1 > resLen:
-                    resLen = r - l + 1
-                l -= 1
-                r += 1
+            while l >= 0 and r < len(copy_s):
+                # left matches right
+                if copy_s[l] == copy_s[r]:
+                    if r - l + 1 > resLen:
+                        resLen = r - l + 1
+                    l -= 1
+                    r += 1
+                # else skip right pointer forward
+                else:
+                    r += 1
 
             # even number s
+            copy_s = s
             l, r = i, i+1
-            while l >= 0 and r < len(s) and s[l] == s[r]:
+            while l >= 0 and r < len(copy_s) and copy_s[l] == copy_s[r]:
                 if r - l + 1 > resLen:
                     resLen = r - l + 1
                 l -= 1
