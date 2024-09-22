@@ -20,7 +20,13 @@ subsequence that is common to both strings.
 
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        pass
+        # need a string to store their common characters
+        # shouldn't matter which string you start with, so use left as base
+        # left_s and right_s pointers?
+            # check if left string matches right
+            # if right doesn't, then advance right until end of string
+                # if you reach end with no match, then advance left pointer and reset right pointer
+                
 
 sol = Solution()
 
