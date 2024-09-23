@@ -20,7 +20,6 @@ subsequence that is common to both strings.
 
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        res = ""
         resLen = 0
         p1, p2 = 0, 0
         for i in range(len(text1)):
@@ -29,11 +28,9 @@ class Solution:
             # match found, meaning that p1 now needs to move to p2
             if p2 < len(text2) and text1[i] == text2[p2]:
                 resLen += 1
-                res += text2[p2]
                 # move to position after match
                 p1 = p2 + 1
             p2 = p1
-        print(res)
         return resLen
 
 sol = Solution()
