@@ -26,15 +26,19 @@ class Solution:
             # check if left string matches right
             # if right doesn't, then advance right until end of string
                 # if you reach end with no match, then advance left pointer and reset right pointer
+        res = ""
         resLen = 0
         p1, p2 = 0, 0
         for i in range(len(text1)):
             while p2 < len(text2) and text2[p2] != text1[i]:
                 p2 += 1
+            # match found, meaning that p1 now needs to move to p2
             if p2 < len(text2) and text1[i] == text2[p2]:
+                res += text2[p2]
                 resLen += 1
-                p1 += 1
+                p1 = p2
             p2 = p1
+        print(res)
 
         return resLen
 
@@ -45,3 +49,5 @@ print(sol.longestCommonSubsequence(text1 = "abcde", text2 = "ace" )) # Output: 3
 print(sol.longestCommonSubsequence(text1 = "abc", text2 = "abc")) # Output: 3 "abc"
 
 print(sol.longestCommonSubsequence(text1 = "abc", text2 = "def")) # Output: 0
+
+print(sol.longestCommonSubsequence(text1 = "ezupkr", text2 = "ubmrapg")) # Output: 0
