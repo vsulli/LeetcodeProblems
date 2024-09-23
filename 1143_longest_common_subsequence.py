@@ -18,21 +18,27 @@ A common subsequence of two strings is a
 subsequence that is common to both strings.
 '''
 
+# bottom up dynamic programming
+# 2D grid
+# O(n * m)
+
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        resLen = 0
-        p1, p2 = 0, 0
-        for i in range(len(text1)):
-            while p2 < len(text2) and text2[p2] != text1[i]:
-                p2 += 1
-            # match found, meaning that p1 now needs to move to p2
-            if p2 < len(text2) and text1[i] == text2[p2]:
-                resLen += 1
-                # move to position after match
-                p1 = p2 + 1
-            p2 = p1
-        return resLen
+        dp = [[0 for j in range(len(text2) + 1)] for i in range(len(text1) + 1)]
 
+        # iterate through 2d grid in reverse order
+        for i in range(len(text1) - 1, -1, -1):
+            for j in range(len(text2) -1, -1, -1):
+                # if they match
+                if text1[i] == text2[j]:
+                    dp[i][j] = 1 + dp[i +1][j + 1] # 1 + diagonal
+                else:
+                    # max to right or below
+                    dp[i][j] = max(dp[i][j + 1], dp[i + 1][j])
+
+        # top left is result
+        return dp[0][0]
+                    
 sol = Solution()
 
 print(sol.longestCommonSubsequence(text1 = "abcde", text2 = "ace" )) # Output: 3  "ace"
@@ -44,3 +50,5 @@ print(sol.longestCommonSubsequence(text1 = "abc", text2 = "def")) # Output: 0
 print(sol.longestCommonSubsequence(text1 = "ezupkr", text2 = "ubmrapg")) # Output: 2
 
 print(sol.longestCommonSubsequence(text1 = "bsbininm", text2 = "jmjkbkjkv")) # Output: 1
+
+print(sol.longestCommonSubsequence(text1 = "oxcpqrsvwf", text2 = "shmtulqrypy")) # Output: 2
