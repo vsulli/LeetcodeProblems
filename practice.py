@@ -1,44 +1,22 @@
-'''
-Longest Palindromic Substring
-Leetcode # 5
-vsulli
-21 September 2024
+# string encode and decode
 
-Given a string s, return the longest palindromic substring in s.
+from typing import List
 
-'''
+
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
+
+    def encode(self, strs: List[str]) -> str:
         res = ""
-        resLen = 0
-
-        for i in range(len(s)):
-            l, r = i, i
-            # odd length
-            while l >= 0 and r <len(s) and s[l] == s[r]:
-                if (r - l + 1) > resLen:
-                    res = s[l:r+1]
-                    resLen = r - l + 1
-                l -=1
-                r += 1
-
-            # even length
-            l, r = i, i + 1
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > resLen:
-                    res = s[l:r+1]
-                    resLen = r - l + 1
-
-                l -= 1
-                r += 1
+        for s in strs:
+            res = res + ''.join(s + ";")
         return res
 
-
+    def decode(self, s: str) -> List[str]:
+        pass
 
 
 sol = Solution()
 
+print(sol.encode(["neet","code","love","you"]))
 
-print(sol.longestPalindrome(s = "babad")) # bab or aba
-
-print(sol.longestPalindrome(s = "cbbd")) # bb
+print(sol.decode(sol.encode(["neet","code","love","you"])))
