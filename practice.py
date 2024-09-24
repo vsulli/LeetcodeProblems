@@ -8,11 +8,23 @@ class Solution:
     def encode(self, strs: List[str]) -> str:
         res = ""
         for s in strs:
-            res = res + ''.join(s + ";")
+            res = res + "".join(s + ";")
         return res
 
     def decode(self, s: str) -> List[str]:
-        pass
+        res = []
+        w = ""
+        for c in s:
+            if c == ";":
+                if w:
+                    res.append(w)
+                    w = ""
+            else:
+                w += c
+
+
+        return res
+
 
 
 sol = Solution()
