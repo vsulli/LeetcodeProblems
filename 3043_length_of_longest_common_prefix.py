@@ -30,7 +30,29 @@ from typing import List
 
 class Solution:
     def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
-        pass
+        # need to find prefix from both arr1 and arr2
+        # sort?
+        # start with leftmost digit of first number in arr1
+        # check if firstmost of arr2 matches?
+
+        #  first digit = number // (10 ** (len(str(number)) - 1))
+
+        # are arrays already sorted?
+        arr1.sort()
+        arr2.sort()
+
+        res = 0
+        p2 = 0
+
+        for i in range(len(arr1)):
+            # if first number digit matches first digit of 2nd arr
+            fd_arr1 = arr1[i] // (10 ** (len(str(arr1[i])) - 1))
+            fd_arr2 = arr2[p2] // (10 ** (len(str(arr2[p2])) - 1))
+            while fd_arr1 == fd_arr2:
+                res += fd_arr1
+
+
+        return res
 
 sol = Solution()
 
