@@ -1,34 +1,37 @@
-# string encode and decode
+# 347 
+# top k frequent elements
 
 from typing import List
 
 
 class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # need a way to keep track of count
+        # need a result list
 
-    def encode(self, strs: List[str]) -> str:
-        res = ""
-        for s in strs:
-            res = res + "".join(s + ";")
-        return res
-
-    def decode(self, s: str) -> List[str]:
         res = []
-        w = ""
-        for c in s:
-            if c == ";":
-                if w:
-                    res.append(w)
-                    w = ""
+        count = {}
+
+        for n in nums:
+            if n in count:
+                count[n] += 1
             else:
-                w += c
-
-
-        return res
+                count[n] = 1
+        
+        # have to return top k, so sort dictionary by key, then append to res in range k
+        count = sorted(count.items(), key=lambda item: item[1], reverse=True)
+        
+        for i,p in enumerate(count):
+            res.append(p[0])
+            if i == k - 1:
+                return res
+            
 
 
 
 sol = Solution()
 
-print(sol.encode(["neet","code","love","you"]))
+print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
 
-print(sol.decode(sol.encode(["neet","code","love","you"])))
+print(sol.topKFrequent(nums = [1], k = 1))
+
