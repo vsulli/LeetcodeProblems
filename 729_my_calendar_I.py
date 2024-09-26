@@ -29,10 +29,21 @@ false and do not add the event to the calendar.
 class MyCalendar:
 
     def __init__(self):
-        pass
+        self.schedule = {} # use a hashset? start:end
 
     def book(self, start: int, end: int) -> bool:
-        pass
+        # as long as the start you want to add is equal to or greater than all the ends
+        # then you can add it?
+        # also cannot match a start that's already in schedule
+        for k in self.schedule:
+            if start > k and start < self.schedule.get(k):
+                return False
+        
+        # add new booking
+        # return true
+        self.schedule[start] = end
+        return True
+
 
 
 # Your MyCalendar object will be instantiated and called as such:
