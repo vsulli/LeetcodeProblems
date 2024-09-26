@@ -29,7 +29,8 @@ false and do not add the event to the calendar.
 class MyCalendar:
 
     def __init__(self):
-        self.schedule = {} # use a hashset? start:end
+        self.schedule = {} # use an array?
+        # if changed to an array, would need to insert in order?
 
     def book(self, start: int, end: int) -> bool:
         # as long as the start you want to add is equal to or greater than all the ends
