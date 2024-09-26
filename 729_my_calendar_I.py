@@ -36,7 +36,8 @@ class MyCalendar:
         # then you can add it?
         # also cannot match a start that's already in schedule
         for k in self.schedule:
-            if start > k and start < self.schedule.get(k):
+            # can't book anything where it has the same start as one already in schedule?
+            if start > k and start < self.schedule.get(k) or start >= k and end < self.schedule.get(k):
                 return False
         
         # add new booking
@@ -51,3 +52,4 @@ obj = MyCalendar()
 print(obj.book(10, 20)) # true
 print(obj.book(15, 25)) # false
 print(obj.book(20, 30)) # true
+
