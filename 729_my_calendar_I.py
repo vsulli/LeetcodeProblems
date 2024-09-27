@@ -39,7 +39,7 @@ class MyCalendar:
 
         for i in range(len(self.schedule)):
             # can't book same start, can book if same as end
-            if start >= self.schedule[i][0] and start < self.schedule[i][1]:
+            if start >= self.schedule[i][0] and start < self.schedule[i][1] or start < self.schedule[i][0] and end > self.schedule[i][1]:
                 return False
         
         # add new booking
