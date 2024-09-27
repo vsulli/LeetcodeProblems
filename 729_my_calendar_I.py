@@ -30,22 +30,17 @@ class MyCalendar:
 
     def __init__(self):
         self.schedule = []
-        # if changed to an array, would need to insert in order?
 
     def book(self, start: int, end: int) -> bool:
-        # as long as the start you want to add is equal to or greater than all the ends
-        # then you can add it?
-        # also cannot match a start that's already in schedule
-
-        for i in range(len(self.schedule)):
-            # can't book same start, can book if same as end
-            if start >= self.schedule[i][0] and start < self.schedule[i][1] or start < self.schedule[i][0] and end > self.schedule[i][1]:
+        # scan through list of events
+        for s, e in self.schedule:
+            # overlap return false
+            if not (e <= start or end <= s):
                 return False
-        
-        # add new booking
-        # return true
-        self.schedule.append([start, end])
+        # don't overlap, add to schedule
+        self.schedule.append((start, end))
         return True
+        
 
 
 
