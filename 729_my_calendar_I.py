@@ -35,7 +35,7 @@ class MyCalendar:
         # scan through list of events
         for s, e in self.schedule:
             # overlap return false
-            if not (e <= start or end <= s):
+            if e > start and end > s:
                 return False
         # don't overlap, add to schedule
         self.schedule.append((start, end))
