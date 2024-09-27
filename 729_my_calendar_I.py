@@ -29,21 +29,22 @@ false and do not add the event to the calendar.
 class MyCalendar:
 
     def __init__(self):
-        self.schedule = {} # use an array?
+        self.schedule = []
         # if changed to an array, would need to insert in order?
 
     def book(self, start: int, end: int) -> bool:
         # as long as the start you want to add is equal to or greater than all the ends
         # then you can add it?
         # also cannot match a start that's already in schedule
-        for k in self.schedule:
-            # can't book anything where it has the same start as one already in schedule?
-            if start > k and start < self.schedule.get(k) or start >= k and end < self.schedule.get(k):
+
+        for i in range(len(self.schedule)):
+            # can't book same start, can book if same as end
+            if start >= self.schedule[i][0] and start < self.schedule[i][1]:
                 return False
         
         # add new booking
         # return true
-        self.schedule[start] = end
+        self.schedule.append([start, end])
         return True
 
 
