@@ -1,37 +1,27 @@
-# 347 
-# top k frequent elements
-
-from typing import List
+# 729 My Calendar I
 
 
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # need a way to keep track of count
-        # need a result list
 
-        res = []
-        count = {}
+class MyCalendar:
 
-        for n in nums:
-            if n in count:
-                count[n] += 1
-            else:
-                count[n] = 1
+    def __init__(self):
+        self.schedule = [] 
+
+    def book(self, start: int, end: int) -> bool:
+        # if end of new one to book is between start and end, return False
+        # if beginning is between start and end, return False
+        for i in range(len(self.schedule)):
+            if (start > self.schedule[i][0] and start < self.schedule[i][1]):
+                return False
         
-        # have to return top k, so sort dictionary by key, then append to res in range k
-        count = sorted(count.items(), key=lambda item: item[1], reverse=True)
-        
-        for i,p in enumerate(count):
-            res.append(p[0])
-            if i == k - 1:
-                return res
-            
+        # valid, so add 
+        self.schedule.append([start, end])
+        return True
 
 
 
-sol = Solution()
-
-print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
-
-print(sol.topKFrequent(nums = [1], k = 1))
-
+# Your MyCalendar object will be instantiated and called as such:
+obj = MyCalendar()
+print(obj.book(10, 20)) # true
+print(obj.book(15, 25)) # false
+print(obj.book(20, 30)) # true
