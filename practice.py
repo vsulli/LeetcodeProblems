@@ -11,7 +11,9 @@ class MyCalendar:
         # if end of new one to book is between start and end, return False
         # if beginning is between start and end, return False
         for i in range(len(self.schedule)):
-            if (start > self.schedule[i][0] and start < self.schedule[i][1]):
+            # valid if new start is greater than or equal to sched end
+            # valid if new end is less than or equal to sched start
+            if not(start >= self.schedule[i][1] or end <= self.schedule[i][0]):
                 return False
         
         # valid, so add 
