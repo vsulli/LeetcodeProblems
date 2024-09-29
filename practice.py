@@ -9,7 +9,9 @@ class MyCalendar:
 
     def book(self, start: int, end: int) -> bool:
         for s, e in self.schedule:
-            if not (end <= s or e <= start):
+            #  NOT(end <= s or start >= e) 
+            # NOT (end <= s or e <= start)
+            if not (end <= s or start >= e):
                 return False
 
         self.schedule.append([start, end])
