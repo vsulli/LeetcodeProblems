@@ -1,26 +1,18 @@
-# 729 My Calendar I
+#1497. Check If Array Pairs Are Divisible by k
 
 
-
-class MyCalendar:
-
-    def __init__(self):
-        self.schedule = []
-
-    def book(self, start: int, end: int) -> bool:
-
-        for s, e in self.schedule:
-            if not (end <= s or start >= e):
-                return False
-        self.schedule.append([start, end])
-        return True
-        
+from typing import List
 
 
+class Solution:
+    def canArrange(self, arr: List[int], k: int) -> bool:
+        pass
 
+sol = Solution()
 
-# Your MyCalendar object will be instantiated and called as such:
-obj = MyCalendar()
-print(obj.book(10, 20)) # true
-print(obj.book(15, 25)) # false
-print(obj.book(20, 30)) # true
+print(sol.canArrange(arr = [1,2,3,4,5,10,6,7,8,9], k = 5)) # true
+
+print(sol.canArrange(arr = [1,2,3,4,5,6], k = 7)) # true
+
+print(sol.canArrange(arr = [1,2,3,4,5,6], k = 10)) # false
+
