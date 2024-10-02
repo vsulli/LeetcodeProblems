@@ -6,27 +6,21 @@ from typing import List
 
 class Solution:
     def canArrange(self, arr: List[int], k: int) -> bool:
-        # need to loop through array finding what the remainder is for each number
-        # store that in a dictionary rem: count
-        # make sure that for each key, equal count
-        # how to handle negative numbers?
-        divisible = True
+        freq = [0] * k # initialize freq count the size of k
 
-        freq_rem = {}
 
-        for i in range(len(arr)):
-            rem = arr[i] % 5
-            if rem in freq_rem:
-                freq_rem[rem] += 1
-            else:
-                freq_rem[rem] = 1
-
-        # print(freq_rem)
+        for num in arr:
+            rem = (num % k + k) % k 
+            freq[rem] += 1
         
-        for key in freq_rem:
-            if not(freq_rem.get(key) % 2 == 0):
+        if freq[0] % 2 != 0:
+            return False
+        
+        for i in range(1, k // 2 + 1):
+            if freq[i] != freq[k - i]:
                 return False
-        return divisible
+            
+        return True
 
 sol = Solution()
 
