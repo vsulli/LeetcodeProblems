@@ -22,20 +22,14 @@ from typing import List
 
 class Solution:
     def minSubarray(self, nums: List[int], p: int) -> int:
-        # sort array
         # get prefix sum
-        # if sum is not divisible by p, retract off elements from left?
-
-        len_subarray = 0
-        nums.sort()
-        prefix_sum = []
-        sum = 0
-        for i in range(len(nums)):
-            sum += nums[i]
-            prefix_sum.append(sum)
+        # take prefix sum and mod div by p
+        # the remainder is what you need to get rid of in order to make it divisible by p
+        # if remainder is 0 then total array sum is divisible by p and you can return 0
+        # [0, 3, 4, 8, 10]  8 - 4 = 4, length 1 - min subarray to remove
         
-        print(prefix_sum)
-        return len_subarray
+
+        
         
 
 
