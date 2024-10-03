@@ -22,7 +22,22 @@ from typing import List
 
 class Solution:
     def minSubarray(self, nums: List[int], p: int) -> int:
-        pass
+        # sort array
+        # get prefix sum
+        # if sum is not divisible by p, retract off elements from left?
+
+        len_subarray = 0
+        nums.sort()
+        prefix_sum = []
+        sum = 0
+        for i in range(len(nums)):
+            sum += nums[i]
+            prefix_sum.append(sum)
+        
+        print(prefix_sum)
+        return len_subarray
+        
+
 
 sol = Solution()
 
