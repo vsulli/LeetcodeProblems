@@ -30,17 +30,13 @@ class Solution:
         if h == len(piles):
             return max(piles)
         
-        time = 0
-        p = 0
         for k in range(1, max(piles)+1):
-            print(k)
             time = 0
             p = 0
-            n_piles = piles
+            n_piles = list(piles)
             while p <= len(piles) - 1 and n_piles[p] > 0:
                 n_piles[p] -= k 
                 time += 1
-                print(n_piles)
                 if n_piles[p] <= 0:
                     p += 1
             if time == h:
