@@ -32,23 +32,19 @@ class Solution:
         
         time = 0
         p = 0
-        for i in range(1, max(piles)+1):
+        for k in range(1, max(piles)+1):
+            print(k)
             time = 0
             p = 0
             n_piles = piles
             while p <= len(piles) - 1 and n_piles[p] > 0:
-                n_piles[p] -= i 
+                n_piles[p] -= k 
                 time += 1
                 print(n_piles)
                 if n_piles[p] <= 0:
                     p += 1
-                '''
-                if p > len(piles) - 1:
-                    print("here")
-                    break
-                    '''
             if time == h:
-                return i
+                return k
 
 
 
