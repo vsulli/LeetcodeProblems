@@ -27,9 +27,6 @@ import math
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         
-        if h == len(piles):
-            return max(piles)
-        
         l, r = 1, max(piles)
         res = r
 
