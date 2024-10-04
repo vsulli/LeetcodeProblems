@@ -21,31 +21,32 @@ Return the minimum integer k such that she can eat all
 the bananas within h hours.
 '''
 from typing import List
+import math
 
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        # if hours equals length of array piles, k will equal max of array piles
-        # can only have enough time to finish all piles if you eat the max each time
+        
         if h == len(piles):
             return max(piles)
         
-        for k in range(1, max(piles)+1):
-            time = 0
-            p = 0
-            n_piles = list(piles)
-            while p <= len(piles) - 1 and n_piles[p] > 0:
-                n_piles[p] -= k 
-                time += 1
-                if n_piles[p] <= 0:
-                    p += 1
-            if time == h:
-                return k
+        l, r = 1, max(piles)
+        res = r
 
+        while l <= r:
+            k = (l + r) // 2
 
+            totalTime = 0
+            for p in piles:
+                totalTime += math.ceil(float(p) / k)
+            if totalTime <= h:
+                res = k
+                r = k - 1
+            else:
+                l = k + 1
+        return res
 
-
-        
+   
 
 sol = Solution()
 
