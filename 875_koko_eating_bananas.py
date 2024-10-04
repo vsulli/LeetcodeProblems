@@ -25,7 +25,11 @@ from typing import List
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        pass
+        # if hours equals length of array piles, k will equal max of array piles
+        # can only have enough time to finish all piles if you eat the max each time
+        if h == len(piles):
+            return max(piles)
+        
 
 sol = Solution()
 
