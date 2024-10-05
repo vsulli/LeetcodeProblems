@@ -573,6 +573,50 @@ you don't set equal to m exactly
 Concepts: array, binary search
 
 ==============================================
+875. KOKO EATING BANANAS
+==============================================
+Koko loves to eat bananas. There are n piles of bananas, 
+the ith pile has piles[i] bananas. The guards have gone 
+and will come back in h hours.
+
+Koko can decide her bananas-per-hour eating speed of k. 
+Each hour, she chooses some pile of bananas and eats k 
+bananas from that pile. If the pile has less than k bananas, 
+she eats all of them instead and will not eat any more bananas 
+during this hour.
+
+Koko likes to eat slowly but still wants to finish eating all 
+the bananas before the guards return.
+
+Return the minimum integer k such that she can eat all the 
+bananas within h hours.
+
+ ---------------------------------------------
+ Pseudocode:
+
+ initialize left and right pointers 
+
+ while left pointer <= right
+    get mid pointer
+    intialize total time with that k 
+    for each pile
+        calculate total time 
+    if time <= max hours given
+        update right pointer 
+    else # needed more time, search right 
+        update left pointer 
+return left pointer # will have minimum k 
+
+"Tricks" to Remember: 
+left pointer will always trend toward the lowest amount of bananas
+that allows you to eat all in h hours
+
+max amount of bananas necessary to eat in h hours is max of all the piles
+
+
+Concepts: array, binary search
+
+==============================================
 945. MINIMUM INCREMENT TO MAKE ARRAY UNIQUE
 ==============================================
  ---------------------------------------------

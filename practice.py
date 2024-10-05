@@ -7,26 +7,20 @@ import math
 
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        # need pointers for left and right
-        # binary search between 1, max of array?
-        l, r = 1, max(piles)
-        res = r # worst case scenario, the result will be the max of all piles
-        
-        # while left less than or equal to right
-        while l <= r:
-            # get middle
-            k = (l + r) // 2 # floor division
+        left, right = 1, max(piles)
 
-            totalTime = 0 # sum when eating at k speed
-            for p in piles: # for each pile
-                totalTime += math.ceil(float(p) / k)
-            if totalTime <= h: # if takes less than or equal to limit
-                res = k
-                r = k - 1 # move to left to find even lower speed
+        while left <= right:
+            mid = left + (right - left) // 2
+            t = 0
+            for pile in piles:
+                t += math.ceil(pile / mid)
+            
+            if t <= h:
+                right = mid - 1
             else:
-                # move to right because you need more time
-                l = k + 1
-        return res
+                left = mid + 1
+        
+        return left
 
 
 
