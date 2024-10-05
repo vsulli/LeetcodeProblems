@@ -1,32 +1,40 @@
-#1497. Check If Array Pairs Are Divisible by k
+#875 Koko Eating Bananas
+
 
 
 from typing import List
-
+import math
 
 class Solution:
-    def canArrange(self, arr: List[int], k: int) -> bool:
-        freq = [0] * k # initialize freq count the size of k
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        # need pointers for left and right
+        # binary search between 1, max of array?
+        l, r = 1, max(piles)
+        res = r # worst case scenario, the result will be the max of all piles
+        
+        # while left less than or equal to right
+        while l <= r:
+            # get middle
+            k = (l + r) // 2 # floor division
+
+            totalTime = 0 # sum when eating at k speed
+            for p in piles: # for each pile
+                totalTime += math.ceil(float(p) / k)
+            if totalTime <= h: # if takes less than or equal to limit
+                res = k
+                r = k - 1 # move to left to find even lower speed
+            else:
+                # move to right because you need more time
+                l = k + 1
+        return res
 
 
-        for num in arr:
-            rem = (num % k + k) % k 
-            freq[rem] += 1
-        
-        if freq[0] % 2 != 0:
-            return False
-        
-        for i in range(1, k // 2 + 1):
-            if freq[i] != freq[k - i]:
-                return False
-            
-        return True
 
 sol = Solution()
 
-print(sol.canArrange(arr = [1,2,3,4,5,10,6,7,8,9], k = 5)) # true
+print(sol.minEatingSpeed(piles = [3,6,7,11], h = 8)) # 4
 
-print(sol.canArrange(arr = [1,2,3,4,5,6], k = 7)) # true
+print(sol.minEatingSpeed(piles = [30,11,23,4,20], h = 5)) # 30
 
-print(sol.canArrange(arr = [1,2,3,4,5,6], k = 10)) # false
+print(sol.minEatingSpeed(piles = [30,11,23,4,20], h = 6)) # 23
 
