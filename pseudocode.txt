@@ -555,7 +555,7 @@ Output: 4
  Pseudocode:
 
 initialize left and right pointers
-while left doesn't equal right pointer
+while left <= right pointer
     calculate new midpoint
     if midpoint > target
         set new right pointer
