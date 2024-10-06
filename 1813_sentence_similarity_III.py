@@ -22,21 +22,28 @@ class Solution:
         # start with longer sentence
         # keep track of indices of gap?
         # if you reach another gap when you already have a gap, then return false
+        # if you reach end of longer sentence with no matches at all, return false?
+
+        p1, p2 = 0, 0
+        gap = False
 
         # first sentence longer
         if len(sentence1) > len(sentence2):
-            for i in range(len(sentence1)):
-                if sentence1[i] in sentence2:
-                    # [sentence1 index, sentence2 index]
-                    match_indices.append([i, sentence2.index(sentence1[i])])
+            while p1 <= len(sentence1) - 1:
+                if  p2 <= len(sentence2) - 1 and sentence1[p1] == sentence2[p2]:
+                    p1 += 1
+                    p2 += 1
+                elif gap == True:
+                    return False
+                else:
+                    gap = True
+                    while p2 <= len(sentence2) - 1 and sentence1[p1] != sentence2[p2]:
+                        p2 += 1
 
+        '''
         # second sentence longer
         else:
-            for i in range(len(sentence2)):
-                if sentence2[i] in sentence1:
-                    match_indices.append([sentence1.index(sentence2[i]), i])
-        print(match_indices)
-        print("---------")
+        '''
         return isSimilar
 
 sol = Solution()
@@ -46,6 +53,7 @@ print(sol.areSentencesSimilar(sentence1 = "My name is Haley", sentence2 = "My Ha
 # "Haley" occurs at index 3 for 1st, 1 for second
 # [[0, 0], [3, 1]]
 
+'''
 print(sol.areSentencesSimilar(sentence1 = "of", sentence2 = "A lot of words")) # false
 # would have to insert before and after
 # "of" occurs at position 0 for 1st, 2 for second
@@ -55,3 +63,5 @@ print(sol.areSentencesSimilar(sentence1 = "of", sentence2 = "A lot of words")) #
 print(sol.areSentencesSimilar(sentence1 = "Eating right now", sentence2 = "Eating")) # true
 # only one match and both in same position, can insert rest either before or after, return true
 # [[0, 0]]
+
+'''
