@@ -37,8 +37,8 @@ class Solution:
                     return False
                 else:
                     gap = True
-                    while p2 <= len(sentence2) - 1 and sentence1[p1] != sentence2[p2]:
-                        p2 += 1
+                    while p1 <= len(sentence1) - 1 and p2 <= len(sentence2) - 1 and sentence1[p1] != sentence2[p2]:
+                        p1 += 1
 
         '''
         # second sentence longer
@@ -59,9 +59,8 @@ print(sol.areSentencesSimilar(sentence1 = "of", sentence2 = "A lot of words")) #
 # "of" occurs at position 0 for 1st, 2 for second
 # since not the first position for 2nd sentence, know that there are matches before and after
 # [[0, 2]]
-
+'''
 print(sol.areSentencesSimilar(sentence1 = "Eating right now", sentence2 = "Eating")) # true
 # only one match and both in same position, can insert rest either before or after, return true
 # [[0, 0]]
 
-'''
