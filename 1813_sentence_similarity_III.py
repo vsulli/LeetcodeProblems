@@ -18,6 +18,11 @@ class Solution:
         sentence1 = sentence1.split()
         sentence2 = sentence2.split()
 
+        # use two pointers?
+        # start with longer sentence
+        # keep track of indices of gap?
+        # if you reach another gap when you already have a gap, then return false
+
         # first sentence longer
         if len(sentence1) > len(sentence2):
             for i in range(len(sentence1)):
