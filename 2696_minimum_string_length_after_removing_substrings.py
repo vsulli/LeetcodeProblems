@@ -22,16 +22,19 @@ import re
 
 class Solution:
     def minLength(self, s: str) -> int:
-        # while loop while AB or CD is in s
-        # once neither substring appears, return length of s
 
-        while True:
-            if not 'AB' in s and not 'CD' in s:
-                return len(s)
-            if 'AB' in s:
-                s = re.sub('AB', '', s)
-            if 'CD' in s:
-                s = re.sub('CD', '', s)
+        stack = []
+        for c in s:
+            if not stack:
+                stack.append(c)
+                continue
+            if c == "B" and stack[-1] == "A":
+                stack.pop()
+            elif c == "D" and stack[-1] == "C":
+                stack.pop()
+            else:
+                stack.append(c)
+        return len(stack)
 
 sol = Solution()
 
