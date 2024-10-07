@@ -28,9 +28,9 @@ class Solution:
         while True:
             if not 'AB' in s and not 'CD' in s:
                 return len(s)
-            elif 'AB' in s:
+            if 'AB' in s:
                 s = re.sub('AB', '', s)
-            elif 'CD' in s:
+            if 'CD' in s:
                 s = re.sub('CD', '', s)
 
 sol = Solution()
