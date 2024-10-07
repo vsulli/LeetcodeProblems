@@ -24,11 +24,14 @@ class Solution:
     def minLength(self, s: str) -> int:
         # while loop while AB or CD is in s
         # once neither substring appears, return length of s
-        while 'AB' or 'CD' in s:
-            s = re.sub('AB', '', s)
-            s = re.sub('CD', '', s)
-            print(s)
-        return len(s)
+
+        while True:
+            if not 'AB' in s and not 'CD' in s:
+                return len(s)
+            elif 'AB' in s:
+                s = re.sub('AB', '', s)
+            elif 'CD' in s:
+                s = re.sub('CD', '', s)
 
 sol = Solution()
 
