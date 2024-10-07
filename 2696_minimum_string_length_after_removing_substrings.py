@@ -18,9 +18,15 @@ Note that the string concatenates after removing
 the substring and could produce new "AB" or "CD" substrings.
 '''
 
+import re
+
 class Solution:
     def minLength(self, s: str) -> int:
-        pass
+        # while loop while AB or CD is in s
+        # once neither substring appears, return length of s
+        
+        new_s = re.sub('AB', '', s)
+        return len(re.sub('CD', '', new_s))
 
 sol = Solution()
 
