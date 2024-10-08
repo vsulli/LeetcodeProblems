@@ -18,8 +18,6 @@ Note that the string concatenates after removing
 the substring and could produce new "AB" or "CD" substrings.
 '''
 
-import re
-
 class Solution:
     def minLength(self, s: str) -> int:
 
