@@ -21,7 +21,21 @@ Return the minimum number of moves required to make s valid.
 
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
-        pass
+        # stack?
+        # need to return remainder of string or remainder of stack?
+
+        stack = []
+        for i in range(len(s)):
+            if s[i] == "(":
+                stack.append("(")
+            elif stack and s[i] == ")":
+                stack.pop()
+            else:
+                stack.append(")")
+
+        # return greater of stack or string?
+        return(len(stack))
+
 
 sol = Solution()
 
@@ -29,3 +43,4 @@ print(sol.minAddToMakeValid(s = "())")) # 1
 
 print(sol.minAddToMakeValid(s = "(((")) # 3
 
+print(sol.minAddToMakeValid(s = "()))((")) # 4
