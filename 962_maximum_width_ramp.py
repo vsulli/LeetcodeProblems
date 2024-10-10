@@ -24,15 +24,27 @@ class Solution:
             # start pointer at end?
         # once no longer true, get length j - i
         # keep track of max len 
+        
         max_len = 0
         p1, p2 = 0, len(nums) - 1
 
+        # always advancing left pointer
         while p1 != p2:
             if nums[p2] >= nums[p1]:
                 max_len = max(max_len, p2 - p1)
             
             p1 += 1
+
+        # always decreasing right pointer
+        p1, p2 = 0, len(nums) - 1
+        while p1 != p2:
+            if nums[p2] >= nums[p1]:
+                max_len = max(max_len, p2 - p1)
+            p2 -= 1
+
         return max_len
+    
+
             
 
 
@@ -42,3 +54,4 @@ print(sol.maxWidthRamp(nums = [6,0,8,2,1,5])) # 4
 
 print(sol.maxWidthRamp(nums = [9,8,1,0,1,9,4,0,4,1])) # 7
 
+print(sol.maxWidthRamp(nums =[2,2,1])) # 1
