@@ -18,31 +18,19 @@ from typing import List
 
 class Solution:
     def maxWidthRamp(self, nums: List[int]) -> int:
-        # two pointer
-        # advance second pointer as long as second num >= first
-            # may be nums in middle that are smaller...
-            # start pointer at end?
-        # once no longer true, get length j - i
-        # keep track of max len 
+        # monotonic stack
+        stack = [0]
+        n = len(nums)
+        for i in range(1, n):
+            if nums[i] < nums[stack[-1]]:
+                stack.append(i)
         
-        max_len = 0
-        p1, p2 = 0, len(nums) - 1
-
-        # always advancing left pointer
-        while p1 != p2:
-            if nums[p2] >= nums[p1]:
-                max_len = max(max_len, p2 - p1)
-            
-            p1 += 1
-
-        # always decreasing right pointer
-        p1, p2 = 0, len(nums) - 1
-        while p1 != p2:
-            if nums[p2] >= nums[p1]:
-                max_len = max(max_len, p2 - p1)
-            p2 -= 1
-
-        return max_len
+        res = 0
+        for i in range(n - 1, -1, -1):
+            while stack and  nums[i] >= nums[stack[-1]]:
+                j =  stack.pop()
+                res = max(res, i - j)
+        return res
     
 
             
