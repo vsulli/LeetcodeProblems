@@ -23,18 +23,19 @@ class Solution:
     def minAddToMakeValid(self, s: str) -> int:
         # stack?
         # need to return remainder of string or remainder of stack?
-
+        count = 0
         stack = []
         for i in range(len(s)):
             if s[i] == "(":
                 stack.append("(")
-            elif stack and s[i] == ")":
+            elif stack and stack[-1] == "(" and s[i] == ")":
                 stack.pop()
+                count += 2
             else:
-                stack.append(")")
+                stack.append(s[i])
 
         # return greater of stack or string?
-        return(len(stack))
+        return len(stack) if stack else (len(s) - count)
 
 
 sol = Solution()
