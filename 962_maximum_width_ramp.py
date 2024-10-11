@@ -18,20 +18,25 @@ from typing import List
 
 class Solution:
     def maxWidthRamp(self, nums: List[int]) -> int:
-        # monotonic stack
-        stack = [0]
-        n = len(nums)
-        for i in range(1, n):
-            if nums[i] < nums[stack[-1]]:
-                stack.append(i)
+        # neetcode solution
+        # pre-processing - get max value by going through array from right
+        max_right = [0] * len(nums)
+
+        i = len(nums) - 1
+        prev_max = 0
+        for n in reversed(nums):
+            max_right[i] = max(n, prev_max)
+            prev_max = max_right[i]
+            i -= 1
         
         res = 0
-        for i in range(n - 1, -1, -1):
-            while stack and  nums[i] >= nums[stack[-1]]:
-                j =  stack.pop()
-                res = max(res, i - j)
+        l = 0
+        for r in range(len(nums)):
+            while nums[l] > max_right[r]:
+                l += 1
+
+            res = max(res, r - l)
         return res
-    
 
             
 
