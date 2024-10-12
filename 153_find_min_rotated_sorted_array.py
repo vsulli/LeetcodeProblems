@@ -28,9 +28,11 @@ from typing import List
 
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        # get the middle
-        # check left and right? 
-        # go in direction of smaller number?
+        # keep track of start and end
+        # keep track of curr min
+        # loop through while l pointer less than right
+        # calculate mid, new curr min
+        # if mid section is greater than pointer at end, search right, else left
         start, end = 0, len(nums) - 1
 
         curr_min = float("inf")
@@ -46,7 +48,7 @@ class Solution:
             # left has min
             else:
                 end = mid - 1
-                
+
         return min(curr_min, nums[start])
 
         
