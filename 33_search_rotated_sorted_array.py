@@ -38,6 +38,11 @@ class Solution:
         s, e = 0, len(nums) - 1
         i = -1
 
+        if nums[s] == target:
+            return s
+        elif nums[e] == target:
+            return e
+        
         while s < e:
             m = s + (e - s) // 2
             if nums[m] == target:
@@ -52,9 +57,11 @@ class Solution:
                 e = m - 1
 
         return s if nums[s] == target else -1
-
+        
 
 sol = Solution()
+
+print(sol.search(nums = [1,3], target = 3)) # 1
 
 print(sol.search(nums = [4,5,6,7,0,1,2], target = 0)) # 4
 
