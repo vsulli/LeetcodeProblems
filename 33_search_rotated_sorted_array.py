@@ -30,12 +30,34 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        pass
+        # set start and end pointers
+        # calculate mid
+        # if target is less than mid, start and end - search right
+        # else greater than start, less than mid, greater than end - search left?
+
+        s, e = 0, len(nums) - 1
+        i = -1
+
+        while s < e:
+            m = s + (e - s) // 2
+            if nums[m] == target:
+                return m
+            
+            # search right of m
+            elif target < nums[m] and target < nums[s] and target < nums[e]:
+                s = m + 1
+
+            # search left of m
+            else:
+                e = m - 1
+
+        return s if nums[s] == target else -1
+
 
 sol = Solution()
 
-print(sol.search(nums = [4,5,6,7,0,1,2], target = 0))
+print(sol.search(nums = [4,5,6,7,0,1,2], target = 0)) # 4
 
-print(sol.search(nums = [4,5,6,7,0,1,2], target = 3))
+print(sol.search(nums = [4,5,6,7,0,1,2], target = 3)) # -1
 
-print(sol.search(nums = [1], target = 0))
+print(sol.search(nums = [1], target = 0)) # -1
