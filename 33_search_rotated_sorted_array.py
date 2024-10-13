@@ -45,14 +45,26 @@ class Solution:
         
         while s < e:
             m = s + (e - s) // 2
+
+
             if nums[m] == target:
                 return m
+            
+            if nums[s] == target:
+                return s
+            
+            if nums[e] == target:
+                return e
             
             # search right of m
             elif target < nums[m] and target < nums[s] and target < nums[e]:
                 s = m + 1
 
-            # search left of m
+            # search right if target greater than mid, greater than start, less than end
+            elif target > nums[m] and target > nums[s] and target < nums[e]:
+                s = m + 1
+
+            # search left of m for all other cases
             else:
                 e = m - 1
 
@@ -61,6 +73,7 @@ class Solution:
 
 sol = Solution()
 
+
 print(sol.search(nums = [1,3], target = 3)) # 1
 
 print(sol.search(nums = [4,5,6,7,0,1,2], target = 0)) # 4
@@ -68,3 +81,7 @@ print(sol.search(nums = [4,5,6,7,0,1,2], target = 0)) # 4
 print(sol.search(nums = [4,5,6,7,0,1,2], target = 3)) # -1
 
 print(sol.search(nums = [1], target = 0)) # -1
+
+print(sol.search(nums = [4,5,6,7,0,1,2], target = 6)) # 2
+
+print(sol.search(nums = [1, 2, 3, 4, 5, 6], target = 4)) # 3
