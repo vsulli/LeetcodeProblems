@@ -1,27 +1,26 @@
-# 2696 - Minimum String Length after Removing Substrings
-
+# 704 Binary Search
 
 
 class Solution:
-    def minLength(self, s: str) -> int:
-        # can pop 'AB' or 'CD'
-        stack = []
-        for c in s:
-            if not stack:
-                stack.append(c)
-                continue
-            if c == 'B' and stack[-1] == 'A':
-                stack.pop()
-            elif c == 'D' and stack[-1] == 'C':
-                stack.pop()
+    def search(self, nums: list[int], target: int)-> int:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            m = (l + r) // 2
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
             else:
-                stack.append(c)
-        return len(stack)
+                return m
+        return -1
+
+
+
 
 
 sol = Solution()
+print(sol.search(nums = [-1,0,3,5,9,12], target = 9)) # 4
 
-print(sol.minLength(s = "ABFCACDB")) # 2 'FC'
+print(sol.search(nums = [-1,0,3,5,9,12], target = 2)) # -1
 
-print(sol.minLength(s = "ACBBD")) # 5
 
