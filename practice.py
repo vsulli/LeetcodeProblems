@@ -3,24 +3,21 @@
 
 class Solution:
     def search(self, nums: list[int], target: int)-> int:
-        
-        def binary_search(data, target, left, right):
-            # left pointer has passed right pointer
-            if left > right:
-                return -1
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+
+            m = (l + r) // 2
+
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
             else:
-                mid = (left + right) // 2
-                if target == data[mid]:
-                    return mid
-                elif target < data[mid]:
-                    return binary_search(data, target, left, mid - 1)
-                else:
-                    return binary_search(data, target, mid + 1, right)
+                return m
                 
-        l, h = 0, len(nums) - 1
-
-        return binary_search(nums, target, l, h)
-
+        return -1
+        
 
 
 
