@@ -34,22 +34,21 @@ class TimeMap:
         self.time_map[key].append([value, timestamp])
 
     def get(self, key: str, timestamp: int) -> str:
+        res = ""
+        values = self.time_map.get(key, []) 
 
-        # if key, timestamp has a value return it
-        if self.time_map.get(key, timestamp):
-            return self.time_map[key, timestamp]
+        # binary search
+        l, r = 0, len(values) - 1
 
-        timestamp -= 1
-        # elif that timestamp doesn't have anything, decrement all possible times
-        while timestamp > 0:
-            if self.time_map.get(key, timestamp):
-                return self.time_map[key, timestamp]
+        while l <= r:
+            m = (l + r) // 2
+            if values[m][1] <= timestamp:
+                res = values[m][0] # closest we've seen so far
+                l = m + 1
             else:
-                timestamp -= 1
-        # else return ""
-        return ""
+                r = m - 1 # invalid value because we can't go over
 
-
+        return res
 
 
 # Your TimeMap object will be instantiated and called as such:
