@@ -1,30 +1,28 @@
-# 704 Binary Search
+# 981 Time Based Key-Value Store
+
+class TimeMap:
+
+    def __init__(self):
+        
 
 
-class Solution:
-    def search(self, nums: list[int], target: int)-> int:
-        l, r = 0, len(nums) - 1
+    def set(self, key: str, value: str, timestamp: int) -> None:
+       
 
-        while l <= r:
+    def get(self, key: str, timestamp: int) -> str:
 
-            m = (l + r) // 2
-
-            if nums[m] > target:
-                r = m - 1
-            elif nums[m] < target:
-                l = m + 1
-            else:
-                return m
-                
-        return -1
         
 
 
 
 
-sol = Solution()
-print(sol.search(nums = [-1,0,3,5,9,12], target = 9)) # 4
-
-print(sol.search(nums = [-1,0,3,5,9,12], target = 2)) # -1
+# Your TimeMap object will be instantiated and called as such:
+obj = TimeMap()
+obj.set("foo", "bar", 1)
+param_2 = obj.get("foo", 1) # bar
+print(param_2)
+param_2 = obj.get("foo", 3) # timestamp 1 -> bar
+print(param_2)
+obj.set("foo", "bar", 1)
 
 
