@@ -24,9 +24,9 @@ class Solution:
 
         l1, r1 = 0, 0
         l2, r2 = len(nums1) - 1, len(nums2) - 1
-         # case where both lists are len 1
-        if l1 == l2 and r1 == r2:
-           return (nums1[l1] + nums2[r1]) / 2
+         # case where both lists are same length
+        if len(nums1) == len(nums2):
+           return (nums1[l2] + nums2[r1]) / 2
 
         total_len = len(nums1) + len(nums2)
 
