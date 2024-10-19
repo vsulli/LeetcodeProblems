@@ -6,27 +6,16 @@ class TimeMap:
 
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.store:
+        # if key doesn't exist, create new list
+        if not key in self.store:
             self.store[key] = []
+        
+        # if key already exists, append
         self.store[key].append([value, timestamp])
-           
+        
 
     def get(self, key: str, timestamp: int) -> str:
-        res = ""
-        # retrieve list of values for that key
-        values = self.store.get(key, []) # default is empty list
-        l, r = 0, len(values) - 1
-
-        while l <= r:
-            m = (l + r) // 2
-
-            if values[m][1] <= timestamp:
-                res = values[m][0]
-                l = m + 1
-            else:
-                r = m - 1
-
-        return res
+       
         
 
 
