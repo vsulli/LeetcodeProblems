@@ -19,6 +19,14 @@ from typing import List
 
 class Solution:
     def maximumCount(self, nums: List[int]) -> int:
+        # array is sorted in non-decreasing order
+        # if you get the middle, if middle is negative
+            #  set count =  m_idx - l_idx + 1
+            # move l = m + 1
+        # if you get middle and middle is 0, don't update count but move left pointer right
+            # l = m + 1
+        # else , middle is pos?
+
         neg_count = 0
         pos_count = 0
 
