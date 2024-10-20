@@ -26,17 +26,31 @@ class Solution:
         # if you get middle and middle is 0, don't update count but move left pointer right
             # l = m + 1
         # else , middle is pos?
+        # once you get to 0, want to advance until left pointer is not 0
+        # then you know entire rest of array is pos
 
         neg_count = 0
         pos_count = 0
 
-        for n in nums:
-            if n > 0:
-                pos_count += 1
-            elif n < 0:
-                neg_count += 1
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            m = (l + r) // 2
+
+            if nums[m] < 0:
+                neg_count = m - l + 1
+                l = m + 1
+            elif nums[m] > 0:
+                pos_count = r - m + 1
+                l = m - 1
+            
+            elif nums[m] == 0:
+                pass
+                # possible that there is another 0 to left...or right
+                # advance left pointer until it is no longer 0
+                # calculate remaining amount of array  that would be pos
+    
         
-        return pos_count if pos_count > neg_count else neg_count
+        return max(pos_count, neg_count)
 
 sol = Solution()
 
