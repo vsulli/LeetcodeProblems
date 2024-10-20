@@ -19,7 +19,16 @@ from typing import List
 
 class Solution:
     def maximumCount(self, nums: List[int]) -> int:
-        pass
+        neg_count = 0
+        pos_count = 0
+
+        for n in nums:
+            if n > 0:
+                pos_count += 1
+            elif n < 0:
+                neg_count += 1
+        
+        return pos_count if pos_count > neg_count else neg_count
 
 sol = Solution()
 
