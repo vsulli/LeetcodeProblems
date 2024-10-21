@@ -19,38 +19,15 @@ from typing import List
 
 class Solution:
     def maximumCount(self, nums: List[int]) -> int:
-        # array is sorted in non-decreasing order
-        # if you get the middle, if middle is negative
-            #  set count =  m_idx - l_idx + 1
-            # move l = m + 1
-        # if you get middle and middle is 0, don't update count but move left pointer right
-            # l = m + 1
-        # else , middle is pos?
-        # once you get to 0, want to advance until left pointer is not 0
-        # then you know entire rest of array is pos
+        neg=0
+        pos=0
+        for i in nums:
+            if i>0:
+                pos+=1
+            if i<0:
+                neg+=1
 
-        neg_count = 0
-        pos_count = 0
-
-        l, r = 0, len(nums) - 1
-        while l <= r:
-            m = (l + r) // 2
-
-            if nums[m] < 0:
-                neg_count = m - l + 1
-                l = m + 1
-            elif nums[m] > 0:
-                pos_count = r - m + 1
-                l = m - 1
-            
-            elif nums[m] == 0:
-                pass
-                # possible that there is another 0 to left...or right
-                # advance left pointer until it is no longer 0
-                # calculate remaining amount of array  that would be pos
-    
-        
-        return max(pos_count, neg_count)
+        return pos if pos > neg else neg
 
 sol = Solution()
 
