@@ -14,28 +14,19 @@ For example, do not use pow(x, 0.5) in c++ or x **
 
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x == 0:
-            return 0
-        elif x == 1:
-            return 1
-        
-        count = 1
-
-        # while 2^count <= x increase it
-        # once it gets over, return previous count?
-        while (2 ** count) < x:
-            count += 1
-        
-
-        return count
-
+        # try all numbers in a range to find the number that would be its square?
+        for i in range(0, 2147483648):
+            if i * i == x:
+                return i
+            elif i * i > x:
+                return i - 1
 
 sol = Solution()
 
-'''
+
 
 print(sol.mySqrt(x = 4)) # 2
-'''
+
 
 print(sol.mySqrt(x = 8)) # 2
 
