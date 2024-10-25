@@ -46,8 +46,9 @@ class Solution:
                 # cut string from index 0 to -2 (/c) and if all those other characters DON'T occur in set
                 # add full string to set
                 folder_slice = f[0:-2]
-                if not folder_slice in main_folders:
+                if folder_slice not in main_folders:
                     main_folders.add(f)
+                    res.append(f)
 
         return res
         
@@ -56,6 +57,7 @@ sol = Solution()
 
 print(sol.removeSubfolders(folder = ["/a","/a/b","/c/d","/c/d/e","/c/f"])) 
 # Output: ["/a","/c/d","/c/f"] 
+
 
 print(sol.removeSubfolders(folder = ["/a","/a/b/c","/a/b/d"]))
 # ["/a"]
