@@ -28,7 +28,29 @@ from typing import List
 
 class Solution:
     def removeSubfolders(self, folder: List[str]) -> List[str]:
-        pass
+        # use a set for the main folder names
+        # loop through each string in folder list
+        # if the set is empty, just add first one to set and result
+        # else read through string of folder
+            # if can pass through all but last then it's a subfolder
+            # else add to set?
+        res = []
+        main_folders = set()
+        for f in folder:
+            if not main_folders:
+                main_folders.add(f)
+                res.append(f)
+            # read through all strings in folder list
+            # if all but last letter already in set then don't add
+            else:
+                # cut string from index 0 to -2 (/c) and if all those other characters DON'T occur in set
+                # add full string to set
+                folder_slice = f[0:-2]
+                if not folder_slice in main_folders:
+                    main_folders.add(f)
+
+        return res
+        
 
 sol = Solution()
 
