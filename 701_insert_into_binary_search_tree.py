@@ -19,18 +19,22 @@ class TreeNode:
         
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        # edge case of empty tree - return new tree node as root
+        # iterative solution
         if not root:
             return TreeNode(val)
-
-        # go right
-        if val > root.val:
-            root.right = self.insertIntoBST(root.right, val)
-        # go left
-        else:
-            root.left = self.insertIntoBST(root.left, val)
         
-        return root
+        cur = root
+        while True:
+            if val > cur.val:
+                if not cur.right:
+                    cur.right = TreeNode(val)
+                    return root
+                cur = cur.right
+            else:
+                if not cur.left:
+                    cur.left = TreeNode(val)
+                    return root
+                cur = cur.left
 
 
 
