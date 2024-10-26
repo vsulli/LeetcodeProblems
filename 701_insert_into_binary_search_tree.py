@@ -1,4 +1,12 @@
-# TODO
+
+'''
+Insert into a Binary Search Tree
+Leetcode #701
+vsulli
+26 October 2024
+
+
+'''
 # Definition for a binary tree node.
 from typing import Optional
 
@@ -16,5 +24,7 @@ class Solution:
 sol = Solution()
 
 
-root = TreeNode(val = 4, left = 2, right = 7)
-TreeNode()
+tree = TreeNode(val = 4)
+tree.left = TreeNode(2)
+tree.right = TreeNode(7)
+
