@@ -19,12 +19,31 @@ class TreeNode:
         
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        pass
+        # if value is less than value of current node, go left
+        # apply same function to that new node to determine what to do
+        # else go right
+        if val < root.val:
+            # no node to left
+            if root.left is None:
+                root.left = TreeNode(val)
+            else:
+                root.left = self.insertIntoBST(root, val)
+        else:
+            if root.right is None:
+                root.right = TreeNode(val)
+            else:
+                root.right = self.insertIntoBST(root, val)
+
+
 
 sol = Solution()
 
-
 tree = TreeNode(val = 4)
-tree.left = TreeNode(2)
-tree.right = TreeNode(7)
+sol.insertIntoBST(tree, 2)
+sol.insertIntoBST(tree, 7)
+sol.insertIntoBST(tree, 1)
+sol.insertIntoBST(tree, 3)
+sol.insertIntoBST(tree, 5)
+
+
 
