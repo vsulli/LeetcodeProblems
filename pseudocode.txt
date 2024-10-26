@@ -538,6 +538,37 @@ k = 6
 (2+4 = 6 which divides into 6 evenly)
 
 Concepts: array, hash table, math, prefix sum
+
+==============================================
+701. INSERT INTO A BINARY SEARCH TREE
+==============================================
+You are given the root node of a binary search 
+tree (BST) and a value to insert into the tree. 
+Return the root node of the BST after the 
+insertion. It is guaranteed that the new 
+value does not exist in the original BST.
+
+Notice that there may exist multiple valid 
+ways for the insertion, as long as the tree 
+remains a BST after insertion. You can return 
+any of them.
+ ---------------------------------------------
+ Pseudocode:
+
+ if the root doesn't exist create new tree node and return
+
+ if the value is greater than the root value
+    root's right = recursive of root right and value
+else
+    root's left = recursive or root left and value
+
+return root
+
+"Tricks" to Remember: 
+for this problem, the node you're inserting does 
+NOT already exists
+
+Concepts:tree, binary search tree, binary tree
 ==============================================
 704. BINARY SEARCH
 ==============================================
