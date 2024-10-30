@@ -18,7 +18,6 @@ class Solution:
         
         else:
             root.right = self.insertIntoBST(root.right, val)
-
         return root
     
 root = TreeNode(4)
