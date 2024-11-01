@@ -488,6 +488,61 @@ sorting, heap (priority queue), bucket sort, counting,
 quickselect
 
 ==============================================
+450.DELETE NODE IN A BST
+==============================================
+Given a root node reference of a BST and a key, 
+delete the node with the given key in the BST. 
+Return the root node reference (possibly updated) 
+of the BST.
+
+Basically, the deletion can be divided into two 
+stages:
+
+Search for a node to remove.
+If the node is found, delete the node.
+ ---------------------------------------------
+ Pseudocode:
+
+ if root doesn't exist, return root
+
+ # find node to delete based on key
+ if key > root's val  
+    recursive call on root's right 
+
+elif key < root's val
+    recursive call on root's left 
+
+# found node to delete
+else:
+    # cases where only one child 
+    if not left or right root 
+        return opposite 
+
+    # find min of right subtree 
+    intialize a current pointer to right subtree of root 
+    while cur pointer has a left, keep advancing 
+
+    assign new root val to cur val of pointer 
+    recursive call to delete node on right subtree using key to delete of cur val 
+return root 
+
+"Tricks" to Remember: 
+Recursive solution - recursively delete from smaller 
+and smaller trees. Whatever you return from smaller 
+trees gets assigned to either
+left or right pointer of parent
+Replace deleted node with valid value from 
+elsewhere in the tree. What value should you 
+replace it with? Value in that same subtree (if available).
+What if two children of deleted node? 
+Which value should you choose so that it still works
+as a binary search tree?
+**Minimum value from right subtree
+** recursively call deleteNode
+
+Concepts: tree, binary search tree, binary tree
+
+==============================================
 523. CONTINUOUS SUBARRAY SUM 
 ==============================================
 Given an integer array nums and an integer k, 
