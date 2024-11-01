@@ -1,28 +1,16 @@
-# 704 Binary Search
+# 450 Delete Node in a BST
 
-
-from typing import List
+class TreeNode:
+    def __init__(self, val = 0, left = None, right = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        
+from typing import Optional
 
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        l, r = 0, len(nums) - 1
-        res = -1
-
-        while l <= r:
-            m = (l + r) // 2
-
-            if nums[m] < target: 
-                l = m + 1
-            elif nums[m] > target:
-                r = m - 1
-            else:
-                return m
-
-        return res if l > r else l
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        pass
 
 sol = Solution()
-
-print(sol.search(nums = [-1,0,3,5,9,12], target = 9))
-
-print(sol.search(nums = [-1,0,3,5,9,12], target = 2))
