@@ -10,38 +10,39 @@ from typing import Optional
 
 
 class Solution:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        # iterative solution
         if not root:
-            return root
+            return TreeNode(val)
         
-        # find node to delete
+        cur = root
+        while True:
+            if val > cur.val:
+                if not cur.right:
+                    cur.right = TreeNode(val)
+                    return root
+                cur = cur.right
+            else:
+                if not cur.left:
+                    cur.left = TreeNode(val)
+                    return root
+                cur = cur.left
 
-        # go to right
-        if key > root.val:
-            root.right = self.deleteNode(root.right, key)
-        
-        # go to left
-        elif key < root.val:
-            root.left = self.deleteNode(root.left, key)
-
-        # found node to delete
-        else:
-            # left of root is null?
-            # return right
-            if not root.left:
-                return root.right
-
-            elif not root.right:
-                return root.left
-        
-            # find minimum of right subtree
-            cur = root.right
-            while cur.left: # stop at a valid node
-                cur = cur.left 
-            # by end of loop cur points at min val of right subtree
-            root.val = cur.val
-            root.right = self.deleteNode(root.right, root.val) # deleting now duplicate value of cur val/root val in right subtree
-        return root
+    def printTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root:
+            self.printTree(root.left)
+            print(root.val)
+            self.printTree(root.right)
 
 
 sol = Solution()
+# 1, 2, 3, 4, 5, 7
+tree = TreeNode(val = 4)
+sol.insertIntoBST(tree, 2)
+sol.insertIntoBST(tree, 7)
+sol.insertIntoBST(tree, 1)
+sol.insertIntoBST(tree, 3)
+sol.insertIntoBST(tree, 5)
+
+
+sol.printTree(tree)
