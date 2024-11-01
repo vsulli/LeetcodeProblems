@@ -30,9 +30,9 @@ class Solution:
 
     def printTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root:
-            self.printTree(root.left)
+            root.left = self.printTree(root.left)
             print(root.val)
-            self.printTree(root.right)
+            root.right = self.printTree(root.right)
 
 
 sol = Solution()
