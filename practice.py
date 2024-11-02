@@ -1,4 +1,4 @@
-# 701 insert into a BST
+# 450 delete node bst
 
 class TreeNode:
     def __init__(self, val = 0, left = None, right = None):
@@ -10,6 +10,45 @@ from typing import Optional
 
 
 class Solution:
+    def deleteNode(self, root: Optional[TreeNode], key: int)-> Optional[TreeNode]:
+        # if no root, return root
+        if not root:
+            return root
+
+        # navigate to where value would be
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        
+        elif key > root.val:
+            root.left = self.deleteNode(root.right, key)
+
+        
+        else:
+            if not root.left:
+                return root.right
+            elif not root.left:
+                return root.left 
+            
+            cur = root.right 
+            while cur:
+                cur = cur.right
+            
+        
+        return root
+
+
+        # if no left child
+        # if no right child
+
+        # cur pointer
+        # recursively call delete?
+
+
+        return root
+        
+
+
+
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         if not root:
             return TreeNode(val)
@@ -35,3 +74,4 @@ sol.insertIntoBST(tree, 1)
 sol.insertIntoBST(tree, 3)
 sol.insertIntoBST(tree, 5)
 
+sol.deleteNode(tree, 1) # delete 1
