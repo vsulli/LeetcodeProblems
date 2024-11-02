@@ -10,12 +10,27 @@ from typing import Optional
 
 
 class Solution:
-    def printTree(self, root: Optional[TreeNode]):
-        if root:
-            self.printTree(root.left)
-            print(root.val)
-            self.printTree(root.right)
+    def printPreOrder(self, root: Optional[TreeNode]):
+        if not root:
+            return
+        print(root.val)
+        self.printPreOrder(root.left)
+        self.printPreOrder(root.right)
 
+    def printInOrder(self, root: Optional[TreeNode]):
+        if not root:
+            return
+        
+        self.printInOrder(root.left)
+        print(root.val)
+        self.printInOrder(root.right)
+
+    def printPostOrder(self, root: Optional[TreeNode]):
+        if not root:
+            return
+        self.printPostOrder(root.left)
+        self.printPostOrder(root.right)
+        print(root.val)
 
     def deleteNode(self, root: Optional[TreeNode], key: int)-> Optional[TreeNode]:
         if not root:
@@ -77,9 +92,9 @@ sol.insertIntoBST(tree, 1)
 sol.insertIntoBST(tree, 3)
 sol.insertIntoBST(tree, 5)
 
-sol.printTree(tree)
+sol.printPreOrder(tree)
 
 sol.deleteNode(tree, 1) # delete 1
 print("--------------")
 
-sol.printTree(tree)
+sol.printPreOrder(tree)
