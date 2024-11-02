@@ -10,6 +10,13 @@ from typing import Optional
 
 
 class Solution:
+    def printTree(self, root: Optional[TreeNode]):
+        if root:
+            self.printTree(root.left)
+            print(root.val)
+            self.printTree(root.right)
+
+
     def deleteNode(self, root: Optional[TreeNode], key: int)-> Optional[TreeNode]:
         if not root:
             return root
@@ -70,4 +77,9 @@ sol.insertIntoBST(tree, 1)
 sol.insertIntoBST(tree, 3)
 sol.insertIntoBST(tree, 5)
 
+sol.printTree(tree)
+
 sol.deleteNode(tree, 1) # delete 1
+print("--------------")
+
+sol.printTree(tree)
