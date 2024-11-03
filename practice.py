@@ -8,7 +8,6 @@ class TreeNode:
 
 from typing import Optional
 
-
 class Solution:
     def printPreOrder(self, root: Optional[TreeNode]):
         if not root:
