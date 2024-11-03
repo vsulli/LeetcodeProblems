@@ -24,32 +24,60 @@ class TreeNode:
 
 
 class Solution:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        # put smallest of right subtree in deleted node
-        # recursively call delete node
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         if not root:
-            return root
+            return TreeNode(val)
         
-        if key > root.val:
-            root.right = self.deleteNode(root.right, key)
+        # go left
+        if val < root.val:
+            root.left = self.insertIntoBST(root.left, val)
 
-        elif key < root.val:
+        # go right
+        if val > root.val:
+            root.right = self.insertIntoBST(root.right, val)
+
+        return root
+
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
+                return root
+            
+        # go left
+        if key < root.val:
             root.left = self.deleteNode(root.left, key)
 
+        # go right
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+
+        # found node to delete
         else:
+            # no left child
             if not root.left:
                 return root.right
+            # no right child
             elif not root.right:
                 return root.left
             
-            # find min from right subtree
+            # find min of right subtree
             cur = root.right
+
             while cur.left:
-                cur = cur.left 
+                cur = cur.left
+            
+            # set new root val
             root.val = cur.val
             root.right = self.deleteNode(root.right, root.val)
         return root
     
 sol = Solution()
 
-print(sol.deleteNode(root = [5,3,6,2,4,None,7], key = 3))
+
+tree = TreeNode(val = 4)
+sol.insertIntoBST(tree, 2)
+sol.insertIntoBST(tree, 7)
+sol.insertIntoBST(tree, 1)
+sol.insertIntoBST(tree, 3)
+sol.insertIntoBST(tree, 5)
+
+print(sol.deleteNode(root = tree, key = 3))
