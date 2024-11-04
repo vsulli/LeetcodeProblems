@@ -41,25 +41,38 @@ class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
             return root
-        
+
+        # search left
         if key < root.val:
             root.left = self.deleteNode(root.left, key)
+
+        # search right
         elif key > root.val:
             root.right = self.deleteNode(root.right, key)
 
+        # found node to delete
         else:
+            # no left child
+            if not root.left:
+                return root.right
+            # no right child
             if not root.right:
                 return root.left
-            elif not root.left:
-                return root.right
             
+            # TODO learn this section down
+
             cur = root.right
+            # find min of right subtree
             while cur.left:
                 cur = cur.left
 
+            # set new root value
             root.val = cur.val
             root.right = self.deleteNode(root.right, root.val)
         return root
+
+
+
     
 sol = Solution()
 
