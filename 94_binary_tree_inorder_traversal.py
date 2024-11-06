@@ -8,7 +8,7 @@ vsulli
 Given the root of a binary tree, return the 
 inorder traversal of its nodes' values.
 '''
-
+res = []
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -31,19 +31,27 @@ class Solution:
             root.right = self.insertIntoBST(root.right, val)
 
         return root
-    
+ 
+
+    # inorder traversal - left, root, right
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root:
+        res = []
+        def inorder(root):
+            if not root:
+                return
             self.inorderTraversal(root.left)
-            print(root.val)
+            res.append(root.val)
             self.inorderTraversal(root.right)
+        inorder(root)
+        return res
+
     
  
 sol = Solution()
 
 
-tree = TreeNode(val = 2)
-sol.insertIntoBST(tree, 1)
+tree = TreeNode(val = 1)
+sol.insertIntoBST(tree, 2)
 sol.insertIntoBST(tree, 3)
 
 print(sol.inorderTraversal(tree))
