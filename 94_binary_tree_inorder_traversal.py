@@ -33,15 +33,17 @@ class Solution:
         return root
     
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        pass
-
+        if root:
+            self.inorderTraversal(root.left)
+            print(root.val)
+            self.inorderTraversal(root.right)
+    
  
 sol = Solution()
 
 
-tree = TreeNode(val = 4)
-sol.insertIntoBST(tree, 2)
-sol.insertIntoBST(tree, 7)
+tree = TreeNode(val = 2)
 sol.insertIntoBST(tree, 1)
 sol.insertIntoBST(tree, 3)
-sol.insertIntoBST(tree, 5)
+
+print(sol.inorderTraversal(tree))
