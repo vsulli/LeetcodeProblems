@@ -39,9 +39,9 @@ class Solution:
         def inorder(root):
             if not root:
                 return
-            self.inorderTraversal(root.left)
+            inorder(root.left)
             res.append(root.val)
-            self.inorderTraversal(root.right)
+            inorder(root.right)
         inorder(root)
         return res
 
