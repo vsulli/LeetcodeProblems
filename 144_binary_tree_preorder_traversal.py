@@ -1,12 +1,12 @@
 
 '''
-Binary Tree Inorder Traversal
-Leetcode #94
+Binary Tree Preorder Traversal
+Leetcode #144
 vsulli
-6 November 2024
+7 November 2024
 
-Given the root of a binary tree, return the 
-inorder traversal of its nodes' values.
+Given the root of a binary tree, return 
+the preorder traversal of its nodes' values.
 '''
 
 # Definition for a binary tree node.
@@ -32,18 +32,17 @@ class Solution:
 
         return root
  
-
-    # inorder traversal - left, root, right
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
         res = []
 
-        def inorder(root):
+        def preorder(root):
             if not root:
                 return
-            inorder(root.left)
             res.append(root.val)
-            inorder(root.right)
-        inorder(root)
+            preorder(root.left)
+            preorder(root.right)
+        preorder(root)
 
         return res
 
@@ -54,4 +53,4 @@ tree = TreeNode(val = 1)
 sol.insertIntoBST(tree, 2)
 sol.insertIntoBST(tree, 3)
 
-print(sol.inorderTraversal(tree))
+print(sol.preorderTraversal(tree))
