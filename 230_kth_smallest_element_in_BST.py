@@ -35,7 +35,19 @@ class Solution:
     
 
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        pass
+        # do inorder traversal, get list of all numbers in order
+        # then get index to find smallest
+        tree_list = []
+
+        def inorder(root):
+            if not root:
+                return
+            inorder(root.left)
+            tree_list.append(root.val)
+            inorder(root.right)
+        inorder(root)
+        return tree_list[k-1]
+
 
 sol = Solution()
 
@@ -44,4 +56,15 @@ sol.insertIntoBST(tree, 1)
 sol.insertIntoBST(tree, 4)
 sol.insertIntoBST(tree, 2)
 
-sol.kthSmallest(tree, 1)
+print(sol.kthSmallest(tree, 1)) # 1 
+
+tree2 = TreeNode(val = 5)
+
+sol.insertIntoBST(tree2, 5)
+sol.insertIntoBST(tree2, 3)
+sol.insertIntoBST(tree2, 6)
+sol.insertIntoBST(tree2, 2)
+sol.insertIntoBST(tree2, 4)
+sol.insertIntoBST(tree2, 1)
+
+print(sol.kthSmallest(tree2, 3)) # 3
