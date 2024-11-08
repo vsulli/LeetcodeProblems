@@ -35,18 +35,26 @@ class Solution:
     
 
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        # do inorder traversal, get list of all numbers in order
-        # then get index to find smallest
-        tree_list = []
+        # iterative stack solution
+        # start at root, don't visit yet, go as left as possible
+        n = 0 #number of elements visited 
+        stack = []
+        cur = root
 
-        def inorder(root):
-            if not root:
-                return
-            inorder(root.left)
-            tree_list.append(root.val)
-            inorder(root.right)
-        inorder(root)
-        return tree_list[k-1]
+        while cur or stack:
+            while cur:
+                # add current to stack
+                stack.append(cur)
+                # keep going left
+                cur = cur.left
+            # reach NULL
+            cur = stack.pop()
+            n += 1
+            if n == k:
+                return cur.val # have processed kth value
+            # go to right subtree
+            cur = cur.right
+
 
 
 sol = Solution()
