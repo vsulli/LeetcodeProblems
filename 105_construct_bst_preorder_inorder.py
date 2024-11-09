@@ -23,7 +23,19 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-          pass
+          # while there are numbers in the list
+          # need to add first if root doesn't exist, then add to left and add to right
+            tree = TreeNode(preorder[0])
+            def insert(root, val):
+                if val < root.val:
+                    root.left = TreeNode(val)
+                elif val > root.val:
+                    root.right = TreeNode(val)
+    
+            for i in range(1, len(preorder)):
+                insert(tree, preorder[i])
+            return tree
+
     
 sol = Solution()
 
