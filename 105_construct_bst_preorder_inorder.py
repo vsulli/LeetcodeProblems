@@ -23,20 +23,24 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-          # while there are numbers in the list
-          # need to add first if root doesn't exist, then add to left and add to right
-            tree = TreeNode(preorder[0])
-            def insert(root, val):
-                if val < root.val:
-                    root.left = TreeNode(val)
-                elif val > root.val:
-                    root.right = TreeNode(val)
-    
-            for i in range(1, len(preorder)):
-                insert(tree, preorder[i])
-            return tree
+        # first of preorder list will ALWAYS be main root
+            # can look that value up in inorder to split into left and right subtree lengths
+        # second of preorder list will ALWAYS be root of left subtree
+        # every value to left of root will be in left subtree and every value to right
+        # will be in right subtree
+        # partition preorder array  into indices for left and right
 
-    
+        # recursive algorithm base case
+        # no nums
+        if not preorder or not inorder:
+            return None
+
+        root = TreeNode(preorder[0])
+        mid = inorder.index(preorder[0]) # get index of root in inorder array 
+        root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid]) # build subtree
+        root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
+        return root
+
 sol = Solution()
 
 sol.buildTree(preorder = [3,9,20,15,7], inorder = [9,3,15,20,7])
