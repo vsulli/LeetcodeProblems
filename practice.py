@@ -1,6 +1,7 @@
 # 105 Construct Binary Tree from Preorder and Inorder Traversal
 
-from collections import deque
+
+import collections
 from typing import Optional, List
 # Definition for a binary tree node.
 class TreeNode:
@@ -12,19 +13,25 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        preorder = deque(preorder)
+        mapping = {}
 
-        def build(preorder, inorder):
-            if inorder:
-                idx = inorder.index(preorder.popleft())
-                root = TreeNode(inorder[idx])
+        for i in range(len(inorder)):
+            mapping[inorder[i]] = i
+        
+        preorder = collections.deque(preorder)
 
-                root.left = build(preorder, inorder[:idx])
-                root.right = build(preorder, inorder[idx+1:])
+        def build(start, end):
+            if start > end: return None
 
-                return root
+            root = TreeNode(preorder.popleft())
+            mid = mapping[root.val]
 
-        return build(preorder, inorder)
+            root.left = build(start, mid - 1)
+            root.right = build(mid + 1, end)
+
+            return root
+
+        return build(0, len(preorder) - 1)
 
 sol = Solution()
 
