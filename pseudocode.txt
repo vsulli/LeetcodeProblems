@@ -213,10 +213,6 @@ assign indices of result array to l, r
 return the string of those indices if result length is not infinity otherwise return an empty string
 
 
-
-    
-
-
 "Tricks" to Remember: 
 you can update and set values in a hashmap using
 countT[c] = 1 + countT.get(c, 0) <-- default value of 0
@@ -224,6 +220,31 @@ countT[c] = 1 + countT.get(c, 0) <-- default value of 0
 result will be the indices of left and right pointers
 
 Concepts:
+
+==============================================
+105. CONSTRUCT BINARY TREE FROM PREORDER AND INORDER
+TRAVERSAL
+==============================================
+ ---------------------------------------------
+ Pseudocode:
+
+ if either one of arrays is empty
+    return None
+initialize root as first of preorder 
+initialize middle to be pivot (index of root in inorder)
+set root's left equal to recursive of preorder and inorder at correct indices
+set root's right equal to recursive of preorder and inorder correct indices
+return root
+
+"Tricks" to Remember: 
+ # first of preorder list will ALWAYS be main root
+            # can look that value up in inorder to split into left and right subtree lengths
+        # second of preorder list will ALWAYS be root of left subtree
+        # every value to left of root (in inorder array) will be in left subtree and every value to right
+        # will be in right subtree
+
+
+Concepts: array, hash table, divide and conquer, tree, binary tree
 
 ==============================================
 141. Linked List Cycle
