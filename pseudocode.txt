@@ -222,6 +222,38 @@ result will be the indices of left and right pointers
 Concepts:
 
 ==============================================
+102. BINARY TREE LEVEL ORDER TRAVERSAL
+==============================================
+Given the root of a binary tree, return the level 
+order traversal of its nodes' values. (i.e., from 
+left to right, level by level).
+ ---------------------------------------------
+ Pseudocode:
+initialize result array
+
+initialize double-ended queue
+add root to double-ended queue
+
+while queue isn't empty:
+    get len of queue
+    initialize array for that level
+    loop through len of queue 
+        initialize node to queue's leftmost
+        if node isn't null:
+            append node's value to level 
+            add that node's left to queue 
+    if level isn't empty:
+        append level to result
+
+return result array
+
+"Tricks" to Remember: 
+can use a double-ended queue - deque (imported from collections library)
+
+
+Concepts: tree, breadth-first search (bfs), binary tree
+
+==============================================
 105. CONSTRUCT BINARY TREE FROM PREORDER AND INORDER
 TRAVERSAL
 ==============================================
