@@ -138,11 +138,13 @@ Common Operations: insertion, deletion, inorder traversal, preorder traversal, p
 Enumeration of a binary tree: the number of distinct binary trees formed from a given number of nodes of a binary tree
 
 Given N nodes, we may find the number of different labelled binary Trees
+
 C(N) = n! * ( (2n!) / (n+1)! * n! ) )
 
+```python
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
-
+```
