@@ -81,7 +81,7 @@ When to use:
 * finding max water between two walls
 
 
-# Sliding Window
+##  Sliding Window
 *  sliding window technique video lesson
 *  https://www.youtube.com/watch?v=dOonV4byDEg&ab_channel=ProfoundAcademy
 
@@ -101,12 +101,12 @@ Longest Subarray with Sum < S
 s = 15
 arr = [4, 5, 2, 0, 1, 8, 12, 3, 6, 9]
 
-# two pointers, one before the start and the other at the start of the current window (0)
-# at each step, adjust the right by one, move the left to make sure sum of current window doesn't exceed threshold
+* two pointers, one before the start and the other at the start of the current window (0)
+* *at each step, adjust the right by one, move the left to make sure sum of current window doesn't exceed threshold
 
 from typing import List
 
-# find longest subarray that has a sum less than "s"
+*  find longest subarray that has a sum less than "s"
 class Solution:
     def longestSubarraySum(self, arr: List[int], s: int) -> int:
         # initialize left pointer, current sum, and max length
@@ -119,3 +119,30 @@ class Solution:
             # update max length
             maxLen = max(maxLen, r - l) # take right index minus left index
         return maxLen
+
+
+## Binary Tree
+
+* hierarchical structure
+* one node is marked as the "root"
+* every other node has a parent node
+* each node can have at most 2 children (left child less than parent, right child greater than parent)
+
+Advantages of Binary Tree: searching, inserting, deleting, sorted order
+
+Disadvantages of Binary Tree: unbalanced trees are inefficient, 
+worst case O(n) for searching and insertion, extra memory for pointers to children, inefficient for large datasets, limited functions that work well with this data structure
+
+Common Operations: insertion, deletion, inorder traversal, preorder traversal, postorder traversal, level order traversal, max depth/height of tree, enumeration of binary tree, bfs for a bst, dfs for a bst
+
+Enumeration of a binary tree: the number of distinct binary trees formed from a given number of nodes of a binary tree
+
+Given N nodes, we may find the number of different labelled binary Trees
+C(N) = n! * ( (2n!) / (n+1)! * n! ) )
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
