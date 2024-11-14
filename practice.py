@@ -16,7 +16,6 @@ class TreeNode:
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         res = []
-
         q = collections.deque()
         q.append(root)
 
@@ -33,7 +32,7 @@ class Solution:
                 res.append(level)
 
         return res
-    
+
 
 
 sol = Solution()
