@@ -13,24 +13,18 @@ import collections
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        res = []
-        q = collections.deque()
-        if root:
-            q.append(root)
+        # timothy h chang
+        # dfs
+        d = collections.defaultdict(list)
+        
+        def dfs(node, level):
+            if not node: return
+            d[level].append(node.val)
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+        dfs(root, 0)
 
-        while q:
-            val = []
-
-            for i in range(len(q)):
-                node = q.popleft()
-                val.append(node.val)
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-            res.append(val)
-        return res
-
+        return list(d.values())
 
 sol = Solution()
 
