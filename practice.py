@@ -13,18 +13,26 @@ import collections
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # timothy h chang
-        # dfs
-        d = collections.defaultdict(list)
-        
-        def dfs(node, level):
-            if not node: return
-            d[level].append(node.val)
-            dfs(node.left, level + 1)
-            dfs(node.right, level + 1)
-        dfs(root, 0)
+        if not root:
+            return []
 
-        return list(d.values())
+        q = collections.deque([root])
+        res = []
+        # process tree level by level
+        while q:
+            level = []
+            for _ in range(len(q)): # iterate over  current level
+                node = q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            # append level items 
+            res.append(level)
+
+        return res
+
 
 sol = Solution()
 
