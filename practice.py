@@ -13,25 +13,24 @@ import collections
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return []
-
-        q = collections.deque([root])
         res = []
-        # process tree level by level
-        while q:
-            level = []
-            for _ in range(len(q)): # iterate over  current level
-                node = q.popleft()
-                level.append(node.val)
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-            # append level items 
-            res.append(level)
+        q = collections.deque([root])
 
+        while q:
+            qLen = len(q)
+            level = []
+            for _ in range(qLen):
+                node = q.popleft()
+                if node:
+                    level.append(node.val)
+                    if node.left:
+                        q.append(node.left)
+                    if node.right:
+                        q.append(node.right)
+            if level:
+                res.append(level)
         return res
+    
 
 
 sol = Solution()

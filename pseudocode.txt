@@ -242,6 +242,7 @@ while queue isn't empty:
         if node isn't null:
             append node's value to level 
             add that node's left to queue 
+            add node's right to queue
     if level isn't empty:
         append level to result
 
