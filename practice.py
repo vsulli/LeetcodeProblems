@@ -23,7 +23,10 @@ class Solution:
 
             for i in range(len(q)):
                 node = q.popleft()
+                # don't need to check if the node val is not null here because the first value will always
+                # be the root, which is guaranteed not to be null
                 level.append(node.val)
+                # here we check if a left and right exist, so if they were null they don't get added to the level
                 if node.left:
                     q.append(node.left)
                 if node.right:
