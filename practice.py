@@ -8,34 +8,23 @@ class TreeNode:
         self.right = right
         self.left = left
 
-from typing import Optional, List
-import collections
-
+from typing import Optional
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        res = []
-        q = collections.deque()
-        if root:
-            q.append(root)
-
-        while q:
-            level = []
-
-            for i in range(len(q)):
-                node = q.popleft()
-                # don't need to check if the node val is not null here because the first value will always
-                # be the root, which is guaranteed not to be null
-                level.append(node.val)
-                # here we check if a left and right exist, so if they were null they don't get added to the level
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-            res.append(level)
-        return res
-    
-
+    def insertIntoBST(self, root : Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        # base case
+        if not root:
+            return TreeNode(val)
+        if val > root.val:
+            root.right = self.insertIntoBST(root.right, val)
+        else:
+            root.left = self.insertIntoBST(root.left, val)
+        return root
 
 sol = Solution()
 
-print(sol.levelOrder(root = [3,9,20,None,None,15,7]))
+root = TreeNode(4)
+sol.insertIntoBST(root, 2)
+sol.insertIntoBST(root, 7)
+sol.insertIntoBST(root, 1)
+sol.insertIntoBST(root, 3)
+print(sol.insertIntoBST(root, val = 5))
