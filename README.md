@@ -66,6 +66,27 @@ Cracking the Coding Interview
 - avoid including constant terms
 - avoid lower values
 
+## Arrays & Hashing
+
+### Arrays & Hashing - Leetcode Questions
+1929 - Concatenation of Array
+217 - Contains Duplicate
+1 - Two Sum
+146 - LRU Cache
+303 - Range Sum Query - Immutable
+304 - Randge Sum Query 2D - Immutable
+724 - Find Pivot Index
+238 - Product of Array Except Self
+560 - Subarray Sum Equals K
+242 - Valid Anagram
+49 - Group Anagrams
+347 - Top K Frequent Elements
+(premium) 271 - Encode and Decode Strings
+36 - Valid Sudoku
+128 - Longest Consecutive Sequence
+
+
+
 ## Two Pointers
 
 given a sorted array you can reduce it down to O(n) instead of O(n^2)
@@ -141,6 +162,8 @@ Given N nodes, we may find the number of different labelled binary Trees
 
 C(N) = n! * ( (2n!) / (n+1)! * n! ) )
 
+Node Class for a Binary Search Tree
+
 ```python
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -148,3 +171,26 @@ class TreeNode:
         self.left = left
         self.right = right
 ```
+### Binary Search Tree - Leetcode Problems
+701 - Insert into a Binary Search Tree
+450 - Delete Node in a BST
+94 - Binary Tree Inorder Traversal
+144 - Binary Tree Preorder Traversal
+145 - Binary Tree Postorder Traversal
+105 - Construct Binary Tree from Preorder and Inorder Traversal
+102 - Binary Tree Level Order Traversal
+199 - Binary Tree Right Side View
+173 - Binary Search Tree Iterator
+226 - Invert Binary Tree
+104 - Maximum Depth of Binary Tree
+543 - Diameter of Binary Tree
+110 - Balanced Binary Tree
+100 - Same Tree
+572 - Subtree of Another Tree
+235 - Lowest Common Ancestor of a Binary Search Tree
+1448 - Count Good Nodes in Binary Tree
+98 - Validate Binary Search Tree
+230 - Kth Smallest Element in a BST
+124 - Binary Tree Maximum Path Sum
+297 - Serialize and Deserialize Binary Tree
+
