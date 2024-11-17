@@ -42,15 +42,14 @@ class Solution:
             root.right = self.deleteNode(root.right, root.val)
 
         return root
-    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         res = []
-        def postorder(root):
+        def inorder(root):
             if root:
-                postorder(root.left)
-                postorder(root.right)
+                inorder(root.left)
                 res.append(root.val)
-        postorder(root)
-
+                inorder(root.right)
+        inorder(root)
         return res
 
 sol = Solution()
@@ -64,4 +63,4 @@ sol.insertIntoBST(root, 7)
 
 print(sol.deleteNode(root, 3))
 
-print(sol.postorderTraversal(root))
+print(sol.inorderTraversal(root))
