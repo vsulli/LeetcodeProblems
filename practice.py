@@ -1,5 +1,4 @@
-# 701 insert into a bst
-# 450 delete node in a bst
+# 144 binary tree preorder traversal
 
 # Definition for a binary tree node.
 
@@ -9,7 +8,8 @@ class TreeNode:
         self.right = right
         self.left = left
 
-from typing import Optional
+from typing import Optional, List
+
 class Solution:
     def insertIntoBST(self, root:Optional[TreeNode], value: int)->Optional[TreeNode]:
         if not root:
@@ -42,6 +42,15 @@ class Solution:
             root.right = self.deleteNode(root.right, root.val)
 
         return root
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        def preorder(root):
+            if root:
+                res.append(root.val)
+                preorder(root.left)
+                preorder(root.right)
+        preorder(root)
+        return res
 
 sol = Solution()
 
@@ -53,3 +62,5 @@ sol.insertIntoBST(root, 4)
 sol.insertIntoBST(root, 7)
 
 print(sol.deleteNode(root, 3))
+
+print(sol.preorderTraversal(root))
