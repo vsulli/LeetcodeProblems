@@ -19,6 +19,29 @@ class Solution:
         elif value > root.val:
             root.right = self.insertIntoBST(root.right, value)
         return root
+    def deleteNode(self, root:Optional[TreeNode], key:int)->Optional[TreeNode]:
+        if not root:
+            return root
+        # navigate to where node to delete is 
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            # if not left or right child
+            if not root.right:
+                return root.left
+            if not root.left:
+                return root.right
+            
+            # go to min of right subtree (leftmost)
+            curr = root.right
+            while curr.left:
+                curr = curr.left
+            root.val = curr.val
+            root.right = self.deleteNode(root.right, root.val)
+
+        return root
 
 sol = Solution()
 
