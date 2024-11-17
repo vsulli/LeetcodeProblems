@@ -9,6 +9,7 @@ class TreeNode:
         self.left = left
 
 from typing import Optional, List
+import collections
 
 class Solution:
     def insertIntoBST(self, root:Optional[TreeNode], value: int)->Optional[TreeNode]:
@@ -42,15 +43,29 @@ class Solution:
             root.right = self.deleteNode(root.right, root.val)
 
         return root
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         res = []
-        def inorder(root):
-            if root:
-                inorder(root.left)
-                res.append(root.val)
-                inorder(root.right)
-        inorder(root)
+        if not root:
+            return res
+        q = collections.deque()
+        q.append(root)
+
+        while q:
+            level = []
+            for _ in range(len(q)):
+                node = q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            if level:
+                res.append(level)
         return res
+            
+            
+            
 
 sol = Solution()
 
@@ -63,4 +78,4 @@ sol.insertIntoBST(root, 7)
 
 print(sol.deleteNode(root, 3))
 
-print(sol.inorderTraversal(root))
+print(sol.levelOrder(root))
