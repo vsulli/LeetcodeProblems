@@ -44,12 +44,12 @@ class Solution:
 
         return root
 
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder(self, root:Optional[TreeNode])->Optional[TreeNode]:
         res = []
         if not root:
-            return res
-        q = collections.deque()
-        q.append(root)
+            return res 
+        
+        q = collections.deque([root])
 
         while q:
             level = []
@@ -63,6 +63,8 @@ class Solution:
             if level:
                 res.append(level)
         return res
+
+        
             
             
             
