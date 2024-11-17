@@ -1,3 +1,4 @@
+# 701 insert into a bst
 # 450 delete node in a bst
 
 # Definition for a binary tree node.
@@ -10,8 +11,14 @@ class TreeNode:
 
 from typing import Optional
 class Solution:
-    
-
+    def insertIntoBST(self, root:Optional[TreeNode], value: int)->Optional[TreeNode]:
+        if not root:
+            return TreeNode(value)
+        if value < root.val:
+            root.left = self.insertIntoBST(root.left, value)
+        elif value > root.val:
+            root.right = self.insertIntoBST(root.right, value)
+        return root
 
 sol = Solution()
 
