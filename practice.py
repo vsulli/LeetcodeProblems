@@ -29,14 +29,12 @@ class Solution:
         
         if key < root.val:
             root.left = self.deleteNode(root.left, key)
-        
         elif key > root.val:
             root.right = self.deleteNode(root.right, key)
-
         else:
             if not root.left:
                 return root.right
-            if not root.right:
+            elif not root.right:
                 return root.left
             
             curr = root.right
@@ -44,7 +42,6 @@ class Solution:
                 curr = curr.left
             root.val = curr.val
             root.right = self.deleteNode(root.right, root.val)
-            
         return root
 
 
