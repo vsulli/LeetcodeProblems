@@ -1,23 +1,29 @@
-# 242 - Valid Anagram
+# 701 - Insert into a BST
+
+from typing import Optional
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
+    def insertIntoBST(self, root: Optional[TreeNode], val:int)->Optional[TreeNode]:
+        if not root:
+            return TreeNode(val)
         
-        d = [0] * 26
+        if val < root.val:
+            root.left = self.insertIntoBST(root.left, val)
 
-        for i in range(len(s)):
-            d[ord(s[i]) - ord('a')] += 1
-            d[ord(t[i]) - ord('a')] -= 1
-        
-        for val in d:
-            if val != 0:
-                return False
-        return True
+        if val > root.val:
+            root.right = self.insertIntoBST(root.right, val)
+            
+        return root
 
 sol = Solution()
 
-print(sol.isAnagram(s = "anagram", t = "nagaram"))
+root = TreeNode(4)
 
-print(sol.isAnagram(s = "rat", t = "car"))
+sol.insertIntoBST(root, 5)
