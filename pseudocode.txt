@@ -510,7 +510,24 @@ Example 2:
 Input: s = "rat", t = "car"
 Output: false
  ---------------------------------------------
- Pseudocode:
+ Pseudocode 1:
+
+check if both strings are the same length
+
+initialize an array that is the length of the alphabet
+
+loop through length of string 
+    add +1 to count at current i for s string
+    subtract -1 to count at current i for t string
+
+
+for every value in the count array:
+    if it's not 0
+        return False
+return True
+
+  ---------------------------------------------
+ Pseudocode 2:
 
 can check if lengths of both strings are equal
 
@@ -524,9 +541,22 @@ for each key in one dictionary, check that the count is equal in both
 return True
 
 
-"Tricks" to Remember: in operator is O(1) 
+"Tricks" to Remember:
+count will balance to 0 for each index 
+if it's an anagram because you'll have
+the same number added and then subtracted
+
+ord('a') = 97
+ord('z') = 122
+
+By using index of ord(s[i]) - ord('a') 
+you'll get indices between 0-25 for each letter 
+of the alphabet
+---------------------
+in operator is O(1) 
 for dictionaries
 and sets in python
+
 Concepts:hash table, string, sorting
 
 ==============================================
