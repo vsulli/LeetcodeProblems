@@ -8,17 +8,19 @@ class Solution:
         # need to store the counts for each letter in the word
         # if sorted of that word matches sorted that's already a key in hashmap, add to list?
         res = []
-        str_hashmap = {}
+        str_hashmap = {}        
+        
         for s in strs:
-            if sorted(s) in str_hashmap:
-                str_hashmap[sorted(s)].append(s)
+            if tuple(sorted(s)) in str_hashmap:
+                str_hashmap[tuple(sorted(s))].append(s)
             else:
-                str_hashmap[sorted(s)] = [s]
+                str_hashmap[tuple(sorted(s))] = [s]
         
         for k in str_hashmap:
             res.append(str_hashmap[k])
 
         return res
+
 
 sol = Solution()
 
