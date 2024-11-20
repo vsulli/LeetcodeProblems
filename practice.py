@@ -1,16 +1,29 @@
-# 1 Two Sum
+# 49 Group Anagrams
+
 from typing import List
 
 class Solution:
-    def twoSum(self, nums: List[int], target:int)->List[int]:
-        seen = {}
-        for i in range(len(nums)):
-            if target - nums[i] in seen:
-                return [seen[target - nums[i]], i]
+    def groupAnagrams(self, strs:list[str])-> List[List[str]]:
+        # hashmap sorted_key: [list of original values]
+        # need to store the counts for each letter in the word
+        # if sorted of that word matches sorted that's already a key in hashmap, add to list?
+        res = []
+        str_hashmap = {}
+        for s in strs:
+            if sorted(s) in str_hashmap:
+                str_hashmap[sorted(s)].append(s)
             else:
-                seen[nums[i]] = i
+                str_hashmap[sorted(s)] = [s]
         
+        for k in str_hashmap:
+            res.append(str_hashmap[k])
+
+        return res
 
 sol = Solution()
 
-print(sol.twoSum(nums = [2, 7, 11, 15], target = 9))
+print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
+# Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+print(sol.groupAnagrams(strs = [""]))
+# Output: [[""]]
