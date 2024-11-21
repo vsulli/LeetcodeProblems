@@ -194,3 +194,25 @@ class TreeNode:
 124 - Binary Tree Maximum Path Sum
 297 - Serialize and Deserialize Binary Tree
 
+# Notes
+**Lambda Functions**
+
+[Lambda Functions Explained](https://www.youtube.com/watch?v=HQNiSfb795A&ab_channel=TechWithTim)
+
+add_1 = lambda x, y: x + y
+
+result = add_1(1, 7)
+print(result) # 8
+
+* Lambda functions can accept any number of parameters & they can return any valid python expression
+
+
+```python
+def add_1(x, y):
+    return x + y
+
+add_1 = lambda x, y: x + y
+```
+
+* both of these do the same thing
+
