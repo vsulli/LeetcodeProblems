@@ -566,7 +566,27 @@ Given an integer array nums and an integer k,
 return the k most frequent elements. You may 
 return the answer in any order.
  ---------------------------------------------
- Pseudocode:
+
+Pseudocode 1:
+
+initialize result array
+initialize dictionary 
+
+loop through all numbers 
+    if that number already occurs in dict:
+        add 1 
+    else:
+        set value of that num key to 1
+
+sort the dict
+
+enumerate through sorted dict:
+    add key to result
+    if index  matches k value:
+        return the result
+
+----------------------------
+ Pseudocode 2:
 
  initialize dict of count
  initialize array of arrays of length nums 
