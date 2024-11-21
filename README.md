@@ -228,3 +228,14 @@ print(evens)
 
 * filtering of an iterable object
 * will only keep values that return True
+
+```python
+values = [(1, 'b', "hello"), (2, 'a', "world"), (3, 'c', "ok")]
+sorted_values = sorted(values, key=lambda x: x[1], reverse=True) 
+print(list(sorted_values))
+```
+
+* sorting function
+* this is sorted based on the 2nd value (index 1) 
+[(2, 'a', 'world'), (1, 'b', 'hello'), (3, 'c', 'ok')]
+* reverse = True will sort in descending order
