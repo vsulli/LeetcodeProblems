@@ -1,29 +1,25 @@
-# 49 Group Anagrams
+# 347 Top K Frequent Elements
 
 from typing import List
-
 class Solution:
-    def groupAnagrams(self, strs:List[str])->List[List[str]]:
+    def topKFrequent(self, nums:List[int], k:int)->List[int]:
         res = []
+
         d = {}
-
-        for s in strs:
-            if tuple(sorted(s)) in d:
-                d[tuple(sorted(s))].append(s)
+        for n in nums:
+            if n in d:
+                d[n] += 1
             else:
-                d[tuple(sorted(s))] = [s]
+                d[n] = 1
         
-        for val in d.values():
-            res.append(val)
+        for i, v in enumerate(d):
+            res.append(v)
+            if i == k-1:
+                return res
 
-
-        return res
-    
 
 sol = Solution()
 
-print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
-# Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2)) # [1, 2]
 
-print(sol.groupAnagrams(strs = [""]))
-# Output: [[""]]
+print(sol.topKFrequent(nums = [1], k = 1)) # [1]
