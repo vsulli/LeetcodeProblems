@@ -3,24 +3,22 @@
 from typing import List
 
 class Solution:
-    def groupAnagrams(self, strs:list[str])-> List[List[str]]:
-        # hashmap sorted_key: [list of original values]
-        # need to store the counts for each letter in the word
-        # if sorted of that word matches sorted that's already a key in hashmap, add to list?
+    def groupAnagrams(self, strs:List[str])->List[List[str]]:
         res = []
-        str_hashmap = {}        
-        
+        d = {}
+
         for s in strs:
-            if tuple(sorted(s)) in str_hashmap:
-                str_hashmap[tuple(sorted(s))].append(s)
+            if tuple(sorted(s)) in d:
+                d[tuple(sorted(s))].append(s)
             else:
-                str_hashmap[tuple(sorted(s))] = [s]
+                d[tuple(sorted(s))] = [s]
         
-        for k in str_hashmap:
-            res.append(str_hashmap[k])
+        for val in d.values():
+            res.append(val)
+
 
         return res
-
+    
 
 sol = Solution()
 
