@@ -104,7 +104,7 @@ When to use:
 
 ##  Sliding Window
 *  sliding window technique video lesson
-*  https://www.youtube.com/watch?v=dOonV4byDEg&ab_channel=ProfoundAcademy
+*  [Sliding Window Technique](https://www.youtube.com/watch?v=dOonV4byDEg&ab_channel=ProfoundAcademy)
 
 Fixed Window Example)
 arr = [8, 3, -2, 4, 5, -1, 0, 5, 3, 9, -6], k = 5 # output: 18
@@ -196,8 +196,12 @@ class TreeNode:
 
 # Notes
 **Lambda Functions**
-
+[Lambda Function - Python](https://www.w3schools.com/python/python_lambda.asp)
 [Lambda Functions Explained](https://www.youtube.com/watch?v=HQNiSfb795A&ab_channel=TechWithTim)
+
+Syntax: 
+lambda arguments : expression
+
 
 add_1 = lambda x, y: x + y
 
@@ -216,3 +220,11 @@ add_1 = lambda x, y: x + y
 
 * both of these do the same thing
 
+```python
+my_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+evens = list(filter(lambda x:x % 2 == 0, my_numbers))
+print(evens)
+```
+
+* filtering of an iterable object
+* will only keep values that return True
