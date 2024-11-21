@@ -12,10 +12,9 @@ class Solution:
             else:
                 count[n] = 1
         
-        # have to return top k, so sort dictionary by key, then append to res in range k
-        count = sorted(count.items(), key=lambda item: item[1], reverse=True)
+        sorted_count = sorted(count.items(), key = lambda items:items[1], reverse=True)
 
-        for i,t in enumerate(count):
+        for i, t in enumerate(sorted_count):
             res.append(t[0])
             if i == k - 1:
                 return res
