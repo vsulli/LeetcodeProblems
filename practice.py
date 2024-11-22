@@ -1,27 +1,37 @@
-# 347 Top K Frequent Elements
-from typing import List
+# 450 delete node in a BST
+from typing import Optional
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        res = []
-        count = {}
-
-        for n in nums:
-            if n in count:
-                count[n] += 1
-            else:
-                count[n] = 1
+    def deleteNode(self, root: Optional[TreeNode],key: int)->Optional[TreeNode]:
+        if not root:
+            return root
         
-        
-        # sort the count
-        sorted_count = sorted(count.items(), key=lambda items: items[1], reverse=True)
+        # if key < root 
+        if key < root.val:
+            root.left = self.deleteNode(root.left, key)
 
-        for i, n in enumerate(sorted_count):
-            res.append(n[0])
-            if i == k - 1:
-                return res
-            
-sol = Solution()
+        # if key > root
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
 
-print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
+        else:
+            # if no left child
+            # if no right child
+            if not root.left:
+                return root.right
+            elif not root.right:
+                return root.left
+    
+            # find min of right subtree
+            curr = root.right
+            while curr.left:
+                curr = curr.left
+            root.val = curr.val
+            root.right = self.deleteNode(root.right, root.val)
+        return root
 
-print(sol.topKFrequent(nums = [1], k = 1))
