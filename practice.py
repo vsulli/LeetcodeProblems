@@ -1,20 +1,22 @@
-# 1 Two Sum
+# 49 group anagrams
 
 from typing import List
-
 class Solution:
-    def twoSum(self, nums: List[int], target: int)->List[int]:
+    def groupAnagrams(self, strs: List[str])->List[List[str]]:
         res = []
-        seen = {} # num: index
-        for i, n in enumerate(nums):
-            if target - n in seen:
-                return [seen[target - n], i]
+        word_dict = {} # sorted(key) : [words]
+
+        for w in strs:
+            if tuple(sorted(w)) in word_dict:
+                word_dict[tuple(sorted(w))].append(w)
             else:
-                seen[n] = i
+                word_dict[tuple(sorted(w))] = [w]
+
+        for v in word_dict.values():
+            res.append(v)
         return res
-
-
+        
 sol = Solution()
 
-print(sol.twoSum(nums = [2,7,11,15], target = 9)) # [0, 1]
-print(sol.twoSum(nums = [3,2,4], target = 6))
+print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
+print(sol.groupAnagrams(strs = [""]))
