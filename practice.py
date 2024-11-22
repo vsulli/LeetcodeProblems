@@ -4,18 +4,18 @@ from typing import List
 class Solution:
     def groupAnagrams(self, strs: List[str])->List[List[str]]:
         res = []
-        word_dict = {} # sorted(key) : [words]
+        d = {}
 
         for w in strs:
-            if tuple(sorted(w)) in word_dict:
-                word_dict[tuple(sorted(w))].append(w)
+            if tuple(sorted(w)) in d:
+                d[tuple(sorted(w))].append(w)
             else:
-                word_dict[tuple(sorted(w))] = [w]
-
-        for v in word_dict.values():
-            res.append(v)
-        return res
+                d[tuple(sorted(w))] = [w]
         
+        for l in d.values():
+            res.append(l)
+        return res
+
 sol = Solution()
 
 print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
