@@ -237,5 +237,5 @@ print(list(sorted_values))
 
 * sorting function
 * this is sorted based on the 2nd value (index 1) 
-[(2, 'a', 'world'), (1, 'b', 'hello'), (3, 'c', 'ok')]
+* [(2, 'a', 'world'), (1, 'b', 'hello'), (3, 'c', 'ok')]
 * reverse = True will sort in descending order
