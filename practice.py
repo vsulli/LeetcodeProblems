@@ -2,10 +2,10 @@
 
 class Solution:
     def isAnagram(self, s: str, t: str)->bool:
-        # check if words are same length
         if len(s) != len(t):
-            return False 
-        # initialize an array of length of alphabet
+            return False
+        
+        # treat 'a' as index 0
         count = [0] * 26
 
         for i in range(len(s)):
