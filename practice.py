@@ -1,23 +1,26 @@
-# 242 valid anagram
+# 347 Top K Frequent Elements
+
+from typing import List
 
 class Solution:
-    def isAnagram(self, s: str, t: str)->bool:
-        if len(s) != len(t):
-            return False
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        res = []
+        count = {} # num: count
+        for n in nums:
+            if n in count:
+                count[n] += 1
+            else:
+                count[n] = 1
         
-        # treat 'a' as index 0
-        count = [0] * 26
+        sorted_count = sorted(count.items(), key=lambda items:items[1], reverse=True)
 
-        for i in range(len(s)):
-            count[ord(s[i]) - ord('a')] += 1
-            count[ord(t[i]) - ord('a')] -= 1
+        for i, n in enumerate(sorted_count):
+            res.append(n[0])
+            if i == k - 1:
+                return res
         
-        for val in count:
-            if val != 0:
-                return False
-        return True
 
 sol = Solution()
 
-print(sol.isAnagram(s = "anagram", t = "nagaram"))
-print(sol.isAnagram(s = "rat", t = "car"))
+print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
+print(sol.topKFrequent(nums = [1], k = 1))
