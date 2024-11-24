@@ -19,34 +19,25 @@ class Solution:
         return root
     
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        # if not node
         if not root:
             return root
-
-        # go left 
+        
         elif key < root.val:
             root.left = self.deleteNode(root.left, key)
-
-        # go right
         elif key > root.val:
             root.right = self.deleteNode(root.right, key)
-        
-        else:
 
-            # no left child
+        else:
             if not root.left:
                 return root.right
-            # no right child
-            if not root.right:
+            elif not root.right:
                 return root.left
-
-            # find min of right subtree
-            curr = root.right
-            while curr.left:
-                curr = curr.left
-            root.val = curr.val
-            root.right = self.deleteNode(root.right, root.val)
-
+            else:
+                curr = root.right
+                while curr.left:
+                    curr = curr.left
+                root.val = curr.val
+                root.right = self.deleteNode(root.right, root.val)
         return root
 
 root = TreeNode(4)
