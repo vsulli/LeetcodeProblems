@@ -560,6 +560,51 @@ and sets in python
 Concepts:hash table, string, sorting
 
 ==============================================
+271 - Encode and Decode Strings [premium]
+==============================================
+Design an algorithm to encode a list of 
+strings to a single string. The encoded 
+string is then decoded back to the original 
+list of strings.
+
+Please implement encode and decode
+
+Example 1:
+
+Input: ["neet","code","love","you"]
+
+Output:["neet","code","love","you"]
+
+ ---------------------------------------------
+ Pseudocode:
+
+ def encode(...):
+    initialize a result string
+    loop through every word in list
+        add to the result a string of length of that word, special character, that word
+    return result
+
+def decode(...):
+    initialize result array
+    initialize a pointer
+    while pointer is less than length of string
+        initialize 2nd pointer = 1st pointer
+        while string at the 2nd pointer doesn't equal special symbol:
+            increment second pointer 
+        initialize length = integer of string from 1st to 2nd pointer 
+        set 1st pointer = 2nd pointer + 1
+        set 2nd pointer = 1st pointer + length 
+        append string 1st ptr->2nd pointer to result
+        set 1st pointer = 2nd pointer 
+    return result
+
+"Tricks" to Remember: 
+    use a special symbol to designate beginning and end of word
+    use length of word along with special symbol
+
+Concepts: 
+
+==============================================
 347. TOP K FREQUENT ELEMENTS
 ==============================================
 Given an integer array nums and an integer k, 
