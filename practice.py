@@ -1,36 +1,34 @@
-# 271 Encode and Decode Strings
-# Neetcode
+# leetcode # 271 Encode and Decode Strings
+p = 0
+s = '#3say#1:#3yes'
+print(s[p+2:p+int(s[p+1])+2])
 
+'''
 from typing import List
 
 class Solution:
+
     def encode(self, strs: List[str])-> str:
         res = ''
-        # separate each word on the ">" character
+        # append '#' + length of word + word
         for w in strs:
-            res += w + ">"
+            res += '#' + str(len(w)) + w
         return res
+
 
     def decode(self, s: str)-> List[str]:
         res = []
-        w = ""
-        # increment pointer through word, when you reach special symbol, append word to res
         p = 0
-        while p != (len(s)):
-            if s[p] == ">":
-                res.append(w)
-                w = ""
-            else:
-                w += s[p]
-            p += 1
-        return res
+        # copy from # , num units to right
+        while p != len(s):
+            if s[p] == '#':
+                res.append(s[p+2:p+s[p+1]+2])
+
+        
 
 sol = Solution()
 
-encoded = sol.encode(["neet","code","love","you"])
-print(encoded)
-print(sol.decode(encoded))
+print(sol.encode(["we","say",":","yes"]))
 
-encoded2 = sol.encode(["we","say",":","yes"])
-print(encoded2)
-print(sol.decode(encoded2))
+print(sol.encode(["neet","code","love","you"]))
+'''
