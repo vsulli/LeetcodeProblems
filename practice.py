@@ -15,7 +15,7 @@ class Solution:
         sorted_count = sorted(count.items(), key=lambda items:items[1], reverse=True)
 
         for i, n in enumerate(sorted_count):
-            res.append(sorted_count[i][0])
+            res.append(n[0])
             if i == k - 1:
                 return res
             
