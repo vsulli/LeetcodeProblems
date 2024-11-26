@@ -1,9 +1,5 @@
 # leetcode # 271 Encode and Decode Strings
-p = 0
-s = '#3say#1:#3yes'
-print(s[p+2:p+int(s[p+1])+2])
 
-'''
 from typing import List
 
 class Solution:
@@ -22,13 +18,17 @@ class Solution:
         # copy from # , num units to right
         while p != len(s):
             if s[p] == '#':
-                res.append(s[p+2:p+s[p+1]+2])
+                res.append(s[p+2:p+int(s[p+1])+2])
+                p = p+int(s[p+1])+2
+        return res
 
         
 
 sol = Solution()
 
-print(sol.encode(["we","say",":","yes"]))
+encoded = sol.encode(["we","say",":","yes"])
+print(encoded)
+print(sol.decode(encoded))
 
-print(sol.encode(["neet","code","love","you"]))
-'''
+encoded = sol.encode(["neet","code","love","you"])
+print(sol.decode(encoded))
