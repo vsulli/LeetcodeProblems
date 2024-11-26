@@ -1,38 +1,24 @@
-# leetcode # 271 Encode and Decode Strings
-
+# 347 Top K frequent elements
 from typing import List
 
 class Solution:
-
-    def encode(self, strs: List[str])-> str:
-        res = ""
-        for s in strs:
-            res += str(len(s)) + "#" + s
-        return res
-
-    def decode(self, s: str) -> List[str]:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         res = []
-        i = 0
+        count = {}
+
+        for n in nums:
+            if n in count:
+                count[n] += 1
+            else:
+                count[n] = 1
         
-        while i < len(s):
-            j = i
-            while s[j] != '#':
-                j += 1
-            length = int(s[i:j])
-            i = j + 1
-            j = i + length
-            res.append(s[i:j])
-            i = j
+        sorted_count = sorted(count.items(), key=lambda items:items[1], reverse=True)
+
+        for i, n in enumerate(sorted_count):
+            res.append(sorted_count[i][0])
+            if i == k - 1:
+                return res
             
-        return res
-
-        
-
 sol = Solution()
-
-encoded = sol.encode(["we","say",":","yes"])
-print(encoded)
-print(sol.decode(encoded))
-
-encoded = sol.encode(["neet","code","love","you"])
-print(sol.decode(encoded))
+print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
+print(sol.topKFrequent(nums = [1], k = 1))
