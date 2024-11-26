@@ -5,21 +5,25 @@ from typing import List
 class Solution:
 
     def encode(self, strs: List[str])-> str:
-        res = ''
-        # append '#' + length of word + word
-        for w in strs:
-            res += '#' + str(len(w)) + w
+        res = ""
+        for s in strs:
+            res += str(len(s)) + "#" + s
         return res
 
-
-    def decode(self, s: str)-> List[str]:
+    def decode(self, s: str) -> List[str]:
         res = []
-        p = 0
-        # copy from # , num units to right
-        while p != len(s):
-            if s[p] == '#':
-                res.append(s[p+2:p+int(s[p+1])+2])
-                p = p+int(s[p+1])+2
+        i = 0
+        
+        while i < len(s):
+            j = i
+            while s[j] != '#':
+                j += 1
+            length = int(s[i:j])
+            i = j + 1
+            j = i + length
+            res.append(s[i:j])
+            i = j
+            
         return res
 
         
