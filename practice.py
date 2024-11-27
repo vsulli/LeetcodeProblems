@@ -11,13 +11,13 @@ import collections
 class Solution:
     def levelOrder(self, root: Optional[TreeNode])-> Optional[TreeNode]:
         res = []
-
         q = collections.deque()
-        q.append(root)
-
+        if root:
+            q.append(root)
+        
         while q:
-            qLen = len(q)
             level = []
+            qLen = len(q)
             for i in range(qLen):
                 node = q.popleft()
                 if node:
@@ -26,8 +26,4 @@ class Solution:
                     q.append(node.right)
             if level:
                 res.append(level)
-                
         return res
-
-sol = Solution()
-
