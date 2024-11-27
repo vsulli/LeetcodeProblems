@@ -1,24 +1,33 @@
-# 347 Top K frequent elements
-from typing import List
+# 102 Binary Tree Level Order Traversal
 
+class TreeNode:
+    def __init__(self, val=0, right=None, left=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+from typing import Optional
+import collections
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    def levelOrder(self, root: Optional[TreeNode])-> Optional[TreeNode]:
         res = []
-        count = {}
 
-        for n in nums:
-            if n in count:
-                count[n] += 1
-            else:
-                count[n] = 1
-        
-        sorted_count = sorted(count.items(), key=lambda items:items[1], reverse=True)
+        q = collections.deque()
+        q.append(root)
 
-        for i, n in enumerate(sorted_count):
-            res.append(n[0])
-            if i == k - 1:
-                return res
-            
+        while q:
+            qLen = len(q)
+            level = []
+            for i in range(qLen):
+                node = q.popleft()
+                if node:
+                    level.append(node.val)
+                    q.append(node.left)
+                    q.append(node.right)
+            if level:
+                res.append(level)
+                
+        return res
+
 sol = Solution()
-print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
-print(sol.topKFrequent(nums = [1], k = 1))
+
