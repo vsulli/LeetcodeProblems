@@ -12,8 +12,7 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode])-> Optional[TreeNode]:
         res = []
         q = collections.deque()
-        if root:
-            q.append(root)
+        q.append(root)
         
         while q:
             level = []
