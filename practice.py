@@ -1,28 +1,31 @@
-# 102 Binary Tree Level Order Traversal
+# 271 encode and decode strings
 
-class TreeNode:
-    def __init__(self, val=0, right=None, left=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from typing import List
 
-from typing import Optional
-import collections
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode])-> Optional[TreeNode]:
-        res = []
-        q = collections.deque()
-        q.append(root)
-        
-        while q:
-            level = []
-            qLen = len(q)
-            for i in range(qLen):
-                node = q.popleft()
-                if node:
-                    level.append(node.val)
-                    q.append(node.left)
-                    q.append(node.right)
-            if level:
-                res.append(level)
+    def encode(self, strs:List[str])-> str:
+        res = ''
+        for w in strs:
+            res += str(len(w)) + '#' + w
         return res
+
+    def decode(self, strs:str)->List[str]:
+        res = []
+        i = 0
+        while i < len(strs):
+            j = i
+            while strs[j] != '#':
+                j += 1
+            length = int(strs[i:j])
+            i = j + 1
+            j = i + length
+            res.append(strs[i:j])
+            i = j
+        
+        return res
+
+sol = Solution()
+
+encoded = sol.encode(["neet","code","love","you"])
+print(encoded)
+print(sol.decode(encoded))
