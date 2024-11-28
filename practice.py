@@ -1,31 +1,34 @@
-# 271 encode and decode strings
+# 450 delete node in a bst
 
-from typing import List
+from typing import Optional
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 class Solution:
-    def encode(self, strs:List[str])-> str:
-        res = ''
-        for w in strs:
-            res += str(len(w)) + '#' + w
-        return res
-
-    def decode(self, strs:str)->List[str]:
-        res = []
-        i = 0
-        while i < len(strs):
-            j = i
-            while strs[j] != '#':
-                j += 1
-            length = int(strs[i:j])
-            i = j + 1
-            j = i + length
-            res.append(strs[i:j])
-            i = j
+    def deleteNode(self, root:Optional[TreeNode], key: int)->Optional[TreeNode]:
+        if not root:
+            return root
         
-        return res
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            if not root.left:
+                return root.right
+            elif not root.right:
+                return root.left
+            else:
+                curr = root.right
+                while curr.left:
+                    curr = curr.left
+                root.val = curr.val
+                root.right = self.deleteNode(root.right, root.val)
+        return root
 
 sol = Solution()
 
-encoded = sol.encode(["neet","code","love","you"])
-print(encoded)
-print(sol.decode(encoded))
