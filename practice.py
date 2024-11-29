@@ -9,26 +9,12 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def deleteNode(self, root:Optional[TreeNode], key: int)->Optional[TreeNode]:
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         if not root:
-            return root
-        
-        elif key < root.val:
-            root.left = self.deleteNode(root.left, key)
-        elif key > root.val:
-            root.right = self.deleteNode(root.right, key)
+            return TreeNode(val)
+        elif val < root.val:
+            root.left = self.insertIntoBST(root.left, val)
         else:
-            if not root.left:
-                return root.right
-            elif not root.right:
-                return root.left
-            else:
-                curr = root.right
-                while curr.left:
-                    curr = curr.left
-                root.val = curr.val
-                root.right = self.deleteNode(root.right, root.val)
+            root.right = self.insertIntoBST(root.right, val)
         return root
-
-sol = Solution()
 
