@@ -1,4 +1,4 @@
-# 450 delete node in a bst
+# 701
 
 from typing import Optional
 
@@ -14,7 +14,15 @@ class Solution:
             return TreeNode(val)
         elif val < root.val:
             root.left = self.insertIntoBST(root.left, val)
-        else:
+        elif val > root.val:
             root.right = self.insertIntoBST(root.right, val)
         return root
 
+sol = Solution()
+
+root = TreeNode(4)
+sol.insertIntoBST(root, val = 2)
+sol.insertIntoBST(root, val = 7)
+sol.insertIntoBST(root, val = 1)
+sol.insertIntoBST(root, val = 3)
+print(sol.insertIntoBST(root, val = 5))
