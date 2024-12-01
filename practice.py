@@ -1,21 +1,16 @@
-#242 Valid Anagram
-
+# 1 two sum
+from typing import List
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        
-        count = [0] * 26
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {} # num: index
+        for i in range(len(nums)):
+            if target - nums[i] in seen:
+                return [i, seen[target - nums[i]]]
+            seen[nums[i]] = i
 
-        for i in range(len(s)):
-            count[ord(s[i]) - ord('a')] += 1
-            count[ord(t[i]) - ord('a')] -= 1
-        for v in count:
-            if v != 0:
-                return False
-        return True
+
 
 sol = Solution()
 
-print(sol.isAnagram(s = "anagram", t = "nagaram"))
-print(sol.isAnagram(s = "car", t = "tar"))
+print(sol.twoSum(nums = [2,7,11,15], target = 9))
+print(sol.twoSum(nums = [3,2,4], target = 6))
