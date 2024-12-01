@@ -354,6 +354,84 @@ and you can detect if you go to the same one.
 Concepts:hash table, linked list, two pointers
 
 ==============================================
+146. LRU Cache
+==============================================
+Design a data structure that follows the 
+constraints of a Least Recently Used (LRU) 
+cache.
+
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU 
+cache with positive size capacity.
+int get(int key) Return the value of the key 
+if the key exists, otherwise return -1.
+void put(int key, int value) Update the value 
+of the key if the key exists. Otherwise, add 
+the key-value pair to the cache. If the number 
+of keys exceeds the capacity from this operation, 
+evict the least recently used key.
+The functions get and put must each run in O(1) 
+average time complexity.
+
+ ---------------------------------------------
+ Pseudocode:
+
+ class Node:
+    initialize a node class with key and val as parameters
+    previous and next 
+
+
+class LRUCache:
+    # initialize cache
+    function to initialize the cache
+        keep track of capacity 
+        initialize a hashmap key:node
+        initialize left and right to empty nodes
+        set left's next to right
+        set right's prev to left
+
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        self.left.next, self.right.prev = self.right, self.left
+
+    # remove node from list
+    function to remove node from list
+        initialize prev and nxt variables 
+        set prev's next to nxt and nxt's prev to prev
+
+    # insert node at right
+    function to insert at right
+        prev, nxt = right's prev and right
+        prev's next = nxt.prev = node
+        node's next, node's prev = nxt, prev
+
+    function to get key's value if in cache
+        if key in cache:
+            remove the key from the cache
+            insert that key back into the cache
+            return the value of that key in cache
+        return -1 # if key not found
+
+    function to put key and value into cache
+        if key is already in cache:
+            remove that key from cache
+        add that key to cache with Node(key, value)
+        insert with cache of key
+
+        if current length of cache exceeds capacity:
+            # remove from the list and delete the LRU from hashmap
+            lru = leftmost's next
+            self.remove(lru)
+            delete lru's key from cache
+
+"Tricks" to Remember: 
+If you perform a lookup on a key, that moves it 
+to the most frequently used. So remove it from the cache
+and then add it back
+
+Concepts: hash table, linked list, design, doubly-linked list
+
+==============================================
 209. MINIMUM SIZE SUBARRAY SUM
 ==============================================
 Given an array of positive integers nums and a 
