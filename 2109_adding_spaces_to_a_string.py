@@ -24,7 +24,19 @@ from typing import List
 
 class Solution:
     def addSpaces(self, s: str, spaces: List[int]) -> str:
-        pass
+        res = ''
+        count = 0
+        ptr = 0
+        for c in s:
+            if ptr <= len(spaces) - 1 and count == spaces[ptr]:
+                res += ' '
+                ptr += 1
+            res += c
+            count += 1
+        return res
+            
+
+
 sol = Solution()
 print(sol.addSpaces(s = "LeetcodeHelpsMeLearn", spaces = [8,13,15]))
 print(sol.addSpaces(s = "icodeinpython", spaces = [1,5,7,9]))
