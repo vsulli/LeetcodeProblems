@@ -27,10 +27,13 @@ class Solution:
         index, result = 0, []
 
         for space in spaces:
+            # since python doesn't include the last index with slicing, can use the index provided by spaces
             result.append(s[index : space])
+            # set starting index to previous ending space
             index = space
-        
+        # last space index to end of string
         result.append(s[index :])
+        # what does this do?
         return " ".join(result)
             
 
