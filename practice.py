@@ -1,21 +1,23 @@
-# leetcode #242
+class Node:
+    def __init__(self, key, val):
+        self.key, self.val = key, val
+        self.prev = self.next = None
+class LRUCache:
 
-class Solution:
-    def isAnagram(self, s: str, t: str)->bool:
-        if len(s) != len(t):
-            return False
+    def __init__(self, capacity: int):
+        self.cap = capacity
+    
+
+
+
+    def get(self, key: int) -> int:
         
-        count = [0] * 26
 
-        for i in range(len(s)):
-            count[ord(s[i]) - ord('a')] += 1
-            count[ord(t[i]) - ord('a')] -= 1
+    def put(self, key: int, value: int) -> None:
         
-        for n in count:
-            if n != 0:
-                return False
-        return True
 
 
-sol = Solution()
-print(sol.isAnagram(s = "anagram", t = "nagaram"))
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
