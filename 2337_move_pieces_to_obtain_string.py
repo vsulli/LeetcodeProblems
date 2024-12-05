@@ -44,6 +44,14 @@ class Solution:
                 t_ptr += 1
             # if letter is L
             if start[s_ptr] != target[t_ptr] and target[t_ptr] == 'L':
+                while start[s_ptr] != target[t_ptr]:
+                    if start[s_ptr] == 'R':
+                        return False
+                    s_ptr += 1
+                    if s_ptr == len(start):
+                        return False
+                    # case where you found an L
+                    
                 # go right until you meet a letter
                 # if R, return False
                 # if L, try to move it backwards to left to correct place
