@@ -32,32 +32,37 @@ class Solution:
         # get all indices of target string?
         t_ptr = 0
         s_ptr = 0
-        target_indices = [None] * len(target) # initialize empty target index array
-        for i in range(len(target)):
-            if target[i] != "_":
-                target_indices[i] = target[i]
-
-        print(target_indices)
-        while t_ptr != len(target):
-            # only care about indices where L or R
-            while target[t_ptr] == None:
+        spaces = () # spaces stack
+        while t_ptr != len(target) and s_ptr != len(start):
+            # target is at a letter
+            if target[t_ptr] == "_":
                 t_ptr += 1
-            # if letter is L
-            if start[s_ptr] != target[t_ptr] and target[t_ptr] == 'L':
-                while start[s_ptr] != target[t_ptr]:
-                    if start[s_ptr] == 'R':
-                        return False
+            # start and target don't match
+            if target[t_ptr] != start[s_ptr]:
+                while start[s_ptr] == "_":
+                    spaces.push(start[s_ptr])
                     s_ptr += 1
-                    if s_ptr == len(start):
-                        return False
-                    # case where you found an L
-                    
-                # go right until you meet a letter
-                # if R, return False
-                # if L, try to move it backwards to left to correct place
-            # if letter is R
-            elif start[s_ptr] != target[t_ptr] and target[t_ptr] == 'R':  
-                pass
+                # start is at a letter now
+                # if target is L
+                if target[t_ptr] == "L":
+                    # use stack? pop off as many to get it to match index of target ptr?
+                    # if meet an R, return?
+                    temp = s_ptr
+                    for _ in range(t_ptr - s_ptr):
+                        top = spaces.pop()
+                        temp -= 1
+                        if top == "R":
+                            return False
+                    start[s_ptr] = "_"
+                    start[temp] = "L"
+                    s_ptr += 1
+            
+
+                # elif target is R
+                t_ptr += 1
+
+            
+            t_ptr += 1
         
 
         return obtainString
