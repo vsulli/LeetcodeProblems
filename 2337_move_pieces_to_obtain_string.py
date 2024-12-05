@@ -26,46 +26,33 @@ Otherwise, return false.
 
 class Solution:
     def canChange(self, start: str, target: str) -> bool:
-        obtainString = True
-        # loop through from left to right?
-        # pointer on 2nd target
-        # get all indices of target string?
-        t_ptr = 0
-        s_ptr = 0
-        spaces = () # spaces stack
-        while t_ptr != len(target) and s_ptr != len(start):
-            # target is at a letter
-            if target[t_ptr] == "_":
-                t_ptr += 1
-            # start and target don't match
-            if target[t_ptr] != start[s_ptr]:
-                while start[s_ptr] == "_":
-                    spaces.push(start[s_ptr])
-                    s_ptr += 1
-                # start is at a letter now
-                # if target is L
-                if target[t_ptr] == "L":
-                    # use stack? pop off as many to get it to match index of target ptr?
-                    # if meet an R, return?
-                    temp = s_ptr
-                    for _ in range(t_ptr - s_ptr):
-                        top = spaces.pop()
-                        temp -= 1
-                        if top == "R":
-                            return False
-                    start[s_ptr] = "_"
-                    start[temp] = "L"
-                    s_ptr += 1
-            
-
-                # elif target is R
-                t_ptr += 1
-
-            
-            t_ptr += 1
+        # if they already match return True
+        if start == target:
+            return True
         
 
-        return obtainString
+        pending_L = 0   
+        waiting_R = 0    
+
+        # zip joins two tuples together
+        for curr, goal in zip(start, target): # curr (_, L) goal
+            if curr == 'R':
+                if pending_L > 0:
+                    return False
+                waiting_R += 1  
+            if goal == 'L':
+                if waiting_R > 0:
+                    return False
+                pending_L += 1
+            if goal == 'R':
+                if waiting_R == 0:
+                    return False
+                waiting_R -= 1 
+            if curr == 'L':
+                if pending_L == 0:
+                    return False
+                pending_L -= 1    
+        return pending_L == 0 and waiting_R == 0
 
 sol = Solution()
 
