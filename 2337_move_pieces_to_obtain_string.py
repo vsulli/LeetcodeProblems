@@ -27,7 +27,30 @@ Otherwise, return false.
 class Solution:
     def canChange(self, start: str, target: str) -> bool:
         obtainString = True
+        # loop through from left to right?
+        # pointer on 2nd target
+        # get all indices of target string?
+        t_ptr = 0
+        s_ptr = 0
+        target_indices = [None] * len(target) # initialize empty target index array
+        for i in range(len(target)):
+            if target[i] != "_":
+                target_indices[i] = target[i]
 
+        print(target_indices)
+        while t_ptr != len(target):
+            # only care about indices where L or R
+            while target[t_ptr] == None:
+                t_ptr += 1
+            # if letter is L
+            if start[s_ptr] != target[t_ptr] and target[t_ptr] == 'L':
+                # go right until you meet a letter
+                # if R, return False
+                # if L, try to move it backwards to left to correct place
+            # if letter is R
+            elif start[s_ptr] != target[t_ptr] and target[t_ptr] == 'R':  
+                pass
+        
 
         return obtainString
 
