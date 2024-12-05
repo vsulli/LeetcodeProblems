@@ -24,6 +24,9 @@ of the string start any number of times.
 Otherwise, return false.
 '''
 
+# ordering of L and R should be same
+# start R should be at same or smaller
+# start L should be at greater or same
 class Solution:
     def canChange(self, start: str, target: str) -> bool:
         # if they already match return True
