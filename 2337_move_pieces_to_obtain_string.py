@@ -29,40 +29,33 @@ Otherwise, return false.
 # start L should be at greater or same
 class Solution:
     def canChange(self, start: str, target: str) -> bool:
-        # if they already match return True
+       # if they already match return True
         if start == target:
             return True
         
 
         pending_L = 0   
         waiting_R = 0    
-        step = 0
 
         # zip joins two tuples together
         for curr, goal in zip(start, target): # curr (_, L) goal
-            if curr == 'R':
-                if pending_L > 0:
-                    return False
-                waiting_R += 1  
             if goal == 'L':
                 if waiting_R > 0:
                     return False
                 pending_L += 1
+            if curr == 'R':
+                if pending_L > 0:
+                    return False
+                waiting_R += 1  
             if goal == 'R':
                 if waiting_R == 0:
                     return False
-                waiting_R -= 1 
+                waiting_R -= 1   
             if curr == 'L':
                 if pending_L == 0:
                     return False
-                pending_L -= 1    
-            print(step)
-            print("Pending L: " + str(pending_L))
-            print("Waiting R: " + str(waiting_R))
-            print("_______________")
-            step += 1
-        return pending_L == 0 and waiting_R == 0
-
+                pending_L -= 1  
+        return pending_L == 0 and waiting_R == 0 
 sol = Solution()
 
 print(sol.canChange(start = "_L__R__R_", target = "L______RR"))
