@@ -40,14 +40,15 @@ class Solution:
                     max += 1
             elif i in banned and i == maxSum:
                 return max
+        return max
    
         
 
 
 sol = Solution()
 
-print(sol.maxCount(banned = [1,6,5], n = 5, maxSum = 6))
+print(sol.maxCount(banned = [1,6,5], n = 5, maxSum = 6)) # 2
 
-print(sol.maxCount(banned = [1,2,3,4,5,6,7], n = 8, maxSum = 1))
+print(sol.maxCount(banned = [1,2,3,4,5,6,7], n = 8, maxSum = 1)) # 0
 
-print(sol.maxCount(banned = [11], n = 7, maxSum = 50))
+print(sol.maxCount(banned = [11], n = 7, maxSum = 50)) # 7
