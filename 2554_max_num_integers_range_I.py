@@ -23,7 +23,7 @@ Return the maximum number of
 integers you can choose following 
 the mentioned rules.
 '''
-
+# time limit exceeded, not fast enough
 from typing import List
 
 class Solution:
