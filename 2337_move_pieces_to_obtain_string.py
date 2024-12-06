@@ -36,6 +36,7 @@ class Solution:
 
         pending_L = 0   
         waiting_R = 0    
+        step = 0
 
         # zip joins two tuples together
         for curr, goal in zip(start, target): # curr (_, L) goal
@@ -55,6 +56,11 @@ class Solution:
                 if pending_L == 0:
                     return False
                 pending_L -= 1    
+            print(step)
+            print("Pending L: " + str(pending_L))
+            print("Waiting R: " + str(waiting_R))
+            print("_______________")
+            step += 1
         return pending_L == 0 and waiting_R == 0
 
 sol = Solution()
