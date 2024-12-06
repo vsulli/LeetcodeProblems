@@ -28,20 +28,18 @@ from typing import List
 
 class Solution:
     def maxCount(self, banned: List[int], n: int, maxSum: int) -> int:
-        max = 0
-        nums = set()
+        banned_set = set(banned)
+        curr_sum = 0
+        count = 0
+
         for i in range(1, n+1):
-            if i not in banned:
-                nums.add(i)
-                curr_sum = sum(nums)
-                if curr_sum > maxSum:
-                    return max
-                else:
-                    max += 1
-            elif i in banned and i == maxSum:
-                return max
-        return max
-   
+            if i in banned_set:
+                continue # skip banned numbers
+            curr_sum += i
+            if curr_sum > maxSum:
+                break 
+            count += 1
+        return count
         
 
 
