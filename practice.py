@@ -1,5 +1,7 @@
 # encode and decode strings
 
+
+
 from typing import List
 class Solution:
 
@@ -13,12 +15,13 @@ class Solution:
     def decode(self, strs: str)->List[str]:
         # loop through until pointer is at symbol
             # copy to result ptr + 2: ptr + 1 + int(string[ptr])
-        res = ""
+        res = []
         ptr = 0
-        while ptr != len(strs):
+        while ptr < len(strs):
             if strs[ptr] == "#":
                 res += strs[ptr+2:ptr+2+int(strs[ptr+1])]
-                ptr = ptr+1+int(strs[ptr+1])
+                print(res)
+                ptr = ptr+2+int(strs[ptr+1])
         return res
 
 
@@ -26,9 +29,7 @@ class Solution:
 sol = Solution()
 
 print(sol.encode(["we","say",":","yes"]))
+# #2we#3say#1:#3yes
+print(sol.encode(["neet","code","love","you"]))
 
 print(sol.decode(sol.encode(["neet","code","love","you"])))
-
-
-
-
