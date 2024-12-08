@@ -1,26 +1,39 @@
-# leetcode #2554
+# 450 delete code in a BST
 
-from typing import List
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
+from typing import Optional
 class Solution:
-    def maxCount(self, banned: List[int], n: int, maxSum: int) -> int:
-        banned_set = set(banned)
-        max_count = 0
-        curr_sum = 0
-        for i in range(1, n+1):
-            if i not in banned_set:
-                curr_sum += i
-                if curr_sum <= maxSum:
-                    max_count += 1
-                else:
-                    return max_count
-        return max_count
-            
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
+            return root
+        
+        # find one to delete
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            # no left child
+            if not root.left:
+                return root.right
+            # no right child
+            elif not root.right:
+                return root.left
+            else:
+                # else find min of right subtree to replace
+                curr = root.right
+                while curr.left:
+                    curr = curr.left
+                root.val = curr.val
+                root.right = self.deleteNode(root.right, root.val)
+        return root
 
 
-sol = Solution()
 
 
-print(sol.maxCount(banned = [1,6,5], n = 5, maxSum = 6))
-print(sol.maxCount(banned = [1,2,3,4,5,6,7], n = 8, maxSum = 1))
-print(sol.maxCount(banned = [11], n = 7, maxSum = 50))
