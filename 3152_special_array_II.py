@@ -20,7 +20,7 @@ such that answer[i] is true if
 nums[fromi..toi] is special.
 
 
-parity means 
+parity means even or odd?
 '''
 from typing import List
 class Solution:
