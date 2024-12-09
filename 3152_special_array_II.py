@@ -22,27 +22,28 @@ nums[fromi..toi] is special.
 
 parity means even or odd?
 '''
+
+# prefix sum
 from typing import List
 class Solution:
     def isArraySpecial(self, nums: List[int], queries: List[List[int]]) -> List[bool]:
-        answers = [] 
-        parity = True
-        # loop through queries with two pointers?
-        # if one is even and other is odd then return false for that query
-        for query in queries:
-            parity = True
-            p =query[0]
-            for i in range(query[0]+1, query[1]+1):
-                # if p and i nums are both even or both odd return False
-                if (nums[p] % 2 == 0 and nums[i] % 2 == 0) or (nums[p] % 2 != 0 and nums[i] % 2 != 0):
-                    parity = False
-                    break # go to next iteration
-                p += 1
-            if not parity:
-                answers.append(False)
-            else:
-                answers.append(True)
-        return answers
+        n = len(nums)
+        prefix = [0] * n  # Prefix array to count special pairs
+
+        # Build the prefix array
+        for i in range(1, n):
+            prefix[i] = prefix[i - 1]
+            if (nums[i - 1] % 2 == 0 and nums[i] % 2 == 0) or (nums[i - 1] % 2 != 0 and nums[i] % 2 != 0):
+                prefix[i] += 1
+
+        result = []  # Result list
+
+        # Process each query
+        for left, right in queries:
+            special_count = prefix[right] -prefix[left]
+            result.append(special_count == 0)
+
+        return result
     
 
 sol = Solution()
