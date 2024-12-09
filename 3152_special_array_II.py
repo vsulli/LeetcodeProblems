@@ -30,14 +30,18 @@ class Solution:
         # loop through queries with two pointers?
         # if one is even and other is odd then return false for that query
         for query in queries:
+            parity = True
             p =query[0]
             for i in range(query[0]+1, query[1]+1):
                 # if p and i nums are both even or both odd return False
                 if (nums[p] % 2 == 0 and nums[i] % 2 == 0) or (nums[p] % 2 != 0 and nums[i] % 2 != 0):
-                    answers.append(False)
+                    parity = False
                     break # go to next iteration
                 p += 1
-            answers.append(True)
+            if not parity:
+                answers.append(False)
+            else:
+                answers.append(True)
         return answers
     
 
