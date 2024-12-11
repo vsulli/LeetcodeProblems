@@ -5,15 +5,16 @@ class NumArray:
 
     def __init__(self, nums: List[int]):
         self.nums = nums
-        self.sum = 0
-        for i in range(len(self.nums)):
-            self.nums[i] = self.sum + self.nums[i]
-            self.sum = self.nums[i]
+        sum = 0
+        for i in range(1, len(self.nums)):
+            sum = self.nums[i - 1]
+            self.nums[i] = sum + self.nums[i]
 
     def sumRange(self, left: int, right: int) -> int:
-        # if left is not 0, have to subtract that off?
+        print(self.nums)
+        # if left is not 0, have to subtract off everything left of that index
         if left != 0:
-            return self.nums[right] - self.nums[left]
+            return self.nums[right] - self.nums[left-1]
         return self.nums[right]
         
 
@@ -23,7 +24,7 @@ obj = NumArray([-2, 0, 3, -5, 2, -1])
 print(obj.sumRange(0, 2)) # 1
 
 obj = NumArray([-2, 0, 3, -5, 2, -1])
-print(obj.sumRange(2, 5)) # -1 WRONG
+print(obj.sumRange(2, 5)) # -1
 
 obj = NumArray([-2, 0, 3, -5, 2, -1])
 print(obj.sumRange(0, 5)) # -3
