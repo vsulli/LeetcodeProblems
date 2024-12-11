@@ -11,7 +11,6 @@ class NumArray:
             self.nums[i] = sum + self.nums[i]
 
     def sumRange(self, left: int, right: int) -> int:
-        print(self.nums)
         # if left is not 0, have to subtract off everything left of that index
         if left != 0:
             return self.nums[right] - self.nums[left-1]
