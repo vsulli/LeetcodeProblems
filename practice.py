@@ -1,24 +1,22 @@
-# Encode and Decode Strings
-from typing import List
+#94 Binary Tree Inorder Traversal
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+from typing import Optional, List
 class Solution:
-    def encode(self, strs: List[str])-> str:
-        res = ""
-        for s in strs:
-            res += str(len(s)) + "#" + s
-        return res 
-
-    def decode(self, strs: str)->List[str]:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
         res = []
-        i = 0
-
-        while i < len(strs):
-            j = i
-            while strs[j] != "#":
-                j += 1
-            length = int(strs[i:j])
-            i = j + 1
-            j = i + length
-            res.append(strs[i:j])
-            i = j
-        return res 
+        def inorder(root):
+            if root:
+                root.left = inorder(root.left)
+                res.append(root.val)
+                root.right = inorder(root.right)
+        inorder(root)
+        return res
