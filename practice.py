@@ -1,22 +1,16 @@
-# 242 valid anagram
+#303 Range Sum Query - Immutable
+from typing import List
 
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
+class NumArray:
 
-        count = [0] * 26
-        for i in range(len(s)):
-            count[ord(s[i]) - ord('a')] += 1
-            count[ord(t[i]) - ord('a')] -= 1
+    def __init__(self, nums: List[int]):
+        self.array = []
+        self.sum = 0
 
-        for c in count:
-            if c != 0:
-                return False
-        return True
-    
+    def sumRange(self, left: int, right: int) -> int:
+        pass
 
-sol = Solution()
 
-print(sol.isAnagram("anagram", t = "nagaram"))
-print(sol.isAnagram(s = "rat", t = "car"))
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(left,right)
