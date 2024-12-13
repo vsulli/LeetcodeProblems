@@ -1,22 +1,25 @@
-#94 Binary Tree Inorder Traversal
+#49 group anagrams
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-
-from typing import Optional, List
+from typing import List
 class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        groups = {}
         res = []
-        def inorder(root):
-            if root:
-                root.left = inorder(root.left)
-                res.append(root.val)
-                root.right = inorder(root.right)
-        inorder(root)
+
+        for s in strs:
+            if tuple(sorted(s)) in groups:
+                groups[tuple(sorted(s))].append(s)
+            else:
+                groups[tuple(sorted(s))] = [s]
+        
+        for k in groups:
+            res.append(groups.get(k))
         return res
+
+sol = Solution()
+
+print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
+
+print(sol.groupAnagrams(strs = [""]))
+
+print(sol.groupAnagrams(strs = ["a"]))
