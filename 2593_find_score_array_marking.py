@@ -26,6 +26,33 @@ from typing import List
 class Solution:
     def findScore(self, nums: List[int]) -> int:
         score = 0
+        visited = set() # while length of visited less than length nums keep going?
+        # can't sort, have to find smallest, then mark it and 2 adjacent if they exist
+        
+        # find smallest
+            # if tie, choose smaller index
+        # how to mark as visited?
+        while len(visited) < len(nums):
+            # locate smallest index
+            smallest_index = nums.index(min(nums))
+            score += nums[smallest_index]
+
+            # add smallest index and adjacent to visited
+            visited.add(smallest_index)
+
+            nums[smallest_index] = float("inf")
+            if smallest_index - 1 >= 0 and smallest_index - 1 < len(nums) and smallest_index - 1 not in visited:
+                visited.add(smallest_index - 1)
+                nums[smallest_index - 1] = float("inf")
+
+            if smallest_index + 1 >= 0 and smallest_index + 1 < len(nums) and smallest_index + 1 not in visited:
+                visited.add(smallest_index + 1)
+                nums[smallest_index + 1] = float("inf")
+        
+        return score
+            
+
+
 
 
 sol = Solution()
