@@ -22,23 +22,38 @@ Return the score you get after applying the
 above algorithm.
 '''
 from typing import List
+from collections import deque
 
 class Solution:
     def findScore(self, nums: List[int]) -> int:
         score = 0
-        while min(nums) != float("inf"):
-            # locate smallest index
-            smallest_index = nums.index(min(nums))
-            score += nums[smallest_index]
+        n = len(nums)
+        q = deque()
 
-            nums[smallest_index] = float("inf")
+        # Traverse through the array
+        for i in range(n):
+            # If queue is not empty and the current number is greater than or equal to the last in queue
+            if q and nums[i] >= q[-1]:
+                skip = False
+                # Process the elements in the queue
+                while q:
+                    add = q.pop()
+                    if not skip:
+                        score += add
+                    skip = not skip
+                continue
 
-            if smallest_index - 1 >= 0:
-                nums[smallest_index - 1] = float("inf")
+            # Add current element to the queue
+            q.append(nums[i])
 
-            if smallest_index + 1 < len(nums):
-                nums[smallest_index + 1] = float("inf")
-        
+        # Final processing of remaining elements in the queue
+        skip = False
+        while q:
+            add = q.pop()
+            if not skip:
+                score += add
+            skip = not skip
+
         return score
             
 
