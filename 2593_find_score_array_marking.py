@@ -41,19 +41,16 @@ class Solution:
             visited.add(smallest_index)
 
             nums[smallest_index] = float("inf")
-            if smallest_index - 1 >= 0 and smallest_index - 1 < len(nums) and smallest_index - 1 not in visited:
+            if smallest_index - 1 >= 0 and smallest_index - 1 not in visited:
                 visited.add(smallest_index - 1)
                 nums[smallest_index - 1] = float("inf")
 
-            if smallest_index + 1 >= 0 and smallest_index + 1 < len(nums) and smallest_index + 1 not in visited:
+            if smallest_index + 1 < len(nums) and smallest_index + 1 not in visited:
                 visited.add(smallest_index + 1)
                 nums[smallest_index + 1] = float("inf")
         
         return score
             
-
-
-
 
 sol = Solution()
 

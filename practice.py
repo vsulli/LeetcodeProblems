@@ -1,1 +1,3 @@
-print(1 < float("inf"))
+nums = [float("inf"), float("inf"), float("inf")]
+
+print(min(nums))
