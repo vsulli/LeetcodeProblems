@@ -19,8 +19,11 @@ class Solution:
         # should be able to calculate with just math?
         # length of the original
         max = set()
+        ptr = 0
         while len(nums[0]) != len(nums):
-            pass
+            for i in range(len(nums)):
+                nums[i].append(nums[ptr]) 
+                ptr+= 1
 
         
 
