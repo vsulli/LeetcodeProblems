@@ -1,4 +1,4 @@
-''' 
+'''  # TODO
 Continuous Subarrays
 Leetcode # 2762
 vsulli
@@ -15,7 +15,14 @@ from typing import List
 
 class Solution:
     def continuousSubarrays(self, nums: List[int]) -> int:
-        pass
+        subarray_count = 0
+        # should be able to calculate with just math?
+        # length of the original
+        max = set()
+        while len(nums[0]) != len(nums):
+            pass
+
+        
 
 sol = Solution()
 
