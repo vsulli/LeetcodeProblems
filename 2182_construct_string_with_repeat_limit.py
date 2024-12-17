@@ -25,24 +25,34 @@ lexicographically larger one.
 import collections
 class Solution:
     def repeatLimitedString(self, s: str, repeatLimit: int) -> str:
-        # to return lexicographically larger string, want later letters to appear later in constructed string
-        # but can't have more than limit in a row
-        res = ""
-        count = 1
-        p = 0
-        # need to get dictionary of all counts for letters first?
-        letter_count = {}
-        for l in s:
-            if not l in letter_count:
-                letter_count[l] = 1
-            else:
-                letter_count[l] += 1
-        # sort into reverse order based on key
-        sorted_letter_count = collections.OrderedDict(sorted(letter_count.items(), reverse=True))
-        print(sorted_letter_count)
-        # loop through keys subtracting off repeatlimit and adding to res?
-        # reverse order of keys?
+        chars = sorted(s, reverse=True)
         
+        result = []
+        freq = 1
+        pointer = 0
+        
+        for i in range(len(chars)):
+            if result and result[-1] == chars[i]:
+                if freq < repeatLimit:
+                    result.append(chars[i])
+                    freq += 1
+                else:
+                    pointer = max(pointer, i + 1)
+                    while pointer < len(chars) and chars[pointer] == chars[i]:
+                        pointer += 1
+                    
+                    if pointer < len(chars):
+                        result.append(chars[pointer])
+                        chars[i], chars[pointer] = chars[pointer], chars[i]
+                        freq = 1
+                    else:
+                        break
+            else:
+                result.append(chars[i])
+                freq = 1
+        
+        return ''.join(result)
+
 
 
 
