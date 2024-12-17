@@ -1,28 +1,39 @@
-# 167 Two Sum II - Input Array is Sorted
+# 450 Delete Node in a BST
 
-from typing import List
+from typing import Optional
+
+# Definition for a binary tree node.
+class TreeNode:
+     def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        # start on outsides
-        l, r = 0, len(numbers) - 1
-
-        while l < r:
-            cur_sum = numbers[l] + numbers[r]
-            if cur_sum > target:
-                r -= 1
-            elif cur_sum < target:
-                l += 1
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
+            return root
+        
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        else:
+            if not root.right:
+                return root.left
+            elif not root.left:
+                return root.right
             else:
-                return [l + 1, r + 1]
+                curr = root.right
+                while curr.left:
+                    curr = curr.left
+                root.val = curr.val
+                root.right = self.deleteNode(root.right, root.val)
+        return root
+
 
 
 sol = Solution()
 
-print(sol.twoSum(numbers = [2,7,11,15], target = 9)) #indices 1, 2
-
-print(sol.twoSum(numbers = [2,3,4], target = 6)) # indices 1, 3
-
-print(sol.twoSum(numbers = [-1,0], target = -1)) # 1, 2
-
-print(sol.twoSum(numbers = [2,7,11,15], target = 18)) # 2, 3
+print(sol.deleteNode(root = [5,3,6,2,4,None,7], key = 3))
