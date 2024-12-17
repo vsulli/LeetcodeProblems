@@ -25,7 +25,21 @@ lexicographically larger one.
 
 class Solution:
     def repeatLimitedString(self, s: str, repeatLimit: int) -> str:
-        pass
+        # to return lexicographically larger string, want later letters to appear later in constructed string
+        # but can't have more than limit in a row
+        res = ""
+        count = 1
+        p = 0
+        # need to get dictionary of all counts for letters first?
+        letter_count = {}
+        for l in s:
+            if not l in letter_count:
+                letter_count[l] = 1
+            else:
+                letter_count[l] += 1
+        print(letter_count)
+
+
 
 sol = Solution()
 
