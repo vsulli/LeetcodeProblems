@@ -22,7 +22,7 @@ first min(a.length, b.length) characters do
 not differ, then the longer string is the 
 lexicographically larger one.
 '''
-
+import collections
 class Solution:
     def repeatLimitedString(self, s: str, repeatLimit: int) -> str:
         # to return lexicographically larger string, want later letters to appear later in constructed string
@@ -37,13 +37,20 @@ class Solution:
                 letter_count[l] = 1
             else:
                 letter_count[l] += 1
-        print(letter_count)
+        # sort into reverse order based on key
+        sorted_letter_count = collections.OrderedDict(sorted(letter_count.items(), reverse=True))
+        print(sorted_letter_count)
+        # loop through keys subtracting off repeatlimit and adding to res?
+        # reverse order of keys?
+        
 
 
 
 sol = Solution()
 
-print(sol.repeatLimitedString(s = "cczazcc", repeatLimit = 3))
+print(sol.repeatLimitedString(s = "cczazcc", repeatLimit = 3)) # zzcccac
 
-print(sol.repeatLimitedString(s = "aababab", repeatLimit = 2))
-
+print(sol.repeatLimitedString(s = "aababab", repeatLimit = 2)) # bbabaa
+# bbaabaa vs # bbabaa 
+# differ at index 3 - b > a so lexicographically largest
+# do as many of later characters first as possible
