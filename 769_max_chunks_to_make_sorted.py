@@ -24,18 +24,25 @@ class Solution:
         # the concatenated result matches the sorted array
         # start with as many chunks as possible and reduce?
         # 10 is largest number of n
-        chunks = 1
-        p = 1
+        res = [0] * len(arr)
+        chunks = len(arr)
+        p1 = 0
         sorted_arr = sorted(arr)
         if sorted_arr == arr:
             return len(arr)
         # where to split to put in order?
         # where 2nd pointer is at a value that is greater than first?
         # if rest of array is in order, then you can just count those as individual chunks
-        for i in range(len(arr)):
-            if arr[p] > arr[i]:
-                chunks += 1
-            p = i + 1
+
+        # go left to right, as you see a chunk that is out of order, continue until ascending
+        # then change all those values and count as x chunks subtracted (length of section reversed)
+        p2 = 1
+        while res != sorted(arr):
+            while p2 < len(arr) and arr[p2] < arr[p1]:
+                p2 += 1
+            res[p1:p2] = arr[p1:p2]
+            chunks -= (p2 - p1)
+
             
 
         return chunks
@@ -49,4 +56,5 @@ print(sol.maxChunksToSorted(arr = [1,0,2,3,4])) # 4
 print(sol.maxChunksToSorted(arr = [0,1,2,3,4])) # 5
 
 print(sol.maxChunksToSorted(arr = [0,1,2,4,3]))  # 4
+
 
