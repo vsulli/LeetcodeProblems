@@ -31,19 +31,40 @@ class TreeNode:
        
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        # go through once in order and get the number of nodes at each level 
-        # put in array
-        # rebuild new tree and return?
-        levels = []
-        
-        def levelOrderTraversal(root):
-            if root:
-                root.left = levelOrderTraversal(root.left)
-                levels.append(root)
-                root.right = levelOrderTraversal(root.right)
-        levelOrderTraversal(root)
-        
-        print(levels)
+        # add root to queue
+        # for each level, pop all nodes in the queue (represents current level)
+        # push children tot he queue for the next level
+        # for odd levels, collect values of nodes in an array, reverse array, then update nodes' values
+        if not root:
+            return None # empty tree
+        queue = [root] 
+        level = 0
+
+        while queue:
+            size = len(queue)
+            current_level_nodes = []
+
+            # process nodes at current level
+            for _ in range(size):
+                node = queue.pop(0)
+                current_level_nodes.append(node)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+            # reverse nodes if current level is odd
+            if level % 2 == 1:
+                left, right = 0, len(current_level_nodes) - 1
+                while left < right:
+                    tmp = current_level_nodes[left].val
+                    current_level_nodes[left].val = current_level_nodes[right].val
+                    current_level_nodes[right].val = tmp
+                    left += 1
+                    right -= 1
+            level += 1
+        return root 
 
 
 sol = Solution()
