@@ -1,39 +1,25 @@
-# 450 Delete Node in a BST
+# 238 Product of Array Except SElf
 
-from typing import Optional
-
-# Definition for a binary tree node.
-class TreeNode:
-     def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from typing import List
+import math
 
 class Solution:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        if not root:
-            return root
-        
-        elif key < root.val:
-            root.left = self.deleteNode(root.left, key)
-        
-        elif key > root.val:
-            root.right = self.deleteNode(root.right, key)
-        else:
-            if not root.right:
-                return root.left
-            elif not root.left:
-                return root.right
-            else:
-                curr = root.right
-                while curr.left:
-                    curr = curr.left
-                root.val = curr.val
-                root.right = self.deleteNode(root.right, root.val)
-        return root
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # o(n) time means that you only loop through the array once
+        # can't use division operator
+        # get product of array except for that index
+        # calculate all multiplied, find difference for that index?
+        products = [0] * len(nums)
+        p = 0
 
+        for i in range(len(nums)):
+            # multiply all the numbers of product from left to right of pointer?
+            products[i] = math.prod(nums[0:i]) * math.prod(nums[i+1:])
+            p+= 1
+        return products
 
 
 sol = Solution()
+print(sol.productExceptSelf(nums = [1,2,3,4]))
 
-print(sol.deleteNode(root = [5,3,6,2,4,None,7], key = 3))
+print(sol.productExceptSelf(nums = [-1, 1, 0, -3, 3]))
