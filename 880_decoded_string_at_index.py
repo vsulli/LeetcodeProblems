@@ -31,7 +31,7 @@ class Solution:
                 # add to current string - the current string x k - 1
                 duplicated =  decoded * (int(c) - 1)
                 decoded += duplicated
-        return decoded
+        return decoded[k-1]
 
 sol = Solution()
 
