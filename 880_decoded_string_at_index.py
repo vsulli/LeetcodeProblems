@@ -31,6 +31,9 @@ class Solution:
                 # add to current string - the current string x k - 1
                 duplicated =  decoded * (int(c) - 1)
                 decoded += duplicated
+            # check if k - 1 reached in result and return
+            if len(decoded) >= k:
+                return decoded[k-1]
         return decoded[k-1]
 
 sol = Solution()
