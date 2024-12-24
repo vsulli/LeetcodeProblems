@@ -19,13 +19,28 @@ for the given input.
 
 class Solution:
     def pivotInteger(self, n: int) -> int:
-        # pivot integer is the number from 1 -> pivot = pivot -> n
-        # pivot integer may not exist so return -1
+        # Initialize left and right pointers for binary search
+        left, right = 1, n
+        
+        # Calculate the total sum of the sequence
+        total_sum = n * (n + 1) // 2
 
-        for i in range(1, n+1):
-            if sum(range(1, i+1)) == sum(range(i, n+1)):
-                return i
-        return -1
+        # Binary search for the pivot point
+        while left < right:
+            # Calculate the mid-point
+            mid = (left + right) // 2
+
+            # Check if the difference between the square of mid and the total sum is negative
+            if mid * mid - total_sum < 0:
+                left = mid + 1  # Adjust the left bound if the sum is smaller
+            else:
+                right = mid  # Adjust the right bound if the sum is equal or greater
+
+        # Check if the square of the left pointer minus the total sum is zero
+        if left * left - total_sum == 0:
+            return left
+        else:
+            return -1
 
 sol =  Solution()
 
