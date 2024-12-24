@@ -21,20 +21,35 @@ letter (1-indexed) in the decoded string.
 
 class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
-        # want to return the decoded string at index k (k - 1 index)
-        decoded = ""
-        for c in s:
-            if c.isalpha():
-                decoded += c
+        # answer will always lie somehwere in the original string
+        # k = (k % length of decoded string)
+        # reverse solution and stack solution
+        decoded_length = 0  # Total length of the decoded string
+
+        for char in s:
+            if char.isdigit():
+                # If the character is a digit, update the decoded length accordingly
+                decoded_length *= int(char)
             else:
-                # case where that char is number
-                # add to current string - the current string x k - 1
-                duplicated =  decoded * (int(c) - 1)
-                decoded += duplicated
-            # check if k - 1 reached in result and return
-            if len(decoded) >= k:
-                return decoded[k-1]
-        return decoded[k-1]
+                # If the character is a letter, increment the decoded length
+                decoded_length += 1
+
+        # Traverse the input string in reverse to decode and find the kth character
+        for i in range(len(s) - 1, -1, -1):
+            current_char = s[i]
+
+            if current_char.isdigit():
+                # If the character is a digit, adjust the length and k accordingly
+                decoded_length //= int(current_char)
+                k %= decoded_length
+            else:
+                # If the character is a letter, check if it's the kth character
+                if k == 0 or decoded_length == k:
+                    return current_char  # Return the kth character as a string
+
+                decoded_length -= 1
+
+        return ""  # Return an empty string if no character is found
 
 sol = Solution()
 
