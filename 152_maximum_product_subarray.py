@@ -13,9 +13,17 @@ in a 32-bit integer.
 '''
 from typing import List
 
+import math
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        pass
+        best_product = nums[0]
+        l = 0
+        r = 1
+        while l < r:
+            curr_product = math.prod(nums[l:r])
+            best_product = max(curr_product, best_product)
+            
+
 
 sol = Solution()
 
