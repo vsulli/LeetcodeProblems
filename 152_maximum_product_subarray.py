@@ -16,14 +16,20 @@ from typing import List
 import math
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        best_product = nums[0]
-        for i in range(len(nums)):
-            best_product = max(best_product, nums[i])
-            for j in range(i+1, len(nums)):
-                curr_product = math.prod(nums[i:j+1])
-                best_product = max(curr_product, best_product)
+        # find and store the max product and min product up to the point of an index
+        # iterate starting at second index
+        # time complexity O(n) iterate once through the array
+        # space complexity O(1) only store a few variables
 
-        return best_product
+        max_product = min_product = global_max = nums[0]
+
+        for i in range(1, len(nums)):
+            current = nums[i]
+            temp_max = max(current, current * max_product, current * min_product)
+            min_product = min(current, current* max_product, current * min_product)
+            max_product = temp_max
+            global_max = max(global_max, max_product)
+        return global_max
 
 
 
