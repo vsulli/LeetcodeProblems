@@ -19,7 +19,7 @@ class Solution:
         best_product = nums[0]
         for i in range(len(nums)):
             for j in range(i+1, len(nums)):
-                curr_product = math.prod(nums[i:j])
+                curr_product = math.prod(nums[i:j+1])
                 best_product = max(curr_product, best_product)
 
         return best_product
