@@ -17,16 +17,17 @@ import math
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         best_product = nums[0]
-        l = 0
-        r = 1
-        while l < r:
-            curr_product = math.prod(nums[l:r])
-            best_product = max(curr_product, best_product)
-            
+        for i in range(len(nums)):
+            for j in range(len(nums)):
+                curr_product = math.prod(nums[i:j])
+                best_product = max(curr_product, best_product)
+
+        return best_product
+
 
 
 sol = Solution()
 
-print(sol.maxProduct(nums = [2,3,-2,4]))
+print(sol.maxProduct(nums = [2,3,-2,4])) # 6
 
-print(sol.maxProduct(nums = [-2,0,-1]))
+print(sol.maxProduct(nums = [-2,0,-1])) # 0
