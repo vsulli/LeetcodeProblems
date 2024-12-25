@@ -18,7 +18,7 @@ class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         best_product = nums[0]
         for i in range(len(nums)):
-            for j in range(len(nums)):
+            for j in range(i+1, len(nums)):
                 curr_product = math.prod(nums[i:j])
                 best_product = max(curr_product, best_product)
 
@@ -31,3 +31,5 @@ sol = Solution()
 print(sol.maxProduct(nums = [2,3,-2,4])) # 6
 
 print(sol.maxProduct(nums = [-2,0,-1])) # 0
+
+print(sol.maxProduct(nums = [-4, -3])) # 12
