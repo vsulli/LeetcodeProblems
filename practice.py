@@ -1,8 +1,19 @@
+# 146 LRU Cache 
+# Practice Submission
+# 26 December 2024
 
-import math
-i = 0
-j = i + 1
-nums = [-4, -3]
+class Node:
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
+        self.prev = self.next = None
 
-curr_product = math.prod(nums[i:j+1])
-print(curr_product)
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.cap = capacity
+        self.cache = {} # key: node
+
+        # initialize two dummy nodes pointing to each other
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        self.left.next, self.right.prev = self.right, self.left 

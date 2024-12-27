@@ -20,7 +20,6 @@ class Solution:
         # iterate starting at second index
         # time complexity O(n) iterate once through the array
         # space complexity O(1) only store a few variables
-
         max_product = min_product = global_max = nums[0]
 
         for i in range(1, len(nums)):
