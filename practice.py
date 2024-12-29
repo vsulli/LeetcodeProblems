@@ -3,23 +3,19 @@
 class Node:
     def __init__(self, key, val):
         self.key, self.val = key, val
-        self.prev, self.next = None
-
+        self.next = self.prev = None
 
 class LRUCache:
     def __init__(self, capacity: int):
         self.cap = capacity
-        self.cache = {} # key: node
+        self.cache = {}
 
-        self.left, self.right = Node(0, 0), Node(0, 0)
-        self.left.next, self.right.prev = self.right, self.left 
-
+        self.left, self.right = Node(0,0), Node(0,0)
+        self.left.next, self.right.prev = self.right, self.left
+    
     def remove(self, node):
-        # get node's prev and next
         prev, nxt = node.prev, node.next
-
-        # updating pointers of one behind and one in front
-        prev.next, nxt.prev = nxt, prev 
+        prev.next, nxt.prev = nxt, prev  
 
     # insert at right
     def insert(self, node):
