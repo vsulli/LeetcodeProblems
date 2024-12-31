@@ -8,20 +8,20 @@ class Node:
 class LRUCache:
     def __init__(self, capacity: int):
         self.cap = capacity
+        self.cache = {}
 
         self.left, self.right = Node(0, 0), Node(0, 0)
         self.left.next, self.right.prev = self.right, self.left
 
     # insert linked list
     def insert(self, node):
-        prv, nxt = self.right.prev, self.right 
-        node.left = prv
-        node.right = nxt 
-        self.right = node
+        prv, nxt = self.right.prev, self.right
+        prv.next = nxt.prev = node 
+        node.next, node.prev = nxt, prv
 
     # remove linked list
     def remove(self, node):
-        prv, nxt = node.left, node.right
+        prv, nxt = node.prev, node.next
         prv.next = nxt
         nxt.prev = prv 
 
