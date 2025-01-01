@@ -25,50 +25,50 @@ average time complexity.
 
 class Node:
     def __init__(self, key, val):
-        self.key = key
-        self.val = val
+        self.key, self.val = key, val
         self.prev = self.next = None
 
 class LRUCache:
-
     def __init__(self, capacity: int):
         self.cap = capacity
-        self.cache = {} # maps key to node
+        self.cache = {}
 
-        # left = LRU, right = MRU
         self.left, self.right = Node(0, 0), Node(0, 0)
-        self.left.next, self.right.prev = self.right, self.left
+        self.left.next, self.right.prev = self.right, self.left 
 
-    # remove node from list
-    def remove(self, node):
-        prev, nxt = node.prev,node.next
-        prev.next, nxt.prev = nxt, prev
-
-    # insert node at right
+    # insert into linked list
     def insert(self, node):
-        prev, nxt = self.right.prev, self.right
-        prev.next = nxt.prev = node
-        node.next, node.prev = nxt, prev
-        
+        prv, nxt = self.right.prev, self.right 
+        node.prev, node.next = prv,nxt
+        prv.next = nxt.prev = node 
 
-    def get(self, key: int) -> int:
+    # remove from linked list
+    def remove(self, node):
+        prv, nxt = node.prev, node.next 
+        prv.next, nxt.prev = nxt, prv 
+
+    def get(self, key: int):
         if key in self.cache:
+            # one just accessed becomes MRU
             self.remove(self.cache[key])
             self.insert(self.cache[key])
             return self.cache[key].val
-        return -1
+        return -1 
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key: int, value: int)-> None:
         if key in self.cache:
             self.remove(self.cache[key])
+        # create new node and insert into cache
         self.cache[key] = Node(key, value)
+        # insert node into linked list
         self.insert(self.cache[key])
-
+        # check capacity
         if len(self.cache) > self.cap:
-            # remove from the list and delete the lru from hashmap
+            # delete LRU
             lru = self.left.next
-            self.remove(lru)
-            del self.cache[lru.key]
+            self.remove(lru) # remove from linked list
+            del self.cache[lru.key] # remove from hashmap
+
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
