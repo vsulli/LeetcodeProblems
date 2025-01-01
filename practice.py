@@ -1,20 +1,27 @@
 
-from typing import List
+# LRU Cache
 
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {} # num: index
-        for i in range(len(nums)):
-            if target-nums[i] in seen:
-                return [seen[target-nums[i]], i]
-            else:
-                seen[nums[i]] = i
+class Node:
+    def __init__(self, key, val):
+        self.key, self.val = key, val
+        self.prev = self.next = None
 
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cap = capacity
+        self.cache = {}
 
-sol = Solution()
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        self.left.next, self.right.prev = self.right, self.left 
 
-print(sol.twoSum(nums = [2,7,11,15], target = 9)) # [0, 1]
+    # insert into linked list
+    def insert(self, node):
+        prv, nxt = self.right.prev, self.right 
+        node.prev, node.next = prv,nxt
+        prv.next = nxt.prev = node 
 
-print(sol.twoSum(nums = [3,2,4], target = 6)) # [1,2]
+    # remove from linked list
+    def remove(self, node):
+        prv, nxt = node.prev, node.next 
+        prv.next, nxt.prev = nxt, prv 
 
-print(sol.twoSum(nums = [3,3], target = 6)) # [0, 1]
