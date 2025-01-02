@@ -2,7 +2,7 @@ from typing import List
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
         vowels = ['a', 'e', 'i', 'o', 'u']
-        # add all words to dictionary with index as key?
+        # add all words to dictionary with index as key
         res = []
         word_dict = {}
         for i in range(len(words)):
