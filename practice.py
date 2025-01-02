@@ -26,19 +26,19 @@ class LRUCache:
         if key in self.cache:
             self.remove(self.cache[key])
             self.insert(self.cache[key])
-            return self.cache[key]
+            return self.cache[key].val
         return -1
 
     def put(self, key: int, value: int):
         if key in self.cache:
             self.remove(self.cache[key]) # remove from linked list
-        self.cache[key] = value  # insert into cache
-        self.insert(key) # insert into linked list
+        self.cache[key] = Node(key, value)  # insert into cache
+        self.insert(self.cache[key]) # insert into linked list
         if len(self.cache) > self.cap:
             # get lru
-            lru = self.left 
+            lru = self.left.next
             # remove lru from cache and linked list
-            self.remove(lru.val)
-            del self.cache[lru]
+            self.remove(lru)
+            del self.cache[lru.key]
 
 
