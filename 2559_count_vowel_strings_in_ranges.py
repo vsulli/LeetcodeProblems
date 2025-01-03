@@ -1,24 +1,30 @@
+# topics - array, string, prefix sum
 from typing import List
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
-        vowels = ['a', 'e', 'i', 'o', 'u']
-        # add all words to dictionary with index as key
-        res = []
-        word_dict = {}
+        # perform precomputations on words
+        # create prefix sum array prefixSum to store the cumulative counts of vowel strings in words
+        # prefixSum[i] would contain the total number of vowel strins from 1st element up to index i
+        ans = [0] * len(queries)
+        vowels = {"a", "e", "i", "o", "u"}
+        prefix_sum = [0] * len(words)
+        sum = 0
         for i in range(len(words)):
-            word_dict[i] = words[i]
-
-        for q in queries:
-            count = 0
-            for i in range(q[0], q[1] + 1):
-                # if starts and ends with a vowel or length 1 and vowel
-                # add to result
-                if len(word_dict[i]) == 1 and word_dict[i] in vowels:
-                    count += 1
-                elif word_dict[i][0] in vowels and word_dict[i][-1] in vowels:
-                    count += 1
-            res.append(count)
-        return res
+            current_word = words[i]
+            # check beginning and end of word
+            if (current_word[0] in vowels and 
+            current_word[len(current_word) - 1] in vowels
+            ):
+                sum += 1
+            prefix_sum[i] = sum
+        
+        for i in range(len(queries)):
+            current_query = queries[i]
+            ans[i] = prefix_sum[current_query[1]] - (
+                0 if current_query[0] == 0 else prefix_sum[current_query[0] - 1]
+            )
+        
+        return ans
 
 sol = Solution()
 
