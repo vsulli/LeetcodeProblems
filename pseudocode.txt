@@ -1025,6 +1025,46 @@ subtract 1 because indices are 0-indexed in python
 Concepts:
 array, sliding window
 
+==============================================
+2559. COUNT VOWEL STRINGS IN RANGES
+==============================================
+You are given a 0-indexed array of strings 
+words and a 2D array of integers queries.
+
+Each query queries[i] = [li, ri] asks us 
+to find the number of strings present in 
+the range li to ri (both inclusive) of words 
+that start and end with a vowel.
+
+Return an array ans of size queries.length, 
+where ans[i] is the answer to the ith query.
+
+Note that the vowel letters are 'a', 'e', 
+'i', 'o', and 'u'.
+
+ ---------------------------------------------
+ Pseudocode:
+
+ initialize ans array of length of queries 
+ intialize set of vowels 
+ initialize array for prefix sums of length of words 
+ initialize sum 
+ loop through words:
+    initialize current word at index
+    if beg & end of word in vowels:
+        sum += 1
+        prefix_sum[i] = sum 
+loop through queries
+    initialize current query at index 
+    set answer array at index to diff prefix_sum[query 1] - prefix_sum[query 0]
+return ans 
+
+"Tricks" to Remember: 
+DON'T REPEAT WORK - calculate how many 
+queries are valid up to that index
+setting up a set for vowels allows O(1) lookup
+
+Concepts: array, string, prefix sum 
 
 
 ==============================================
