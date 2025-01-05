@@ -1,33 +1,30 @@
-# topics - array, string, prefix sum
+#2559 count vowel strings in ranges
+
 from typing import List
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
-        # perform precomputations on words
-        # create prefix sum array prefixSum to store the cumulative counts of vowel strings in words
-        # prefixSum[i] would contain the total number of vowel strins from 1st element up to index i
-        ans = [0] * len(queries)
+        ans = []
         vowels = {"a", "e", "i", "o", "u"}
-        prefix_sum = [0] * len(words)
-        sum = 0
+        prefix_sum  = [0] * len(words)
+        count = 0
+
+        # calculate prefix_sum by looping through entire words array
         for i in range(len(words)):
-            current_word = words[i]
-            # check beginning and end of word
-            if (current_word[0] in vowels and 
-            current_word[len(current_word) - 1] in vowels
-            ):
-                sum += 1
-            prefix_sum[i] = sum
+            if words[i][0] in vowels and words[i][-1] in vowels:
+                count += 1
+                prefix_sum[i] = count 
+            else:
+                prefix_sum[i] = count
         
         for i in range(len(queries)):
-            current_query = queries[i]
-            ans[i] = prefix_sum[current_query[1]] - (
-                0 if current_query[0] == 0 else prefix_sum[current_query[0] - 1]
-            )
+            c_query = queries[i]
+            res = prefix_sum[c_query[1]] - (0 if c_query[0] == 0 else prefix_sum[c_query[0] - 1])
+            ans.append(res)
         
         return ans
-
 sol = Solution()
 
 print(sol.vowelStrings(words = ["aba","bcb","ece","aa","e"], queries = [[0,2],[1,4],[1,1]]))
-
+#[2, 3, 0]
 print(sol.vowelStrings(words = ["a","e","i"], queries = [[0,2],[0,1],[2,2]]))
+# [3, 2, 1]
