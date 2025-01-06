@@ -1,39 +1,28 @@
-class Node:
-    def __init__(self, key, val):
-        self.key, self.val = key, val
+# 2559
 
-        self.prev = self.next = None
+from typing import List
+class Solution:
+    def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
+        ans = [0] * len(queries)
+        vowels = {"a", "e", "i", "o", "u"}
+        prefix_sums = [0] * len(words)
+        count = 0
 
-class LRUCache:
-    def __init__(self, capacity: int):
-        self.cap = capacity
-        self.cache = {}
+        for i in range(len(words)):
+            if words[i][0] in vowels and words[i][-1] in vowels:
+                count += 1
+                prefix_sums[i] = count 
+            else:
+                prefix_sums[i] = count
+        
+        # now have to loop through queries
+        for i in range(len(queries)):
+            query = queries[i]
+            
 
-        self.left, self.right = Node(0, 0), Node(0, 0)
-        self.left.next, self.right.prev = self.right, self.left
 
-    def insert(self, node):
-        prv, nxt = self.right.prev, self.right
-        node.prev, node.next = prv, nxt 
-        prv.next = nxt.prev = node
+sol = Solution()
 
-    def remove(self, node):
-        prv, nxt = node.prev, node.next
-        prv.next, nxt.prev = nxt, prv
+print(sol.vowelStrings(words = ["aba","bcb","ece","aa","e"], queries = [[0,2],[1,4],[1,1]]))
 
-    def get(self, key: int):
-        if key in self.cache:
-            self.remove(self.cache[key])
-            self.insert(self.cache[key])
-            return self.cache[key].val
-        return -1
-
-    def put(self, key: int, value: int):
-        if key in self.cache:
-            self.remove(self.cache[key])
-        self.cache[key] = Node(key, value)
-        self.insert(self.cache[key])
-        if len(self.cache) > self.cap:
-            lru = self.left.next 
-            self.remove(lru)
-            del self.cache[lru.key]
+print(sol.vowelStrings(words = ["a","e","i"], queries = [[0,2],[0,1],[2,2]]))
