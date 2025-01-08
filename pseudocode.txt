@@ -1065,7 +1065,8 @@ return ans
 DON'T REPEAT WORK - calculate how many 
 queries are valid up to that index
 setting up a set for vowels allows O(1) lookup
-
+prefix_sum is offset by 1 so that if you look at 0th index
+you're subtracting off 0. Why you have to use r+1
 
 Concepts: array, string, prefix sum 
 
