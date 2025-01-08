@@ -1,27 +1,24 @@
 #2559 count vowel strings in ranges
+# neetcode solution
 
 from typing import List
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
-        ans = []
-        vowels = {"a", "e", "i", "o", "u"}
-        prefix_sum  = [0] * len(words)
-        count = 0
+        vowel_set = set("aeiou")
+        prefix_sum = [0] * (len(words) + 1)
+        prev = 0
+        for i, w in enumerate(words):
+            if w[0] in vowel_set and w[-1] in vowel_set:
+                prev += 1
 
-        # calculate prefix_sum by looping through entire words array
-        for i in range(len(words)):
-            if words[i][0] in vowels and words[i][-1] in vowels:
-                count += 1
-                prefix_sum[i] = count 
-            else:
-                prefix_sum[i] = count
+            prefix_sum[i + 1] = prev
         
-        for i in range(len(queries)):
-            c_query = queries[i]
-            res = prefix_sum[c_query[1]] - (0 if c_query[0] == 0 else prefix_sum[c_query[0] - 1])
-            ans.append(res)
-        
-        return ans
+        res = [0] * len(queries)
+        for i, q in enumerate(queries):
+            l, r = q
+            res[i] = prefix_sum[r + 1] - prefix_sum[l]
+        return res
+
 sol = Solution()
 
 print(sol.vowelStrings(words = ["aba","bcb","ece","aa","e"], queries = [[0,2],[1,4],[1,1]]))
