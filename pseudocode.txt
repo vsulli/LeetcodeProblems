@@ -1056,7 +1056,7 @@ Note that the vowel letters are 'a', 'e',
         prefix_sum[i] = sum 
 loop through queries
     initialize current query at index 
-    set answer array at index to diff 2nd index -(0 if query 0 else 1st index) of prefix_sum
+    set answer array at index to diff 2nd index -(0 if query 0 else 1st index - 1) of prefix_sum
 return ans 
 
 "Tricks" to Remember: 

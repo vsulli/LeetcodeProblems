@@ -1,30 +1,21 @@
-# 2559
-
+#2559 
 from typing import List
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
-        ans = [0] * len(queries)
         vowels = {"a", "e", "i", "o", "u"}
-        prefix_sum = [0] * len(words)
         count = 0
+        prefix_sum = [0] * len(words)
+        ans = [0] * len(queries)
+
         for i in range(len(words)):
-            
-            # check beginning and end of word
-            if (words[i][0] in vowels and 
-            words[i][-1] in vowels
-            ):
+            if words[i][0] and words[i][-1] in vowels:
                 count += 1
-            prefix_sum[i] = count
-        
+            prefix_sum[i] =  count
+
         for i in range(len(queries)):
-            current_query = queries[i]
-            ans[i] = prefix_sum[current_query[1]] - (
-                0 if current_query[0] == 0 else prefix_sum[current_query[0] - 1]
-            )
-        
+            ans[i] = prefix_sum[queries[i][1]] - (0 if queries[i][0] == 0 else queries[i][0] - 1)
         return ans
-
-
+          
 
 sol = Solution()
 
