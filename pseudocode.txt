@@ -1045,26 +1045,27 @@ Note that the vowel letters are 'a', 'e',
  ---------------------------------------------
  Pseudocode:
 
- initialize ans array of length of queries 
- intialize set of vowels 
- initialize array for prefix sums of length of words 
- initialize sum 
- loop through words:
-    initialize current word at index
-    if beg & end of word in vowels:
-        sum += 1
-        prefix_sum[i] = sum 
-loop through queries
-    initialize current query at index 
-    set answer array at index to diff 2nd index -(0 if query 0 else 1st index - 1) of prefix_sum
-return ans 
+ initialize vowel set 
+ initialize prefix_sum 1 more than len(words)
+ initialize prev count 
+
+ enumerate through words
+    if beg word and end of word in vowel set:
+        increase prev 
+    prefix_sum[i + 1] = prev 
+
+initialize ans to len(quries)
+enumerate through queries
+    l, r = q # query has 2 indices 
+    ans[i] = prefix_sum[r+1] - prefix_sum[l]
+return ans
+
 
 "Tricks" to Remember: 
 DON'T REPEAT WORK - calculate how many 
 queries are valid up to that index
 setting up a set for vowels allows O(1) lookup
-if the beginning 2nd query is at index 0, then subtract 0
-(you need the entire prefix_sum up to 2nd index)
+
 
 Concepts: array, string, prefix sum 
 

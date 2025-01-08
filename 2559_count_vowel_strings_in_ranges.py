@@ -12,7 +12,7 @@ class Solution:
                 prev += 1
 
             prefix_sum[i + 1] = prev
-        
+        print(prefix_sum)
         res = [0] * len(queries)
         for i, q in enumerate(queries):
             l, r = q
@@ -23,5 +23,7 @@ sol = Solution()
 
 print(sol.vowelStrings(words = ["aba","bcb","ece","aa","e"], queries = [[0,2],[1,4],[1,1]]))
 #[2, 3, 0]
+# prefix_sum = [0, 1, 1, 2, 3, 4]
 print(sol.vowelStrings(words = ["a","e","i"], queries = [[0,2],[0,1],[2,2]]))
 # [3, 2, 1]
+# prefix_sum = [0, 1, 2, 3]
