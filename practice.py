@@ -5,20 +5,25 @@ class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
         ans = [0] * len(queries)
         vowels = {"a", "e", "i", "o", "u"}
-        prefix_sums = [0] * len(words)
+        prefix_sum = [0] * len(words)
         count = 0
-
         for i in range(len(words)):
-            if words[i][0] in vowels and words[i][-1] in vowels:
-                count += 1
-                prefix_sums[i] = count 
-            else:
-                prefix_sums[i] = count
-        
-        # now have to loop through queries
-        for i in range(len(queries)):
-            query = queries[i]
             
+            # check beginning and end of word
+            if (words[i][0] in vowels and 
+            words[i][-1] in vowels
+            ):
+                count += 1
+            prefix_sum[i] = count
+        
+        for i in range(len(queries)):
+            current_query = queries[i]
+            ans[i] = prefix_sum[current_query[1]] - (
+                0 if current_query[0] == 0 else prefix_sum[current_query[0] - 1]
+            )
+        
+        return ans
+
 
 
 sol = Solution()

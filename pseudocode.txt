@@ -1056,13 +1056,15 @@ Note that the vowel letters are 'a', 'e',
         prefix_sum[i] = sum 
 loop through queries
     initialize current query at index 
-    set answer array at index to diff prefix_sum[query 1] - prefix_sum[query 0]
+    set answer array at index to diff 2nd index -(0 if query 0 else 1st index) of prefix_sum
 return ans 
 
 "Tricks" to Remember: 
 DON'T REPEAT WORK - calculate how many 
 queries are valid up to that index
 setting up a set for vowels allows O(1) lookup
+if the beginning 2nd query is at index 0, then subtract 0
+(you need the entire prefix_sum up to 2nd index)
 
 Concepts: array, string, prefix sum 
 
