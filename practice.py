@@ -1,21 +1,24 @@
-# 701 insert into a binary search tree
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-from typing import Optional
+# 242 Valid Anagram
 
 class Solution:
-    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        if not root:
-            return TreeNode(val)
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        letter_counts = [0] * 26 # needs to be length of alphabet to fit for each character
+
+        for i in range(len(s)):
+            letter_counts[ord(s[i]) - ord('a')] += 1
+            letter_counts[ord(t[i]) - ord('a')] -= 1
         
-        elif val < root.val:
-            root.left = self.insertIntoBST(root.left, val)
-        else:
-            root.right = self.insertIntoBST(root.right, val)
-        return root
+        for c in letter_counts:
+            if c != 0:
+                return False
+
+        return True
+
+sol = Solution()
+
+print(sol.isAnagram(s = "anagram", t = "nagaram"))
+
+print(sol.isAnagram(s = "rat", t = "car"))
