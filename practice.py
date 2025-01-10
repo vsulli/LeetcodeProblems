@@ -4,6 +4,7 @@ from typing import List
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        res = []
         count = {}
         for n in nums:
             if n in count:
@@ -12,8 +13,7 @@ class Solution:
                 count[n] = 1
         
         s_count = sorted(count.items(), key=lambda items:items[1], reverse=True)
-        res = []
-        for i,n in enumerate(s_count):
+        for i, n in enumerate(s_count):
             res.append(n[0])
             if i == k - 1:
                 return res
