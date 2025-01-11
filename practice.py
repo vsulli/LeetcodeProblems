@@ -1,24 +1,21 @@
-# 242 Valid Anagram
 
+from typing import List
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-
-        letter_counts = [0] * 26 # needs to be length of alphabet to fit for each character
-
-        for i in range(len(s)):
-            letter_counts[ord(s[i]) - ord('a')] += 1
-            letter_counts[ord(t[i]) - ord('a')] -= 1
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        for n in nums:
+            if n in count:
+                count[n] += 1
+            else:
+                count[n] = 1
         
-        for c in letter_counts:
-            if c != 0:
-                return False
+        res = []
+        s_count = sorted(count.items(), key=lambda items:items[1], reverse=True)
 
-        return True
-
+        for i, n in enumerate(s_count):
+            res.append(n[0])
+            if i == k - 1:
+                return res
+                
 sol = Solution()
 
-print(sol.isAnagram(s = "anagram", t = "nagaram"))
-
-print(sol.isAnagram(s = "rat", t = "car"))
