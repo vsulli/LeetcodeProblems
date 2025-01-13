@@ -1,48 +1,18 @@
-# 146 LRU Cache
+# LC 1 - Two Sum
 
-class Node:
-    def __init__(self, key, val):
-        self.key, self.val = key, val
-        self.prev = self.next = None
+from typing import List
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i in range(len(nums)):
+            if target - nums[i] in seen:
+                return [seen[target-nums[i]], i]
+            seen[nums[i]] = i
+    
+sol = Solution()
 
-class LRUCache:
+print(sol.twoSum(nums = [2,7,11,15], target = 9))
 
-    def __init__(self, capacity: int):
-        self.cap = capacity
-        self.cache = {}
+print(sol.twoSum(nums = [3,2,4], target = 6))
 
-        self.left, self.right = Node(0, 0), Node(0, 0)
-        self.left.next, self.right.prev = self.right, self.left
-
-    def remove(self, node):
-        prv, nxt = node.prev, node.next
-        prv.next, nxt.prev = nxt, prv
-
-    def insert(self, node):
-        prv, nxt = self.right.prev, self.right 
-        node.prev, node.next = prv, nxt
-        prv.next = nxt.prev = node 
-
-    def get(self, key: int) -> int:
-        if key in self.cache:
-            self.remove(self.cache[key])
-            self.insert(self.cache[key])
-            return self.cache[key].val
-        return -1
-
-    def put(self, key: int, value: int) -> None:
-        if key in self.cache:
-            self.remove(self.cache[key])
-        
-        self.cache[key] = Node(key, value)
-        self.insert(self.cache[key])
-        if len(self.cache) > self.cap:
-            lru = self.left.next
-            self.remove(lru)
-            del self.cache[lru.key]
-
-
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+print(sol.twoSum(nums = [3,3], target = 6))
