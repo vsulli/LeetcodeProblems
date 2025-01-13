@@ -1,18 +1,31 @@
-# LC 1 - Two Sum
+# LC #450 Delete Node in a BST
+from typing import Optional
 
-from typing import List
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {}
-        for i in range(len(nums)):
-            if target - nums[i] in seen:
-                return [seen[target-nums[i]], i]
-            seen[nums[i]] = i
-    
-sol = Solution()
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
+            return root
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)
+        
+        elif key > root.val:
+            root.right = self.deleteNode(root.right, key)
 
-print(sol.twoSum(nums = [2,7,11,15], target = 9))
-
-print(sol.twoSum(nums = [3,2,4], target = 6))
-
-print(sol.twoSum(nums = [3,3], target = 6))
+        else:
+            if not root.left:
+                return root.right
+            elif not root.right:
+                return root.left
+            else:
+                curr = root.right 
+                while curr.left:
+                    curr = curr.left
+                root.val = curr.val
+                root.right = self.deleteNode(root.right, root.val)
+        return root
