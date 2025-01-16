@@ -1,31 +1,22 @@
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-from typing import Optional
+from typing import List
 class Solution:
-    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        if not root:
-            return root
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        words = {} # tuple sorted chars : list []
+        for w in strs:
+            if tuple(sorted(w)) in words:
+                words[tuple(sorted(w))].append(w)
+            else:
+                words[tuple(sorted(w))] = [w]
+        res = []
+        for v in words.values():
+            res.append(v)
+        return res
 
-        elif key < root.val:
-            root.left = self.deleteNode(root.left, key)
-        elif key > root.val:
-            root.right = self.deleteNode(root.right, key)
-        else:
-            if not root.left:
-                return root.right
-            elif not root.right:
-                return root.left
+sol = Solution()
 
-            curr = root.right
-            while curr.left:
-                curr = curr.left
-            root.val = curr.val
-            root.right = self.deleteNode(root.right, root.val)
-        return root
+print(sol.groupAnagrams(strs = [""]))
+
+print(sol.groupAnagrams(strs = ["a"]))
+
+print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
+# [["bat"],["nat","tan"],["ate","eat","tea"]]
