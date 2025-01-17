@@ -1,22 +1,15 @@
-from typing import List
-
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+from typing import Optional
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        res = []
-        freq = {}
-        for n in nums:
-            if n in freq:
-                freq[n] += 1
-            else:
-                freq[n] = 1
-        s_freq = sorted(freq.items(), key=lambda items: items[1], reverse=True)
-        for i, key in enumerate(s_freq):
-            res.append(key[0])
-            if i == k-1:
-                return res
-
-sol = Solution()
-
-print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
-
-print(sol.topKFrequent(nums = [1], k = 1))
+    def insertIntoBST(self, root: Optional[TreeNode], val: int)->Optional[TreeNode]:
+        if not root:
+            return TreeNode(val)
+        elif val < root.val:
+            root.left = self.insertIntoBST(root.left, val)
+        elif val > root.val:
+            root.right = self.insertIntoBST(root.right, val)
+        return root
