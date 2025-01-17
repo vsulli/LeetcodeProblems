@@ -1,22 +1,22 @@
 from typing import List
+
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        words = {} # tuple sorted chars : list []
-        for w in strs:
-            if tuple(sorted(w)) in words:
-                words[tuple(sorted(w))].append(w)
-            else:
-                words[tuple(sorted(w))] = [w]
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         res = []
-        for v in words.values():
-            res.append(v)
-        return res
+        freq = {}
+        for n in nums:
+            if n in freq:
+                freq[n] += 1
+            else:
+                freq[n] = 1
+        s_freq = sorted(freq.items(), key=lambda items: items[1], reverse=True)
+        for i, key in enumerate(s_freq):
+            res.append(key[0])
+            if i == k-1:
+                return res
 
 sol = Solution()
 
-print(sol.groupAnagrams(strs = [""]))
+print(sol.topKFrequent(nums = [1,1,1,2,2,3], k = 2))
 
-print(sol.groupAnagrams(strs = ["a"]))
-
-print(sol.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))
-# [["bat"],["nat","tan"],["ate","eat","tea"]]
+print(sol.topKFrequent(nums = [1], k = 1))
