@@ -2,14 +2,16 @@
 
 
 class Node:
-    def __init__(self, val= 0, prev=None, next=None):
+    def __init__(self, key, val):
+        self.key = key
         self.val = val
         self.prev = self.next = None
 
 class LRUCache:
+
     def __init__(self, capacity: int):
         self.cap = capacity
-        self.cache = []
+        self.cache = {}
 
         self.left, self.right = Node(0, 0), Node(0, 0)
         self.left.next, self.right.prev = self.right, self.left
