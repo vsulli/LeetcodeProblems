@@ -574,9 +574,14 @@ Output: [0,0,9,0,0]
 return res
 
 "Tricks" to Remember: 
+O(2n) basically-> O(n) time
+O(1) space
 Need to loop through going forwards(right) and 
 backwards(left)
 for(start, end, increment)
+O(1) extra space complexity - output array doesn't count
+as extra space
+
 
 Concepts:array, prefix sum
 ==============================================
