@@ -1,26 +1,27 @@
-# lc 238 - product of array except self
+# lc # 271 encode and decode strings
 
 from typing import List
+
 class Solution:
-    def productExceptSelf(self, nums: List[int])->List[int]:
-        res = [1] * len(nums)
 
-        prefix = 1
-        for i in range(len(nums)):
-            res[i] = prefix
-            prefix *= nums[i]
-
-        postfix = 1
-        for i in range(len(nums) - 1, -1, -1):
-            res[i] *= postfix
-            postfix *= nums[i]
-        
+    def encode(self, strs: List[str]) -> str:
+        res = ''
+        for w in strs:
+            res += "#" + str(len(w))+w
         return res
-
+    def decode(self, s: str) -> List[str]:
+        res = []
+        p = 0
+        while p!= len(s):
+            # if index is symbol, take next index and copy that range to result
+            # set pointer to index after end
+            if s[p] == '#':
+                res.append(s[p+2:int(s[p+1])+p+2]) #6   n7  e11  
+                p = int(s[p+1])+p+2
+        return res
 
 sol = Solution()
 
-print(sol.productExceptSelf(nums = [1,2,3,4]))
+encoded = sol.encode(["neet","code","love","you"]) # #4neet#4code#4love#3you
 
-print(sol.productExceptSelf(nums = [-1,1,0,-3,3]))
-
+print(sol.decode(encoded))
