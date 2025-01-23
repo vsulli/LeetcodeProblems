@@ -1,24 +1,28 @@
 # lc # 271 encode and decode strings
 
 from typing import List
-
 class Solution:
 
-    def encode(self, strs: List[str]) -> str:
-        res = ''
-        for w in strs:
-            res += "#" + str(len(w))+w
-        return res
-    def decode(self, s: str) -> List[str]:
+    def encode(self, strs: List[str])-> str:
+        res = ""
+        for s in strs:
+            res += str(len(s)) + "#" + s
+        return res 
+
+    def decode(self, strs: str)->List[str]:
         res = []
-        p = 0
-        while p!= len(s):
-            # if index is symbol, take next index and copy that range to result
-            # set pointer to index after end
-            if s[p] == '#':
-                res.append(s[p+2:int(s[p+1])+p+2]) #6   n7  e11  
-                p = int(s[p+1])+p+2
-        return res
+        i = 0
+
+        while i < len(strs):
+            j = i
+            while strs[j] != "#":
+                j += 1
+            length = int(strs[i:j])
+            i = j + 1
+            j = i + length
+            res.append(strs[i:j])
+            i = j
+        return res 
 
 sol = Solution()
 
