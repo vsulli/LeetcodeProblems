@@ -1,31 +1,26 @@
-# lc # 271 encode and decode strings
+# 146 LRU Cache
 
-from typing import List
-class Solution:
+class Node:
+    def __init__(self, val=0, prev=None, next=None):
+        self.val = val
+        self.prev=self.next = None 
 
-    def encode(self, strs: List[str])-> str:
-        res = ""
-        for s in strs:
-            res += str(len(s)) + "#" + s
-        return res 
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cap = capacity
 
-    def decode(self, strs: str)->List[str]:
-        res = []
-        i = 0
+        self.left, self.right = Node(0, 0), Node(0, 0)
+        self.left.next, self.right.prev = self.right, self.left 
 
-        while i < len(strs):
-            j = i
-            while strs[j] != "#":
-                j += 1
-            length = int(strs[i:j])
-            i = j + 1
-            j = i + length
-            res.append(strs[i:j])
-            i = j
-        return res 
+    def remove(self, node: Node):
+        pass
 
-sol = Solution()
+    def insert(self, node: Node):
+        pass
 
-encoded = sol.encode(["neet","code","love","you"]) # #4neet#4code#4love#3you
+    def get(self, key: int):
+        pass
 
-print(sol.decode(encoded))
+    def put(self, key: int, value: int):
+        pass
+
