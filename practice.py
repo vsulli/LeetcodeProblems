@@ -1,12 +1,10 @@
 # 146 LRU Cache
 class Node:
-    def __init__(self, key, val):
-        self.key = key
-        self.val = val
+    def __init__(self, key: int, value: int):
+        self.key, self.val = key, value
         self.prev = self.next = None
 
 class LRUCache:
-
     def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {}
@@ -15,30 +13,25 @@ class LRUCache:
         self.left.next, self.right.prev = self.right, self.left
 
     def remove(self, node):
-        prv, nxt = node.prev, node.next
-        prv.next, nxt.prev = nxt, prv
-
+        pass
     def insert(self, node):
-        prv, nxt = self.right.prev, self.right
-        node.prev, node.next = prv, nxt
-        prv.next = nxt.prev = node
+        pass
 
-    def get(self, key: int)->int:
+    def get(self, key: int):
         if key in self.cache:
             self.remove(self.cache[key])
             self.insert(self.cache[key])
             return self.cache[key].val
         return -1
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key: int, value: int):
         if key in self.cache:
             self.remove(self.cache[key])
+        
         self.cache[key] = Node(key, value)
         self.insert(self.cache[key])
         if len(self.cache) > self.cap:
-            lru = self.left.next # TODO REMEMBER NEXT POINTER
+            lru = self.left.next 
             self.remove(lru)
             del self.cache[lru.key]
-
-        
 
