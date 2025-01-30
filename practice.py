@@ -1,37 +1,21 @@
-# 146 LRU Cache
-class Node:
-    def __init__(self, key: int, value: int):
-        self.key, self.val = key, value
-        self.prev = self.next = None
+#238 product of array except self
 
-class LRUCache:
-    def __init__(self, capacity: int):
-        self.cap = capacity
-        self.cache = {}
+from typing import List
 
-        self.left, self.right = Node(0, 0), Node(0, 0)
-        self.left.next, self.right.prev = self.right, self.left
+class Solution:
+    def productExceptSelf(self, nums: List[int])-> List[int]:
+        answer  = [1] * len(nums) 
 
-    def remove(self, node):
-        pass
-    def insert(self, node):
-        pass
+        prefix = 1
+        #go from left
+        for i in range(len(nums)):
+            answer[i] = prefix
+            prefix *= nums[i]
 
-    def get(self, key: int):
-        if key in self.cache:
-            self.remove(self.cache[key])
-            self.insert(self.cache[key])
-            return self.cache[key].val
-        return -1
+        # go from right
+        postfix = 1
+        for i in range(len(nums) - 1, -1, -1):
+            answer[i] *= postfix 
+            postfix *= nums[i]
 
-    def put(self, key: int, value: int):
-        if key in self.cache:
-            self.remove(self.cache[key])
-        
-        self.cache[key] = Node(key, value)
-        self.insert(self.cache[key])
-        if len(self.cache) > self.cap:
-            lru = self.left.next 
-            self.remove(lru)
-            del self.cache[lru.key]
-
+        return answer
