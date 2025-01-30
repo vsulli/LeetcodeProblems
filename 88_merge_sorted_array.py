@@ -17,17 +17,15 @@ from typing import List
 
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        # nums 1 should be sorted in-place, sort in non-decreasing order (basically ascending)
-        temp = None 
-        p = 0
-        i = 0
-        while nums2:
-            while nums2[i] < nums1[p]:
-                p += 1
-
-            temp = nums1[p]
-            nums1[p] = nums2[i]
-            nums2[i] = temp 
+        while m > 0 and n > 0:
+            if nums1[m-1] >= nums2[n-1]:
+                nums1[m+n-1] = nums1[m-1]
+                m -= 1
+            else:
+                nums1[m+n-1] = nums2[n-1]
+                n -= 1
+        if n > 0:
+            nums1[:n] = nums2[:n]
 
 
 
