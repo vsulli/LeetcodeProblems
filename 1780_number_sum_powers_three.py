@@ -17,7 +17,15 @@ exists an integer x such that y == 3x.
 
 class Solution:
     def checkPowersOfThree(self, n: int) -> bool:
-        pass
+        distinct_powers = False
+        sum =  0
+        while sum != n:
+            # 12 / 3 = 4
+            # 91 / 3 = 30.3 -> 90/3 = 30 + 1/3 remainder of 1 can be represented as 3^0
+            # 21 / 3 = 
+            # remove the 1?
+
+        return distinct_powers
 
 sol = Solution()
 
